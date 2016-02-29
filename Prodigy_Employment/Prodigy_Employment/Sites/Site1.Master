@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Prodigy_Employment.Sites.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>TempJobs.com</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+     <header class="navbar navbar-default navbar-fixed-top" style="height:20px;color:black">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <form class="navbar-form pull-right">
+                    <div class="input-group">
+                        <input type="search" title="Enter search" placeholder="Enter Search" class="form-control" />
+                        <span class="input-group-addon glyphicon glyphicon-search"></span>
+                    </div>
+                </form>
+                 <ul class="nav navbar pull-right">
+                        <li class="nav navbar pull-right"><a href="../User/Login.aspx">Login</a></li>
+                         <li class="nav navbar pull-right"><a href="../User/Registration.aspx">Registration</a></li>
+                    </ul>
+                <ul class="nav navbar pull-right">
+                   <li class="nav navbar pull-right"><a href="#">About</a></li>
+                   <li class="nav navbar pull-right"><a href="#">Contact US</a></li>
+                  <%--   
+                   <li class="dropdown dropdown-menu ">
+                       <a href="#" class="dropdown-toggle"  data-toggle="dropdown">services<b class="caret"></b>
+                           <ul >
+                               <li><a href="#">Employee</a></li>
+                               <li><a href="#">Employer</a></li>
+                               <li><a href="#">Jobs</a></li>
+                               <li><a href="#"></a></li>
+                           </ul>
+                       </a></li>--%>
+                    <li class="nav navbar pull-right"><a href="../functional/Home.aspx " class="active">Home</a></li>
+                </ul> 
+                <a  href="../functional/Home.aspx">TempJobs.com</a>
+            </div>
+        </div>
+    </header>
+
+    <form id="form1" runat="server">
+       <div class="container" style="margin-top:50px">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+           </div>
+    <footer class="navbar navbar-fixed-bottom navbar-inverse">
+        <p style="color:white"></p>
+    </footer>
+    </form>
+    <script src="../js/npm.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
