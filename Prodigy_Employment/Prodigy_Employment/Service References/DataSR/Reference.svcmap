@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7f99095d-8119-47a8-adad-10fcf95fb302" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:10484/CollectUserDetailsService1.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CollectUserDetailsService1.wsdl" MetadataType="Wsdl" ID="83786827-607a-4fb6-bc71-0f8504434726" SourceId="1" SourceUrl="http://localhost:10484/CollectUserDetailsService1.svc?wsdl" />
+    <MetadataFile FileName="CollectUserDetailsService1.xsd" MetadataType="Schema" ID="98016e58-c5af-4867-9b0a-c5e71d53305f" SourceId="1" SourceUrl="http://localhost:10484/CollectUserDetailsService1.svc?xsd=xsd2" />
+    <MetadataFile FileName="CollectUserDetailsService11.xsd" MetadataType="Schema" ID="7e3ae300-b426-4727-9c28-1a7f5178ca6e" SourceId="1" SourceUrl="http://localhost:10484/CollectUserDetailsService1.svc?xsd=xsd0" />
+    <MetadataFile FileName="CollectUserDetailsService12.xsd" MetadataType="Schema" ID="4f672473-9115-48c2-a114-5d336c2e159b" SourceId="1" SourceUrl="http://localhost:10484/CollectUserDetailsService1.svc?xsd=xsd1" />
+    <MetadataFile FileName="CollectUserDetailsService1.disco" MetadataType="Disco" ID="f9b187ea-d744-4722-8f24-f759f70ce2c2" SourceId="1" SourceUrl="http://localhost:10484/CollectUserDetailsService1.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
