@@ -16,6 +16,11 @@
             <td>
                 <asp:TextBox ID="txtLastName" runat="server"  ></asp:TextBox></td>
        </tr>
+        <tr id="Tr3" runat="server">
+            <td>Username: </td>
+            <td>
+                <asp:TextBox ID="txtUsername" runat="server"  ></asp:TextBox></td>
+        </tr>
          <tr  runat="server">
             <td>Adress: </td>
             <td>
@@ -32,7 +37,7 @@
         <tr runat="server">
             <td>Email: </td>
             <td>
-                <asp:TextBox ID="txtUsername" runat="server" TextMode ="Email" ></asp:TextBox></td>
+                <asp:TextBox ID="txtEmail" runat="server" TextMode ="Email" ></asp:TextBox></td>
         </tr>
         <tr runat="server">
             <td>Phone Number: </td>
@@ -42,7 +47,7 @@
         <tr id="Tr1" runat="server">
             <td>Phone Number(alternative) </td>
             <td>
-                <asp:TextBox ID="txtPnoneNumberAltanative" TextMode="Phone" runat="server"  ></asp:TextBox></td>
+                <asp:TextBox ID="txtPhoneNumberAltanative" TextMode="Phone" runat="server"  ></asp:TextBox></td>
         </tr>
         <tr id="Tr2"  runat ="server" >
             <td>Password: </td>
@@ -51,7 +56,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnLogin" runat="server" Text="Login" Width="73px" /></td>
+                <asp:Button ID="btnLogin" runat="server" Text="Login" Width="73px" OnClick="btnLogin_Click" /></td>
             <td class="auto-style1">
                 <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="false" Text="Username / password incorrect"></asp:Label></td>
         </tr>

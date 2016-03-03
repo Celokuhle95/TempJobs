@@ -1,0 +1,5 @@
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\WcfServiceEmployment\WcfServiceEmployment\bin\WcfServiceEmployment.dll
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\WcfServiceEmployment\WcfServiceEmployment\bin\WcfServiceEmployment.pdb
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\WcfServiceEmployment\WcfServiceEmployment\obj\Debug\WcfServiceEmployment.csprojResolveAssemblyReference.cache
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\WcfServiceEmployment\WcfServiceEmployment\obj\Debug\WcfServiceEmployment.dll
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\WcfServiceEmployment\WcfServiceEmployment\obj\Debug\WcfServiceEmployment.pdb

@@ -49,6 +49,24 @@ namespace Prodigy_Employment.Sites.User {
         protected global::System.Web.UI.WebControls.TextBox txtLastName;
         
         /// <summary>
+        /// Tr3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr3;
+        
+        /// <summary>
+        /// txtUsername control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        
+        /// <summary>
         /// txtAdress control.
         /// </summary>
         /// <remarks>
@@ -67,13 +85,13 @@ namespace Prodigy_Employment.Sites.User {
         protected global::System.Web.UI.WebControls.DropDownList drpAuthintication;
         
         /// <summary>
-        /// txtUsername control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
         /// txtPhoneNumber control.
@@ -94,13 +112,13 @@ namespace Prodigy_Employment.Sites.User {
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr1;
         
         /// <summary>
-        /// txtPnoneNumberAltanative control.
+        /// txtPhoneNumberAltanative control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPnoneNumberAltanative;
+        protected global::System.Web.UI.WebControls.TextBox txtPhoneNumberAltanative;
         
         /// <summary>
         /// Tr2 control.

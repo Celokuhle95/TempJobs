@@ -3,3 +3,8 @@ C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group proj
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\VB_project\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\VB_project\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.dll
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\VB_project\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.pdb
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\bin\Prodigy_Employment.dll
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\bin\Prodigy_Employment.pdb
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.dll
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.pdb
