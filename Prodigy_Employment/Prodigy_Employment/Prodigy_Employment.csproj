@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,30 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.5.0.0\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -57,15 +82,25 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CollectUserDetailsService1.svc" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="DisplayUserDetails.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="images\homePageImage.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\npm.js" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="Service References\DataSR\CollectUserDetailsService1.disco" />
+    <Content Include="Service References\DataSR\configuration91.svcinfo" />
+    <Content Include="Service References\DataSR\configuration.svcinfo" />
+    <Content Include="Service References\DataSR\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="Sites\functional\Home.aspx" />
     <Content Include="Sites\User\Login.aspx" />
     <Content Include="Sites\User\Registration.aspx" />
@@ -84,11 +119,29 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectUserDetailsService1.svc.cs">
+      <DependentUpon>CollectUserDetailsService1.svc</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayUserDetails.aspx.cs">
+      <DependentUpon>DisplayUserDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DisplayUserDetails.aspx.designer.cs">
+      <DependentUpon>DisplayUserDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ICollectUserDetailsService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+=======
+    <Compile Include="Service References\DataSR\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+>>>>>>> a7fc930d38a816163777166c617f87785e758d7a
     </Compile>
     <Compile Include="Sites\functional\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -134,6 +187,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+<<<<<<< HEAD
     <Content Include="Web References\localhost\Service1.wsdl" />
     <None Include="Web References\localhost\Service1.xsd">
       <SubType>Designer</SubType>
@@ -142,6 +196,17 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Web References\localhost\Service11.xsd">
+=======
+    <Content Include="packages.config" />
+    <Content Include="Service References\DataSR\CollectUserDetailsService1.wsdl" />
+    <None Include="Service References\DataSR\CollectUserDetailsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataSR\CollectUserDetailsService11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DataSR\CollectUserDetailsService12.xsd">
+>>>>>>> a7fc930d38a816163777166c617f87785e758d7a
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -155,6 +220,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +235,9 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Prodigy_Employment_localhost_Service1</CachedSettingsPropName>
     </WebReferenceUrl>
+=======
+    <WCFMetadataStorage Include="Service References\DataSR\" />
+>>>>>>> a7fc930d38a816163777166c617f87785e758d7a
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

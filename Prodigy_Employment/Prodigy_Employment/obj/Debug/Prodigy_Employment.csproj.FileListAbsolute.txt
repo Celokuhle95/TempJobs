@@ -3,8 +3,26 @@ C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group proj
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\VB_project\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\VB_project\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.dll
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\VB_project\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.pdb
+<<<<<<< HEAD
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\bin\Prodigy_Employment.dll
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\bin\Prodigy_Employment.pdb
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.dll
 C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\connection to the database\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.pdb
+=======
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Prodigy_Employment.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Prodigy_Employment.pdb
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\obj\Debug\Prodigy_Employment.pdb
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.Edm.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.OData.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.Services.Client.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.Services.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\System.Spatial.dll
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.Edm.xml
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.OData.xml
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.Services.xml
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\Microsoft.Data.Services.Client.xml
+C:\Users\hp\newGitTest1\team46\Prodigy_Employment\Prodigy_Employment\bin\System.Spatial.xml
+>>>>>>> a7fc930d38a816163777166c617f87785e758d7a
