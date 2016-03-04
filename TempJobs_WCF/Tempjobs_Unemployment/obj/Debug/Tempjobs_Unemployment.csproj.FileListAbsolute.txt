@@ -1,0 +1,66 @@
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\ApplicationInsights.config
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\csc.exe
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\vbc.exe
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\VBCSCompiler.exe
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Tempjobs_Unemployment.dll.config
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Tempjobs_Unemployment.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Tempjobs_Unemployment.pdb
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.Web.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.ApplicationInsights.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.Web.xml
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.ApplicationInsights.xml
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\obj\Debug\Tempjobs_Unemployment.csprojResolveAssemblyReference.cache
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\obj\Debug\Tempjobs_Unemployment.dll
+C:\Users\General\Documents\Visual Studio 2015\Projects\TempJobs_WCF\Tempjobs_Unemployment\obj\Debug\Tempjobs_Unemployment.pdb
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\ApplicationInsights.config
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\csc.exe
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\vbc.exe
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\VBCSCompiler.exe
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Tempjobs_Unemployment.dll.config
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Tempjobs_Unemployment.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Tempjobs_Unemployment.pdb
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.Web.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.ApplicationInsights.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.Web.xml
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.ApplicationInsights.xml
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\obj\Debug\Tempjobs_Unemployment.csprojResolveAssemblyReference.cache
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\obj\Debug\Tempjobs_Unemployment.dll
+C:\Users\General\Desktop\TempJobs_WCF\Tempjobs_Unemployment\obj\Debug\Tempjobs_Unemployment.pdb
