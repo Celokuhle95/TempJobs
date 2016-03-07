@@ -26,7 +26,7 @@ namespace Prodigy_Employment.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:4572/Service1.svc")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:1546/Service1.svc")]
         public string Prodigy_Employment_localhost_Service1 {
             get {
                 return ((string)(this["Prodigy_Employment_localhost_Service1"]));

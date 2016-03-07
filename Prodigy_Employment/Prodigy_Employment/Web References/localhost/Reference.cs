@@ -31,9 +31,9 @@ namespace Prodigy_Employment.localhost {
         
         private System.Threading.SendOrPostCallback GetDataOperationCompleted;
         
-        private System.Threading.SendOrPostCallback insertOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetDataUsingDataContractOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RegistrationDatabaseOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -77,10 +77,10 @@ namespace Prodigy_Employment.localhost {
         public event GetDataCompletedEventHandler GetDataCompleted;
         
         /// <remarks/>
-        public event insertCompletedEventHandler insertCompleted;
+        public event GetDataUsingDataContractCompletedEventHandler GetDataUsingDataContractCompleted;
         
         /// <remarks/>
-        public event GetDataUsingDataContractCompletedEventHandler GetDataUsingDataContractCompleted;
+        public event RegistrationDatabaseCompletedEventHandler RegistrationDatabaseCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -115,52 +115,6 @@ namespace Prodigy_Employment.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/insert", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void insert([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string firstName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lastName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Adress, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string phoneNumber, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string phoneNumberalt, int authinticationLevel, [System.Xml.Serialization.XmlIgnoreAttribute()] bool authinticationLevelSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password) {
-            this.Invoke("insert", new object[] {
-                        userName,
-                        firstName,
-                        lastName,
-                        Adress,
-                        Email,
-                        phoneNumber,
-                        phoneNumberalt,
-                        authinticationLevel,
-                        authinticationLevelSpecified,
-                        password});
-        }
-        
-        /// <remarks/>
-        public void insertAsync(string userName, string firstName, string lastName, string Adress, string Email, string phoneNumber, string phoneNumberalt, int authinticationLevel, bool authinticationLevelSpecified, string password) {
-            this.insertAsync(userName, firstName, lastName, Adress, Email, phoneNumber, phoneNumberalt, authinticationLevel, authinticationLevelSpecified, password, null);
-        }
-        
-        /// <remarks/>
-        public void insertAsync(string userName, string firstName, string lastName, string Adress, string Email, string phoneNumber, string phoneNumberalt, int authinticationLevel, bool authinticationLevelSpecified, string password, object userState) {
-            if ((this.insertOperationCompleted == null)) {
-                this.insertOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsertOperationCompleted);
-            }
-            this.InvokeAsync("insert", new object[] {
-                        userName,
-                        firstName,
-                        lastName,
-                        Adress,
-                        Email,
-                        phoneNumber,
-                        phoneNumberalt,
-                        authinticationLevel,
-                        authinticationLevelSpecified,
-                        password}, this.insertOperationCompleted, userState);
-        }
-        
-        private void OninsertOperationCompleted(object arg) {
-            if ((this.insertCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.insertCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetDataUsingDataContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
         public CompositeType GetDataUsingDataContract([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] CompositeType composite) {
@@ -191,6 +145,52 @@ namespace Prodigy_Employment.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/RegistrationDatabase", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RegistrationDatabase([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string firstName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lastName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string address, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string cantactNumbers, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string altanativeNumber, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, int authenticationLevel, [System.Xml.Serialization.XmlIgnoreAttribute()] bool authenticationLevelSpecified) {
+            this.Invoke("RegistrationDatabase", new object[] {
+                        userName,
+                        firstName,
+                        lastName,
+                        address,
+                        Email,
+                        cantactNumbers,
+                        altanativeNumber,
+                        password,
+                        authenticationLevel,
+                        authenticationLevelSpecified});
+        }
+        
+        /// <remarks/>
+        public void RegistrationDatabaseAsync(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, bool authenticationLevelSpecified) {
+            this.RegistrationDatabaseAsync(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber, password, authenticationLevel, authenticationLevelSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void RegistrationDatabaseAsync(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, bool authenticationLevelSpecified, object userState) {
+            if ((this.RegistrationDatabaseOperationCompleted == null)) {
+                this.RegistrationDatabaseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistrationDatabaseOperationCompleted);
+            }
+            this.InvokeAsync("RegistrationDatabase", new object[] {
+                        userName,
+                        firstName,
+                        lastName,
+                        address,
+                        Email,
+                        cantactNumbers,
+                        altanativeNumber,
+                        password,
+                        authenticationLevel,
+                        authenticationLevelSpecified}, this.RegistrationDatabaseOperationCompleted, userState);
+        }
+        
+        private void OnRegistrationDatabaseOperationCompleted(object arg) {
+            if ((this.RegistrationDatabaseCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegistrationDatabaseCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -207,11 +207,6 @@ namespace Prodigy_Employment.localhost {
             }
             return false;
         }
-
-        internal void insert(string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9)
-        {
-            throw new NotImplementedException();
-        }
     }
     
     /// <remarks/>
@@ -219,7 +214,7 @@ namespace Prodigy_Employment.localhost {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/WcfServiceEmployment")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
     public partial class CompositeType {
         
         private bool boolValueField;
@@ -289,10 +284,6 @@ namespace Prodigy_Employment.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
-    public delegate void insertCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void GetDataUsingDataContractCompletedEventHandler(object sender, GetDataUsingDataContractCompletedEventArgs e);
     
     /// <remarks/>
@@ -316,6 +307,10 @@ namespace Prodigy_Employment.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void RegistrationDatabaseCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

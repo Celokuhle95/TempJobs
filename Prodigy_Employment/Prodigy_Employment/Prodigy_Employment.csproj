@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{26A9B925-AE61-4B67-88BB-1F85A66A1581}</ProjectGuid>
+    <ProjectGuid>{F76A07FF-B181-4028-8C29-1B032ED4D468}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -19,7 +19,6 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,30 +39,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Data.Edm, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Data.Edm.5.0.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.OData, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Data.OData.5.0.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Data.Services.5.0.0\lib\net40\Microsoft.Data.Services.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Services.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Data.Services.Client.5.0.0\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web" />
-    <Reference Include="System.Spatial, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\System.Spatial.5.0.0\lib\net40\System.Spatial.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -82,94 +57,105 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CollectUserDetailsService1.svc" />
-    <Content Include="css\bootstrap-theme.css" />
-    <Content Include="css\bootstrap-theme.min.css" />
-    <Content Include="css\bootstrap.css" />
-    <Content Include="css\bootstrap.min.css" />
-    <Content Include="DisplayUserDetails.aspx" />
+    <Content Include="About.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="images\homePageImage.jpg" />
-    <Content Include="js\bootstrap.js" />
-    <Content Include="js\bootstrap.min.js" />
-    <Content Include="js\npm.js" />
-    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
-    <Content Include="Service References\DataSR\CollectUserDetailsService1.disco" />
-    <Content Include="Service References\DataSR\configuration91.svcinfo" />
-    <Content Include="Service References\DataSR\configuration.svcinfo" />
-    <Content Include="Service References\DataSR\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Sites\functional\Home.aspx" />
-    <Content Include="Sites\User\Login.aspx" />
-    <Content Include="Sites\User\Registration.aspx" />
+    <Content Include="HomePage.aspx" />
+    <Content Include="Images\bricklayering.jpg" />
+    <Content Include="Images\cuttinggrass.jpg" />
+    <Content Include="Images\dogwalking.jpg" />
+    <Content Include="Images\ironing.jpg" />
+    <Content Include="Images\jobs.jpg" />
+    <Content Include="Images\planting.jpeg" />
+    <Content Include="Images\plastering.jpg" />
+    <Content Include="Images\Plumber.jpg" />
+    <Content Include="Images\treetriming.jpg" />
+    <Content Include="Images\washing.jpg" />
+    <Content Include="Images\watering.jpg" />
+    <Content Include="Images\workingothegarden.jpg" />
+    <Content Include="Login.aspx" />
+    <Content Include="Registration.aspx" />
+    <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <Content Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Slide.aspx" />
     <Content Include="Web References\localhost\CompositeType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\localhost\Service1.disco" />
+    </None>
+    <None Include="Web References\localhost\Service1.disco" />
     <Content Include="Web.config" />
+    <Content Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectUserDetailsService1.svc.cs">
-      <DependentUpon>CollectUserDetailsService1.svc</DependentUpon>
-    </Compile>
-    <Compile Include="DisplayUserDetails.aspx.cs">
-      <DependentUpon>DisplayUserDetails.aspx</DependentUpon>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DisplayUserDetails.aspx.designer.cs">
-      <DependentUpon>DisplayUserDetails.aspx</DependentUpon>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ICollectUserDetailsService1.cs" />
+    <Compile Include="HomePage.aspx.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomePage.aspx.designer.cs">
+      <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-=======
-    <Compile Include="Service References\DataSR\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
->>>>>>> a7fc930d38a816163777166c617f87785e758d7a
     </Compile>
-    <Compile Include="Sites\functional\Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sites\functional\Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sites\Site1.Master.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sites\Site1.Master.designer.cs">
-      <DependentUpon>Site1.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Sites\User\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Sites\User\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sites\User\Registration.aspx.cs">
+    <Compile Include="Registration.aspx.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sites\User\Registration.aspx.designer.cs">
+    <Compile Include="Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Slide.aspx.cs">
+      <DependentUpon>Slide.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Slide.aspx.designer.cs">
+      <DependentUpon>Slide.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TempJobs.Master.cs">
+      <DependentUpon>TempJobs.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TempJobs.Master.designer.cs">
+      <DependentUpon>TempJobs.Master</DependentUpon>
     </Compile>
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -178,17 +164,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sites\Site1.Master" />
-    <Content Include="css\bootstrap-theme.css.map" />
-    <Content Include="css\bootstrap-theme.min.css.map" />
-    <Content Include="css\bootstrap.css.map" />
-    <Content Include="css\bootstrap.min.css.map" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-<<<<<<< HEAD
-    <Content Include="Web References\localhost\Service1.wsdl" />
+    <Content Include="TempJobs.Master" />
+    <None Include="Web References\localhost\Service1.wsdl" />
     <None Include="Web References\localhost\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -196,17 +173,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Web References\localhost\Service11.xsd">
-=======
-    <Content Include="packages.config" />
-    <Content Include="Service References\DataSR\CollectUserDetailsService1.wsdl" />
-    <None Include="Service References\DataSR\CollectUserDetailsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataSR\CollectUserDetailsService11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\DataSR\CollectUserDetailsService12.xsd">
->>>>>>> a7fc930d38a816163777166c617f87785e758d7a
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -220,14 +186,13 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:4572/Service1.svc">
+    <WebReferenceUrl Include="http://localhost:1546/Service1.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>http://localhost:4572/Service1.svc</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1546/Service1.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -235,9 +200,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>Prodigy_Employment_localhost_Service1</CachedSettingsPropName>
     </WebReferenceUrl>
-=======
-    <WCFMetadataStorage Include="Service References\DataSR\" />
->>>>>>> a7fc930d38a816163777166c617f87785e758d7a
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -254,7 +216,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:10484/</IISUrl>
+          <IISUrl>http://localhost:19843/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
