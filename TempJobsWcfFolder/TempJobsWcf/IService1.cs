@@ -15,15 +15,20 @@ namespace TempJobsWcf
 
         [OperationContract]
         string GetData(int value);
+        /*Registration function 
+         * */
+        [OperationContract]
+        void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel);
+
+         [OperationContract]
+         bool LgnUser(string username, string password, out string message);
+
+         [OperationContract]
+         bool UserNameCheck(string UserName, out string message);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        [OperationContract]
-        void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel);
-
-        [OperationContract]
-        Boolean LgnUser(string username, string password,out string message);
         // TODO: Add your service operations here
     }
 

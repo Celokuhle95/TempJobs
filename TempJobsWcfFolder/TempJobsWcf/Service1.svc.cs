@@ -70,6 +70,22 @@ namespace TempJobsWcf
             }
         }
 
+        public Boolean UserNameCheck(string userName, out string message)
+        {
+            try
+            {
+                userDataClassesDataContext db = new userDataClassesDataContext();
+                Userdata user = (from u in db.Userdatas where u.Username.Equals(userName) select u).Single();
+                message = userName + " already exist in our system";
+                return false;
+               
+            }
+            catch (InvalidOperationException e)
+            {
+                message = "";
+                return true;
+            }
+        }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
