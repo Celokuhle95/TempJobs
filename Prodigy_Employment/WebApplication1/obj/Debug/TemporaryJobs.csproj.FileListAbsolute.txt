@@ -18,3 +18,8 @@ C:\Users\p\Downloads\Temp Jobs (1)\Temp Jobs\Prodigy_Employment\WebApplication1\
 C:\Users\p\Downloads\Temp Jobs (1)\Temp Jobs\Prodigy_Employment\WebApplication1\obj\Debug\TemporaryJobs.csprojResolveAssemblyReference.cache
 C:\Users\p\Downloads\Temp Jobs (1)\Temp Jobs\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\p\Downloads\Temp Jobs (1)\Temp Jobs\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.dll
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\obj\Debug\TemporaryJobs.csprojResolveAssemblyReference.cache
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.pdb

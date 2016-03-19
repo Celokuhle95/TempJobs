@@ -8,3 +8,8 @@ C:\Users\Maesela K\Desktop\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\obj\Debug\Tem
 C:\Users\Maesela K\Desktop\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\obj\Debug\TempJobsWcf.pdb
 C:\Users\Maesela K\Desktop\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\bin\TempJobsWcf.dll
 C:\Users\Maesela K\Desktop\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\bin\TempJobsWcf.pdb
+C:\Users\p\Desktop\Temp Jobs (1)\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\bin\TempJobsWcf.dll
+C:\Users\p\Desktop\Temp Jobs (1)\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\bin\TempJobsWcf.pdb
+C:\Users\p\Desktop\Temp Jobs (1)\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\obj\Debug\TempJobsWcf.csprojResolveAssemblyReference.cache
+C:\Users\p\Desktop\Temp Jobs (1)\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\obj\Debug\TempJobsWcf.dll
+C:\Users\p\Desktop\Temp Jobs (1)\Temp Jobs\TempJobsWcfFolder\TempJobsWcf\obj\Debug\TempJobsWcf.pdb
