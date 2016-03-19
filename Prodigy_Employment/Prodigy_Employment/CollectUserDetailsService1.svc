@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Prodigy_Employment.CollectUserDetailsService1" CodeBehind="CollectUserDetailsService1.svc.cs" %>

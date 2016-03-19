@@ -1,4 +1,0 @@
-C:\Users\hp\Documents\Visual Studio 2012\TemporaryJobs\WebApplication1\WebApplication1\bin\WebApplication1.dll
-C:\Users\hp\Documents\Visual Studio 2012\TemporaryJobs\WebApplication1\WebApplication1\bin\WebApplication1.pdb
-C:\Users\hp\Documents\Visual Studio 2012\TemporaryJobs\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
-C:\Users\hp\Documents\Visual Studio 2012\TemporaryJobs\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
