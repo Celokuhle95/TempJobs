@@ -18,19 +18,40 @@ namespace WebApplication1
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            bool d;
-            bool b;
+            bool d,b,c,a;
 
+            int id;
+            string firstName;
+            string lastName ;
+            string address;
+            string contactNumbers;
+            string altanativeNumber;
+            int authenticationLevel ;
 
-            string userName = txtUsername.Text;
+            string email = txtEmail.Text;
             string password = txtPassword.Text;
             string message;
-            bl.LgnUser(userName,Secrecy.HashPassword( password), out d, out b, out message);
+            bl.LgnUser(email,Secrecy.HashPassword( password), out d, out b, out message);
            // mbox(d);
             if (d)
             {
-                Response.Redirect("HomePage.aspx");
                 lblErr.Text = message;
+             // bl.GetAllRecords(email, out lastName, out address, out contactNumbers, out altanativeNumber, out authenticationLevel, out a);
+                bl.GetAllRecords(email, out id, out c, out firstName, out lastName, out address, out contactNumbers, out altanativeNumber, out authenticationLevel,out a);
+               
+                    if (id != -1)
+                    {
+                        Session.Add("UserEmail", email);
+                        Session.Add("id",id);
+                        Session.Add("firstName",firstName);
+                        Session.Add("lastName",lastName);
+                        Session.Add("address",address);
+                        Session.Add("contactNumbers",contactNumbers);
+                        Session.Add("altanativeNumber",altanativeNumber);
+                        Session.Add("authenticationLevel",altanativeNumber);
+                    }
+
+                    Response.Redirect("HomePage.aspx");
 
             }
             else

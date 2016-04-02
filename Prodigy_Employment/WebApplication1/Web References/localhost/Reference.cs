@@ -23,7 +23,7 @@ namespace WebApplication1.localhost {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_IService1", Namespace="http://tempuri.org/")]
@@ -36,6 +36,8 @@ namespace WebApplication1.localhost {
         private System.Threading.SendOrPostCallback LgnUserOperationCompleted;
         
         private System.Threading.SendOrPostCallback UserNameCheckOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllRecordsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDataUsingDataContractOperationCompleted;
         
@@ -92,6 +94,9 @@ namespace WebApplication1.localhost {
         public event UserNameCheckCompletedEventHandler UserNameCheckCompleted;
         
         /// <remarks/>
+        public event GetAllRecordsCompletedEventHandler GetAllRecordsCompleted;
+        
+        /// <remarks/>
         public event GetDataUsingDataContractCompletedEventHandler GetDataUsingDataContractCompleted;
         
         /// <remarks/>
@@ -131,9 +136,8 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/RegistrationDatabase", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void RegistrationDatabase([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string firstName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lastName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string address, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string cantactNumbers, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string altanativeNumber, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, int authenticationLevel, [System.Xml.Serialization.XmlIgnoreAttribute()] bool authenticationLevelSpecified) {
+        public void RegistrationDatabase([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string firstName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lastName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string address, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string cantactNumbers, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string altanativeNumber, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, int authenticationLevel, [System.Xml.Serialization.XmlIgnoreAttribute()] bool authenticationLevelSpecified) {
             this.Invoke("RegistrationDatabase", new object[] {
-                        userName,
                         firstName,
                         lastName,
                         address,
@@ -146,17 +150,16 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
-        public void RegistrationDatabaseAsync(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, bool authenticationLevelSpecified) {
-            this.RegistrationDatabaseAsync(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber, password, authenticationLevel, authenticationLevelSpecified, null);
+        public void RegistrationDatabaseAsync(string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, bool authenticationLevelSpecified) {
+            this.RegistrationDatabaseAsync(firstName, lastName, address, Email, cantactNumbers, altanativeNumber, password, authenticationLevel, authenticationLevelSpecified, null);
         }
         
         /// <remarks/>
-        public void RegistrationDatabaseAsync(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, bool authenticationLevelSpecified, object userState) {
+        public void RegistrationDatabaseAsync(string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, bool authenticationLevelSpecified, object userState) {
             if ((this.RegistrationDatabaseOperationCompleted == null)) {
                 this.RegistrationDatabaseOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistrationDatabaseOperationCompleted);
             }
             this.InvokeAsync("RegistrationDatabase", new object[] {
-                        userName,
                         firstName,
                         lastName,
                         address,
@@ -236,6 +239,43 @@ namespace WebApplication1.localhost {
             if ((this.UserNameCheckCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.UserNameCheckCompleted(this, new UserNameCheckCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetAllRecords", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GetAllRecords([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string email, out int id, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool idSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string firstName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string lastName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string address, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string contactNumbers, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string altanativeNumber, out int authenticationLevel, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool authenticationLevelSpecified) {
+            object[] results = this.Invoke("GetAllRecords", new object[] {
+                        email});
+            id = ((int)(results[0]));
+            idSpecified = ((bool)(results[1]));
+            firstName = ((string)(results[2]));
+            lastName = ((string)(results[3]));
+            address = ((string)(results[4]));
+            contactNumbers = ((string)(results[5]));
+            altanativeNumber = ((string)(results[6]));
+            authenticationLevel = ((int)(results[7]));
+            authenticationLevelSpecified = ((bool)(results[8]));
+        }
+        
+        /// <remarks/>
+        public void GetAllRecordsAsync(string email) {
+            this.GetAllRecordsAsync(email, null);
+        }
+        
+        /// <remarks/>
+        public void GetAllRecordsAsync(string email, object userState) {
+            if ((this.GetAllRecordsOperationCompleted == null)) {
+                this.GetAllRecordsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllRecordsOperationCompleted);
+            }
+            this.InvokeAsync("GetAllRecords", new object[] {
+                        email}, this.GetAllRecordsOperationCompleted, userState);
+        }
+        
+        private void OnGetAllRecordsOperationCompleted(object arg) {
+            if ((this.GetAllRecordsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllRecordsCompleted(this, new GetAllRecordsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -378,8 +418,6 @@ namespace WebApplication1.localhost {
         
         private bool idFieldSpecified;
         
-        private string usernameField;
-        
         private string addressField;
         
         private string alternativeNumberField;
@@ -425,17 +463,6 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.idFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string Username {
-            get {
-                return this.usernameField;
-            }
-            set {
-                this.usernameField = value;
             }
         }
         
@@ -529,11 +556,11 @@ namespace WebApplication1.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void GetDataCompletedEventHandler(object sender, GetDataCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -555,15 +582,15 @@ namespace WebApplication1.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void RegistrationDatabaseCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void LgnUserCompletedEventHandler(object sender, LgnUserCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class LgnUserCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -601,11 +628,11 @@ namespace WebApplication1.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void UserNameCheckCompletedEventHandler(object sender, UserNameCheckCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class UserNameCheckCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -643,11 +670,101 @@ namespace WebApplication1.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    public delegate void GetAllRecordsCompletedEventHandler(object sender, GetAllRecordsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllRecordsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllRecordsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int id {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool idSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+        
+        /// <remarks/>
+        public string firstName {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[2]));
+            }
+        }
+        
+        /// <remarks/>
+        public string lastName {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[3]));
+            }
+        }
+        
+        /// <remarks/>
+        public string address {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[4]));
+            }
+        }
+        
+        /// <remarks/>
+        public string contactNumbers {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[5]));
+            }
+        }
+        
+        /// <remarks/>
+        public string altanativeNumber {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[6]));
+            }
+        }
+        
+        /// <remarks/>
+        public int authenticationLevel {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[7]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool authenticationLevelSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[8]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void GetDataUsingDataContractCompletedEventHandler(object sender, GetDataUsingDataContractCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetDataUsingDataContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -669,11 +786,11 @@ namespace WebApplication1.localhost {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     public delegate void ReadEmployeesCompletedEventHandler(object sender, ReadEmployeesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.79.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1038.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ReadEmployeesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

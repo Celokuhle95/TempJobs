@@ -82,11 +82,9 @@ namespace TempJobsWcf
 		
 		private int _Id;
 		
-		private string _Username;
+		private string _Email;
 		
 		private string _password;
-		
-		private string _Email;
 		
 		private string _contactNumber;
 		
@@ -106,12 +104,10 @@ namespace TempJobsWcf
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnpasswordChanging(string value);
-    partial void OnpasswordChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
+    partial void OnpasswordChanging(string value);
+    partial void OnpasswordChanged();
     partial void OncontactNumberChanging(string value);
     partial void OncontactNumberChanged();
     partial void OnalternativeNumberChanging(string value);
@@ -151,22 +147,22 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
-		public string Username
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Email
 		{
 			get
 			{
-				return this._Username;
+				return this._Email;
 			}
 			set
 			{
-				if ((this._Username != value))
+				if ((this._Email != value))
 				{
-					this.OnUsernameChanging(value);
+					this.OnEmailChanging(value);
 					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
 				}
 			}
 		}
@@ -187,26 +183,6 @@ namespace TempJobsWcf
 					this._password = value;
 					this.SendPropertyChanged("password");
 					this.OnpasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
 				}
 			}
 		}

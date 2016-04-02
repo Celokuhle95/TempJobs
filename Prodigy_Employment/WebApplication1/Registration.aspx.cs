@@ -19,7 +19,7 @@ namespace WebApplication1
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            string userName = txtUsername.Text; //getting the values from the textboxes
+           //getting the values from the textboxes
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
             string address = txtResAddress.Text;
@@ -33,15 +33,15 @@ namespace WebApplication1
             {
                 if (password == txtConfirmPassword.Text)
                 {
-                    if (userName == " ")
+                    if (Email == " ")
                     {
-                        lblError.Text = " Please enter a username";
+                        lblemailError.Text = " Please enter an email";
                         lblError.Visible = true;
                         return;
                     }
                     else {
-                        cl.RegistrationDatabase(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true);
-                        Response.Redirect("HomePage.aspx");
+                        cl.RegistrationDatabase(firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true);
+                        Response.Redirect("LoginPage.aspx");
                     }
                 }
                 else
@@ -62,13 +62,13 @@ namespace WebApplication1
         protected void TextUsername_TextChanged(object sender, EventArgs e)
         {
             bool d, b;
-            string username = txtUsername.Text;
+            string email = txtEmail.Text;
             string message = "Username already taken";
-            cl.UserNameCheck(username, out d, out b, out message);
+            cl.UserNameCheck(email, out d, out b, out message);
             if (d)
             {
-                lblUserError.Text = message; //displaying an message
-                lblUserError.Visible = true;
+                lblemailError.Text = message; //displaying an message
+                lblemailError.Visible = true;
                 isUserName = true;
                 return;
             }

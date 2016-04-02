@@ -17,11 +17,13 @@ namespace TempJobsWcf
             return string.Format("You entered: {0}", value);
         }
 
-        public void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel)
+        public void RegistrationDatabase(string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel)
         {
+            //instatiating the linq dataclass with table from the database
             userDataClassesDataContext db = new userDataClassesDataContext();
+            //instantiating the table in the linq from the databaase
             Userdata user = new Userdata();
-            user.Username = userName;
+            //adding a user to the database
             user.firstName = firstName;
             user.lastName = lastName;
             user.address = address;
@@ -35,14 +37,47 @@ namespace TempJobsWcf
             db.SubmitChanges();
         }
 
-        public Boolean LgnUser(string username, string password,out string message)
+        public void GetAllRecords(string email, out int id,out string firstName, out string lastName, out string address, out string contactNumbers, out string altanativeNumber, out int authenticationLevel)
+        {
+            id = -1;
+            firstName = null;
+            lastName = null;
+            address = null;
+            contactNumbers = null;
+            altanativeNumber = null;
+            authenticationLevel = -1;
+            try
+            {
+                //instatiating the linq dataclass with table from the database
+                userDataClassesDataContext db = new userDataClassesDataContext();
+                //Accesing the user in our databse where the user in the database is the same as the user specified in the 
+                Userdata user = (from u in db.Userdatas where u.Email.Equals(email) select u).Single();
+
+                    id = user.Id;
+                    firstName = user.firstName;
+                    lastName = user.lastName;
+                    address = user.address;
+                    contactNumbers = user.contactNumber;
+                    altanativeNumber = user.alternativeNumber;
+                    authenticationLevel =(int)user.authinticationLevel;
+            }
+            catch (InvalidOperationException e)
+            {
+               return;
+            }
+        }
+
+        public Boolean LgnUser(string email, string password,out string message)
         {
             try
             {
+                //instatiating the linq dataclass with table from the database
                 userDataClassesDataContext db = new userDataClassesDataContext();
-                Userdata user = (from u in db.Userdatas where u.Username.Equals(username) select u).Single();
+                //Accesing the user in our databse where the user in the database is the same as the user specified in the parameters
+                Userdata user = (from u in db.Userdatas where u.Email.Equals(email) select u).Single();
                 if (user != null)
                 {
+                    //password validation matching the one in our database with the one in the parameters
                     if (user.password.Equals(password))
                     {
                         message = "Correct";
@@ -58,24 +93,27 @@ namespace TempJobsWcf
                 }
                 else
                 {
-                    message = username + " has not registered";
+                    message = email + " has not registered";
                     return false;
                 }
             }
             catch (InvalidOperationException e)
             {
-               message = username + "  has not registered";
+                //return false if the user has not registered yet
+               message = email + "  has not registered";
                 return false;
             }
         }
 
-        public Boolean UserNameCheck(string userName, out string message)
+        public Boolean UserNameCheck(string email, out string message)
         {
             try
             {
-                userDataClassesDataContext db = new userDataClassesDataContext(); //dataclass create
-                Userdata user = (from u in db.Userdatas where u.Username.Equals(userName) select u).Single(); //table inside database
-                message = userName + " already exist in our system";
+                //instatiating the linq dataclass with table from the database
+                userDataClassesDataContext db = new userDataClassesDataContext();
+                //Accesing the user in our databse where the user in the database is the same as the user specified in the parameters
+                Userdata user = (from u in db.Userdatas where u.Email.Equals(email) select u).Single();
+                message = email + " already exist in our system";
                 return false;
                
             }
@@ -85,6 +123,7 @@ namespace TempJobsWcf
                 return true;
             }
         }
+        //this functions reads all information of users in the database.
         public List<Userdata> ReadEmployees()
         {
             List<Userdata> users = new List<Userdata>();

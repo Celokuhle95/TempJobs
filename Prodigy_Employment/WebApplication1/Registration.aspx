@@ -42,6 +42,9 @@
                     <div class="col-md-6">
                         <asp:TextBox ID="txtEmail" runat="server" class="form-control" TextMode="Email"></asp:TextBox>
                     </div>
+                     <div class="col-md-10">
+                         <asp:Label ID="lblemailError" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+                   </div>
                 </div>
                 <br />
                 <div class="row">
@@ -73,18 +76,6 @@
                                     <asp:ListItem Value="2">Employee</asp:ListItem>
                                 </asp:DropDownList>
                     </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-4">
-                        Username:
-                    </div>
-                    <div class="col-md-6">
-                        <asp:TextBox ID="txtUsername" runat="server" class="form-control"></asp:TextBox>
-                    </div>
-                   <div class="col-md-10">
-                         <asp:Label ID="lblUserError" runat="server" ForeColor="Red" Visible="false"></asp:Label>
-                   </div>
                 </div>
                 <br />
                 <div class="row">

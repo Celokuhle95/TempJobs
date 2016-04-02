@@ -14,71 +14,75 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-  
+
     <form id="form1" runat="server">
-    <nav class ="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-    <%-- logo --%>
-        <div class ="navbar-header">              
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#CollpseNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        <a href="Homepage.aspx" class="navbar-brand active">TEMPJOBS</a>    
-        </div>
-        <%-- menu items --%>
-        <div class="collapse navbar-collapse" id="CollpseNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active" ><a href=" About.aspx">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Employers</a></li> 
-                <li><a href="#">Job seeker</a></li> 
-                <li><a href="Registration.aspx">Register</a></li>
-                <li><a href="Login.aspx">Login</a></li>  
-            </ul>
-            <div class="navbar-form pull-right">
-                <div class="input-group">
-                    <input type="search" title="Enter search" placeholder="Seach TempJobs" class="form-control" />
-                    <span class="input-group-addon glyphicon glyphicon-search"></span>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <%-- logo --%>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#CollpseNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="Homepage.aspx" class="navbar-brand active">TEMPJOBS</a>
                 </div>
-             </div>
+                <%-- menu items --%>
+                <div class="collapse navbar-collapse" id="CollpseNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href=" About.aspx">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Employers</a></li>
+                        <li><a href="#">Job seeker</a></li>
+                        <li id="isRegistration" style="text-align: right" runat="server"><a href="Registration.aspx">Register</a></li>
+                        <li id="isLogin" style="text-align: right" runat="server"><a href="LoginPage.aspx">Login</a></li>
+                    </ul>
+                    <div class="navbar-form pull-right">
+                        <div class="input-group">
+                            <input type="search" title="Enter search" placeholder="Seach TempJobs" class="form-control" />
+                            <span class="input-group-addon glyphicon glyphicon-search"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <ul style="text-align: right" id="Ul1" class="nav navbar-nav" runat="server">
+                </ul>
+            </div>
+        </nav>
+        <br />
+        <br />
+        <br />
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <br />
         </div>
-       
-    </div>
-  </nav>
-        <br /><br /><br />
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-           
-        </asp:ContentPlaceHolder>
-     <br />
-    </div>
-        <div id="footer" class="container-fluid" style="background-color:#708090; color: white">
+        <div id="footer" class="container-fluid" style="background-color: #708090; color: white">
             <div class="row">
                 <div class="col-md-4" style="padding-left: 10%">
                     <h3 style="padding-left: 7%">Quick links</h3>
                     <ul>
-                        <li style="margin-left:auto; margin-right: auto"><a href="#" style="color:black">About Us</a></li>
-                         <li><a href="#" style="color:black">Login</a></li>
-                         <li><a href="#" style="color:black">Register </a></li>
+                        <li style="margin-left: auto; margin-right: auto"><a href="#" style="color: black">About Us</a></li>
+                        <li><a href="#" style="color: black">Login</a></li>
+                        <li><a href="#" style="color: black">Register </a></li>
                     </ul>
                 </div>
                 <div class="col-md-4" style="padding-left: 10%">
                     <h3 style="padding-left: 7%">Employer</h3>
                     <ul>
-                        <li><a href="#" style="color:black">Post a job</a></li>
-                         <li><a href="#" style="color:black">View previous employment</a></li>
+                        <li><a href="#" style="color: black">Post a job</a></li>
+                        <li><a href="#" style="color: black">View previous employment</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4" style="padding-left: 10%">
-                <h3 style="padding-left: 7%">Job seeker</h3>
+                    <h3 style="padding-left: 7%">Job seeker</h3>
                     <ul>
-                        <li><a href="#" style="color:black">View jobs</a></li>
-                         <li><a href="#" style="color:black">View profile</a></li>
+                        <li><a href="#" style="color: black">View jobs</a></li>
+                        <li><a href="#" style="color: black">View profile</a></li>
                     </ul>
                 </div>
-             </div>
+            </div>
         </div>
     </form>
 </body>
