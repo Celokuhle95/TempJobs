@@ -42,9 +42,6 @@
                     <div class="col-md-6">
                         <asp:TextBox ID="txtEmail" runat="server" class="form-control" TextMode="Email"></asp:TextBox>
                     </div>
-                     <div class="col-md-10">
-                         <asp:Label ID="lblemailError" runat="server" ForeColor="Red" Visible="false"></asp:Label>
-                   </div>
                 </div>
                 <br />
                 <div class="row">
@@ -80,6 +77,18 @@
                 <br />
                 <div class="row">
                     <div class="col-md-4">
+                        Username:
+                    </div>
+                    <div class="col-md-6">
+                        <asp:TextBox ID="txtUsername" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                   <div class="col-md-10">
+                         <asp:Label ID="lblUserError" runat="server" ForeColor="Red" Visible="false"></asp:Label>
+                   </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
                         Password:
                     </div>
                     <div class="col-md-6">
@@ -96,6 +105,15 @@
                     </div>
                 </div>
                 <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        Profile Image:
+                    </div>
+                    <div class="col-md-6">
+                        <asp:Button ID="UploadImage" runat="server" Text="Select" OnClick="UploadImage_Click" />
+                    </div>
+                </div>
+                <br/>
                 <div class="row">
                     <div class="col-md-4">
                         <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-primary" OnClick="btnRegister_Click" />

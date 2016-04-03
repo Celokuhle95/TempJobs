@@ -11,11 +11,7 @@ namespace Prodigy_Employment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserEmail"] != null)
-            {
-                isRegistration.InnerHtml = (string)Session["firstName"];
-               
-            }
+
         }
     }
 }

@@ -17,6 +17,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="InformalSkills" nillable="true" type="tns:ArrayOfInformalSkill" />
+      <xs:element minOccurs="0" name="ProfileImage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="alternativeNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="authinticationLevel" nillable="true" type="xs:int" />
@@ -27,4 +30,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Userdata" nillable="true" type="tns:Userdata" />
+  <xs:complexType name="ArrayOfInformalSkill">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InformalSkill" nillable="true" type="tns:InformalSkill" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInformalSkill" nillable="true" type="tns:ArrayOfInformalSkill" />
+  <xs:complexType name="InformalSkill">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Skill_ID" type="xs:int" />
+      <xs:element minOccurs="0" name="UserData_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Userdata" nillable="true" type="tns:Userdata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InformalSkill" nillable="true" type="tns:InformalSkill" />
 </xs:schema>

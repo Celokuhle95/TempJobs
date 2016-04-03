@@ -31,12 +31,6 @@
   <wsdl:message name="IService1_UserNameCheck_OutputMessage">
     <wsdl:part name="parameters" element="tns:UserNameCheckResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetAllRecords_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllRecords" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetAllRecords_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllRecordsResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
   </wsdl:message>
@@ -48,6 +42,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_ReadEmployees_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_StoreSkills_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoreSkills" />
+  </wsdl:message>
+  <wsdl:message name="IService1_StoreSkills_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoreSkillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadSkills_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSkills" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadSkills_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSkillsResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
@@ -66,10 +72,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/UserNameCheck" message="tns:IService1_UserNameCheck_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/UserNameCheckResponse" message="tns:IService1_UserNameCheck_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllRecords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllRecords" message="tns:IService1_GetAllRecords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllRecordsResponse" message="tns:IService1_GetAllRecords_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
@@ -77,6 +79,14 @@
     <wsdl:operation name="ReadEmployees">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadEmployees" message="tns:IService1_ReadEmployees_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadEmployeesResponse" message="tns:IService1_ReadEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StoreSkills">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/StoreSkills" message="tns:IService1_StoreSkills_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/StoreSkillsResponse" message="tns:IService1_StoreSkills_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSkills">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadSkills" message="tns:IService1_ReadSkills_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadSkillsResponse" message="tns:IService1_ReadSkills_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -117,15 +127,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllRecords">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetAllRecords" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
       <wsdl:input>
@@ -137,6 +138,24 @@
     </wsdl:operation>
     <wsdl:operation name="ReadEmployees">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreSkills">
+      <soap:operation soapAction="http://tempuri.org/IService1/StoreSkills" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSkills">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadSkills" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

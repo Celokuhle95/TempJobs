@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -18,28 +19,35 @@ namespace TempJobsWcf
         /*Registration function 
          * */
         [OperationContract]
-        //function for the user to be able to  register
-        void RegistrationDatabase( string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel);
+        void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage);
 
          [OperationContract]
-        //function that checks if the user registered for the user to be able to log in
          bool LgnUser(string username, string password, out string message);
 
          [OperationContract]
-        //boolean function for checking if the user is registered
          bool UserNameCheck(string UserName, out string message);
 
-         //this function returns all the records in the database given the UserName specified
-         [OperationContract]
-         void GetAllRecords(string email, out int id, out string firstName, out string lastName, out string address, out string contactNumbers, out string altanativeNumber, out int authenticationLevel);
-        
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-       
+
         // TODO: Add your service operations here
         [OperationContract]
          List<Userdata> ReadEmployees();
+
+        [OperationContract]
+        void StoreSkills(string Name, int UserID);
+
+        [OperationContract]
+        List<InformalSkill> ReadSkills();
+
+        /*[OperationContract]
+        string ImageToBase64(Image image);
+
+        [OperationContract]
+        Image Base64ToImage(string base64String);*/
+
+
     }
 
 

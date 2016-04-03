@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -17,13 +19,11 @@ namespace TempJobsWcf
             return string.Format("You entered: {0}", value);
         }
 
-        public void RegistrationDatabase(string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel)
+        public void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage)
         {
-            //instatiating the linq dataclass with table from the database
             userDataClassesDataContext db = new userDataClassesDataContext();
-            //instantiating the table in the linq from the databaase
             Userdata user = new Userdata();
-            //adding a user to the database
+            user.Username = userName;
             user.firstName = firstName;
             user.lastName = lastName;
             user.address = address;
@@ -33,56 +33,23 @@ namespace TempJobsWcf
             user.alternativeNumber = altanativeNumber;
             user.password = password;
             user.authinticationLevel = authenticationLevel;
+            user.ProfileImage = profileImage;
             db.Userdatas.InsertOnSubmit(user);
             db.SubmitChanges();
         }
 
-        public void GetAllRecords(string email, out int id,out string firstName, out string lastName, out string address, out string contactNumbers, out string altanativeNumber, out int authenticationLevel)
-        {
-            id = -1;
-            firstName = null;
-            lastName = null;
-            address = null;
-            contactNumbers = null;
-            altanativeNumber = null;
-            authenticationLevel = -1;
-            try
-            {
-                //instatiating the linq dataclass with table from the database
-                userDataClassesDataContext db = new userDataClassesDataContext();
-                //Accesing the user in our databse where the user in the database is the same as the user specified in the 
-                Userdata user = (from u in db.Userdatas where u.Email.Equals(email) select u).Single();
-
-                    id = user.Id;
-                    firstName = user.firstName;
-                    lastName = user.lastName;
-                    address = user.address;
-                    contactNumbers = user.contactNumber;
-                    altanativeNumber = user.alternativeNumber;
-                    authenticationLevel =(int)user.authinticationLevel;
-            }
-            catch (InvalidOperationException e)
-            {
-               return;
-            }
-        }
-
-        public Boolean LgnUser(string email, string password,out string message)
+        public Boolean LgnUser(string username, string password,out string message)
         {
             try
             {
-                //instatiating the linq dataclass with table from the database
                 userDataClassesDataContext db = new userDataClassesDataContext();
-                //Accesing the user in our databse where the user in the database is the same as the user specified in the parameters
-                Userdata user = (from u in db.Userdatas where u.Email.Equals(email) select u).Single();
+                Userdata user = (from u in db.Userdatas where u.Username.Equals(username) select u).Single();
                 if (user != null)
                 {
-                    //password validation matching the one in our database with the one in the parameters
                     if (user.password.Equals(password))
                     {
                         message = "Correct";
-                        return true;
-                        
+                        return true;                        
                     }
                     else
                     {
@@ -93,27 +60,24 @@ namespace TempJobsWcf
                 }
                 else
                 {
-                    message = email + " has not registered";
+                    message = username + " has not registered";
                     return false;
                 }
             }
             catch (InvalidOperationException e)
             {
-                //return false if the user has not registered yet
-               message = email + "  has not registered";
+               message = username + "  has not registered";
                 return false;
             }
         }
 
-        public Boolean UserNameCheck(string email, out string message)
+        public Boolean UserNameCheck(string userName, out string message)
         {
             try
             {
-                //instatiating the linq dataclass with table from the database
-                userDataClassesDataContext db = new userDataClassesDataContext();
-                //Accesing the user in our databse where the user in the database is the same as the user specified in the parameters
-                Userdata user = (from u in db.Userdatas where u.Email.Equals(email) select u).Single();
-                message = email + " already exist in our system";
+                userDataClassesDataContext db = new userDataClassesDataContext(); //dataclass create
+                Userdata user = (from u in db.Userdatas where u.Username.Equals(userName) select u).Single(); //table inside database
+                message = userName + " already exist in our system";
                 return false;
                
             }
@@ -123,21 +87,37 @@ namespace TempJobsWcf
                 return true;
             }
         }
-        //this functions reads all information of users in the database.
         public List<Userdata> ReadEmployees()
         {
-            List<Userdata> users = new List<Userdata>();
+            List<Userdata> Users = new List<Userdata>();
+
             try
             {
-                userDataClassesDataContext db = new userDataClassesDataContext();
-                users = (from user in db.Userdatas select user).ToList();
-               
+                userDataClassesDataContext database = new userDataClassesDataContext();
+                foreach (var u in database.Userdatas)
+                {
+                    Userdata currentUser = new Userdata(); //store information of a single user
+
+                    currentUser.Id = u.Id;
+                    currentUser.Username = u.Username;
+                    currentUser.password = u.password;
+                    currentUser.Email = u.Email;
+                    currentUser.contactNumber  = u.contactNumber;
+                    currentUser.alternativeNumber = u.alternativeNumber;
+                    currentUser.address = u.address;
+                    currentUser.authinticationLevel = u.authinticationLevel;
+                    currentUser.firstName = u.firstName;
+                    currentUser.lastName = u.lastName;
+                    currentUser.ProfileImage = u.ProfileImage;
+
+                    Users.Add(currentUser);
+                }
             }
             catch (Exception e)
             {
                e.ToString() ;
             }
-            return users;
+            return Users;
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
@@ -152,5 +132,58 @@ namespace TempJobsWcf
             }
             return composite;
         }
+
+        public void StoreSkills(string Name, int UserID)
+        {
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            InformalSkill skill = new InformalSkill();
+            skill.Name = Name;
+            skill.UserData_ID = UserID;
+            database.InformalSkills.InsertOnSubmit(skill);
+            database.SubmitChanges();
+        }
+
+        public List<InformalSkill> ReadSkills()
+        {
+            List<InformalSkill> AllSkills = new List<InformalSkill>();
+
+            try
+            {
+                userDataClassesDataContext database = new userDataClassesDataContext();
+                foreach (var skill in database.InformalSkills)
+                {
+                    InformalSkill currentSkill = new InformalSkill(); //store information of a single skill
+
+                    currentSkill.Skill_ID = skill.Skill_ID;
+                    currentSkill.Name = skill.Name;
+                    currentSkill.UserData_ID = skill.UserData_ID;    
+                    AllSkills.Add(currentSkill);
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            return AllSkills;
+        }
+
+        /*  public string ImageToBase64(Image image)
+          {
+              using (MemoryStream ms = new MemoryStream())
+              {
+                  // Convert Image to byte[]
+                  image.Save(ms, format);
+                  byte[] imageBytes = ms.ToArray();
+
+                  // Convert byte[] to Base64 String
+                  string base64String = Convert.ToBase64String(imageBytes);
+                  return base64String;
+              }
+          }
+
+          public Image Base64ToImage(string base64String)
+          {
+              throw new NotImplementedException();
+          }*/
     }
 }

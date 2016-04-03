@@ -9,8 +9,8 @@
 
             <div class="col-md-6">
                 <div class="row" >               
-                   Email: 
-                   <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server"></asp:TextBox>
+                   Username: 
+                   <asp:TextBox ID="txtUsername" class="form-control" runat="server"></asp:TextBox>
                 </div>
                 <br />
                  <div class="row">

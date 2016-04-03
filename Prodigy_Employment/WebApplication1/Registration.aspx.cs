@@ -4,6 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows;
+using Microsoft.Win32;
+using System.IO;
+
+
 
 namespace WebApplication1
 {
@@ -19,7 +24,7 @@ namespace WebApplication1
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-           //getting the values from the textboxes
+            string userName = txtUsername.Text; //getting the values from the textboxes
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
             string address = txtResAddress.Text;
@@ -28,20 +33,30 @@ namespace WebApplication1
             string altanativeNumber = txtTelephone.Text;
             string password = txtPassword.Text;
             int authenticationLevel = System.Convert.ToInt32(drpAuthintication.SelectedValue);
-           
+            string ImagePath = "images/washing.jpg"; //default value to change later into the path of a selected image
+
+            byte[] imageArray = System.IO.File.ReadAllBytes(@ImagePath); //take a file path and convert image into byte array
+            string ImageStringRepresentation = Convert.ToBase64String(imageArray); //convert byte array into a string representation
+
+            if (password.Length < 6) //ensure the password strength is atleast 6 characters
+           {
+                lblError.Text = "Password must be atleast 6 characters long";
+                lblError.Visible = true;
+                return;
+           }
             if (authenticationLevel.Equals(1) || authenticationLevel.Equals(2))
             {
                 if (password == txtConfirmPassword.Text)
                 {
-                    if (Email == " ")
+                    if (userName == " ")
                     {
-                        lblemailError.Text = " Please enter an email";
+                        lblError.Text = " Please enter a username";
                         lblError.Visible = true;
                         return;
                     }
                     else {
-                        cl.RegistrationDatabase(firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true);
-                        Response.Redirect("LoginPage.aspx");
+                        cl.RegistrationDatabase(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true, ImageStringRepresentation);
+                        Response.Redirect("HomePage.aspx");
                     }
                 }
                 else
@@ -62,13 +77,13 @@ namespace WebApplication1
         protected void TextUsername_TextChanged(object sender, EventArgs e)
         {
             bool d, b;
-            string email = txtEmail.Text;
+            string username = txtUsername.Text;
             string message = "Username already taken";
-            cl.UserNameCheck(email, out d, out b, out message);
+            cl.UserNameCheck(username, out d, out b, out message);
             if (d)
             {
-                lblemailError.Text = message; //displaying an message
-                lblemailError.Visible = true;
+                lblUserError.Text = message; //displaying an message
+                lblUserError.Visible = true;
                 isUserName = true;
                 return;
             }
@@ -79,6 +94,11 @@ namespace WebApplication1
 
         }
 
-        
+        protected void UploadImage_Click(object sender, EventArgs e)
+        {
+
+           //  Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+           // FolderBrowserDialog s = new FolderBrowserDialog();
+        }
     }
 }

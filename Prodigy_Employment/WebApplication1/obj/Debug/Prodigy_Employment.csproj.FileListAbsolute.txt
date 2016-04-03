@@ -1,5 +1,6 @@
-C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
-C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.dll
-C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.pdb
-C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.dll
-C:\Users\Maesela K\Desktop\KAMOGELO\MY MODULES\3rd Year\Iformatics 3A\Group project\Kamogelo_Repositry\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.pdb
+C:\Users\p\Desktop\My Repository\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\p\Desktop\My Repository\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.dll
+C:\Users\p\Desktop\My Repository\team46\Prodigy_Employment\WebApplication1\bin\WebApplication1.pdb
+C:\Users\p\Desktop\My Repository\team46\Prodigy_Employment\WebApplication1\obj\Debug\Prodigy_Employment.csprojResolveAssemblyReference.cache
+C:\Users\p\Desktop\My Repository\team46\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\p\Desktop\My Repository\team46\Prodigy_Employment\WebApplication1\obj\Debug\WebApplication1.pdb

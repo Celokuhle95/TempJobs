@@ -3,14 +3,25 @@
   <Table Name="dbo.Userdata" Member="Userdatas">
     <Type Name="Userdata">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="contactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="alternativeNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="authinticationLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="firstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="lastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProfileImage" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Userdata_InformalSkill" Member="InformalSkills" ThisKey="Id" OtherKey="UserData_ID" Type="InformalSkill" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InformalSkills" Member="InformalSkills">
+    <Type Name="InformalSkill">
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserData_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Userdata_InformalSkill" Member="Userdata" ThisKey="UserData_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
