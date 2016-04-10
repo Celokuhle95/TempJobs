@@ -110,10 +110,11 @@
                         Profile Image:
                     </div>
                     <div class="col-md-6">
-                        <asp:Button ID="UploadImage" runat="server" Text="Select" OnClick="UploadImage_Click" />
-                    </div>
+                        <%--<asp:Button ID="UploadImage" runat="server" Text="Select" OnClick="UploadImage_Click" />--%>
+                        <asp:FileUpload ID="ProfileImageUpload" runat="server" Width="225px"/>
+                        </div>
                 </div>
-                <br/>
+                <br/> 
                 <div class="row">
                     <div class="col-md-4">
                         <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-primary" OnClick="btnRegister_Click" />

@@ -4,17 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows;
-using Microsoft.Win32;
 using System.IO;
-
-
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace WebApplication1
 {
     public partial class Registration : System.Web.UI.Page
     {
         public localhost.Service1 cl; //references the local host
+        
         public bool isUserName; 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,12 +30,17 @@ namespace WebApplication1
             string Email = txtEmail.Text;
             string cantactNumbers = txtCellphone.Text;
             string altanativeNumber = txtTelephone.Text;
-            string password = txtPassword.Text;
+            string password = txtPassword.Text;         
             int authenticationLevel = System.Convert.ToInt32(drpAuthintication.SelectedValue);
-            string ImagePath = "images/washing.jpg"; //default value to change later into the path of a selected image
 
-            byte[] imageArray = System.IO.File.ReadAllBytes(@ImagePath); //take a file path and convert image into byte array
-            string ImageStringRepresentation = Convert.ToBase64String(imageArray); //convert byte array into a string representation
+            byte[] fileBytes = ProfileImageUpload.FileBytes;
+            System.Drawing.Image profileImage = getImageFromByteArray(fileBytes);
+            string profImage_string = ImageToBase64String(profileImage);
+           
+            // string ImagePath = "images/washing.jpg"; //default value to change later into the path of a selected image
+
+            //byte[] imageArray = System.IO.File.ReadAllBytes(@ImagePath); //take a file path and convert image into byte array
+            //string ImageStringRepresentation = Convert.ToBase64String(imageArray); //convert byte array into a string representation
 
             if (password.Length < 6) //ensure the password strength is atleast 6 characters
            {
@@ -55,7 +59,7 @@ namespace WebApplication1
                         return;
                     }
                     else {
-                        cl.RegistrationDatabase(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true, ImageStringRepresentation);
+                        cl.RegistrationDatabase(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true, profImage_string);
                         Response.Redirect("HomePage.aspx");
                     }
                 }
@@ -93,12 +97,31 @@ namespace WebApplication1
             }
 
         }
-
-        protected void UploadImage_Click(object sender, EventArgs e)
+   
+        public System.Drawing.Image getImageFromByteArray(byte[] fileBytes)
         {
-
-           //  Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-           // FolderBrowserDialog s = new FolderBrowserDialog();
+            using (var ms = new MemoryStream(fileBytes))
+            {
+                System.Drawing.Image image = new Bitmap(ms);
+                return image;
+            }           
         }
+
+        public string ImageToBase64String(System.Drawing.Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Convert Image to byte[]
+                Bitmap bm = new Bitmap(image);
+                bm.Save(ms, image.RawFormat);
+                byte[] imageBytes = ms.ToArray();
+
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
+
+
     }
 }

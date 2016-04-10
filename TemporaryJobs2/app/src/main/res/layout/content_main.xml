@@ -18,24 +18,19 @@
         android:layout_marginBottom="16dp"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:layout_width= "wrap_content"
-        android:text = "Age"
-        android:layout_height= "wrap_content" />
-
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="16dp"
-        android:layout_height="wrap_content" />
-
-
 
     <Button
         android:id="@+id/bLogout"
-        android:text="Logout"
+        android:text="Register Here"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bLogin"
+        android:text="Login Here"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 
 

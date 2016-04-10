@@ -23,19 +23,22 @@ namespace WebApplication1
                     {
                         htmlText += "<div class='row'>";
                         htmlText += "<div class ='col-md-3'>";
-                        htmlText += "<img width='100%' height='150px' class='img-thumbnail' src='images/cuttinggrass.jpg'>"; //must change image source to the real profile image
+
+                        string base64ImageRepresentation = user.ProfileImage_String;
+                        htmlText += "<img width='100%' height='250px'class='img-thumbnail' alt='image not available' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
                         htmlText += "</div>";
                         htmlText += "<div class='col-md-6'>";
                         htmlText += "<table class='table'>";
                         htmlText += "<tbody>";
-                        htmlText += "<tr><td>" + user.firstName + "</td><td>" + user.lastName + "</td></tr>";
-                        htmlText += "<tr><td>Email address:</td><td>" + user.Email + "</td></tr>";
-                        htmlText += "<tr><td>Residential address:</td><td>" + user.address + "</td></tr>";
-                        htmlText += "<tr><td>Contact number:</td><td>" + user.contactNumber + "</td></tr>";
-                        htmlText += "<tr><td>Alternative contact number:</td><td>" + user.alternativeNumber + "</td></tr>";
-                        htmlText += "<tr><td>Skills:</td><td>plumber, grass cutting, watering the garden, painter</td></tr>";
-                        htmlText += "<tr><td>View Employment profile:</td><td>" + "<a class='text-success' href='EmploymentProfilePage.aspx.?UserID=" + user.Id + "'>View</a>" + "</td></tr>";
-                        htmlText += "<tr><td><a class='text-success' href='EmploymentProfilePage.aspx'>Employ</a></td></tr>";
+                        htmlText += "<tr><td><b>First name:</b></td><td>" + user.firstName + "</td></tr>";
+                        htmlText += "<tr><td><b>Last name:</b></td><td>" + user.lastName + "</td></tr>";
+                        htmlText += "<tr><td><b>Email address:</b></td><td>" + user.Email + "</td></tr>";
+                        htmlText += "<tr><td><b>Residential address:</b></td><td>" + user.address + "</td></tr>";
+                        htmlText += "<tr><td><b>Contact number:</b></td><td>" + user.contactNumber + "</td></tr>";
+                        htmlText += "<tr><td><b>Alternative contact number:</b></td><td>" + user.alternativeNumber + "</td></tr>";
+                        htmlText += "<tr><td><b>Skills:</b></td><td>plumber, grass cutting, watering the garden, painter</td></tr>";
+                        htmlText += "<tr><td><b>Employment profile:</b></td><td><a href='EmploymentProfilePage.aspx.?UserID=" + user.Id + "'><b style='color:olive'>View</b></a>" + "</td></tr>";
+                        htmlText += "<tr><td><b>Have a Job to be done?:</b></td><td><a href='EmploymentProfilePage.aspx'><b style='color:olive'>Employ</b></a></td></tr>";
                         htmlText += "</tbody>";
                         htmlText += "</table>";
                         htmlText += "</div>";

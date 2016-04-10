@@ -11,7 +11,7 @@ namespace WebApplication1
 {
 
 
-    public partial class HomePage
+    public partial class Homepage2
     {
     }
 }

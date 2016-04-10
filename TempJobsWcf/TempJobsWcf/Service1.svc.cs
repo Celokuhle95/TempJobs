@@ -19,7 +19,7 @@ namespace TempJobsWcf
             return string.Format("You entered: {0}", value);
         }
 
-        public void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage)
+        public void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage_string)
         {
             userDataClassesDataContext db = new userDataClassesDataContext();
             Userdata user = new Userdata();
@@ -33,13 +33,14 @@ namespace TempJobsWcf
             user.alternativeNumber = altanativeNumber;
             user.password = password;
             user.authinticationLevel = authenticationLevel;
-            user.ProfileImage = profileImage;
+            user.ProfileImage_String= profileImage_string;
             db.Userdatas.InsertOnSubmit(user);
             db.SubmitChanges();
         }
 
-        public Boolean LgnUser(string username, string password,out string message)
+        public Boolean LgnUser(string username, string password, out string message, out int id)
         {
+            id = -1;
             try
             {
                 userDataClassesDataContext db = new userDataClassesDataContext();
@@ -49,11 +50,13 @@ namespace TempJobsWcf
                     if (user.password.Equals(password))
                     {
                         message = "Correct";
-                        return true;                        
+                        id = user.Id;
+                        return true;
                     }
                     else
                     {
                         message = "password incorrect";
+
                         return false;
 
                     }
@@ -66,7 +69,7 @@ namespace TempJobsWcf
             }
             catch (InvalidOperationException e)
             {
-               message = username + "  has not registered";
+                message = username + "  has not registered";
                 return false;
             }
         }
@@ -78,8 +81,9 @@ namespace TempJobsWcf
                 userDataClassesDataContext db = new userDataClassesDataContext(); //dataclass create
                 Userdata user = (from u in db.Userdatas where u.Username.Equals(userName) select u).Single(); //table inside database
                 message = userName + " already exist in our system";
+
                 return false;
-               
+
             }
             catch (InvalidOperationException e)
             {
@@ -87,6 +91,7 @@ namespace TempJobsWcf
                 return true;
             }
         }
+
         public List<Userdata> ReadEmployees()
         {
             List<Userdata> Users = new List<Userdata>();
@@ -108,7 +113,7 @@ namespace TempJobsWcf
                     currentUser.authinticationLevel = u.authinticationLevel;
                     currentUser.firstName = u.firstName;
                     currentUser.lastName = u.lastName;
-                    currentUser.ProfileImage = u.ProfileImage;
+                    currentUser.ProfileImage_String = u.ProfileImage_String;
 
                     Users.Add(currentUser);
                 }
@@ -133,7 +138,7 @@ namespace TempJobsWcf
             return composite;
         }
 
-        public void StoreSkills(string Name, int UserID)
+        public void StoreSkills(string Name, int UserID )// save the skills of all the workers 
         {
             userDataClassesDataContext database = new userDataClassesDataContext();
             InformalSkill skill = new InformalSkill();
@@ -146,7 +151,6 @@ namespace TempJobsWcf
         public List<InformalSkill> ReadSkills()
         {
             List<InformalSkill> AllSkills = new List<InformalSkill>();
-
             try
             {
                 userDataClassesDataContext database = new userDataClassesDataContext();
@@ -156,7 +160,8 @@ namespace TempJobsWcf
 
                     currentSkill.Skill_ID = skill.Skill_ID;
                     currentSkill.Name = skill.Name;
-                    currentSkill.UserData_ID = skill.UserData_ID;    
+                    currentSkill.UserData_ID = skill.UserData_ID;  
+                      
                     AllSkills.Add(currentSkill);
                 }
             }
@@ -167,12 +172,13 @@ namespace TempJobsWcf
             return AllSkills;
         }
 
-        /*  public string ImageToBase64(Image image)
+        public string ImageToBase64String(System.Drawing.Image image)
           {
               using (MemoryStream ms = new MemoryStream())
               {
-                  // Convert Image to byte[]
-                  image.Save(ms, format);
+                // Convert Image to byte[]
+                  Bitmap bm = new Bitmap(image);//
+                  bm.Save(ms, image.RawFormat);
                   byte[] imageBytes = ms.ToArray();
 
                   // Convert byte[] to Base64 String
@@ -181,7 +187,7 @@ namespace TempJobsWcf
               }
           }
 
-          public Image Base64ToImage(string base64String)
+         /* public Image Base64ToImage(string base64String)
           {
               throw new NotImplementedException();
           }*/

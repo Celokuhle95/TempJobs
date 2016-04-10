@@ -4,94 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:padding="8dp"
-    android:layout_height="match_parent">
+    android:padding="1dp"
+    android:layout_height="wrap_content"
+    android:textColor="#514b4b"
+    >
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "First Name"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etFName"
         android:layout_width="match_parent"
         android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="23dp" />
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "Last Name"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etLName"
         android:layout_width="match_parent"
         android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="23dp" />
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "Address"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etAddress"
         android:layout_width="match_parent"
         android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="fill_parent" />
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "Email"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="fill_parent" />
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "Cellphone"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etCellphone"
         android:layout_width="match_parent"
         android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="fill_parent" />
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "Username"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:layout_width= "wrap_content"
-        android:text = "Age"
-        android:layout_height= "wrap_content" />
-
-    <EditText
-        android:id="@+id/etAge"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content" />
-
-
+        android:layout_height="fill_parent" />
 
 
     <TextView
         android:layout_width= "wrap_content"
         android:text = "Password"
-        android:layout_height= "wrap_content" />
+        android:layout_height= "fill_parent" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -100,11 +88,25 @@
         android:inputType="textPassword"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:layout_width= "wrap_content"
+        android:text = "Confirm Password"
+        android:layout_height= "fill_parent" />
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:inputType="textPassword"
+        android:layout_height="fill_parent" />
+
+
     <Button
         android:id="@+id/bRegister"
         android:text="Register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="fill_parent"
+        android:onClick="onRegistrationClick" />
 
 
 

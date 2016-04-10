@@ -18,24 +18,32 @@ namespace WebApplication1
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            bool d;
-            bool b;
-
-
+            int id;
+            bool d, b, idSpicified;
             string userName = txtUsername.Text;
             string password = txtPassword.Text;
             string message;
-            bl.LgnUser(userName,Secrecy.HashPassword( password), out d, out b, out message);
-           // mbox(d);
+            bl.LgnUser(userName, Secrecy.HashPassword(password), out d, out b, out message, out id, out idSpicified);
+            // mbox(d);
             if (d)
             {
-                Response.Redirect("HomePage.aspx");
-                lblErr.Text = message;
+                if (id == -1)
+                {
+                    lblErr.Text = message;
+                    lblErr.Visible = true;
+                    return;             
+                }
+                else
+                {
+                    Session.Add("id", id);
+                    Response.Redirect("Homepage.aspx");
+                }
 
             }
             else
             {
                 lblErr.Text = message;
+                lblErr.Visible = true;
             }
         } 
     }

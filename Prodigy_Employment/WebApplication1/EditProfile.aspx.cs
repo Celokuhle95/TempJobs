@@ -74,7 +74,7 @@ namespace WebApplication1
             }
         }
       
-        public bool AlreadySaved(string skillName)
+        public bool AlreadySaved(string skillName) //employee cannot register a skill that has already been added
         {
             bool skillAlreadySaved = false;
             foreach (var skill in lc.ReadSkills()) //check name and id to check this skill is saved once only

@@ -45,6 +45,8 @@ namespace WebApplication1.localhost {
         
         private System.Threading.SendOrPostCallback ReadSkillsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ImageToBase64StringOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -106,6 +108,9 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         public event ReadSkillsCompletedEventHandler ReadSkillsCompleted;
+        
+        /// <remarks/>
+        public event ImageToBase64StringCompletedEventHandler ImageToBase64StringCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -189,13 +194,15 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/LgnUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LgnUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out bool LgnUserResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool LgnUserResultSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string message) {
+        public void LgnUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out bool LgnUserResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool LgnUserResultSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string message, out int id, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool idSpecified) {
             object[] results = this.Invoke("LgnUser", new object[] {
                         username,
                         password});
             LgnUserResult = ((bool)(results[0]));
             LgnUserResultSpecified = ((bool)(results[1]));
             message = ((string)(results[2]));
+            id = ((int)(results[3]));
+            idSpecified = ((bool)(results[4]));
         }
         
         /// <remarks/>
@@ -372,6 +379,36 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/ImageToBase64String", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string ImageToBase64String([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] Image image) {
+            object[] results = this.Invoke("ImageToBase64String", new object[] {
+                        image});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ImageToBase64StringAsync(Image image) {
+            this.ImageToBase64StringAsync(image, null);
+        }
+        
+        /// <remarks/>
+        public void ImageToBase64StringAsync(Image image, object userState) {
+            if ((this.ImageToBase64StringOperationCompleted == null)) {
+                this.ImageToBase64StringOperationCompleted = new System.Threading.SendOrPostCallback(this.OnImageToBase64StringOperationCompleted);
+            }
+            this.InvokeAsync("ImageToBase64String", new object[] {
+                        image}, this.ImageToBase64StringOperationCompleted, userState);
+        }
+        
+        private void OnImageToBase64StringOperationCompleted(object arg) {
+            if ((this.ImageToBase64StringCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ImageToBase64StringCompleted(this, new ImageToBase64StringCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -433,6 +470,41 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.stringValueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/System.Drawing")]
+    public partial class Image {
+        
+        private System.Xml.XmlElement[] anyField;
+        
+        private System.Xml.XmlQualifiedName factoryTypeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyElementAttribute()]
+        public System.Xml.XmlElement[] Any {
+            get {
+                return this.anyField;
+            }
+            set {
+                this.anyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Form=System.Xml.Schema.XmlSchemaForm.Qualified, Namespace="http://schemas.microsoft.com/2003/10/Serialization/")]
+        public System.Xml.XmlQualifiedName FactoryType {
+            get {
+                return this.factoryTypeField;
+            }
+            set {
+                this.factoryTypeField = value;
             }
         }
     }
@@ -539,7 +611,7 @@ namespace WebApplication1.localhost {
         
         private InformalSkill[] informalSkillsField;
         
-        private string profileImageField;
+        private string profileImage_StringField;
         
         private string usernameField;
         
@@ -604,12 +676,12 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string ProfileImage {
+        public string ProfileImage_String {
             get {
-                return this.profileImageField;
+                return this.profileImage_StringField;
             }
             set {
-                this.profileImageField = value;
+                this.profileImage_StringField = value;
             }
         }
         
@@ -783,6 +855,22 @@ namespace WebApplication1.localhost {
                 return ((string)(this.results[2]));
             }
         }
+        
+        /// <remarks/>
+        public int id {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[3]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool idSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[4]));
+            }
+        }
     }
     
     /// <remarks/>
@@ -905,6 +993,32 @@ namespace WebApplication1.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((InformalSkill[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ImageToBase64StringCompletedEventHandler(object sender, ImageToBase64StringCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ImageToBase64StringCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ImageToBase64StringCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

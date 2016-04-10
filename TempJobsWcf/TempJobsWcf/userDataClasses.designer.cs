@@ -30,12 +30,12 @@ namespace TempJobsWcf
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertUserdata(Userdata instance);
-    partial void UpdateUserdata(Userdata instance);
-    partial void DeleteUserdata(Userdata instance);
     partial void InsertInformalSkill(InformalSkill instance);
     partial void UpdateInformalSkill(InformalSkill instance);
     partial void DeleteInformalSkill(InformalSkill instance);
+    partial void InsertUserdata(Userdata instance);
+    partial void UpdateUserdata(Userdata instance);
+    partial void DeleteUserdata(Userdata instance);
     #endregion
 		
 		public userDataClassesDataContext() : 
@@ -68,6 +68,14 @@ namespace TempJobsWcf
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<InformalSkill> InformalSkills
+		{
+			get
+			{
+				return this.GetTable<InformalSkill>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Userdata> Userdatas
 		{
 			get
@@ -75,12 +83,155 @@ namespace TempJobsWcf
 				return this.GetTable<Userdata>();
 			}
 		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformalSkills")]
+	public partial class InformalSkill : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<InformalSkill> InformalSkills
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Skill_ID;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _UserData_ID;
+		
+		private EntityRef<Userdata> _Userdata;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSkill_IDChanging(int value);
+    partial void OnSkill_IDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnUserData_IDChanging(System.Nullable<int> value);
+    partial void OnUserData_IDChanged();
+    #endregion
+		
+		public InformalSkill()
+		{
+			this._Userdata = default(EntityRef<Userdata>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Skill_ID
 		{
 			get
 			{
-				return this.GetTable<InformalSkill>();
+				return this._Skill_ID;
+			}
+			set
+			{
+				if ((this._Skill_ID != value))
+				{
+					this.OnSkill_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Skill_ID = value;
+					this.SendPropertyChanged("Skill_ID");
+					this.OnSkill_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserData_ID", DbType="Int")]
+		public System.Nullable<int> UserData_ID
+		{
+			get
+			{
+				return this._UserData_ID;
+			}
+			set
+			{
+				if ((this._UserData_ID != value))
+				{
+					if (this._Userdata.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserData_IDChanging(value);
+					this.SendPropertyChanging();
+					this._UserData_ID = value;
+					this.SendPropertyChanged("UserData_ID");
+					this.OnUserData_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_InformalSkill", Storage="_Userdata", ThisKey="UserData_ID", OtherKey="Id", IsForeignKey=true)]
+		public Userdata Userdata
+		{
+			get
+			{
+				return this._Userdata.Entity;
+			}
+			set
+			{
+				Userdata previousValue = this._Userdata.Entity;
+				if (((previousValue != value) 
+							|| (this._Userdata.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Userdata.Entity = null;
+						previousValue.InformalSkills.Remove(this);
+					}
+					this._Userdata.Entity = value;
+					if ((value != null))
+					{
+						value.InformalSkills.Add(this);
+						this._UserData_ID = value.Id;
+					}
+					else
+					{
+						this._UserData_ID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Userdata");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -111,7 +262,7 @@ namespace TempJobsWcf
 		
 		private string _lastName;
 		
-		private string _ProfileImage;
+		private string _ProfileImage_String;
 		
 		private EntitySet<InformalSkill> _InformalSkills;
 		
@@ -139,8 +290,8 @@ namespace TempJobsWcf
     partial void OnfirstNameChanged();
     partial void OnlastNameChanging(string value);
     partial void OnlastNameChanged();
-    partial void OnProfileImageChanging(string value);
-    partial void OnProfileImageChanged();
+    partial void OnProfileImage_StringChanging(string value);
+    partial void OnProfileImage_StringChanged();
     #endregion
 		
 		public Userdata()
@@ -349,22 +500,22 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfileImage", DbType="VarChar(MAX)")]
-		public string ProfileImage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfileImage_String", DbType="VarChar(MAX)")]
+		public string ProfileImage_String
 		{
 			get
 			{
-				return this._ProfileImage;
+				return this._ProfileImage_String;
 			}
 			set
 			{
-				if ((this._ProfileImage != value))
+				if ((this._ProfileImage_String != value))
 				{
-					this.OnProfileImageChanging(value);
+					this.OnProfileImage_StringChanging(value);
 					this.SendPropertyChanging();
-					this._ProfileImage = value;
-					this.SendPropertyChanged("ProfileImage");
-					this.OnProfileImageChanged();
+					this._ProfileImage_String = value;
+					this.SendPropertyChanged("ProfileImage_String");
+					this.OnProfileImage_StringChanged();
 				}
 			}
 		}
@@ -412,157 +563,6 @@ namespace TempJobsWcf
 		{
 			this.SendPropertyChanging();
 			entity.Userdata = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformalSkills")]
-	public partial class InformalSkill : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Skill_ID;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _UserData_ID;
-		
-		private EntityRef<Userdata> _Userdata;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSkill_IDChanging(int value);
-    partial void OnSkill_IDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnUserData_IDChanging(System.Nullable<int> value);
-    partial void OnUserData_IDChanged();
-    #endregion
-		
-		public InformalSkill()
-		{
-			this._Userdata = default(EntityRef<Userdata>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Skill_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int Skill_ID
-		{
-			get
-			{
-				return this._Skill_ID;
-			}
-			set
-			{
-				if ((this._Skill_ID != value))
-				{
-					this.OnSkill_IDChanging(value);
-					this.SendPropertyChanging();
-					this._Skill_ID = value;
-					this.SendPropertyChanged("Skill_ID");
-					this.OnSkill_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(MAX)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserData_ID", DbType="Int")]
-		public System.Nullable<int> UserData_ID
-		{
-			get
-			{
-				return this._UserData_ID;
-			}
-			set
-			{
-				if ((this._UserData_ID != value))
-				{
-					if (this._Userdata.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUserData_IDChanging(value);
-					this.SendPropertyChanging();
-					this._UserData_ID = value;
-					this.SendPropertyChanged("UserData_ID");
-					this.OnUserData_IDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_InformalSkill", Storage="_Userdata", ThisKey="UserData_ID", OtherKey="Id", IsForeignKey=true)]
-		public Userdata Userdata
-		{
-			get
-			{
-				return this._Userdata.Entity;
-			}
-			set
-			{
-				Userdata previousValue = this._Userdata.Entity;
-				if (((previousValue != value) 
-							|| (this._Userdata.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Userdata.Entity = null;
-						previousValue.InformalSkills.Remove(this);
-					}
-					this._Userdata.Entity = value;
-					if ((value != null))
-					{
-						value.InformalSkills.Add(this);
-						this._UserData_ID = value.Id;
-					}
-					else
-					{
-						this._UserData_ID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Userdata");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
