@@ -47,6 +47,12 @@ namespace WebApplication1.localhost {
         
         private System.Threading.SendOrPostCallback ImageToBase64StringOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SingleUserDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback PostJobOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ListOfJobsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -111,6 +117,15 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         public event ImageToBase64StringCompletedEventHandler ImageToBase64StringCompleted;
+        
+        /// <remarks/>
+        public event SingleUserDetailsCompletedEventHandler SingleUserDetailsCompleted;
+        
+        /// <remarks/>
+        public event PostJobCompletedEventHandler PostJobCompleted;
+        
+        /// <remarks/>
+        public event ListOfJobsCompletedEventHandler ListOfJobsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -409,6 +424,111 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/SingleUserDetails", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Userdata SingleUserDetails(int ID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool IDSpecified) {
+            object[] results = this.Invoke("SingleUserDetails", new object[] {
+                        ID,
+                        IDSpecified});
+            return ((Userdata)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SingleUserDetailsAsync(int ID, bool IDSpecified) {
+            this.SingleUserDetailsAsync(ID, IDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void SingleUserDetailsAsync(int ID, bool IDSpecified, object userState) {
+            if ((this.SingleUserDetailsOperationCompleted == null)) {
+                this.SingleUserDetailsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSingleUserDetailsOperationCompleted);
+            }
+            this.InvokeAsync("SingleUserDetails", new object[] {
+                        ID,
+                        IDSpecified}, this.SingleUserDetailsOperationCompleted, userState);
+        }
+        
+        private void OnSingleUserDetailsOperationCompleted(object arg) {
+            if ((this.SingleUserDetailsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SingleUserDetailsCompleted(this, new SingleUserDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/PostJob", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void PostJob([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string description, int duration_hours, [System.Xml.Serialization.XmlIgnoreAttribute()] bool duration_hoursSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string location, double reward, [System.Xml.Serialization.XmlIgnoreAttribute()] bool rewardSpecified, int employerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool employerIDSpecified) {
+            this.Invoke("PostJob", new object[] {
+                        name,
+                        description,
+                        duration_hours,
+                        duration_hoursSpecified,
+                        location,
+                        reward,
+                        rewardSpecified,
+                        employerID,
+                        employerIDSpecified});
+        }
+        
+        /// <remarks/>
+        public void PostJobAsync(string name, string description, int duration_hours, bool duration_hoursSpecified, string location, double reward, bool rewardSpecified, int employerID, bool employerIDSpecified) {
+            this.PostJobAsync(name, description, duration_hours, duration_hoursSpecified, location, reward, rewardSpecified, employerID, employerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void PostJobAsync(string name, string description, int duration_hours, bool duration_hoursSpecified, string location, double reward, bool rewardSpecified, int employerID, bool employerIDSpecified, object userState) {
+            if ((this.PostJobOperationCompleted == null)) {
+                this.PostJobOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPostJobOperationCompleted);
+            }
+            this.InvokeAsync("PostJob", new object[] {
+                        name,
+                        description,
+                        duration_hours,
+                        duration_hoursSpecified,
+                        location,
+                        reward,
+                        rewardSpecified,
+                        employerID,
+                        employerIDSpecified}, this.PostJobOperationCompleted, userState);
+        }
+        
+        private void OnPostJobOperationCompleted(object arg) {
+            if ((this.PostJobCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.PostJobCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/ListOfJobs", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public Job[] ListOfJobs() {
+            object[] results = this.Invoke("ListOfJobs", new object[0]);
+            return ((Job[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ListOfJobsAsync() {
+            this.ListOfJobsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ListOfJobsAsync(object userState) {
+            if ((this.ListOfJobsOperationCompleted == null)) {
+                this.ListOfJobsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnListOfJobsOperationCompleted);
+            }
+            this.InvokeAsync("ListOfJobs", new object[0], this.ListOfJobsOperationCompleted, userState);
+        }
+        
+        private void OnListOfJobsOperationCompleted(object arg) {
+            if ((this.ListOfJobsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ListOfJobsCompleted(this, new ListOfJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -515,19 +635,118 @@ namespace WebApplication1.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
-    public partial class InformalSkill {
+    public partial class Job {
+        
+        private string descriptionField;
+        
+        private System.Nullable<int> duration_HoursField;
+        
+        private bool duration_HoursFieldSpecified;
+        
+        private System.Nullable<int> employer_IDField;
+        
+        private bool employer_IDFieldSpecified;
+        
+        private int jobIDField;
+        
+        private bool jobIDFieldSpecified;
+        
+        private string locationField;
         
         private string nameField;
         
-        private int skill_IDField;
+        private System.Nullable<double> rewardField;
         
-        private bool skill_IDFieldSpecified;
-        
-        private System.Nullable<int> userData_IDField;
-        
-        private bool userData_IDFieldSpecified;
+        private bool rewardFieldSpecified;
         
         private Userdata userdataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> Duration_Hours {
+            get {
+                return this.duration_HoursField;
+            }
+            set {
+                this.duration_HoursField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool Duration_HoursSpecified {
+            get {
+                return this.duration_HoursFieldSpecified;
+            }
+            set {
+                this.duration_HoursFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> Employer_ID {
+            get {
+                return this.employer_IDField;
+            }
+            set {
+                this.employer_IDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool Employer_IDSpecified {
+            get {
+                return this.employer_IDFieldSpecified;
+            }
+            set {
+                this.employer_IDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int JobID {
+            get {
+                return this.jobIDField;
+            }
+            set {
+                this.jobIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobIDSpecified {
+            get {
+                return this.jobIDFieldSpecified;
+            }
+            set {
+                this.jobIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -541,45 +760,24 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
-        public int Skill_ID {
-            get {
-                return this.skill_IDField;
-            }
-            set {
-                this.skill_IDField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool Skill_IDSpecified {
-            get {
-                return this.skill_IDFieldSpecified;
-            }
-            set {
-                this.skill_IDFieldSpecified = value;
-            }
-        }
-        
-        /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> UserData_ID {
+        public System.Nullable<double> Reward {
             get {
-                return this.userData_IDField;
+                return this.rewardField;
             }
             set {
-                this.userData_IDField = value;
+                this.rewardField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool UserData_IDSpecified {
+        public bool RewardSpecified {
             get {
-                return this.userData_IDFieldSpecified;
+                return this.rewardFieldSpecified;
             }
             set {
-                this.userData_IDFieldSpecified = value;
+                this.rewardFieldSpecified = value;
             }
         }
         
@@ -610,6 +808,8 @@ namespace WebApplication1.localhost {
         private bool idFieldSpecified;
         
         private InformalSkill[] informalSkillsField;
+        
+        private Job[] jobsField;
         
         private string profileImage_StringField;
         
@@ -671,6 +871,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.informalSkillsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        public Job[] Jobs {
+            get {
+                return this.jobsField;
+            }
+            set {
+                this.jobsField = value;
             }
         }
         
@@ -781,6 +992,92 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.passwordField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+    public partial class InformalSkill {
+        
+        private string nameField;
+        
+        private int skill_IDField;
+        
+        private bool skill_IDFieldSpecified;
+        
+        private System.Nullable<int> userData_IDField;
+        
+        private bool userData_IDFieldSpecified;
+        
+        private Userdata userdataField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Skill_ID {
+            get {
+                return this.skill_IDField;
+            }
+            set {
+                this.skill_IDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool Skill_IDSpecified {
+            get {
+                return this.skill_IDFieldSpecified;
+            }
+            set {
+                this.skill_IDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> UserData_ID {
+            get {
+                return this.userData_IDField;
+            }
+            set {
+                this.userData_IDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool UserData_IDSpecified {
+            get {
+                return this.userData_IDFieldSpecified;
+            }
+            set {
+                this.userData_IDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Userdata Userdata {
+            get {
+                return this.userdataField;
+            }
+            set {
+                this.userdataField = value;
             }
         }
     }
@@ -1019,6 +1316,62 @@ namespace WebApplication1.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void SingleUserDetailsCompletedEventHandler(object sender, SingleUserDetailsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SingleUserDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SingleUserDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Userdata Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Userdata)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void PostJobCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ListOfJobsCompletedEventHandler(object sender, ListOfJobsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ListOfJobsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ListOfJobsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Job[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Job[])(this.results[0]));
             }
         }
     }

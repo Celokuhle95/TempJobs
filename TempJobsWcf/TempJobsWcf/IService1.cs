@@ -42,8 +42,14 @@ namespace TempJobsWcf
         [OperationContract]
         string ImageToBase64String(Image image);
 
-       /* [OperationContract]
-        Image Base64ToImage(string base64String);*/
+        [OperationContract]
+        Userdata SingleUserDetails(int ID);
+
+        [OperationContract]
+        void PostJob( string name, string description, int duration_hours, string location, double reward, int employerID);
+
+        [OperationContract]
+        List<Job> ListOfJobs();
     }
 
  

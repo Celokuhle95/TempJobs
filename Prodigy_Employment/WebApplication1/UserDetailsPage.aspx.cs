@@ -21,6 +21,7 @@ namespace WebApplication1
                 {
                     if (user.Id == userID)
                     {
+                        htmlText += "<h2 style='color:honeydew'>Details</h2>";
                         htmlText += "<div class='row'>";
                         htmlText += "<div class ='col-md-3'>";
 

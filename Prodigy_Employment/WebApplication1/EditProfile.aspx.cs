@@ -10,35 +10,39 @@ namespace WebApplication1
     public partial class EditProfile : System.Web.UI.Page
     {
         public localhost.Service1 lc;
-        int selectedID = 0; //must change to a correct value
+        int selectedID;
         protected void Page_Load(object sender, EventArgs e)
         {
             lc = new localhost.Service1();
             string htmlText = "";
-            foreach (var user in lc.ReadEmployees())
-            {
-                if (user.Id == selectedID)
-                {
-                    htmlText += "<div class='row'>";
-                    htmlText += "<div class ='col-md-3'>";
-                    htmlText += "<img width='100%' height='100px' src='images/cuttinggrass.jpg'>"; //must change image source to the real profile image
-                    htmlText += "</div>";
-                    htmlText += "<div class='col-md-5'>";
-                    htmlText += "<table class='table'>";
-                    htmlText += "<tbody>";
-                    htmlText += "<tr><td>" + user.firstName + "</td><td>" + user.lastName + "</td></tr><br/>";
-                    htmlText += "<tr><td>Email address:</td><td>" + user.Email + "</td></tr><br/>";
-                    htmlText += "<tr><td>Residential address:</td><td>" + user.address + "</td></tr><br/>";
-                    htmlText += "<tr><td>Contact number:</td><td>" + user.contactNumber + "</td></tr><br/>";
-                    htmlText += "<tr><td>Alternative contact number:</td><td>" + user.alternativeNumber + "</td></tr><br/>";
-                    htmlText += "</tbody>";
-                    htmlText += "</table>";
-                    htmlText += "</div>";
-                    htmlText += "</div>";
-                }
-                ProfileInfo.InnerHtml = htmlText;
-            }
+            selectedID = (int)Session["id"];
+           
+            
+            var user = lc.SingleUserDetails(selectedID, true);
+           
+            htmlText += "<div class='row'>";
+            htmlText += "<div class ='col-md-3'>";
 
+            string base64ImageRepresentation = user.ProfileImage_String;
+            htmlText += "<img width='100%' height='250px'class='img-thumbnail' alt='image not available' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+            htmlText += "</div>";
+            htmlText += "<div class='col-md-6'>";
+            htmlText += "<table class='table'>";
+            htmlText += "<tbody>";
+            htmlText += "<tr><td><b>First name:</b></td><td>" + user.firstName + "</td></tr>";
+            htmlText += "<tr><td><b>Last name:</b></td><td>" + user.lastName + "</td></tr>";
+            htmlText += "<tr><td><b>Email address:</b></td><td>" + user.Email + "</td></tr>";
+            htmlText += "<tr><td><b>Residential address:</b></td><td>" + user.address + "</td></tr>";
+            htmlText += "<tr><td><b>Contact number:</b></td><td>" + user.contactNumber + "</td></tr>";
+            htmlText += "<tr><td><b>Alternative contact number:</b></td><td>" + user.alternativeNumber + "</td></tr>";
+            htmlText += "<tr><td><b>Skills:</b></td><td>plumber, grass cutting, watering the garden, painter</td></tr>";
+            htmlText += "<tr><td><b>Employment profile:</b></td><td><a href='EmploymentProfilePage.aspx.?UserID=" + user.Id + "'><b style='color:olive'>View</b></a>" + "</td></tr>";
+            htmlText += "<tr><td><b>Have a Job to be done?:</b></td><td><a href='EmploymentProfilePage.aspx'><b style='color:olive'>Employ</b></a></td></tr>";
+            htmlText += "</tbody>";
+            htmlText += "</table>";
+            htmlText += "</div>";
+            htmlText += "</div>";
+           // ProfileInfo.InnerHtml = htmlText;
         }
 
         protected void btnStoreDetails_Click(object sender, EventArgs e)

@@ -36,11 +36,12 @@
                 <li class="active" ><a href=" Homepage.aspx">Home</a></li>
                 <li class=><a href="About.aspx">About</a></li>
                 <li><a href="#">Contact</a></li>
-                <li><a href="#">Employers</a></li> 
-                <li><a href="ViewUsers.aspx">Job seekers</a></li> 
+                <li id ="lblViewJobseekers" runat="server" visible="false"><a href="ViewUsers.aspx">Job seekers</a></li> 
+                                <li id ="lblPostJob" runat="server" visible="false" ><a href="PostJob.aspx">Post a job</a></li>
+                <li id ="lblProfile" runat="server" visible="false" ><a href="Profile.aspx">Profile</a></li>
+                <li id ="lblViewJobs" runat="server" visible="false" ><a href="ViewJobs.aspx">Available jobs</a></li>
                 <li id ="lblRes" runat="server" visible="true" ><a href="Registration.aspx">Register</a></li>
                 <li id ="lblLogin" runat="server" visible="true"><a href="LoginPage.aspx">Login</a></li> 
-                <li id ="lblProfile" runat="server" visible="false" ><a href="Profile.aspx">Profile</a></li>
                 <li id ="lblLogout" runat="server" visible="false"><a href="Logout.aspx">Logout</a></li>  
             </ul>
             <div class="navbar-form pull-right">
@@ -59,6 +60,7 @@
         <div class ="container-fluid" style="background-color:orange; border:dashed; border-color: aliceblue" id ="CompleteProfile" visible ="false" runat ="server">
             Your profile is not complete, click <asp:LinkButton ID="btnSkills" href="EditProfile.aspx" class="btn btn-success" runat="server">here.</asp:LinkButton>
         </div> 
+
         <br />
     <div runat ="server">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

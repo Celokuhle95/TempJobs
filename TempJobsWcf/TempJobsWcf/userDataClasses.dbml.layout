@@ -21,5 +21,18 @@
         <classShapeMoniker Id="814caa52-1b9d-4c76-9b5c-a0e9574de9d9" />
       </nodes>
     </associationConnector>
+    <classShape Id="1637b8a7-338f-4be6-b6ad-908eb863df97" absoluteBounds="3, 2.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/userDataClassesDataContext/Job" />
+      <nestedChildShapes>
+        <elementListCompartment Id="416f37b3-6413-4899-9ba1-534c84acf815" absoluteBounds="3.015, 2.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 3.02485270182292); (3 : 3.02485270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/userDataClassesDataContext/Userdata/Userdata_Job" />
+      <nodes>
+        <classShapeMoniker Id="5def4831-6677-4d59-b6ca-5b61d96b1bb2" />
+        <classShapeMoniker Id="1637b8a7-338f-4be6-b6ad-908eb863df97" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

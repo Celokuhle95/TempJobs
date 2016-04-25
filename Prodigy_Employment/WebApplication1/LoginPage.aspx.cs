@@ -36,6 +36,16 @@ namespace WebApplication1
                 else
                 {
                     Session.Add("id", id);
+                    var user = bl.SingleUserDetails(id, true); //get details of curr user
+                    if(user.authinticationLevel.Equals(1))//check user auth to dee if user is an employer or jobseeker
+                    {
+                        Session.Add("UserType", "Employer");
+                    }
+                    else if(user.authinticationLevel.Equals(2))
+                    {
+                        Session.Add("UserType", "JobSeeker");
+                    }
+                  
                     Response.Redirect("Homepage.aspx");
                 }
 

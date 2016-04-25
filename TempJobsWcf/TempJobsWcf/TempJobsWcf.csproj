@@ -71,6 +71,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JobManager.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>

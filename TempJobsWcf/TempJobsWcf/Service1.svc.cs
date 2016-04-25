@@ -173,23 +173,56 @@ namespace TempJobsWcf
         }
 
         public string ImageToBase64String(System.Drawing.Image image)
-          {
-              using (MemoryStream ms = new MemoryStream())
-              {
-                // Convert Image to byte[]
-                  Bitmap bm = new Bitmap(image);//
-                  bm.Save(ms, image.RawFormat);
-                  byte[] imageBytes = ms.ToArray();
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+            // Convert Image to byte[]
+                Bitmap bm = new Bitmap(image);//
+                bm.Save(ms, image.RawFormat);
+                byte[] imageBytes = ms.ToArray();
 
-                  // Convert byte[] to Base64 String
-                  string base64String = Convert.ToBase64String(imageBytes);
-                  return base64String;
-              }
-          }
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
 
-         /* public Image Base64ToImage(string base64String)
-          {
-              throw new NotImplementedException();
-          }*/
+        public Userdata SingleUserDetails(int ID)
+        {
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            //Userdata user = (from u in database.Userdatas where u.Id.Equals(ID) select u).Single(); //table inside database
+            Userdata user = new Userdata();
+            foreach(var u in database.Userdatas)
+            {
+                if (u.Id.Equals(ID))
+                {
+                    user.Id = u.Id;
+                    user.Username = u.Username;
+                    user.password = u.password;
+                    user.Email = u.Email;
+                    user.contactNumber = u.contactNumber;
+                    user.alternativeNumber = u.alternativeNumber;
+                    user.address = u.address;
+                    user.authinticationLevel = u.authinticationLevel;
+                    user.firstName = u.firstName;
+                    user.lastName = u.lastName;
+                    user.ProfileImage_String = u.ProfileImage_String;
+                }
+                
+            }           
+            return user;           
+        }
+
+        public void PostJob(string name, string description, int duration_hours, string location, double reward, int employerID)
+        {
+            JobManager job = new JobManager();
+            job.post(name, description, duration_hours, location, reward, employerID);
+        }
+
+        public List<Job> ListOfJobs()
+        {
+            JobManager job = new JobManager();
+            return job.ListOfJobs();
+        }
     }
 }

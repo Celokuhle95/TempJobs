@@ -60,6 +60,7 @@
     }
   }
   </style>
+<br />
 
 <div class="container-fluid jumbotron text-center">
   <h1>TempJobs</h1> 

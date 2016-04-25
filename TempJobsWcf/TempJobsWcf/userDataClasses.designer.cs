@@ -36,6 +36,9 @@ namespace TempJobsWcf
     partial void InsertUserdata(Userdata instance);
     partial void UpdateUserdata(Userdata instance);
     partial void DeleteUserdata(Userdata instance);
+    partial void InsertJob(Job instance);
+    partial void UpdateJob(Job instance);
+    partial void DeleteJob(Job instance);
     #endregion
 		
 		public userDataClassesDataContext() : 
@@ -81,6 +84,14 @@ namespace TempJobsWcf
 			get
 			{
 				return this.GetTable<Userdata>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Job> Jobs
+		{
+			get
+			{
+				return this.GetTable<Job>();
 			}
 		}
 	}
@@ -266,6 +277,8 @@ namespace TempJobsWcf
 		
 		private EntitySet<InformalSkill> _InformalSkills;
 		
+		private EntitySet<Job> _Jobs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -297,6 +310,7 @@ namespace TempJobsWcf
 		public Userdata()
 		{
 			this._InformalSkills = new EntitySet<InformalSkill>(new Action<InformalSkill>(this.attach_InformalSkills), new Action<InformalSkill>(this.detach_InformalSkills));
+			this._Jobs = new EntitySet<Job>(new Action<Job>(this.attach_Jobs), new Action<Job>(this.detach_Jobs));
 			OnCreated();
 		}
 		
@@ -533,6 +547,19 @@ namespace TempJobsWcf
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_Job", Storage="_Jobs", ThisKey="Id", OtherKey="Employer_ID")]
+		public EntitySet<Job> Jobs
+		{
+			get
+			{
+				return this._Jobs;
+			}
+			set
+			{
+				this._Jobs.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -563,6 +590,265 @@ namespace TempJobsWcf
 		{
 			this.SendPropertyChanging();
 			entity.Userdata = null;
+		}
+		
+		private void attach_Jobs(Job entity)
+		{
+			this.SendPropertyChanging();
+			entity.Userdata = this;
+		}
+		
+		private void detach_Jobs(Job entity)
+		{
+			this.SendPropertyChanging();
+			entity.Userdata = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Job")]
+	public partial class Job : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _JobID;
+		
+		private string _Name;
+		
+		private string _Description;
+		
+		private System.Nullable<int> _Duration_Hours;
+		
+		private string _Location;
+		
+		private System.Nullable<double> _Reward;
+		
+		private System.Nullable<int> _Employer_ID;
+		
+		private EntityRef<Userdata> _Userdata;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnJobIDChanging(int value);
+    partial void OnJobIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnDuration_HoursChanging(System.Nullable<int> value);
+    partial void OnDuration_HoursChanged();
+    partial void OnLocationChanging(string value);
+    partial void OnLocationChanged();
+    partial void OnRewardChanging(System.Nullable<double> value);
+    partial void OnRewardChanged();
+    partial void OnEmployer_IDChanging(System.Nullable<int> value);
+    partial void OnEmployer_IDChanged();
+    #endregion
+		
+		public Job()
+		{
+			this._Userdata = default(EntityRef<Userdata>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int JobID
+		{
+			get
+			{
+				return this._JobID;
+			}
+			set
+			{
+				if ((this._JobID != value))
+				{
+					this.OnJobIDChanging(value);
+					this.SendPropertyChanging();
+					this._JobID = value;
+					this.SendPropertyChanged("JobID");
+					this.OnJobIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration_Hours", DbType="Int")]
+		public System.Nullable<int> Duration_Hours
+		{
+			get
+			{
+				return this._Duration_Hours;
+			}
+			set
+			{
+				if ((this._Duration_Hours != value))
+				{
+					this.OnDuration_HoursChanging(value);
+					this.SendPropertyChanging();
+					this._Duration_Hours = value;
+					this.SendPropertyChanged("Duration_Hours");
+					this.OnDuration_HoursChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Location", DbType="VarChar(MAX)")]
+		public string Location
+		{
+			get
+			{
+				return this._Location;
+			}
+			set
+			{
+				if ((this._Location != value))
+				{
+					this.OnLocationChanging(value);
+					this.SendPropertyChanging();
+					this._Location = value;
+					this.SendPropertyChanged("Location");
+					this.OnLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Reward", DbType="Float")]
+		public System.Nullable<double> Reward
+		{
+			get
+			{
+				return this._Reward;
+			}
+			set
+			{
+				if ((this._Reward != value))
+				{
+					this.OnRewardChanging(value);
+					this.SendPropertyChanging();
+					this._Reward = value;
+					this.SendPropertyChanged("Reward");
+					this.OnRewardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Employer_ID", DbType="Int")]
+		public System.Nullable<int> Employer_ID
+		{
+			get
+			{
+				return this._Employer_ID;
+			}
+			set
+			{
+				if ((this._Employer_ID != value))
+				{
+					if (this._Userdata.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployer_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Employer_ID = value;
+					this.SendPropertyChanged("Employer_ID");
+					this.OnEmployer_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_Job", Storage="_Userdata", ThisKey="Employer_ID", OtherKey="Id", IsForeignKey=true)]
+		public Userdata Userdata
+		{
+			get
+			{
+				return this._Userdata.Entity;
+			}
+			set
+			{
+				Userdata previousValue = this._Userdata.Entity;
+				if (((previousValue != value) 
+							|| (this._Userdata.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Userdata.Entity = null;
+						previousValue.Jobs.Remove(this);
+					}
+					this._Userdata.Entity = value;
+					if ((value != null))
+					{
+						value.Jobs.Add(this);
+						this._Employer_ID = value.Id;
+					}
+					else
+					{
+						this._Employer_ID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Userdata");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

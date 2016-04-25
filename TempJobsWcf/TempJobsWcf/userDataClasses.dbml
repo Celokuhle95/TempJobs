@@ -22,6 +22,19 @@
       <Column Name="lastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Userdata_InformalSkill" Member="InformalSkills" ThisKey="Id" OtherKey="UserData_ID" Type="InformalSkill" />
+      <Association Name="Userdata_Job" Member="Jobs" ThisKey="Id" OtherKey="Employer_ID" Type="Job" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Jobs">
+    <Type Name="Job">
+      <Column Name="JobID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Duration_Hours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Reward" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Employer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Userdata_Job" Member="Userdata" ThisKey="Employer_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
