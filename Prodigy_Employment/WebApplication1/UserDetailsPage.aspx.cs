@@ -17,7 +17,7 @@ namespace WebApplication1
                 localhost.Service1 lc = new localhost.Service1();
 
                 string htmlText = "";
-                foreach (var user in lc.ReadEmployees())
+                foreach (var user in lc.ReadUsers())
                 {
                     if (user.Id == userID)
                     {

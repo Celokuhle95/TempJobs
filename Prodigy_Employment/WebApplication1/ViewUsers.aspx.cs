@@ -18,7 +18,7 @@ namespace WebApplication1
             lc = new localhost.Service1();
                
             String htmlText = "";
-            foreach (var u in lc.ReadEmployees())
+            foreach (var u in lc.ReadUsers())
             {              
               if (u.authinticationLevel == 2) //job seekers only
               {

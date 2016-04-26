@@ -63,7 +63,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="EditProfile.aspx" />
+    <Content Include="EditSkills.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Home.aspx" />
     <Content Include="Homepage.aspx" />
@@ -83,6 +83,8 @@
     <Content Include="Images\logo.png" />
     <Content Include="Logout.aspx" />
     <Content Include="PostJob.aspx" />
+    <Content Include="Profile.aspx" />
+    <Content Include="profileEmployment.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -105,7 +107,13 @@
     <Content Include="Web References\localhost\InformalSkill.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Web References\localhost\Employee_Data.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <Content Include="Web References\localhost\Job.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\localhost\Employer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\localhost\Reference.map">
@@ -133,12 +141,12 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditProfile.aspx.cs">
-      <DependentUpon>EditProfile.aspx</DependentUpon>
+    <Compile Include="EditSkills.aspx.cs">
+      <DependentUpon>EditSkills.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditProfile.aspx.designer.cs">
-      <DependentUpon>EditProfile.aspx</DependentUpon>
+    <Compile Include="EditSkills.aspx.designer.cs">
+      <DependentUpon>EditSkills.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -174,6 +182,20 @@
     </Compile>
     <Compile Include="PostJob.aspx.designer.cs">
       <DependentUpon>PostJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="profileEmployment.aspx.cs">
+      <DependentUpon>profileEmployment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profileEmployment.aspx.designer.cs">
+      <DependentUpon>profileEmployment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

@@ -70,7 +70,7 @@
                          <asp:DropDownList ID="drpAuthintication" class="form-control" runat="server">
                                     <asp:ListItem Value="0">select Option</asp:ListItem>
                                     <asp:ListItem Value="1">Employer</asp:ListItem>
-                                    <asp:ListItem Value="2">Job seeker</asp:ListItem>
+                                    <asp:ListItem Value="2">Employee</asp:ListItem>
                                 </asp:DropDownList>
                     </div>
                 </div>

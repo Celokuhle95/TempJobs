@@ -37,6 +37,11 @@ namespace WebApplication1
             System.Drawing.Image profileImage = getImageFromByteArray(fileBytes);
             string profImage_string = ImageToBase64String(profileImage);
            
+            // string ImagePath = "images/washing.jpg"; //default value to change later into the path of a selected image
+
+            //byte[] imageArray = System.IO.File.ReadAllBytes(@ImagePath); //take a file path and convert image into byte array
+            //string ImageStringRepresentation = Convert.ToBase64String(imageArray); //convert byte array into a string representation
+
             if (password.Length < 6) //ensure the password strength is atleast 6 characters
            {
                 lblError.Text = "Password must be atleast 6 characters long";

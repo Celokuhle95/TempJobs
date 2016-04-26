@@ -20,6 +20,24 @@
   <wsdl:message name="IService1_RegistrationDatabase_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrationDatabaseResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_RegistrationDatabaseUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationDatabaseUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegistrationDatabaseUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationDatabaseUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_storeEmployees_InputMessage">
+    <wsdl:part name="parameters" element="tns:storeEmployees" />
+  </wsdl:message>
+  <wsdl:message name="IService1_storeEmployees_OutputMessage">
+    <wsdl:part name="parameters" element="tns:storeEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_storeEmployeesUpdates_InputMessage">
+    <wsdl:part name="parameters" element="tns:storeEmployeesUpdates" />
+  </wsdl:message>
+  <wsdl:message name="IService1_storeEmployeesUpdates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:storeEmployeesUpdatesResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_LgnUser_InputMessage">
     <wsdl:part name="parameters" element="tns:LgnUser" />
   </wsdl:message>
@@ -38,17 +56,35 @@
   <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReadUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadUsers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ReadEmployees_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadEmployees" />
   </wsdl:message>
   <wsdl:message name="IService1_ReadEmployees_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadEmployeesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_getEmployee_id_InputMessage">
+    <wsdl:part name="parameters" element="tns:getEmployee_id" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getEmployee_id_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getEmployee_idResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_StoreSkills_InputMessage">
     <wsdl:part name="parameters" element="tns:StoreSkills" />
   </wsdl:message>
   <wsdl:message name="IService1_StoreSkills_OutputMessage">
     <wsdl:part name="parameters" element="tns:StoreSkillsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_StoreSkillsUpdates_InputMessage">
+    <wsdl:part name="parameters" element="tns:StoreSkillsUpdates" />
+  </wsdl:message>
+  <wsdl:message name="IService1_StoreSkillsUpdates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StoreSkillsUpdatesResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ReadSkills_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadSkills" />
@@ -67,6 +103,18 @@
   </wsdl:message>
   <wsdl:message name="IService1_SingleUserDetails_OutputMessage">
     <wsdl:part name="parameters" element="tns:SingleUserDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_storeEmployers_InputMessage">
+    <wsdl:part name="parameters" element="tns:storeEmployers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_storeEmployers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:storeEmployersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadEmployers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadEmployers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReadEmployers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadEmployersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_PostJob_InputMessage">
     <wsdl:part name="parameters" element="tns:PostJob" />
@@ -89,6 +137,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegistrationDatabase" message="tns:IService1_RegistrationDatabase_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegistrationDatabaseResponse" message="tns:IService1_RegistrationDatabase_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RegistrationDatabaseUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegistrationDatabaseUpdate" message="tns:IService1_RegistrationDatabaseUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegistrationDatabaseUpdateResponse" message="tns:IService1_RegistrationDatabaseUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="storeEmployees">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/storeEmployees" message="tns:IService1_storeEmployees_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/storeEmployeesResponse" message="tns:IService1_storeEmployees_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="storeEmployeesUpdates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/storeEmployeesUpdates" message="tns:IService1_storeEmployeesUpdates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/storeEmployeesUpdatesResponse" message="tns:IService1_storeEmployeesUpdates_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="LgnUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/LgnUser" message="tns:IService1_LgnUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/LgnUserResponse" message="tns:IService1_LgnUser_OutputMessage" />
@@ -101,13 +161,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReadUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadUsers" message="tns:IService1_ReadUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadUsersResponse" message="tns:IService1_ReadUsers_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ReadEmployees">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadEmployees" message="tns:IService1_ReadEmployees_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadEmployeesResponse" message="tns:IService1_ReadEmployees_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="getEmployee_id">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getEmployee_id" message="tns:IService1_getEmployee_id_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getEmployee_idResponse" message="tns:IService1_getEmployee_id_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="StoreSkills">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/StoreSkills" message="tns:IService1_StoreSkills_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/StoreSkillsResponse" message="tns:IService1_StoreSkills_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StoreSkillsUpdates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/StoreSkillsUpdates" message="tns:IService1_StoreSkillsUpdates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/StoreSkillsUpdatesResponse" message="tns:IService1_StoreSkillsUpdates_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReadSkills">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadSkills" message="tns:IService1_ReadSkills_InputMessage" />
@@ -120,6 +192,14 @@
     <wsdl:operation name="SingleUserDetails">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SingleUserDetails" message="tns:IService1_SingleUserDetails_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/SingleUserDetailsResponse" message="tns:IService1_SingleUserDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="storeEmployers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/storeEmployers" message="tns:IService1_storeEmployers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/storeEmployersResponse" message="tns:IService1_storeEmployers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadEmployers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadEmployers" message="tns:IService1_ReadEmployers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReadEmployersResponse" message="tns:IService1_ReadEmployers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="PostJob">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/PostJob" message="tns:IService1_PostJob_InputMessage" />
@@ -143,6 +223,33 @@
     </wsdl:operation>
     <wsdl:operation name="RegistrationDatabase">
       <soap:operation soapAction="http://tempuri.org/IService1/RegistrationDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationDatabaseUpdate">
+      <soap:operation soapAction="http://tempuri.org/IService1/RegistrationDatabaseUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeEmployees">
+      <soap:operation soapAction="http://tempuri.org/IService1/storeEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeEmployeesUpdates">
+      <soap:operation soapAction="http://tempuri.org/IService1/storeEmployeesUpdates" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -177,6 +284,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ReadUsers">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ReadEmployees">
       <soap:operation soapAction="http://tempuri.org/IService1/ReadEmployees" style="document" />
       <wsdl:input>
@@ -186,8 +302,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getEmployee_id">
+      <soap:operation soapAction="http://tempuri.org/IService1/getEmployee_id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="StoreSkills">
       <soap:operation soapAction="http://tempuri.org/IService1/StoreSkills" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StoreSkillsUpdates">
+      <soap:operation soapAction="http://tempuri.org/IService1/StoreSkillsUpdates" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -215,6 +349,24 @@
     </wsdl:operation>
     <wsdl:operation name="SingleUserDetails">
       <soap:operation soapAction="http://tempuri.org/IService1/SingleUserDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="storeEmployers">
+      <soap:operation soapAction="http://tempuri.org/IService1/storeEmployers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadEmployers">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReadEmployers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

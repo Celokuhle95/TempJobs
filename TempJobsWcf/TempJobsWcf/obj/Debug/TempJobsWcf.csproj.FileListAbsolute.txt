@@ -24,3 +24,15 @@ C:\Users\p\Desktop\My Repository\team46\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.
 C:\Users\p\Desktop\My Repository\team46\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.csprojResolveAssemblyReference.cache
 C:\Users\p\Desktop\My Repository\team46\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.dll
 C:\Users\p\Desktop\My Repository\team46\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.pdb
+G:\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.dll.config
+G:\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.dll
+G:\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.pdb
+G:\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.csprojResolveAssemblyReference.cache
+G:\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.dll
+G:\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.pdb
+C:\Users\KAMOGELO\Desktop\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.dll.config
+C:\Users\KAMOGELO\Desktop\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.dll
+C:\Users\KAMOGELO\Desktop\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.pdb
+C:\Users\KAMOGELO\Desktop\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.csprojResolveAssemblyReference.cache
+C:\Users\KAMOGELO\Desktop\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.dll
+C:\Users\KAMOGELO\Desktop\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.pdb

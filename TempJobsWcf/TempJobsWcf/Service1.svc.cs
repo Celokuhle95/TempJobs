@@ -33,10 +33,121 @@ namespace TempJobsWcf
             user.alternativeNumber = altanativeNumber;
             user.password = password;
             user.authinticationLevel = authenticationLevel;
-            user.ProfileImage_String= profileImage_string;
+            user.ProfileImage_String = profileImage_string;
             db.Userdatas.InsertOnSubmit(user);
             db.SubmitChanges();
         }
+
+        public void RegistrationDatabaseUpdate(int id, string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string profileImage_string, int age, string gender)
+        {
+            try
+            {
+                userDataClassesDataContext db = new userDataClassesDataContext();
+                Userdata user = (from r in db.Userdatas where r.Id == id select r).Single();
+                user.Username = userName;
+                user.firstName = firstName;
+                user.lastName = lastName;
+                user.address = address;
+                user.Email = Email;
+                user.Age = age;
+                user.Gender = gender;
+                user.contactNumber = cantactNumbers;
+                user.alternativeNumber = altanativeNumber;
+                user.ProfileImage_String = profileImage_string;
+                db.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+        public void StoreSkills(string Name, int Employee_Id)// save the skills of all the workers 
+        {
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            InformalSkill skill = new InformalSkill();
+            skill.Name = Name;
+            skill.Employee_Id = Employee_Id;
+            database.InformalSkills.InsertOnSubmit(skill);
+            database.SubmitChanges();
+        }
+        public void StoreSkillsUpdates(string Name, int Employee_Id)// save the skills of all the workers 
+        {
+            try
+            {
+                userDataClassesDataContext database = new userDataClassesDataContext();
+                InformalSkill skill = (from s in database.InformalSkills where s.Employee_Id == Employee_Id select s).Single();
+                skill.Name = Name;
+                database.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        public void storeEmployeesUpdates(string employee_status, int wage_min, int wage_max, string prefered_hours, string isAvailable, int UserData_ID)
+        {
+            try
+            {
+                userDataClassesDataContext database = new userDataClassesDataContext();
+                Employee_Data employee = (from e in database.Employee_Datas where e.UserData_ID == UserData_ID select e).Single();
+                employee.Employment_status = employee_status;
+                employee.wage_Min = wage_min;
+                employee.wage_max = wage_max;
+                employee.prefered_hours = prefered_hours;
+                employee.isAvailable = isAvailable;
+                employee.UserData_ID = UserData_ID;
+                database.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+        }
+
+        public void storeEmployees(string employee_status, int wage_min, int wage_max, string prefered_hours, string isAvailable, int UserData_ID)
+        {
+            //try
+            //{
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            Employee_Data employee = new Employee_Data();
+
+            employee.Employment_status = employee_status;
+            employee.wage_Min = wage_min;
+            employee.wage_max = wage_max;
+            employee.prefered_hours = prefered_hours;
+            employee.isAvailable = isAvailable;
+            employee.UserData_ID = UserData_ID;
+            database.Employee_Datas.InsertOnSubmit(employee);
+            database.SubmitChanges();
+            //}
+            //catch (Exception sqlEx)
+            //{
+            //    sqlEx.ToString();
+            //}
+        }
+
+        public void storeEmployers(int numberOfJobs, double Rating, string prefered_hours, string isAvailable, int UserData_ID)
+        {
+            //try
+            //{
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            Employer employer = new Employer();
+
+            employer.numberOfJobsOffered = numberOfJobs;
+            employer.Rating = Rating;
+            employer.prefered_hours = prefered_hours;
+            employer.isAvailabe = isAvailable;
+            employer.UserData_ID = UserData_ID;
+            database.Employers.InsertOnSubmit(employer);
+            database.SubmitChanges();
+            //}
+            //catch (Exception sqlEx)
+            //{
+            //    sqlEx.ToString();
+            //}
+        }
+
 
         public Boolean LgnUser(string username, string password, out string message, out int id)
         {
@@ -81,18 +192,19 @@ namespace TempJobsWcf
                 userDataClassesDataContext db = new userDataClassesDataContext(); //dataclass create
                 Userdata user = (from u in db.Userdatas where u.Username.Equals(userName) select u).Single(); //table inside database
                 message = userName + " already exist in our system";
-
-                return false;
+                if (user.Username == userName)
+                    return true;
+                else
+                    return false;
 
             }
             catch (InvalidOperationException e)
             {
                 message = "";
-                return true;
+                return false;
             }
         }
-
-        public List<Userdata> ReadEmployees()
+        public List<Userdata> ReadUsers()
         {
             List<Userdata> Users = new List<Userdata>();
 
@@ -107,12 +219,14 @@ namespace TempJobsWcf
                     currentUser.Username = u.Username;
                     currentUser.password = u.password;
                     currentUser.Email = u.Email;
-                    currentUser.contactNumber  = u.contactNumber;
+                    currentUser.contactNumber = u.contactNumber;
                     currentUser.alternativeNumber = u.alternativeNumber;
                     currentUser.address = u.address;
                     currentUser.authinticationLevel = u.authinticationLevel;
                     currentUser.firstName = u.firstName;
                     currentUser.lastName = u.lastName;
+                    currentUser.Age = u.Age;
+                    currentUser.Gender = u.Gender;
                     currentUser.ProfileImage_String = u.ProfileImage_String;
 
                     Users.Add(currentUser);
@@ -120,9 +234,79 @@ namespace TempJobsWcf
             }
             catch (Exception e)
             {
-               e.ToString() ;
+                e.ToString();
             }
             return Users;
+        }
+
+        public List<Employee_Data> ReadEmployees()
+        {
+            List<Employee_Data> employees = new List<Employee_Data>();
+
+            try
+            {
+                userDataClassesDataContext database = new userDataClassesDataContext();
+                foreach (var u in database.Employee_Datas)
+                {
+                    Employee_Data currentEmployee = new Employee_Data();
+                    currentEmployee.UserData_ID = u.UserData_ID;
+                    currentEmployee.Employee_Id = u.Employee_Id;
+                    currentEmployee.Employment_status = u.Employment_status;
+                    currentEmployee.wage_Min = u.wage_Min;
+                    currentEmployee.wage_max = u.wage_max;
+                    currentEmployee.prefered_hours = u.prefered_hours;
+                    currentEmployee.isAvailable = u.isAvailable;
+
+                    employees.Add(currentEmployee);
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            return employees;
+        }
+
+        public List<Employer> ReadEmployers()
+        {
+            List<Employer> employers = new List<Employer>();
+
+            try
+            {
+                userDataClassesDataContext database = new userDataClassesDataContext();
+                foreach (var u in database.Employers)
+                {
+                    Employer currentEmployer = new Employer();
+                    currentEmployer.UserData_ID = u.UserData_ID;
+                    currentEmployer.Employer_Id = u.Employer_Id;
+                    currentEmployer.Rating = u.Rating;
+                    currentEmployer.numberOfJobsOffered = u.numberOfJobsOffered;
+                    currentEmployer.prefered_hours= u.prefered_hours;
+                    currentEmployer.isAvailabe = u.isAvailabe;
+
+                    employers.Add(currentEmployer);
+                }
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            return employers;
+        }
+
+        public void getEmployee_id(int UserData_Id, out int employee_id)
+        {
+            employee_id = -1;
+            try
+            {
+                userDataClassesDataContext db = new userDataClassesDataContext();
+                Employee_Data emp = (from e in db.Employee_Datas where e.UserData_ID == UserData_Id select e).Single();
+                employee_id = emp.Employee_Id;
+            }
+            catch (Exception e)
+            {
+                e.ToString();
+            }
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
@@ -138,19 +322,12 @@ namespace TempJobsWcf
             return composite;
         }
 
-        public void StoreSkills(string Name, int UserID )// save the skills of all the workers 
-        {
-            userDataClassesDataContext database = new userDataClassesDataContext();
-            InformalSkill skill = new InformalSkill();
-            skill.Name = Name;
-            skill.UserData_ID = UserID;
-            database.InformalSkills.InsertOnSubmit(skill);
-            database.SubmitChanges();
-        }
+
 
         public List<InformalSkill> ReadSkills()
         {
             List<InformalSkill> AllSkills = new List<InformalSkill>();
+
             try
             {
                 userDataClassesDataContext database = new userDataClassesDataContext();
@@ -160,8 +337,7 @@ namespace TempJobsWcf
 
                     currentSkill.Skill_ID = skill.Skill_ID;
                     currentSkill.Name = skill.Name;
-                    currentSkill.UserData_ID = skill.UserData_ID;  
-                      
+                    currentSkill.Employee_Id = skill.Employee_Id;
                     AllSkills.Add(currentSkill);
                 }
             }
@@ -172,11 +348,12 @@ namespace TempJobsWcf
             return AllSkills;
         }
 
+       
         public string ImageToBase64String(System.Drawing.Image image)
         {
             using (MemoryStream ms = new MemoryStream())
             {
-            // Convert Image to byte[]
+                // Convert Image to byte[]
                 Bitmap bm = new Bitmap(image);//
                 bm.Save(ms, image.RawFormat);
                 byte[] imageBytes = ms.ToArray();
@@ -192,7 +369,7 @@ namespace TempJobsWcf
             userDataClassesDataContext database = new userDataClassesDataContext();
             //Userdata user = (from u in database.Userdatas where u.Id.Equals(ID) select u).Single(); //table inside database
             Userdata user = new Userdata();
-            foreach(var u in database.Userdatas)
+            foreach (var u in database.Userdatas)
             {
                 if (u.Id.Equals(ID))
                 {
@@ -208,15 +385,15 @@ namespace TempJobsWcf
                     user.lastName = u.lastName;
                     user.ProfileImage_String = u.ProfileImage_String;
                 }
-                
-            }           
-            return user;           
+
+            }
+            return user;
         }
 
-        public void PostJob(string name, string description, int duration_hours, string location, double reward, int employerID)
+        public void PostJob(string name, string description, int duration_hours, string location, double reward,string JobPicture, int employerID)
         {
             JobManager job = new JobManager();
-            job.post(name, description, duration_hours, location, reward, employerID);
+            job.post(name, description, duration_hours, location, reward,JobPicture, employerID);
         }
 
         public List<Job> ListOfJobs()
@@ -224,5 +401,10 @@ namespace TempJobsWcf
             JobManager job = new JobManager();
             return job.ListOfJobs();
         }
+
+        /* public Image Base64ToImage(string base64String)
+         {
+             throw new NotImplementedException();
+         }*/
     }
 }

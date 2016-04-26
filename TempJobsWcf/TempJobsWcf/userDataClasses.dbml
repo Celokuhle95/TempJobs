@@ -1,11 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database1" Class="userDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Database1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employee_Data" Member="Employee_Datas">
+    <Type Name="Employee_Data">
+      <Column Name="Employee_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Employment_status" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="wage_Min" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="wage_max" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="prefered_hours" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="isAvailable" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="UserData_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employee_Data_InformalSkill" Member="InformalSkills" ThisKey="Employee_Id" OtherKey="Employee_Id" Type="InformalSkill" />
+      <Association Name="Userdata_Employee_Data" Member="Userdata" ThisKey="UserData_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employer" Member="Employers">
+    <Type Name="Employer">
+      <Column Name="Employer_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Rating" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="isAvailabe" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="numberOfJobsOffered" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="prefered_hours" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="UserData_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employer_Job" Member="Jobs" ThisKey="Employer_Id" OtherKey="Employer_ID" Type="Job" />
+      <Association Name="Userdata_Employer" Member="Userdata" ThisKey="UserData_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.InformalSkills" Member="InformalSkills">
     <Type Name="InformalSkill">
-      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Skill_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="UserData_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Userdata_InformalSkill" Member="Userdata" ThisKey="UserData_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
+      <Column Name="Employee_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employee_Data_InformalSkill" Member="Employee_Data" ThisKey="Employee_Id" OtherKey="Employee_Id" Type="Employee_Data" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Job" Member="Jobs">
+    <Type Name="Job">
+      <Column Name="JobID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Duration_Hours" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Reward" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="JobPicture" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Employer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employer_Job" Member="Employer" ThisKey="Employer_ID" OtherKey="Employer_Id" Type="Employer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Userdata" Member="Userdatas">
@@ -21,20 +59,10 @@
       <Column Name="firstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="lastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Userdata_InformalSkill" Member="InformalSkills" ThisKey="Id" OtherKey="UserData_ID" Type="InformalSkill" />
-      <Association Name="Userdata_Job" Member="Jobs" ThisKey="Id" OtherKey="Employer_ID" Type="Job" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Job" Member="Jobs">
-    <Type Name="Job">
-      <Column Name="JobID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Duration_Hours" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="Reward" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Employer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Userdata_Job" Member="Userdata" ThisKey="Employer_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="Age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Userdata_Employee_Data" Member="Employee_Datas" ThisKey="Id" OtherKey="UserData_ID" Type="Employee_Data" />
+      <Association Name="Userdata_Employer" Member="Employers" ThisKey="Id" OtherKey="UserData_ID" Type="Employer" />
     </Type>
   </Table>
 </Database>

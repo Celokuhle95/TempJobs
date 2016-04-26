@@ -37,15 +37,28 @@ namespace WebApplication1
                 {
                     Session.Add("id", id);
                     var user = bl.SingleUserDetails(id, true); //get details of curr user
-                    if(user.authinticationLevel.Equals(1))//check user auth to dee if user is an employer or jobseeker
+                    if (user.authinticationLevel.Equals(1))//check user auth to dee if user is an employer or jobseeker
                     {
                         Session.Add("UserType", "Employer");
+                        if (Session["EmployerID"] == null)
+                        {
+                            bl.storeEmployers(0, true, 0, true, "", "true", id, true);
+                            foreach(var employer in bl.ReadEmployers())
+                            {
+                                if(employer.UserData_ID == id)
+                                {
+                                    Session.Add("EmployerID", employer.Employer_Id);
+                                }
+                            }
+                           
+                        }
                     }
-                    else if(user.authinticationLevel.Equals(2))
+                    else if (user.authinticationLevel.Equals(2))
                     {
                         Session.Add("UserType", "JobSeeker");
                     }
-                  
+                    
+
                     Response.Redirect("Homepage.aspx");
                 }
 

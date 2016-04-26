@@ -7,7 +7,7 @@ namespace TempJobsWcf
 {
     public class JobManager
     {
-        public void post(string name, string description, int duration_hours, string location, double reward, int employerID)
+        public void post(string name, string description, int duration_hours, string location, double reward,string JobPicture, int employerID)
         {
             Job newJob = new Job();
             userDataClassesDataContext database = new userDataClassesDataContext();
@@ -16,6 +16,7 @@ namespace TempJobsWcf
             newJob.Duration_Hours = duration_hours;
             newJob.Location = location;
             newJob.Reward = reward;
+            newJob.JobPicture = JobPicture;
             newJob.Employer_ID = employerID;
             database.Jobs.InsertOnSubmit(newJob);
             database.SubmitChanges();
@@ -33,6 +34,7 @@ namespace TempJobsWcf
                 job.Duration_Hours = jb.Duration_Hours;
                 job.Location = jb.Location;
                 job.Reward = jb.Reward;
+                job.JobPicture = jb.JobPicture;
                 job.Employer_ID = jb.Employer_ID;
                 jobs.Add(job);
             }
