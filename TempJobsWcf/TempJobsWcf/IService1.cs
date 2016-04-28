@@ -12,24 +12,17 @@ namespace TempJobsWcf
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IService1
-    {
-
-        [OperationContract]
-        string GetData(int value);
-        /*Registration function 
-         * */
-        [OperationContract]
-        void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage);
-
-        [OperationContract]
-        bool LgnUser(string username, string password, out string message, out int id);
-
-        [OperationContract]
-        bool UserNameCheck(string UserName, out string message);
+    {       
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
+        [OperationContract]
+        void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage);
+
+        [OperationContract]
+        void LgnUser(string username, string password, out int userID, out bool canLogin);
+
         [OperationContract]
          List<Userdata> ReadEmployees();
 
@@ -50,8 +43,19 @@ namespace TempJobsWcf
 
         [OperationContract]
         List<Job> ListOfJobs();
-    }
 
+        [OperationContract]
+        void ChangePassword(string username, string password, out bool success);
+
+        [OperationContract]
+        void ApplyForJob(int jobID, int jobseekerID);
+
+        [OperationContract]
+        List<Userdata> getApplications(int EmployerID);
+
+        [OperationContract]
+        void RegistrationDatabaseUpdate(int id, string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string profileImage_string, int age, string gender);
+    }
  
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]

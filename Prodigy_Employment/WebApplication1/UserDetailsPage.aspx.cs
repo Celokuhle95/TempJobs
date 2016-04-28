@@ -15,13 +15,13 @@ namespace WebApplication1
             {
                 int userID = Convert.ToInt32(Request.QueryString["UserID"]);
                 localhost.Service1 lc = new localhost.Service1();
-
+                
                 string htmlText = "";
                 foreach (var user in lc.ReadEmployees())
                 {
                     if (user.Id == userID)
                     {
-                        htmlText += "<h2 style='color:honeydew'>Details</h2>";
+                        htmlText += "<h3>Job seeker details.</h3><br/>";
                         htmlText += "<div class='row'>";
                         htmlText += "<div class ='col-md-3'>";
 
@@ -33,13 +33,10 @@ namespace WebApplication1
                         htmlText += "<tbody>";
                         htmlText += "<tr><td><b>First name:</b></td><td>" + user.firstName + "</td></tr>";
                         htmlText += "<tr><td><b>Last name:</b></td><td>" + user.lastName + "</td></tr>";
-                        htmlText += "<tr><td><b>Email address:</b></td><td>" + user.Email + "</td></tr>";
                         htmlText += "<tr><td><b>Residential address:</b></td><td>" + user.address + "</td></tr>";
-                        htmlText += "<tr><td><b>Contact number:</b></td><td>" + user.contactNumber + "</td></tr>";
-                        htmlText += "<tr><td><b>Alternative contact number:</b></td><td>" + user.alternativeNumber + "</td></tr>";
                         htmlText += "<tr><td><b>Skills:</b></td><td>plumber, grass cutting, watering the garden, painter</td></tr>";
-                        htmlText += "<tr><td><b>Employment profile:</b></td><td><a href='EmploymentProfilePage.aspx.?UserID=" + user.Id + "'><b style='color:olive'>View</b></a>" + "</td></tr>";
-                        htmlText += "<tr><td><b>Have a Job to be done?:</b></td><td><a href='EmploymentProfilePage.aspx'><b style='color:olive'>Employ</b></a></td></tr>";
+                        htmlText += "<tr><td><b>Employment profile:</b></td><td><a href='EmploymentProfilePage.aspx.?UserID=" + user.Id + "'><b>View</b></a>" + "</td></tr>";
+                        htmlText += "<tr><td><b>Have a Job to be done?:</b></td><td><a href='EmploymentProfilePage.aspx'><b>Employ</b></a></td></tr>";
                         htmlText += "</tbody>";
                         htmlText += "</table>";
                         htmlText += "</div>";

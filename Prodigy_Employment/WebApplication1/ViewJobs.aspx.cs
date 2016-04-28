@@ -11,18 +11,19 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string htmlText = "";
+            string htmlText = "<h3 style='text-align'>Available jobs.</h3>";
             localhost.Service1 localhost = new localhost.Service1();
             foreach(var job in localhost.ListOfJobs())
             {
-                htmlText += "<div class='row' class='container-fluid' style='background-color:darkkhaki'>";
+                htmlText += "<div class='row' style='border:groove'>";
                 htmlText += "<h2>"+job.Name+"</h2>";
                 htmlText += "<hr style='color:goldenrod'/>";
-                htmlText += "<u>Description: </u>"+ job.Description + "<br/>";
-                htmlText += "<u>Location: </u>" + job.Location + "<br/>";
-                htmlText += "<u>Duration(in hours): </u>" + job.Duration_Hours + " hours <br/>";
-                htmlText += "<u>Reward: </u>R<b>" + job.Reward + "</b><br/>";
-                htmlText += "</div><br/>";
+                htmlText += "<u>Description</u>: " + job.Description + "<br/>";
+                htmlText += "<u>Location </u>:" + job.Location + "<br/>";
+                htmlText += "<u>Duration(in hours)</u>: " + job.Duration_Hours + " hours <br/>";
+                htmlText += "<u>Pay</u>:<b> R" + job.Reward + "</b><br/>";
+                string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
+                htmlText += s + "<br/></div> <br/>";
             }
             JobDetails.InnerHtml = htmlText;
         }

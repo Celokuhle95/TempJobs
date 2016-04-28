@@ -17,44 +17,36 @@ namespace WebApplication1
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            int id;
-            bool d, b, idSpicified;
+        {          
             string userName = txtUsername.Text;
             string password = txtPassword.Text;
-            string message;
-            bl.LgnUser(userName, Secrecy.HashPassword(password), out d, out b, out message, out id, out idSpicified);
-            // mbox(d);
-            if (d)
-            {
-                if (id == -1)
-                {
-                    lblErr.Text = message;
-                    lblErr.Visible = true;
-                    return;             
-                }
-                else
-                {
-                    Session.Add("id", id);
-                    var user = bl.SingleUserDetails(id, true); //get details of curr user
-                    if(user.authinticationLevel.Equals(1))//check user auth to dee if user is an employer or jobseeker
-                    {
-                        Session.Add("UserType", "Employer");
-                    }
-                    else if(user.authinticationLevel.Equals(2))
-                    {
-                        Session.Add("UserType", "JobSeeker");
-                    }
-                  
-                    Response.Redirect("Homepage.aspx");
-                }
+            int id;
+            bool a, b;
+            bool canLogin;
 
+            bl.LgnUser(userName, Secrecy.HashPassword(password), out id, out a, out canLogin, out b);
+            
+            if (canLogin)
+            {
+                Session.Add("id", id);
+                var user = bl.SingleUserDetails(id, true); //get details of curr user
+                if (user.authinticationLevel.Equals(1))//check user auth to dee if user is an employer or jobseeker
+                {
+                    Session.Add("UserType", "Employer");
+                }
+                else if (user.authinticationLevel.Equals(2))
+                {
+                    Session.Add("UserType", "JobSeeker");
+                }
+                Response.Redirect("Homepage.aspx");
             }
             else
             {
-                lblErr.Text = message;
+                lblErr.Text = "Username/password incorrect";
                 lblErr.Visible = true;
+                return;
             }
+
         } 
     }
 }

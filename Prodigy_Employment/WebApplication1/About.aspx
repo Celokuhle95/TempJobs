@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="padding-left: 5%">
-        <asp:ImageButton ID="ImageButton2" runat="server" Width="124px" />  <h2 style="color:olive">About us.</h2>
+        <h2 style=>About us.</h2>
         <hr style="color: #683A0C" />
         <p>
             TempJobs.com is a two way bridge between thousands of job seeking people and home owners or small businesses that

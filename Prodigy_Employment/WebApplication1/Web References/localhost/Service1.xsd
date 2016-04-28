@@ -2,17 +2,17 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:1546/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf" />
   <xs:import schemaLocation="http://localhost:1546/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
-  <xs:element name="GetData">
+  <xs:element name="GetDataUsingDataContract">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="value" type="xs:int" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetDataResponse">
+  <xs:element name="GetDataUsingDataContractResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -48,38 +48,8 @@
   <xs:element name="LgnUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="LgnUserResult" type="xs:boolean" />
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UserNameCheck">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UserNameCheckResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UserNameCheckResult" type="xs:boolean" />
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContract">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDataUsingDataContractResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="canLogin" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -175,6 +145,70 @@
       <xs:sequence>
         <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="ListOfJobsResult" nillable="true" type="q7:ArrayOfJob" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangePassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangePasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="success" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyForJob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="jobID" type="xs:int" />
+        <xs:element minOccurs="0" name="jobseekerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ApplyForJobResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getApplications">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getApplicationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="getApplicationsResult" nillable="true" type="q8:ArrayOfUserdata" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationDatabaseUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cantactNumbers" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="altanativeNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="profileImage_string" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="age" type="xs:int" />
+        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrationDatabaseUpdateResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

@@ -39,6 +39,9 @@ namespace TempJobsWcf
     partial void InsertJob(Job instance);
     partial void UpdateJob(Job instance);
     partial void DeleteJob(Job instance);
+    partial void InsertJobApp(JobApp instance);
+    partial void UpdateJobApp(JobApp instance);
+    partial void DeleteJobApp(JobApp instance);
     #endregion
 		
 		public userDataClassesDataContext() : 
@@ -92,6 +95,14 @@ namespace TempJobsWcf
 			get
 			{
 				return this.GetTable<Job>();
+			}
+		}
+		
+		public System.Data.Linq.Table<JobApp> JobApps
+		{
+			get
+			{
+				return this.GetTable<JobApp>();
 			}
 		}
 	}
@@ -279,6 +290,8 @@ namespace TempJobsWcf
 		
 		private EntitySet<Job> _Jobs;
 		
+		private EntitySet<JobApp> _JobApps;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -311,6 +324,7 @@ namespace TempJobsWcf
 		{
 			this._InformalSkills = new EntitySet<InformalSkill>(new Action<InformalSkill>(this.attach_InformalSkills), new Action<InformalSkill>(this.detach_InformalSkills));
 			this._Jobs = new EntitySet<Job>(new Action<Job>(this.attach_Jobs), new Action<Job>(this.detach_Jobs));
+			this._JobApps = new EntitySet<JobApp>(new Action<JobApp>(this.attach_JobApps), new Action<JobApp>(this.detach_JobApps));
 			OnCreated();
 		}
 		
@@ -560,6 +574,19 @@ namespace TempJobsWcf
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_JobApp", Storage="_JobApps", ThisKey="Id", OtherKey="JobseekerId")]
+		public EntitySet<JobApp> JobApps
+		{
+			get
+			{
+				return this._JobApps;
+			}
+			set
+			{
+				this._JobApps.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -603,6 +630,18 @@ namespace TempJobsWcf
 			this.SendPropertyChanging();
 			entity.Userdata = null;
 		}
+		
+		private void attach_JobApps(JobApp entity)
+		{
+			this.SendPropertyChanging();
+			entity.Userdata = this;
+		}
+		
+		private void detach_JobApps(JobApp entity)
+		{
+			this.SendPropertyChanging();
+			entity.Userdata = null;
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Job")]
@@ -624,6 +663,8 @@ namespace TempJobsWcf
 		private System.Nullable<double> _Reward;
 		
 		private System.Nullable<int> _Employer_ID;
+		
+		private EntitySet<JobApp> _JobApps;
 		
 		private EntityRef<Userdata> _Userdata;
 		
@@ -649,6 +690,7 @@ namespace TempJobsWcf
 		
 		public Job()
 		{
+			this._JobApps = new EntitySet<JobApp>(new Action<JobApp>(this.attach_JobApps), new Action<JobApp>(this.detach_JobApps));
 			this._Userdata = default(EntityRef<Userdata>);
 			OnCreated();
 		}
@@ -797,6 +839,19 @@ namespace TempJobsWcf
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobApp", Storage="_JobApps", ThisKey="JobID", OtherKey="JobId")]
+		public EntitySet<JobApp> JobApps
+		{
+			get
+			{
+				return this._JobApps;
+			}
+			set
+			{
+				this._JobApps.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_Job", Storage="_Userdata", ThisKey="Employer_ID", OtherKey="Id", IsForeignKey=true)]
 		public Userdata Userdata
 		{
@@ -825,6 +880,210 @@ namespace TempJobsWcf
 					else
 					{
 						this._Employer_ID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Userdata");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_JobApps(JobApp entity)
+		{
+			this.SendPropertyChanging();
+			entity.Job = this;
+		}
+		
+		private void detach_JobApps(JobApp entity)
+		{
+			this.SendPropertyChanging();
+			entity.Job = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobApp")]
+	public partial class JobApp : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ApplicationID;
+		
+		private System.Nullable<int> _JobId;
+		
+		private System.Nullable<int> _JobseekerId;
+		
+		private EntityRef<Job> _Job;
+		
+		private EntityRef<Userdata> _Userdata;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnApplicationIDChanging(int value);
+    partial void OnApplicationIDChanged();
+    partial void OnJobIdChanging(System.Nullable<int> value);
+    partial void OnJobIdChanged();
+    partial void OnJobseekerIdChanging(System.Nullable<int> value);
+    partial void OnJobseekerIdChanged();
+    #endregion
+		
+		public JobApp()
+		{
+			this._Job = default(EntityRef<Job>);
+			this._Userdata = default(EntityRef<Userdata>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApplicationID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ApplicationID
+		{
+			get
+			{
+				return this._ApplicationID;
+			}
+			set
+			{
+				if ((this._ApplicationID != value))
+				{
+					this.OnApplicationIDChanging(value);
+					this.SendPropertyChanging();
+					this._ApplicationID = value;
+					this.SendPropertyChanged("ApplicationID");
+					this.OnApplicationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobId", DbType="Int")]
+		public System.Nullable<int> JobId
+		{
+			get
+			{
+				return this._JobId;
+			}
+			set
+			{
+				if ((this._JobId != value))
+				{
+					if (this._Job.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobIdChanging(value);
+					this.SendPropertyChanging();
+					this._JobId = value;
+					this.SendPropertyChanged("JobId");
+					this.OnJobIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobseekerId", DbType="Int")]
+		public System.Nullable<int> JobseekerId
+		{
+			get
+			{
+				return this._JobseekerId;
+			}
+			set
+			{
+				if ((this._JobseekerId != value))
+				{
+					if (this._Userdata.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobseekerIdChanging(value);
+					this.SendPropertyChanging();
+					this._JobseekerId = value;
+					this.SendPropertyChanged("JobseekerId");
+					this.OnJobseekerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Job_JobApp", Storage="_Job", ThisKey="JobId", OtherKey="JobID", IsForeignKey=true)]
+		public Job Job
+		{
+			get
+			{
+				return this._Job.Entity;
+			}
+			set
+			{
+				Job previousValue = this._Job.Entity;
+				if (((previousValue != value) 
+							|| (this._Job.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Job.Entity = null;
+						previousValue.JobApps.Remove(this);
+					}
+					this._Job.Entity = value;
+					if ((value != null))
+					{
+						value.JobApps.Add(this);
+						this._JobId = value.JobID;
+					}
+					else
+					{
+						this._JobId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Job");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Userdata_JobApp", Storage="_Userdata", ThisKey="JobseekerId", OtherKey="Id", IsForeignKey=true)]
+		public Userdata Userdata
+		{
+			get
+			{
+				return this._Userdata.Entity;
+			}
+			set
+			{
+				Userdata previousValue = this._Userdata.Entity;
+				if (((previousValue != value) 
+							|| (this._Userdata.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Userdata.Entity = null;
+						previousValue.JobApps.Remove(this);
+					}
+					this._Userdata.Entity = value;
+					if ((value != null))
+					{
+						value.JobApps.Add(this);
+						this._JobseekerId = value.Id;
+					}
+					else
+					{
+						this._JobseekerId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Userdata");
 				}

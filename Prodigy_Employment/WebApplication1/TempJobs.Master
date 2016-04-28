@@ -17,7 +17,7 @@
   
     <form id="form1" runat="server">
     <nav class ="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container" >
     <%-- logo --%>
 
         <div class ="navbar-header">              
@@ -26,15 +26,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <a href="Homepage.aspx"><img src="images/logo.png"/></a>
         </div>
         
         <%-- menu items --%>
         <div class="collapse navbar-collapse" id="CollpseNavbar">
-            
-            <ul class="nav navbar-nav">
-                <li><img src="images/logo.png"/></li>
-                <li class="active" ><a href=" Homepage.aspx">Home</a></li>
-                <li class=><a href="About.aspx">About</a></li>
+            <ul class="nav navbar-nav">     
+                <li><a href="About.aspx">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li id ="lblViewJobseekers" runat="server" visible="false"><a href="ViewUsers.aspx">Job seekers</a></li> 
                                 <li id ="lblPostJob" runat="server" visible="false" ><a href="PostJob.aspx">Post a job</a></li>
@@ -44,55 +42,45 @@
                 <li id ="lblLogin" runat="server" visible="true"><a href="LoginPage.aspx">Login</a></li> 
                 <li id ="lblLogout" runat="server" visible="false"><a href="Logout.aspx">Logout</a></li>  
             </ul>
-            <div class="navbar-form pull-right">
+           <%-- <div class="navbar-form pull-right">
                 <div class="input-group">
                     <input type="search" title="Enter search" placeholder="Seach TempJobs" class="form-control" />
                     <span class="input-group-addon glyphicon glyphicon-search"></span>
                 </div>
-             </div>
+             </div>--%>
         </div>
        
     </div>
   </nav>
         <br />
         <br /> 
-        <br /> 
-        <div class ="container-fluid" style="background-color:orange; border:dashed; border-color: aliceblue" id ="CompleteProfile" visible ="false" runat ="server">
-            Your profile is not complete, click <asp:LinkButton ID="btnSkills" href="EditProfile.aspx" class="btn btn-success" runat="server">here.</asp:LinkButton>
-        </div> 
-
+        <br />
         <br />
     <div runat ="server">
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
            
         </asp:ContentPlaceHolder>
-     <br />
+     <br /><br /><br />
     </div>
-        <div id="footer" class="container-fluid" style="background-color:#708090; color: white">
+        <div id="footer" class="container" style="background-color:#708090; color: white">
             <div class="row">
-                <div class="col-md-4" style="padding-left: 10%">
-                    <h3 style="padding-left: 7%">Quick links</h3>
-                    <ul>
-                        <li style="margin-left:auto; margin-right: auto"><a href="About.aspx" style="color:black">About Us</a></li>
-                         <li><a href="#" style="color:black">Read more about jobs</a></li>
-                         <li><a href="#" style="color:black">Contact us </a></li>
-                    </ul>
+                <div class="col-md-4" style="padding-left: 7%">
+                    <h4 style="padding-left: 1%">About us.</h4>
+                    <p style="color:black">
+                        TEMPJOBS is a site where jobseekers with infomal skills can get emplyment from people who are looking for short term services.
+                    </p>
                 </div>
-                <div class="col-md-4" style="padding-left: 10%">
-                    <h3 style="padding-left: 7%">Employer</h3>
-                    <ul>
-                        <li><a href="#" style="color:black">Post a job</a></li>
-                         <li><a href="ViewJobs.aspx" style="color:black">Job seekers</a></li>
+                <div class="col-md-4" style="padding-left: 7%">
+                    <h4 style="padding-left: 8%">Contact Information.</h4>
+                  
+                    <ul style="color:black">
+                        <li>Email: TEMPJOBS.gmail.com</li>
+                        <li>011 787 8787</li>
                     </ul>
-                </div>
-                <div class="col-md-4" style="padding-left: 10%">
-                <h3 style="padding-left: 7%">Job seeker</h3>
-                    <ul>
-                        <li><a href="#" style="color:black">View jobs</a></li>
-                         <li><a href="UsersDetailsPage" style="color:black">View profile</a></li>
-                    </ul>
+                   
                 </div>
              </div>
+            <br />
         </div>
     </form>
 </body>

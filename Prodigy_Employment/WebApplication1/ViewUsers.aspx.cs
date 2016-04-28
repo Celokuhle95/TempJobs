@@ -24,7 +24,7 @@ namespace WebApplication1
               {
         
                     htmlText += "<div class='row' style= padding-top:1%'> ";
-                    htmlText += "<div class ='col-md-6' style='background-color:orange'> ";
+                    htmlText += "<div class ='col-md-6' style='border:groove'> ";
                    
                     if(u.ProfileImage_String == null)
                     {
@@ -38,10 +38,9 @@ namespace WebApplication1
                     }
                   
                     string s = string.Format("<a href='UserDetailsPage.aspx?UserID={0}'>" + u.firstName + "</a></br>", u.Id);
-                    htmlText += "<p><b>first Name : </b><u>"+ s + "</u></p>";
-                    htmlText += "<p><b>Last name: </b>" + u.lastName + "</p>";
-                    htmlText += "<p><b>Email: </b>" + u.Email + "</p>";
-                    htmlText += "<p><b>Contact Number: </b>" + u.contactNumber + "</p>";
+                    htmlText += "<br/><br/><p><b>first Name : </b><u>" + s + "</u></p>";
+                    htmlText += "<p><b>Last Lastname: </b>" + u.lastName + "</p>";
+                    htmlText += "<b>Rating:</b> none";
                     htmlText += "</div>";
                     htmlText += "</div></br>";
                }

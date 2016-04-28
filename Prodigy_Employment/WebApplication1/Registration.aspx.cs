@@ -72,27 +72,6 @@ namespace WebApplication1
                 return;
             }
         }
-
-        protected void TextUsername_TextChanged(object sender, EventArgs e)
-        {
-            bool d, b;
-            string username = txtUsername.Text;
-            string message = "Username already taken";
-            cl.UserNameCheck(username, out d, out b, out message);
-            if (d)
-            {
-                lblUserError.Text = message; //displaying an message
-                lblUserError.Visible = true;
-                isUserName = true;
-                return;
-            }
-            else
-            {
-                isUserName = false;
-            }
-
-        }
-   
         public System.Drawing.Image getImageFromByteArray(byte[] fileBytes)
         {
             using (var ms = new MemoryStream(fileBytes))

@@ -38,6 +38,48 @@ namespace TempJobsWcf
             }
             return jobs;
         }
+
+        public void ApplyForJob(int jobID, int jobseekerID)
+        {
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            JobApp jobApplication = new JobApp();
+
+            jobApplication.JobId = jobID;
+            jobApplication.JobseekerId = jobseekerID;
+            database.JobApps.InsertOnSubmit(jobApplication);
+            database.SubmitChanges();
+        }
+
+        public List<Userdata> getApplications(int EmployerID)
+        {
+            List<Userdata> jobseekers = new List<Userdata>();
+            userDataClassesDataContext database = new userDataClassesDataContext();
+            foreach (Job job in database.Jobs)
+            {
+                if(job.Employer_ID.Equals(EmployerID))
+                {
+                    foreach(JobApp jobApp in database.JobApps)
+                    {
+                        if(job.JobID.Equals(jobApp.JobId))
+                        {
+                             foreach(Userdata jobseeker in database.Userdatas)
+                             {
+                                if(jobApp.JobseekerId.Equals(jobseeker.Id))
+                                {//only store the information we are going to need
+                                    Userdata jSeeker = new Userdata();
+                                    jSeeker.firstName = jobseeker.firstName;
+                                    jSeeker.lastName = jobseeker.lastName;
+                                    jSeeker.contactNumber = jobseeker.contactNumber;
+                                    jSeeker.ProfileImage_String = jobseeker.ProfileImage_String;
+                                    jobseekers.Add(jSeeker);
+                                }
+                             }
+                        }
+                    }
+                }
+            }
+            return jobseekers;
+        }
         //add more functions relating to job management
     }
 

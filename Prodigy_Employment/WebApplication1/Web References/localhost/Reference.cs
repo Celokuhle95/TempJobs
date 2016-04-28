@@ -29,15 +29,11 @@ namespace WebApplication1.localhost {
     [System.Web.Services.WebServiceBindingAttribute(Name="BasicHttpBinding_IService1", Namespace="http://tempuri.org/")]
     public partial class Service1 : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
-        private System.Threading.SendOrPostCallback GetDataOperationCompleted;
+        private System.Threading.SendOrPostCallback GetDataUsingDataContractOperationCompleted;
         
         private System.Threading.SendOrPostCallback RegistrationDatabaseOperationCompleted;
         
         private System.Threading.SendOrPostCallback LgnUserOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback UserNameCheckOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetDataUsingDataContractOperationCompleted;
         
         private System.Threading.SendOrPostCallback ReadEmployeesOperationCompleted;
         
@@ -52,6 +48,14 @@ namespace WebApplication1.localhost {
         private System.Threading.SendOrPostCallback PostJobOperationCompleted;
         
         private System.Threading.SendOrPostCallback ListOfJobsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ChangePasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ApplyForJobOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getApplicationsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RegistrationDatabaseUpdateOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -92,19 +96,13 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
-        public event GetDataCompletedEventHandler GetDataCompleted;
+        public event GetDataUsingDataContractCompletedEventHandler GetDataUsingDataContractCompleted;
         
         /// <remarks/>
         public event RegistrationDatabaseCompletedEventHandler RegistrationDatabaseCompleted;
         
         /// <remarks/>
         public event LgnUserCompletedEventHandler LgnUserCompleted;
-        
-        /// <remarks/>
-        public event UserNameCheckCompletedEventHandler UserNameCheckCompleted;
-        
-        /// <remarks/>
-        public event GetDataUsingDataContractCompletedEventHandler GetDataUsingDataContractCompleted;
         
         /// <remarks/>
         public event ReadEmployeesCompletedEventHandler ReadEmployeesCompleted;
@@ -128,34 +126,44 @@ namespace WebApplication1.localhost {
         public event ListOfJobsCompletedEventHandler ListOfJobsCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public event ChangePasswordCompletedEventHandler ChangePasswordCompleted;
+        
+        /// <remarks/>
+        public event ApplyForJobCompletedEventHandler ApplyForJobCompleted;
+        
+        /// <remarks/>
+        public event getApplicationsCompletedEventHandler getApplicationsCompleted;
+        
+        /// <remarks/>
+        public event RegistrationDatabaseUpdateCompletedEventHandler RegistrationDatabaseUpdateCompleted;
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetDataUsingDataContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string GetData(int value, [System.Xml.Serialization.XmlIgnoreAttribute()] bool valueSpecified) {
-            object[] results = this.Invoke("GetData", new object[] {
-                        value,
-                        valueSpecified});
-            return ((string)(results[0]));
+        public CompositeType GetDataUsingDataContract([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] CompositeType composite) {
+            object[] results = this.Invoke("GetDataUsingDataContract", new object[] {
+                        composite});
+            return ((CompositeType)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDataAsync(int value, bool valueSpecified) {
-            this.GetDataAsync(value, valueSpecified, null);
+        public void GetDataUsingDataContractAsync(CompositeType composite) {
+            this.GetDataUsingDataContractAsync(composite, null);
         }
         
         /// <remarks/>
-        public void GetDataAsync(int value, bool valueSpecified, object userState) {
-            if ((this.GetDataOperationCompleted == null)) {
-                this.GetDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDataOperationCompleted);
+        public void GetDataUsingDataContractAsync(CompositeType composite, object userState) {
+            if ((this.GetDataUsingDataContractOperationCompleted == null)) {
+                this.GetDataUsingDataContractOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDataUsingDataContractOperationCompleted);
             }
-            this.InvokeAsync("GetData", new object[] {
-                        value,
-                        valueSpecified}, this.GetDataOperationCompleted, userState);
+            this.InvokeAsync("GetDataUsingDataContract", new object[] {
+                        composite}, this.GetDataUsingDataContractOperationCompleted, userState);
         }
         
-        private void OnGetDataOperationCompleted(object arg) {
-            if ((this.GetDataCompleted != null)) {
+        private void OnGetDataUsingDataContractOperationCompleted(object arg) {
+            if ((this.GetDataUsingDataContractCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetDataCompleted(this, new GetDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetDataUsingDataContractCompleted(this, new GetDataUsingDataContractCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -209,15 +217,14 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/LgnUser", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void LgnUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out bool LgnUserResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool LgnUserResultSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string message, out int id, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool idSpecified) {
+        public void LgnUser([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out int userID, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool userIDSpecified, out bool canLogin, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool canLoginSpecified) {
             object[] results = this.Invoke("LgnUser", new object[] {
                         username,
                         password});
-            LgnUserResult = ((bool)(results[0]));
-            LgnUserResultSpecified = ((bool)(results[1]));
-            message = ((string)(results[2]));
-            id = ((int)(results[3]));
-            idSpecified = ((bool)(results[4]));
+            userID = ((int)(results[0]));
+            userIDSpecified = ((bool)(results[1]));
+            canLogin = ((bool)(results[2]));
+            canLoginSpecified = ((bool)(results[3]));
         }
         
         /// <remarks/>
@@ -239,67 +246,6 @@ namespace WebApplication1.localhost {
             if ((this.LgnUserCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.LgnUserCompleted(this, new LgnUserCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/UserNameCheck", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void UserNameCheck([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string UserName, out bool UserNameCheckResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool UserNameCheckResultSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] out string message) {
-            object[] results = this.Invoke("UserNameCheck", new object[] {
-                        UserName});
-            UserNameCheckResult = ((bool)(results[0]));
-            UserNameCheckResultSpecified = ((bool)(results[1]));
-            message = ((string)(results[2]));
-        }
-        
-        /// <remarks/>
-        public void UserNameCheckAsync(string UserName) {
-            this.UserNameCheckAsync(UserName, null);
-        }
-        
-        /// <remarks/>
-        public void UserNameCheckAsync(string UserName, object userState) {
-            if ((this.UserNameCheckOperationCompleted == null)) {
-                this.UserNameCheckOperationCompleted = new System.Threading.SendOrPostCallback(this.OnUserNameCheckOperationCompleted);
-            }
-            this.InvokeAsync("UserNameCheck", new object[] {
-                        UserName}, this.UserNameCheckOperationCompleted, userState);
-        }
-        
-        private void OnUserNameCheckOperationCompleted(object arg) {
-            if ((this.UserNameCheckCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.UserNameCheckCompleted(this, new UserNameCheckCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetDataUsingDataContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public CompositeType GetDataUsingDataContract([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] CompositeType composite) {
-            object[] results = this.Invoke("GetDataUsingDataContract", new object[] {
-                        composite});
-            return ((CompositeType)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetDataUsingDataContractAsync(CompositeType composite) {
-            this.GetDataUsingDataContractAsync(composite, null);
-        }
-        
-        /// <remarks/>
-        public void GetDataUsingDataContractAsync(CompositeType composite, object userState) {
-            if ((this.GetDataUsingDataContractOperationCompleted == null)) {
-                this.GetDataUsingDataContractOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDataUsingDataContractOperationCompleted);
-            }
-            this.InvokeAsync("GetDataUsingDataContract", new object[] {
-                        composite}, this.GetDataUsingDataContractOperationCompleted, userState);
-        }
-        
-        private void OnGetDataUsingDataContractOperationCompleted(object arg) {
-            if ((this.GetDataUsingDataContractCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetDataUsingDataContractCompleted(this, new GetDataUsingDataContractCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -529,6 +475,157 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/ChangePassword", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ChangePassword([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string username, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string password, out bool success, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool successSpecified) {
+            object[] results = this.Invoke("ChangePassword", new object[] {
+                        username,
+                        password});
+            success = ((bool)(results[0]));
+            successSpecified = ((bool)(results[1]));
+        }
+        
+        /// <remarks/>
+        public void ChangePasswordAsync(string username, string password) {
+            this.ChangePasswordAsync(username, password, null);
+        }
+        
+        /// <remarks/>
+        public void ChangePasswordAsync(string username, string password, object userState) {
+            if ((this.ChangePasswordOperationCompleted == null)) {
+                this.ChangePasswordOperationCompleted = new System.Threading.SendOrPostCallback(this.OnChangePasswordOperationCompleted);
+            }
+            this.InvokeAsync("ChangePassword", new object[] {
+                        username,
+                        password}, this.ChangePasswordOperationCompleted, userState);
+        }
+        
+        private void OnChangePasswordOperationCompleted(object arg) {
+            if ((this.ChangePasswordCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ChangePasswordCompleted(this, new ChangePasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/ApplyForJob", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ApplyForJob(int jobID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool jobIDSpecified, int jobseekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool jobseekerIDSpecified) {
+            this.Invoke("ApplyForJob", new object[] {
+                        jobID,
+                        jobIDSpecified,
+                        jobseekerID,
+                        jobseekerIDSpecified});
+        }
+        
+        /// <remarks/>
+        public void ApplyForJobAsync(int jobID, bool jobIDSpecified, int jobseekerID, bool jobseekerIDSpecified) {
+            this.ApplyForJobAsync(jobID, jobIDSpecified, jobseekerID, jobseekerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void ApplyForJobAsync(int jobID, bool jobIDSpecified, int jobseekerID, bool jobseekerIDSpecified, object userState) {
+            if ((this.ApplyForJobOperationCompleted == null)) {
+                this.ApplyForJobOperationCompleted = new System.Threading.SendOrPostCallback(this.OnApplyForJobOperationCompleted);
+            }
+            this.InvokeAsync("ApplyForJob", new object[] {
+                        jobID,
+                        jobIDSpecified,
+                        jobseekerID,
+                        jobseekerIDSpecified}, this.ApplyForJobOperationCompleted, userState);
+        }
+        
+        private void OnApplyForJobOperationCompleted(object arg) {
+            if ((this.ApplyForJobCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ApplyForJobCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/getApplications", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public Userdata[] getApplications(int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
+            object[] results = this.Invoke("getApplications", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified});
+            return ((Userdata[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getApplicationsAsync(int EmployerID, bool EmployerIDSpecified) {
+            this.getApplicationsAsync(EmployerID, EmployerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void getApplicationsAsync(int EmployerID, bool EmployerIDSpecified, object userState) {
+            if ((this.getApplicationsOperationCompleted == null)) {
+                this.getApplicationsOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetApplicationsOperationCompleted);
+            }
+            this.InvokeAsync("getApplications", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified}, this.getApplicationsOperationCompleted, userState);
+        }
+        
+        private void OngetApplicationsOperationCompleted(object arg) {
+            if ((this.getApplicationsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getApplicationsCompleted(this, new getApplicationsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/RegistrationDatabaseUpdate", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RegistrationDatabaseUpdate(int id, [System.Xml.Serialization.XmlIgnoreAttribute()] bool idSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string userName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string firstName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string lastName, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string address, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Email, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string cantactNumbers, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string altanativeNumber, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string profileImage_string, int age, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ageSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string gender) {
+            this.Invoke("RegistrationDatabaseUpdate", new object[] {
+                        id,
+                        idSpecified,
+                        userName,
+                        firstName,
+                        lastName,
+                        address,
+                        Email,
+                        cantactNumbers,
+                        altanativeNumber,
+                        profileImage_string,
+                        age,
+                        ageSpecified,
+                        gender});
+        }
+        
+        /// <remarks/>
+        public void RegistrationDatabaseUpdateAsync(int id, bool idSpecified, string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string profileImage_string, int age, bool ageSpecified, string gender) {
+            this.RegistrationDatabaseUpdateAsync(id, idSpecified, userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber, profileImage_string, age, ageSpecified, gender, null);
+        }
+        
+        /// <remarks/>
+        public void RegistrationDatabaseUpdateAsync(int id, bool idSpecified, string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string profileImage_string, int age, bool ageSpecified, string gender, object userState) {
+            if ((this.RegistrationDatabaseUpdateOperationCompleted == null)) {
+                this.RegistrationDatabaseUpdateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistrationDatabaseUpdateOperationCompleted);
+            }
+            this.InvokeAsync("RegistrationDatabaseUpdate", new object[] {
+                        id,
+                        idSpecified,
+                        userName,
+                        firstName,
+                        lastName,
+                        address,
+                        Email,
+                        cantactNumbers,
+                        altanativeNumber,
+                        profileImage_string,
+                        age,
+                        ageSpecified,
+                        gender}, this.RegistrationDatabaseUpdateOperationCompleted, userState);
+        }
+        
+        private void OnRegistrationDatabaseUpdateOperationCompleted(object arg) {
+            if ((this.RegistrationDatabaseUpdateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RegistrationDatabaseUpdateCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -647,6 +744,8 @@ namespace WebApplication1.localhost {
         
         private bool employer_IDFieldSpecified;
         
+        private JobApp[] jobAppsField;
+        
         private int jobIDField;
         
         private bool jobIDFieldSpecified;
@@ -713,6 +812,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.employer_IDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        public JobApp[] JobApps {
+            get {
+                return this.jobAppsField;
+            }
+            set {
+                this.jobAppsField = value;
             }
         }
         
@@ -799,6 +909,118 @@ namespace WebApplication1.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+    public partial class JobApp {
+        
+        private int applicationIDField;
+        
+        private bool applicationIDFieldSpecified;
+        
+        private Job jobField;
+        
+        private System.Nullable<int> jobIdField;
+        
+        private bool jobIdFieldSpecified;
+        
+        private System.Nullable<int> jobseekerIdField;
+        
+        private bool jobseekerIdFieldSpecified;
+        
+        private Userdata userdataField;
+        
+        /// <remarks/>
+        public int ApplicationID {
+            get {
+                return this.applicationIDField;
+            }
+            set {
+                this.applicationIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ApplicationIDSpecified {
+            get {
+                return this.applicationIDFieldSpecified;
+            }
+            set {
+                this.applicationIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Job Job {
+            get {
+                return this.jobField;
+            }
+            set {
+                this.jobField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> JobId {
+            get {
+                return this.jobIdField;
+            }
+            set {
+                this.jobIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobIdSpecified {
+            get {
+                return this.jobIdFieldSpecified;
+            }
+            set {
+                this.jobIdFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> JobseekerId {
+            get {
+                return this.jobseekerIdField;
+            }
+            set {
+                this.jobseekerIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobseekerIdSpecified {
+            get {
+                return this.jobseekerIdFieldSpecified;
+            }
+            set {
+                this.jobseekerIdFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Userdata Userdata {
+            get {
+                return this.userdataField;
+            }
+            set {
+                this.userdataField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
     public partial class Userdata {
         
         private string emailField;
@@ -808,6 +1030,8 @@ namespace WebApplication1.localhost {
         private bool idFieldSpecified;
         
         private InformalSkill[] informalSkillsField;
+        
+        private JobApp[] jobAppsField;
         
         private Job[] jobsField;
         
@@ -871,6 +1095,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.informalSkillsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        public JobApp[] JobApps {
+            get {
+                return this.jobAppsField;
+            }
+            set {
+                this.jobAppsField = value;
             }
         }
         
@@ -1084,26 +1319,26 @@ namespace WebApplication1.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetDataCompletedEventHandler(object sender, GetDataCompletedEventArgs e);
+    public delegate void GetDataUsingDataContractCompletedEventHandler(object sender, GetDataUsingDataContractCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetDataCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetDataUsingDataContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetDataCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetDataUsingDataContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public string Result {
+        public CompositeType Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((CompositeType)(this.results[0]));
             }
         }
     }
@@ -1130,15 +1365,15 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
-        public bool LgnUserResult {
+        public int userID {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
         
         /// <remarks/>
-        public bool LgnUserResultSpecified {
+        public bool userIDSpecified {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[1]));
@@ -1146,94 +1381,18 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
-        public string message {
+        public bool canLogin {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[2]));
+                return ((bool)(this.results[2]));
             }
         }
         
         /// <remarks/>
-        public int id {
+        public bool canLoginSpecified {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[3]));
-            }
-        }
-        
-        /// <remarks/>
-        public bool idSpecified {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[4]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void UserNameCheckCompletedEventHandler(object sender, UserNameCheckCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class UserNameCheckCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal UserNameCheckCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public bool UserNameCheckResult {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public bool UserNameCheckResultSpecified {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[1]));
-            }
-        }
-        
-        /// <remarks/>
-        public string message {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[2]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void GetDataUsingDataContractCompletedEventHandler(object sender, GetDataUsingDataContractCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetDataUsingDataContractCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetDataUsingDataContractCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public CompositeType Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((CompositeType)(this.results[0]));
+                return ((bool)(this.results[3]));
             }
         }
     }
@@ -1375,6 +1534,74 @@ namespace WebApplication1.localhost {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ChangePasswordCompletedEventHandler(object sender, ChangePasswordCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ChangePasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ChangePasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool success {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool successSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void ApplyForJobCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void getApplicationsCompletedEventHandler(object sender, getApplicationsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getApplicationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getApplicationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Userdata[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Userdata[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void RegistrationDatabaseUpdateCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

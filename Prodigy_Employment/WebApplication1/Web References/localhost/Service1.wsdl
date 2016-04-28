@@ -8,11 +8,11 @@
       <xsd:import schemaLocation="http://localhost:1546/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
+  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_RegistrationDatabase_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrationDatabase" />
@@ -25,18 +25,6 @@
   </wsdl:message>
   <wsdl:message name="IService1_LgnUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:LgnUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UserNameCheck_InputMessage">
-    <wsdl:part name="parameters" element="tns:UserNameCheck" />
-  </wsdl:message>
-  <wsdl:message name="IService1_UserNameCheck_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UserNameCheckResponse" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetDataUsingDataContract_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_ReadEmployees_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadEmployees" />
@@ -80,10 +68,34 @@
   <wsdl:message name="IService1_ListOfJobs_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListOfJobsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ChangePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ApplyForJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyForJob" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ApplyForJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApplyForJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:getApplications" />
+  </wsdl:message>
+  <wsdl:message name="IService1_getApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegistrationDatabaseUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationDatabaseUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IService1_RegistrationDatabaseUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrationDatabaseUpdateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RegistrationDatabase">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegistrationDatabase" message="tns:IService1_RegistrationDatabase_InputMessage" />
@@ -92,14 +104,6 @@
     <wsdl:operation name="LgnUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/LgnUser" message="tns:IService1_LgnUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/LgnUserResponse" message="tns:IService1_LgnUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UserNameCheck">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UserNameCheck" message="tns:IService1_UserNameCheck_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UserNameCheckResponse" message="tns:IService1_UserNameCheck_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReadEmployees">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReadEmployees" message="tns:IService1_ReadEmployees_InputMessage" />
@@ -129,11 +133,27 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListOfJobs" message="tns:IService1_ListOfJobs_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListOfJobsResponse" message="tns:IService1_ListOfJobs_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangePassword" message="tns:IService1_ChangePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangePasswordResponse" message="tns:IService1_ChangePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ApplyForJob" message="tns:IService1_ApplyForJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ApplyForJobResponse" message="tns:IService1_ApplyForJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/getApplications" message="tns:IService1_getApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/getApplicationsResponse" message="tns:IService1_getApplications_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationDatabaseUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/RegistrationDatabaseUpdate" message="tns:IService1_RegistrationDatabaseUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/RegistrationDatabaseUpdateResponse" message="tns:IService1_RegistrationDatabaseUpdate_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -152,24 +172,6 @@
     </wsdl:operation>
     <wsdl:operation name="LgnUser">
       <soap:operation soapAction="http://tempuri.org/IService1/LgnUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UserNameCheck">
-      <soap:operation soapAction="http://tempuri.org/IService1/UserNameCheck" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDataUsingDataContract">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -233,6 +235,42 @@
     </wsdl:operation>
     <wsdl:operation name="ListOfJobs">
       <soap:operation soapAction="http://tempuri.org/IService1/ListOfJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangePassword">
+      <soap:operation soapAction="http://tempuri.org/IService1/ChangePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApplyForJob">
+      <soap:operation soapAction="http://tempuri.org/IService1/ApplyForJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getApplications">
+      <soap:operation soapAction="http://tempuri.org/IService1/getApplications" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrationDatabaseUpdate">
+      <soap:operation soapAction="http://tempuri.org/IService1/RegistrationDatabaseUpdate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

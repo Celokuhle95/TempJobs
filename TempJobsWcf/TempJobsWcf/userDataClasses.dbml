@@ -23,6 +23,7 @@
       <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Userdata_InformalSkill" Member="InformalSkills" ThisKey="Id" OtherKey="UserData_ID" Type="InformalSkill" />
       <Association Name="Userdata_Job" Member="Jobs" ThisKey="Id" OtherKey="Employer_ID" Type="Job" />
+      <Association Name="Userdata_JobApp" Member="JobApps" ThisKey="Id" OtherKey="JobseekerId" Type="JobApp" />
     </Type>
   </Table>
   <Table Name="dbo.Job" Member="Jobs">
@@ -34,7 +35,17 @@
       <Column Name="Location" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="Reward" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="Employer_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Job_JobApp" Member="JobApps" ThisKey="JobID" OtherKey="JobId" Type="JobApp" />
       <Association Name="Userdata_Job" Member="Userdata" ThisKey="Employer_ID" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobApp" Member="JobApps">
+    <Type Name="JobApp">
+      <Column Name="ApplicationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="JobId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobseekerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Job_JobApp" Member="Job" ThisKey="JobId" OtherKey="JobID" Type="Job" IsForeignKey="true" />
+      <Association Name="Userdata_JobApp" Member="Userdata" ThisKey="JobseekerId" OtherKey="Id" Type="Userdata" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

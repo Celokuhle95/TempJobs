@@ -59,13 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="ChangePassword.aspx" />
+    <Content Include="ConfirmJobApplication.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="EditProfile.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Home.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="Images\bricklayering.jpg" />
     <Content Include="Images\cuttinggrass.jpg" />
@@ -83,6 +84,7 @@
     <Content Include="Images\logo.png" />
     <Content Include="Logout.aspx" />
     <Content Include="PostJob.aspx" />
+    <Content Include="Profile.aspx" />
     <Content Include="Registration.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -97,6 +99,7 @@
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="ViewJobApplications.aspx" />
     <Content Include="ViewJobs.aspx" />
     <Content Include="ViewUsers.aspx" />
     <Content Include="Web References\localhost\CompositeType.datasource">
@@ -133,19 +136,26 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmJobApplication.aspx.cs">
+      <DependentUpon>ConfirmJobApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmJobApplication.aspx.designer.cs">
+      <DependentUpon>ConfirmJobApplication.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
@@ -175,6 +185,13 @@
     <Compile Include="PostJob.aspx.designer.cs">
       <DependentUpon>PostJob.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -195,6 +212,13 @@
     </Compile>
     <Compile Include="TempJobs.Master.designer.cs">
       <DependentUpon>TempJobs.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewJobApplications.aspx.cs">
+      <DependentUpon>ViewJobApplications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewJobApplications.aspx.designer.cs">
+      <DependentUpon>ViewJobApplications.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewJobs.aspx.cs">
       <DependentUpon>ViewJobs.aspx</DependentUpon>
