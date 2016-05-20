@@ -12,7 +12,7 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["id"] = null;
-            Response.Redirect("Homepage.aspx");
+            Response.Redirect("home.aspx");
         }
     }
 }

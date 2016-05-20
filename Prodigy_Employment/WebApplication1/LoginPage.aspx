@@ -20,12 +20,12 @@
             </div>
             <br />
             <div class="row" >
-                <asp:Button ID="btnLogin" class="btn btn-success" runat="server" Text="Login" Width="50%" OnClick="btnLogin_Click" />
+                <asp:Button ID="btnLogin" class="btn btn-primary btn-xl" runat="server" Text="Login" OnClick="btnLogin_Click" />
                 <asp:Label ID="lblErr" runat="server" ForeColor="Red"></asp:Label>               
             </div> 
             <br />
             <div class="row">
-                <a href="ChangePassword.aspx">forgot you password.</a>
+                <a href="ChangePassword.aspx" style="color:black">forgot you password.</a>
             </div>  
             <br />     
         </div>

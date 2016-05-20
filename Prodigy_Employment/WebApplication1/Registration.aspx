@@ -113,7 +113,7 @@
                 <br/> 
                 <div class="row">
                     <div class="col-md-4">
-                        <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-success" Width="100%" Height="50" OnClick="btnRegister_Click" />
+                        <asp:Button ID="btnRegister" runat="server" Text="Register" class="btn btn-primary btn-xl" OnClick="btnRegister_Click" />
                         </div>
                          <div class="col-md-7">
                                             <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="false"></asp:Label>

@@ -67,6 +67,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="EditProfile.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="header.jpg" />
+    <Content Include="home.aspx" />
     <Content Include="Homepage.aspx" />
     <Content Include="Images\bricklayering.jpg" />
     <Content Include="Images\cuttinggrass.jpg" />
@@ -156,6 +158,13 @@
     </Compile>
     <Compile Include="EditProfile.aspx.designer.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Homepage.aspx.cs">
       <DependentUpon>Homepage.aspx</DependentUpon>
@@ -296,6 +305,13 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>WebApplication1_localhost_Service1</CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="font-awesome\" />
+    <Folder Include="img\" />
+    <Folder Include="js\" />
+    <Folder Include="less\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

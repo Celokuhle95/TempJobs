@@ -22,7 +22,7 @@
             </div>
             <br />
             <div class ="row">
-                <asp:Button ID="btnChangePassword" CssClass="btn btn-success" runat="server" Text="Change Password" OnClick="btnChangePassword_Click" />
+                <asp:Button ID="btnChangePassword" class="btn btn-primary btn-xl" runat="server" Text="Change Password" OnClick="btnChangePassword_Click" />
                   <asp:Label ID="lblError" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             </div>
             <br />

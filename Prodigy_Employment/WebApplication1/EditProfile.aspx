@@ -86,7 +86,7 @@
                                 </asp:DropDownList>
                  </td></tr>
                  <tr><td>
-                         <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary" OnClick="btnStoreDetails_Click"/>
+                         <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary btn-xl" OnClick="btnStoreDetails_Click"/>
                      </td>
                 </tr>
              </tbody>

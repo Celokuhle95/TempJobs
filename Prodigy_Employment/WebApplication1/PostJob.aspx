@@ -58,7 +58,7 @@
             <br />
 
             <div class ="row">
-                <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-success" Width="50%" OnClick="btnUpload_Click" />
+                <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-primary btn-xl" OnClick="btnUpload_Click" />
             </div>
             <br />
         </div>

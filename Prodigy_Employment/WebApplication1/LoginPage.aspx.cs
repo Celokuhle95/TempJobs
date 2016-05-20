@@ -38,7 +38,7 @@ namespace WebApplication1
                 {
                     Session.Add("UserType", "JobSeeker");
                 }
-                Response.Redirect("Homepage.aspx");
+                Response.Redirect("home.aspx");
             }
             else
             {
