@@ -16,7 +16,7 @@ namespace WebApplication1
 
         protected void btnChangePassword_Click(object sender, EventArgs e)
         {   
-            localhost.Service1 localhost = new localhost.Service1();
+            localhost1.Service1 localhost = new localhost1.Service1();
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string cPassword = txtConfirmPassword.Text;
@@ -28,11 +28,20 @@ namespace WebApplication1
             }else
             {
                 bool passwordChangeSuccessful,a;
-                localhost.ChangePassword(username, Secrecy.HashPassword(password), out passwordChangeSuccessful, out a);
+                localhost.ChangeEmployerPassword(username, Secrecy.HashPassword(password), out passwordChangeSuccessful, out a);
                 if(!passwordChangeSuccessful)
                 {
-                    lblError.Text = "Make sure you enter the correct username";
-                    lblError.Visible = true;
+                    localhost.ChangeJobSeekerPassword(username, Secrecy.HashPassword(password), out passwordChangeSuccessful, out a);
+                    if (!passwordChangeSuccessful)
+                    {
+                        lblError.Text = "Make sure you enter the correct username";
+                        lblError.Visible = true;
+
+                    }
+                    else
+                    {
+                        Response.Redirect("LoginPage.aspx");
+                    }                   
                 }
                 else
                 {

@@ -15,19 +15,18 @@ namespace WebApplication1
         string profileImge;
         
         string htmlText = "";
-        localhost.Service1 lc = new localhost.Service1();
+        localhost1.Service1 lc = new localhost1.Service1();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["id"] != null)
+                if (Session["UserID"] != null)
                 {
-                    foreach (var history in lc.ReadEmployees())
+                    foreach (var history in lc.AllJobseekers())
                     {
-                        if (history.Id == Convert.ToInt32(Session["id"]))
+                        if (history.JobSeekerID == Convert.ToInt32(Session["UserID"]))
                         {
-                            if (history.authinticationLevel.Equals(1))
-                                btnmore.Visible = false;
+                         
                             //if (history.Gender == null)
                             //    drpGender.SelectedValue = "2";
                             //else
@@ -37,14 +36,13 @@ namespace WebApplication1
                             //    if (history.Gender.Equals("M"))
                             //        drpGender.SelectedValue = "0";
                             //}
-                            txtFirstName.Text = history.firstName;
-                            txtLastName.Text = history.lastName;
-                            txtResAddress.Text = history.address;
-                            txtCellphone.Text = history.contactNumber;
+                            txtFirstName.Text = history.FirstName;
+                            txtLastName.Text = history.LastName;
+                            txtResAddress.Text = history.ResidentialAddress;
+                            txtCellphone.Text = history.ContactNumber;
                            // txtAge.Text = history.Age.ToString();
-                            txtTelephone.Text = history.alternativeNumber;
-                            txtUsername.Text = history.Username;
-                            txtEmail.Text = history.Email;
+                            txtTelephone.Text = history.AlternativeContactNumber;
+                            txtUsername.Text = history.EmailAddress;
                             profileImge = history.ProfileImage_String;
 
                            
@@ -88,10 +86,14 @@ namespace WebApplication1
             if (Session["id"] != null)
             {
                 if (profImage_string == "")
-                    lc.RegistrationDatabaseUpdate(Convert.ToInt32(Session["id"]), true, txtUsername.Text, txtFirstName.Text, txtLastName.Text, txtResAddress.Text, txtEmail.Text, txtCellphone.Text, txtTelephone.Text, profileImge, Convert.ToInt32(txtAge.Text), true, Gender);
+                {
+                    //lc.RegistrationDatabaseUpdate(Convert.ToInt32(Session["id"]), true, txtUsername.Text, txtFirstName.Text, txtLastName.Text, txtResAddress.Text, txtEmail.Text, txtCellphone.Text, txtTelephone.Text, profileImge, Convert.ToInt32(txtAge.Text), true, Gender);
+                }
                 else
-                lc.RegistrationDatabaseUpdate(Convert.ToInt32(Session["id"]), true, txtUsername.Text, txtFirstName.Text, txtLastName.Text, txtResAddress.Text, txtEmail.Text, txtCellphone.Text, txtTelephone.Text, profImage_string,Convert.ToInt32(txtAge.Text),true,Gender);
-                Response.Redirect("profileEmployment.aspx");
+                {
+                    //lc.RegistrationDatabaseUpdate(Convert.ToInt32(Session["id"]), true, txtUsername.Text, txtFirstName.Text, txtLastName.Text, txtResAddress.Text, txtEmail.Text, txtCellphone.Text, txtTelephone.Text, profImage_string,Convert.ToInt32(txtAge.Text),true,Gender);
+                    Response.Redirect("profileEmployment.aspx");
+                }
             }
             else
                 Response.Redirect("LoginPage.aspx");

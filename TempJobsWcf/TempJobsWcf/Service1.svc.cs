@@ -14,58 +14,106 @@ namespace TempJobsWcf
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-       
-        public void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage_string)
+       //Register
+        public void RegisterEmployer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
-            UserManager user = new UserManager();
-            user.Register(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber, password, authenticationLevel, profileImage_string);
+            UserManager employer = new UserManager();
+            employer.RegisterEmployer(FirstName, LastName, EmailAddress, Password, ContactNumber, AlternativeContactNumber, ResidentialAddress, ProfileImage);
         }
 
-        public void LgnUser(string username, string password, out int userID,out bool canLogin)
+        public void RegisterJobSeeker(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
-            UserManager user = new UserManager();
-            canLogin = user.Login(username, password, out userID);
+            UserManager JobSeeker = new UserManager();
+            JobSeeker.RegisterJobSeeker(FirstName, LastName, EmailAddress, Password, ContactNumber, AlternativeContactNumber, ResidentialAddress, ProfileImage);
         }
-        public List<Userdata> ReadEmployees()
+        //Login
+        public void LoginEmployer(string EmailAddress, string Password, out int EmployerID, out bool CanLogin)
         {
-            UserManager users = new UserManager();
-            return users.ReadEmployees();
-        }
-
-        public Userdata SingleUserDetails(int ID)
-        {
-            UserManager user = new UserManager();
-            return user.SingleUserDetails(ID);
+            UserManager employer  = new UserManager();
+            CanLogin = employer.LoginEmployer(EmailAddress, Password, out EmployerID);
         }
 
-        public void StoreSkills(string Name, int UserID)// save the skills of all the workers 
+        public void LoginJobSeeker(string EmailAddress, string Password, out int JobSeekerID, out bool CanLogin)
+        {
+            UserManager jobSeeker = new UserManager();
+            CanLogin = jobSeeker.LoginJobSeeker(EmailAddress, Password, out JobSeekerID);
+        }
+
+        public void LoginAdmin(string EmailAddress, string Password, out int AdminID, out bool CanLogin)
+        {
+            UserManager admin = new UserManager();
+            CanLogin = admin.LoginAdmin(EmailAddress, Password, out AdminID);
+        }
+
+        //Read data
+        public List<JobSeeker> AllJobseekers()
+        {
+            UserManager JobSeekers = new UserManager();
+            return JobSeekers.AllJobseekers();
+        }
+
+        public JobSeeker SingleJobseeker(int JobSeekerID)
+        {
+            UserManager js = new UserManager();
+            return js.SingleJobseeker(JobSeekerID);
+        }
+
+        public Employer SingleEmployer(int EmployerID)
+        {
+            UserManager employer = new UserManager();
+            return employer.SingleEmployer(EmployerID);
+        }
+
+        //Delete Users
+        public void DeleteEmployer(int EmployerID)
+        {
+            UserManager toDelete = new UserManager();
+            toDelete.DeleteEmployer(EmployerID);
+        }
+
+        public void DeleteJobSeeker(int JobSeekerID)
+        {
+            UserManager toDelete = new UserManager();
+            toDelete.DeleteJobSeeker(JobSeekerID);
+        }
+
+        //change password
+        public void ChangeJobSeekerPassword(string EmailAddress, string Password, out bool success)
+        {
+            UserManager js = new UserManager();
+            js.ChangeJobSeekerPassword(EmailAddress, Password, out success);
+        }
+
+        public void ChangeEmployerPassword(string EmailAddresss, string Password, out bool success)
+        {
+            UserManager employer = new UserManager();
+            employer.ChangeEmployerPassword(EmailAddresss, Password, out success);
+        }
+
+        //Jobseekers skills
+        public void StoreSkills(string Name, int SkillLevel, int JobSeekerID)// save the skills of all the workers 
         {
             SkillsManager skills = new SkillsManager();
-            skills.StoreSkills(Name, UserID);
+            skills.StoreSkills(Name, SkillLevel, JobSeekerID);
         }
 
-        public List<InformalSkill> ReadSkills()
+        public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
             SkillsManager skills = new SkillsManager();
-            return skills.ReadSkills();
+            return skills.ReadSkills(JobSeekerID);
         }
 
-        public void PostJob(string name, string description, int duration_hours, string location, double reward, int employerID)
+        //Jobs
+        public void PostJob(string Name, string Description, int NumberOfDaysRequired, int StartTime, int EndTime, string Location, double ToBePaid, int EmployerID)
         {
             JobManager job = new JobManager();
-            job.post(name, description, duration_hours, location, reward, employerID);
+            job.post(Name, Description, NumberOfDaysRequired, StartTime, EndTime, Location, ToBePaid, EmployerID);
         }
 
-        public List<Job> ListOfJobs()
+        public List<Job> AllJobs()
         {
             JobManager job = new JobManager();
-            return job.ListOfJobs();
-        }
-
-        public void ChangePassword(string username, string password, out bool success)
-        {
-            UserManager user = new UserManager();
-            user.ChangePassword(username, password, out success);
+            return job.AllJobs();
         }
         public void ApplyForJob(int jobID, int jobseekerID)
         {
@@ -73,48 +121,24 @@ namespace TempJobsWcf
             job.ApplyForJob(jobID, jobseekerID);
         }
 
-        public List<Userdata> getApplications(int EmployerID)
+        public List<JobSeeker> getApplicants(int EmployerID)
         {
             JobManager job = new JobManager();
-            return job.getApplications(EmployerID);
+            return job.getApplicants(EmployerID);
         }
-
-        public string ImageToBase64String(System.Drawing.Image image)
+        //Delete Jobs
+        public void DeleteJob(int JobID)
         {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                // Convert Image to byte[]
-                Bitmap bm = new Bitmap(image);//
-                bm.Save(ms, image.RawFormat);
-                byte[] imageBytes = ms.ToArray();
-
-                // Convert byte[] to Base64 String
-                string base64String = Convert.ToBase64String(imageBytes);
-                return base64String;
-            }
+            JobManager toDelete = new JobManager();
+            toDelete.DeleteJob(JobID);
         }
 
-        public void RegistrationDatabaseUpdate(int id, string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string profileImage_string, int age, string gender)
+        public void DeleteJobApplication(int JobApplicationID)
         {
-            try
-            {
-                userDataClassesDataContext db = new userDataClassesDataContext();
-                Userdata user = (from r in db.Userdatas where r.Id == id select r).Single();
-                user.Username = userName;
-                user.firstName = firstName;
-                user.lastName = lastName;
-                user.address = address;
-                user.Email = Email;
-                user.contactNumber = cantactNumbers;
-                user.alternativeNumber = altanativeNumber;
-                user.ProfileImage_String = profileImage_string;
-                db.SubmitChanges();
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+            JobManager toDelete = new JobManager();
+            toDelete.DeleteJobApplication(JobApplicationID);
         }
+
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
@@ -126,6 +150,11 @@ namespace TempJobsWcf
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public string test()
+        {
+            return "you were successful";
         }
     }
 }

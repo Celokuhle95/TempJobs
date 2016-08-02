@@ -7,81 +7,93 @@ namespace TempJobsWcf
 {
     public class JobManager
     {
-        public void post(string name, string description, int duration_hours, string location, double reward, int employerID)
+        public void post(string Name, string Description, int NumberOfDaysRequired, int StartTime, int EndTime, string Location, double ToBePaid, int EmployerID)
         {
             Job newJob = new Job();
-            userDataClassesDataContext database = new userDataClassesDataContext();
-            newJob.Name = name;
-            newJob.Description = description;
-            newJob.Duration_Hours = duration_hours;
-            newJob.Location = location;
-            newJob.Reward = reward;
-            newJob.Employer_ID = employerID;
+
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            newJob.Name = Name;
+            newJob.Description = Description;
+            newJob.NumberOfDays = NumberOfDaysRequired;
+            newJob.StartTime = StartTime;
+            newJob.EndTime = EndTime;
+            newJob.Location = Location;
+            newJob.ToBePaid = ToBePaid;
+            newJob.EmployerID = EmployerID;
             database.Jobs.InsertOnSubmit(newJob);
             database.SubmitChanges();
         }
 
-        public List<Job> ListOfJobs ()
+        public List<Job> AllJobs ()
         {
             List<Job> jobs = new List<Job>();
-            userDataClassesDataContext database = new userDataClassesDataContext();
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
             foreach(var jb in database.Jobs)
             {
                 Job job = new Job();
                 job.Name = jb.Name;
                 job.Description = jb.Description;
-                job.Duration_Hours = jb.Duration_Hours;
+                job.NumberOfDays = jb.NumberOfDays;
+                job.StartTime = jb.StartTime;
+                job.EndTime = jb.EndTime;
                 job.Location = jb.Location;
-                job.Reward = jb.Reward;
-                job.Employer_ID = jb.Employer_ID;
+                job.ToBePaid = jb.ToBePaid;
+                job.EmployerID = jb.EmployerID;
                 jobs.Add(job);
             }
             return jobs;
         }
 
-        public void ApplyForJob(int jobID, int jobseekerID)
+        public void ApplyForJob(int JobID, int JobseekerID)
         {
-            userDataClassesDataContext database = new userDataClassesDataContext();
-            JobApp jobApplication = new JobApp();
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            JobApplication jobApplication = new JobApplication();
 
-            jobApplication.JobId = jobID;
-            jobApplication.JobseekerId = jobseekerID;
-            database.JobApps.InsertOnSubmit(jobApplication);
+            jobApplication.JobID = JobID;
+            jobApplication.JobSeekerID = JobseekerID;
+            database.JobApplications.InsertOnSubmit(jobApplication);
             database.SubmitChanges();
         }
 
-        public List<Userdata> getApplications(int EmployerID)
+        public List<JobSeeker> getApplicants(int EmployerID)
         {
-            List<Userdata> jobseekers = new List<Userdata>();
-            userDataClassesDataContext database = new userDataClassesDataContext();
-            foreach (Job job in database.Jobs)
+            List<JobSeeker> JobSeekers = new List<JobSeeker>();
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            Job jobPosted = (from job in database.Jobs where job.EmployerID.Equals(EmployerID) select job).Single();
+            if (jobPosted != null)
             {
-                if(job.Employer_ID.Equals(EmployerID))
+                foreach (JobApplication jobApp in database.JobApplications)
                 {
-                    foreach(JobApp jobApp in database.JobApps)
+                    if (jobPosted.JobID == jobApp.JobID)
                     {
-                        if(job.JobID.Equals(jobApp.JobId))
-                        {
-                             foreach(Userdata jobseeker in database.Userdatas)
-                             {
-                                if(jobApp.JobseekerId.Equals(jobseeker.Id))
-                                {//only store the information we are going to need
-                                    Userdata jSeeker = new Userdata();
-                                    jSeeker.firstName = jobseeker.firstName;
-                                    jSeeker.lastName = jobseeker.lastName;
-                                    jSeeker.contactNumber = jobseeker.contactNumber;
-                                    jSeeker.ProfileImage_String = jobseeker.ProfileImage_String;
-                                    jobseekers.Add(jSeeker);
-                                }
-                             }
-                        }
+                        JobSeeker jobSeeker = (from js in database.JobSeekers where js.JobSeekerID.Equals(jobApp.JobSeeker) select js).Single();
+                        JobSeekers.Add(jobSeeker);
                     }
-                }
+                }                  
             }
-            return jobseekers;
+            return JobSeekers;
         }
+
+        public void DeleteJob(int JobID)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            Job Job = (from jb in database.Jobs
+                       where jb.JobID == JobID
+                       select jb).Single();
+            database.Jobs.DeleteOnSubmit(Job);
+        }
+
+        public void DeleteJobApplication(int JobApplicationID)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            JobApplication JobApp = (from ja in database.JobApplications
+                       where ja.ApplicationID == JobApplicationID
+                       select ja).Single();
+            database.JobApplications.DeleteOnSubmit(JobApp);
+        }
+      
         //add more functions relating to job management
     }
 
-   
+
 }

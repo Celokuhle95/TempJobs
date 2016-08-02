@@ -12,13 +12,13 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             int EmployerID = (int)Session["id"];
-            localhost.Service1 localhost = new localhost.Service1();
+            localhost1.Service1 localhost = new localhost1.Service1();
 
             string htmlText = "";
-            htmlText += "<h2>People who applied for job</h2> <br/>";
+            htmlText += "<h2>Job  who applied for job</h2> <br/>";
             htmlText += "<hr id='Hr1' style='color: #808080, #C2C2C2'/>";
 
-            foreach (var applicant in localhost.getApplications(EmployerID, true)) 
+            foreach (var applicant in localhost.getApplicants(EmployerID, true)) 
             {
                
                 htmlText += "<div class='row'>";
@@ -26,7 +26,11 @@ namespace WebApplication1
                 htmlText += "<img width='100%' height='100%'alt='image not available' max-height='300px' class='img-circle' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
                 htmlText += "</div>";
                 htmlText += "<div class='row'>";
-                htmlText += "<h3>" + applicant.firstName + " " + applicant.lastName + "</h3>";
+                htmlText += "<h3>" + applicant.FirstName + " " + applicant.LastName + "</h3>";
+                string s = string.Format(" < a href = 'JobSeekerProfile.aspx?JobSeekerID={0}' > View full profile</ a ></ br > ", applicant.JobSeekerID);
+                htmlText += s;
+                string employ = string.Format(" < a href = 'EmployJobSeeker.aspx?JobSeekerID={0}' > here. </a></br> ", applicant.JobSeekerID);
+                htmlText += "If you would like to employ job seeker click " + employ;
                 htmlText += "</div>";
             }
             Applications.InnerHtml = htmlText;

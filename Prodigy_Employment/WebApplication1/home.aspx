@@ -10,7 +10,7 @@
        <meta name="description" content=""/>
        <meta name="author" content=""/>
 
-       <title>Tempjobs</title>
+       <title>InformalJobFind</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
@@ -41,7 +41,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand page-scroll" href="#homepage.aspx">Tempjobs</a>
+					<a class="navbar-brand page-scroll" href="#homepage.aspx">InformalJobFind</a>
 				</div> 
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +51,7 @@
 							<a class="page-scroll" href="About.aspx">About</a>
 						</li>
 						<li id ="lblViewJobseekers" runat="server" visible="false">
-							<a class="page-scroll" href="ViewUsers.aspx">Job seekers</a>
+							<a class="page-scroll" href="ViewUsers.aspx">JobSeekers</a>
 						</li>
 						<li id ="lblPostJob" runat="server" visible="false">
 							<a class="page-scroll" href="PostJob.aspx">Post job</a>
@@ -60,7 +60,7 @@
 							<a class="page-scroll" href="Profile.aspx">Profile</a>
 						</li>
 						<li id ="lblViewJobs" runat="server" visible="false">
-							<a class="page-scroll" href="ViewJobs.aspx">Available jobs</a>
+							<a class="page-scroll" href="ViewJobs.aspx">Informal Jobs</a>
 						</li>
 						<li id ="lblRes" runat="server" visible="true" >
 							<a class="page-scroll" href="Registration.aspx">Register</a>
@@ -97,7 +97,7 @@
 					<div class="col-lg-8 col-lg-offset-2 text-center">
 						<h2 class="section-heading">We've got what you need!</h2>
 						<hr class="light"/>
-						<p class="text-faded">Tempjobs has everything you need interms of access to short-term employment opportunities that require informal skills. Profiles of job seekers who posses these skills are are available for those looking to provide these employment opportunities.</p>
+						<p class="text-faded">InformalJobFind has everything you need interms of access to short-term employment opportunities that require informal skills. Profiles of job seekers who posses these skills are are available for those looking to provide these employment opportunities.</p>
 						<a href="#" class="btn btn-default btn-xl">Get Started!</a>
 					</div>
 				</div>
@@ -133,7 +133,7 @@
 						<div class="service-box">
 							<i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
 							<h3>Experienced job seekers</h3>
-							<p class="text-muted">Tempjobs records all employment details as part of job seekers' experience profiles.</p>
+							<p class="text-muted">InformalJobFind records all employment details as part of job seekers' experience profiles.</p>
 						</div>
 					</div>
 					<div class="col-lg-3 col-md-6 text-center">
@@ -258,8 +258,8 @@
 				<div class="row">
 					<div class="col-lg-8 col-lg-offset-2 text-center">
 						<h2 class="section-heading">More about us</h2>
-						<hr class="primary">
-						<p> TEMPJOBS is a site where jobseekers with infomal skills can get employment from people who are looking for short term services.</p>
+						<hr class="primary"/>
+						<p> InformalJobFind is a site where jobseekers with infomal skills can get employment from people who are looking for short term services.</p>
 					</div>
 					<div class="col-lg-4 col-lg-offset-2 text-center">
 						<i class="fa fa-phone fa-3x wow bounceIn"></i>
@@ -267,7 +267,7 @@
 					</div>
 					<div class="col-lg-4 text-center">
 						<i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-						<p><a href="mailto:your-email@your-domain.com">feedback@tempjobs.com</a></p>
+						<p><a href="mailto:your-email@your-domain.com">feedback@InformalJobFind.com</a></p>
 					</div>
 				</div>
 			</div>

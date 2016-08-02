@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:1546/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf" />
-  <xs:import schemaLocation="http://localhost:1546/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Drawing" />
+  <xs:import schemaLocation="http://localhost:45678/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf" />
   <xs:element name="GetDataUsingDataContract">
     <xs:complexType>
       <xs:sequence>
@@ -16,52 +15,183 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrationDatabase">
+  <xs:element name="RegisterEmployer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="cantactNumbers" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="altanativeNumber" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="authenticationLevel" type="xs:int" />
-        <xs:element minOccurs="0" name="profileImage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AlternativeContactNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ResidentialAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ProfileImage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrationDatabaseResponse">
+  <xs:element name="RegisterEmployerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="LgnUser">
+  <xs:element name="RegisterJobSeeker">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AlternativeContactNumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ResidentialAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ProfileImage" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="LgnUserResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userID" type="xs:int" />
-        <xs:element minOccurs="0" name="canLogin" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReadEmployees">
+  <xs:element name="RegisterJobSeekerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ReadEmployeesResponse">
+  <xs:element name="LoginEmployer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="ReadEmployeesResult" nillable="true" type="q3:ArrayOfUserdata" />
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginEmployerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+        <xs:element minOccurs="0" name="CanLogin" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginJobSeeker">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginJobSeekerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+        <xs:element minOccurs="0" name="CanLogin" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+        <xs:element minOccurs="0" name="CanLogin" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllJobseekers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllJobseekersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="AllJobseekersResult" nillable="true" type="q3:ArrayOfJobSeeker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SingleJobseeker">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SingleJobseekerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="SingleJobseekerResult" nillable="true" type="q4:JobSeeker" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SingleEmployer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SingleEmployerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="SingleEmployerResult" nillable="true" type="q5:Employer" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteEmployer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteEmployerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteJobSeeker">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteJobSeekerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeJobSeekerPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeJobSeekerPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="success" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeEmployerPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeEmployerPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="success" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -69,7 +199,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="SkillLevel" type="xs:int" />
+        <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -86,47 +217,21 @@
   <xs:element name="ReadSkillsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="ReadSkillsResult" nillable="true" type="q4:ArrayOfInformalSkill" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ImageToBase64String">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System.Drawing" minOccurs="0" name="image" nillable="true" type="q5:Image" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ImageToBase64StringResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ImageToBase64StringResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SingleUserDetails">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SingleUserDetailsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="SingleUserDetailsResult" nillable="true" type="q6:Userdata" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="ReadSkillsResult" nillable="true" type="q6:ArrayOfInformalSkill" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PostJob">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="duration_hours" type="xs:int" />
-        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="reward" type="xs:double" />
-        <xs:element minOccurs="0" name="employerID" type="xs:int" />
+        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NumberOfDaysRequired" type="xs:int" />
+        <xs:element minOccurs="0" name="StartTime" type="xs:int" />
+        <xs:element minOccurs="0" name="EndTime" type="xs:int" />
+        <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ToBePaid" type="xs:double" />
+        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -135,38 +240,23 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ListOfJobs">
+  <xs:element name="AllJobs">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ListOfJobsResponse">
+  <xs:element name="AllJobsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="ListOfJobsResult" nillable="true" type="q7:ArrayOfJob" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ChangePassword">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ChangePasswordResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="success" type="xs:boolean" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="AllJobsResult" nillable="true" type="q7:ArrayOfJob" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ApplyForJob">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="jobID" type="xs:int" />
-        <xs:element minOccurs="0" name="jobseekerID" type="xs:int" />
+        <xs:element minOccurs="0" name="JobID" type="xs:int" />
+        <xs:element minOccurs="0" name="JobseekerID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -175,40 +265,54 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="getApplications">
+  <xs:element name="getApplicants">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getApplicationsResponse">
+  <xs:element name="getApplicantsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="getApplicationsResult" nillable="true" type="q8:ArrayOfUserdata" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="getApplicantsResult" nillable="true" type="q8:ArrayOfJobSeeker" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrationDatabaseUpdate">
+  <xs:element name="DeleteJob">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="firstName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="lastName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="address" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="cantactNumbers" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="altanativeNumber" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="profileImage_string" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="age" type="xs:int" />
-        <xs:element minOccurs="0" name="gender" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="JobID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrationDatabaseUpdateResponse">
+  <xs:element name="DeleteJobResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteJobApplication">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JobApplicationID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteJobApplicationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="testResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="testResult" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>

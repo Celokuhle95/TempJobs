@@ -12,38 +12,34 @@ namespace WebApplication1
 {
     public partial class ViewUsers : System.Web.UI.Page
     {
-        public localhost.Service1 lc;
+        public localhost1.Service1 lc;
         protected void Page_Load(object sender, EventArgs e)
         {           
-            lc = new localhost.Service1();
+            lc = new localhost1.Service1();
                
             String htmlText = "";
-            foreach (var u in lc.ReadEmployees())
+            foreach (var u in lc.AllJobseekers())
             {              
-              if (u.authinticationLevel == 2) //job seekers only
-              {
-        
-                    htmlText += "<div class='row' style= padding-top:1%'> ";
-                    htmlText += "<div class ='col-md-6' style='border:groove'> ";
+                htmlText += "<div class='row' style= padding-top:1%'> ";
+                htmlText += "<div class ='col-md-6' style='border:groove'> ";
                    
-                    if(u.ProfileImage_String == null)
-                    {
-                        string image = "images/image1.jpg";
-                        htmlText += "<br/><img src='" + image + "' alt='no prof image' width='100%' height='100%' max-height='300px'/>";
-                    }
-                    else
-                    {
-                         string base64ImageRepresentation = u.ProfileImage_String;
-                         htmlText += "<br/><img width='100%' height='100%'alt='image not available' max-height='300px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
-                    }
+                if(u.ProfileImage_String == null)
+                {
+                    string image = "images/image1.jpg";
+                    htmlText += "<br/><img src='" + image + "' alt='no prof image' width=60%' height='60%' max-height='300px'/>";
+                }
+                else
+                {
+                        string base64ImageRepresentation = u.ProfileImage_String;
+                        htmlText += "<br/><img width='60%' height='60%'alt='image not available' max-height='300px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+                }
                   
-                    string s = string.Format("<a href='UserDetailsPage.aspx?UserID={0}'>" + u.firstName + "</a></br>", u.Id);
-                    htmlText += "<br/><br/><p><b>first Name : </b><u>" + s + "</u></p>";
-                    htmlText += "<p><b>Last Lastname: </b>" + u.lastName + "</p>";
-                    htmlText += "<b>Rating:</b> none";
-                    htmlText += "</div>";
-                    htmlText += "</div></br>";
-               }
+                string s = string.Format("<a href='MoreJobSeekerDetails.aspx?UserID={0}'>" + u.FirstName + "</a></br>", u.JobSeekerID);
+                htmlText += "<br/><br/><p><b>first Name : </b><u>" + s + "</u></p>";
+                htmlText += "<p><b>Last Lastname: </b>" + u.LastName + "</p>";
+                htmlText += "<b>Rating:</b> none";
+                htmlText += "</div>";
+                htmlText += "</div></br>";
             }
             DisplayUsers.InnerHtml = htmlText;         
         }

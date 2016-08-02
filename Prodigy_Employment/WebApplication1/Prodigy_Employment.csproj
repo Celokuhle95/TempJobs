@@ -40,6 +40,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -65,7 +67,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="EditProfile.aspx" />
+    <Content Include="EmployJobSeeker.aspx" />
+    <Content Include="JobSeekerProfile.aspx" />
+    <Content Include="Skills.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="header.jpg" />
     <Content Include="home.aspx" />
@@ -96,7 +100,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="UserDetailsPage.aspx" />
+    <Content Include="MoreJobSeekerDetails.aspx" />
     <Content Include="StartPage.aspx" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
@@ -104,31 +108,27 @@
     <Content Include="ViewJobApplications.aspx" />
     <Content Include="ViewJobs.aspx" />
     <Content Include="ViewUsers.aspx" />
-    <Content Include="Web References\localhost\CompositeType.datasource">
+    <Content Include="Web References\localhost1\CompositeType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost\InformalSkill.datasource">
+    <Content Include="Web References\localhost1\Employer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost\Job.datasource">
+    <Content Include="Web References\localhost1\InformalSkill.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\localhost\Reference.map">
+    <Content Include="Web References\localhost1\Job.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\localhost1\JobSeeker.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\localhost1\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\localhost\Service1.disco" />
+    <None Include="Web References\localhost1\Service1.disco" />
     <Content Include="Web.config" />
-    <None Include="Web References\localhost\Service1.wsdl" />
-    <None Include="Web References\localhost\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\localhost\Service10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web References\localhost\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -152,12 +152,26 @@
     <Compile Include="ConfirmJobApplication.aspx.designer.cs">
       <DependentUpon>ConfirmJobApplication.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditProfile.aspx.cs">
-      <DependentUpon>EditProfile.aspx</DependentUpon>
+    <Compile Include="EmployJobSeeker.aspx.cs">
+      <DependentUpon>EmployJobSeeker.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditProfile.aspx.designer.cs">
-      <DependentUpon>EditProfile.aspx</DependentUpon>
+    <Compile Include="EmployJobSeeker.aspx.designer.cs">
+      <DependentUpon>EmployJobSeeker.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JobSeekerProfile.aspx.cs">
+      <DependentUpon>JobSeekerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobSeekerProfile.aspx.designer.cs">
+      <DependentUpon>JobSeekerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Skills.aspx.cs">
+      <DependentUpon>Skills.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Skills.aspx.designer.cs">
+      <DependentUpon>Skills.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
@@ -243,17 +257,12 @@
     <Compile Include="ViewUsers.aspx.designer.cs">
       <DependentUpon>ViewUsers.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\localhost\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="UserDetailsPage.aspx.cs">
-      <DependentUpon>UserDetailsPage.aspx</DependentUpon>
+    <Compile Include="MoreJobSeekerDetails.aspx.cs">
+      <DependentUpon>MoreJobSeekerDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserDetailsPage.aspx.designer.cs">
-      <DependentUpon>UserDetailsPage.aspx</DependentUpon>
+    <Compile Include="MoreJobSeekerDetails.aspx.designer.cs">
+      <DependentUpon>MoreJobSeekerDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="StartPage.aspx.cs">
       <DependentUpon>StartPage.aspx</DependentUpon>
@@ -261,6 +270,11 @@
     </Compile>
     <Compile Include="StartPage.aspx.designer.cs">
       <DependentUpon>StartPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\localhost1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -274,10 +288,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <Content Include="Web References\localhost\Userdata.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <None Include="Web References\localhost\Service12.xsd">
+    <None Include="Web References\localhost1\Service1.wsdl" />
+    <None Include="Web References\localhost1\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost1\Service10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\localhost1\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -294,24 +312,24 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:1546/Service1.svc">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>http://localhost:1546/Service1.svc</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WebApplication1_localhost_Service1</CachedSettingsPropName>
-    </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="css\" />
     <Folder Include="font-awesome\" />
     <Folder Include="img\" />
     <Folder Include="js\" />
     <Folder Include="less\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:45678/Service1.svc">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhost1\</RelPath>
+      <UpdateFromURL>http://localhost:45678/Service1.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WebApplication1_localhost1_Service1</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

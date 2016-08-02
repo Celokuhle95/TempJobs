@@ -10,7 +10,7 @@
         <div class="row">
                 <div class="row">
                     <div class="col-md-4">
-                        First name:
+                        First Name:
                     </div>
                     <div class="col-md-7">
                         <asp:TextBox ID="txtFirstName" runat="server" class="form-control"></asp:TextBox>
@@ -19,68 +19,19 @@
                 <br />
                 <div class="row">
                     <div class="col-md-4">
-                        Last name:
+                        Last Name:
                     </div>
                     <div class="col-md-7">
                         <asp:TextBox ID="txtLastName" runat="server" class="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <br />
-                <div class="row">
+                 <div class="row">
                     <div class="col-md-4">
-                        Residential address:
-                    </div>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtResAddress" runat="server" class="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-4">
-                        Email address:
+                        Email Address (Used as username):
                     </div>
                     <div class="col-md-7">
                         <asp:TextBox ID="txtEmail" runat="server" class="form-control" TextMode="Email"></asp:TextBox>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-4">
-                        Cellphone Number:
-                    </div>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtCellphone" runat="server" class="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-4">
-                        Telephone Number:
-                    </div>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtTelephone" runat="server" class="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-4">
-                        Register as:
-                    </div>
-                    <div class="col-md-7">
-                         <asp:DropDownList ID="drpAuthintication" class="form-control" runat="server">
-                                    <asp:ListItem Value="0">select Option</asp:ListItem>
-                                    <asp:ListItem Value="1">Employer</asp:ListItem>
-                                    <asp:ListItem Value="2">Job seeker</asp:ListItem>
-                                </asp:DropDownList>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-4">
-                        Username:
-                    </div>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtUsername" runat="server" class="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <br />
@@ -99,6 +50,46 @@
                     </div>
                     <div class="col-md-7">
                         <asp:TextBox ID="txtConfirmPassword" TextMode="Password" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        Cellphone Number:
+                    </div>
+                    <div class="col-md-7">
+                        <asp:TextBox ID="txtCellphone" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        Alternative Contact Number:
+                    </div>
+                    <div class="col-md-7">
+                        <asp:TextBox ID="txtAltContactNum" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        Residential Address:
+                    </div>
+                    <div class="col-md-7">
+                        <asp:TextBox ID="txtResAddress" runat="server" class="form-control"></asp:TextBox>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-4">
+                        Register as:
+                    </div>
+                    <div class="col-md-7">
+                         <asp:DropDownList ID="drpUsertype" class="form-control" runat="server">
+                                    <asp:ListItem Value="0">select Option</asp:ListItem>
+                                    <asp:ListItem Value="1">Employer</asp:ListItem>
+                                    <asp:ListItem Value="2">Job seeker</asp:ListItem>
+                                </asp:DropDownList>
                     </div>
                 </div>
                 <br />

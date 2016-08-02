@@ -7,38 +7,41 @@ namespace TempJobsWcf
 {
     public class SkillsManager
     {
-        public void StoreSkills(string Name, int UserID)
+        public void StoreSkills(string Name, int SkillLevel, int JobSeekerID)
         {
-            userDataClassesDataContext database = new userDataClassesDataContext();
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
             InformalSkill skill = new InformalSkill();
-            skill.Name = Name;
-            skill.UserData_ID = UserID;
-            database.InformalSkills.InsertOnSubmit(skill);
-            database.SubmitChanges();
+            var skills = ReadSkills(JobSeekerID);
+            if(skills == null)//user is storing skills for the first time
+            {
+                skill.Name = Name;
+                skill.SkillLevel = SkillLevel;
+                skill.JobSeekerID = JobSeekerID;
+                database.InformalSkills.InsertOnSubmit(skill);
+                database.SubmitChanges();
+            }else//user is editing skills
+            {
+                //Research how to update an existing table in LINQ
+                skill.Name = Name;
+                skill.SkillLevel = SkillLevel;
+                skill.JobSeekerID = JobSeekerID;
+                database.SubmitChanges();
+            }
         }
 
-        public List<InformalSkill> ReadSkills()
+        public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
-            List<InformalSkill> AllSkills = new List<InformalSkill>();
+            List<InformalSkill> skills = new List<InformalSkill>();
             try
             {
-                userDataClassesDataContext database = new userDataClassesDataContext();
-                foreach (var skill in database.InformalSkills)
-                {
-                    InformalSkill currentSkill = new InformalSkill(); //store information of a single skill
-
-                    currentSkill.Skill_ID = skill.Skill_ID;
-                    currentSkill.Name = skill.Name;
-                    currentSkill.UserData_ID = skill.UserData_ID;
-
-                    AllSkills.Add(currentSkill);
-                }
+                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+                skills = (from skill in database.InformalSkills where skill.JobSeekerID.Equals(JobSeekerID) select skill).ToList();              
             }
             catch (Exception e)
             {
                 e.ToString();
             }
-            return AllSkills;
+            return skills;
         }
     }
 

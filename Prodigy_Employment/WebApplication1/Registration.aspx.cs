@@ -12,26 +12,26 @@ namespace WebApplication1
 {
     public partial class Registration : System.Web.UI.Page
     {
-        public localhost.Service1 cl; //references the local host
+        public localhost1.Service1 cl; //references the local host
         
-        public bool isUserName; 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cl = new localhost.Service1();
-            isUserName = false;
+            cl = new localhost1.Service1();
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            string userName = txtUsername.Text; //getting the values from the textboxes
+           //getting the values from the textboxes
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
-            string address = txtResAddress.Text;
-            string Email = txtEmail.Text;
-            string cantactNumbers = txtCellphone.Text;
-            string altanativeNumber = txtTelephone.Text;
-            string password = txtPassword.Text;         
-            int authenticationLevel = System.Convert.ToInt32(drpAuthintication.SelectedValue);
+            string emailAddress = txtEmail.Text;
+            string password = txtPassword.Text;
+            string cellphoneNumbers = txtCellphone.Text;
+            string altanativeContactNumber = txtAltContactNum.Text;      
+            string residentialAddress = txtResAddress.Text;
+        
+            
+            int userLevel = System.Convert.ToInt32(drpUsertype.SelectedValue);
 
             byte[] fileBytes = ProfileImageUpload.FileBytes;
             System.Drawing.Image profileImage = getImageFromByteArray(fileBytes);
@@ -39,38 +39,46 @@ namespace WebApplication1
            
             if (password.Length < 6) //ensure the password strength is atleast 6 characters
            {
-                lblError.Text = "Password must be atleast 6 characters long";
+                lblError.Text = "Make sure your password is 6 characters or more";
                 lblError.Visible = true;
                 return;
            }
-            if (authenticationLevel.Equals(1) || authenticationLevel.Equals(2))
+           
+            if (password == txtConfirmPassword.Text)
             {
-                if (password == txtConfirmPassword.Text)
+                if (emailAddress == " ")
                 {
-                    if (userName == " ")
-                    {
-                        lblError.Text = " Please enter a username";
-                        lblError.Visible = true;
-                        return;
-                    }
-                    else {
-                        cl.RegistrationDatabase(userName, firstName, lastName, address, Email, cantactNumbers, altanativeNumber,Secrecy.HashPassword( password), authenticationLevel, true, profImage_string);
-                        Response.Redirect("HomePage.aspx");
-                    }
+                    lblError.Text = "Make sure your e-mail address is not empty";
+                    lblError.Visible = true;
+                    return;
                 }
                 else
                 {
-                   lblError.Text=" Passwords are not the same";
-                   lblError.Visible = true;
-                    return;
+                    if (userLevel.Equals(1))
+                    {
+                        cl.RegisterEmployer(firstName, lastName, emailAddress, Secrecy.HashPassword(password), cellphoneNumbers, altanativeContactNumber, residentialAddress, profImage_string);
+                        Response.Redirect("LoginPage.aspx");
+                    }
+                    else if (userLevel.Equals(2))
+                    {
+                        cl.RegisterJobSeeker(firstName, lastName, emailAddress, Secrecy.HashPassword(password), cellphoneNumbers, altanativeContactNumber, residentialAddress, profImage_string);
+                        Response.Redirect("Skills.aspx");
+                    }
+                    else
+                    {
+                        lblError.Text = "Make sure you select whether to register as an employer or a job seeker";
+                        lblError.Visible = true;
+                        return;
+                    }
                 }
             }
             else
             {
-                lblError.Text = "select an option on the drpdown menu";
+                lblError.Text="Make sure your password and confirm password match";
                 lblError.Visible = true;
                 return;
             }
+           
         }
         public System.Drawing.Image getImageFromByteArray(byte[] fileBytes)
         {

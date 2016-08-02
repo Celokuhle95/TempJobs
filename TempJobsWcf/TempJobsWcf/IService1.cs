@@ -16,45 +16,73 @@ namespace TempJobsWcf
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
-        // TODO: Add your service operations here
+        // Registration
         [OperationContract]
-        void RegistrationDatabase(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage);
+        void RegisterEmployer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage);
 
         [OperationContract]
-        void LgnUser(string username, string password, out int userID, out bool canLogin);
+        void RegisterJobSeeker(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage);
+
+        //Login
+        [OperationContract]
+        void LoginEmployer(string EmailAddress, string Password, out int EmployerID, out bool CanLogin);
 
         [OperationContract]
-         List<Userdata> ReadEmployees();
+        void LoginJobSeeker(string EmailAddress, string Password, out int JobSeekerID, out bool CanLogin);
 
         [OperationContract]
-        void StoreSkills(string Name, int UserID);
+        void LoginAdmin(string EmailAddress, string Password, out int JobSeekerID, out bool CanLogin);
 
         [OperationContract]
-        List<InformalSkill> ReadSkills();
+        List<JobSeeker> AllJobseekers();
 
         [OperationContract]
-        string ImageToBase64String(Image image);
+        JobSeeker SingleJobseeker(int JobSeekerID);
 
         [OperationContract]
-        Userdata SingleUserDetails(int ID);
+        Employer SingleEmployer(int EmployerID);
+        //Delete Users
+        [OperationContract]
+        void DeleteEmployer(int EmployerID);
 
         [OperationContract]
-        void PostJob( string name, string description, int duration_hours, string location, double reward, int employerID);
+        void DeleteJobSeeker(int JobSeekerID);
+
+        //Change Password
+        [OperationContract]
+        void ChangeJobSeekerPassword(string EmailAddress, string Password, out bool success);
 
         [OperationContract]
-        List<Job> ListOfJobs();
+        void ChangeEmployerPassword(string EmailAddress, string Password, out bool success);
+
+        //Jobseekers skills
+        [OperationContract]
+        void StoreSkills(string Name, int SkillLevel, int JobSeekerID);
 
         [OperationContract]
-        void ChangePassword(string username, string password, out bool success);
+        List<InformalSkill> ReadSkills(int JobSeekerID);
+
+        //Jobs
+        [OperationContract]
+        void PostJob(string Name, string Description, int NumberOfDaysRequired, int StartTime, int EndTime, string Location, double ToBePaid, int EmployerID);
 
         [OperationContract]
-        void ApplyForJob(int jobID, int jobseekerID);
+        List<Job> AllJobs();
 
         [OperationContract]
-        List<Userdata> getApplications(int EmployerID);
+        void ApplyForJob(int JobID, int JobseekerID);
 
         [OperationContract]
-        void RegistrationDatabaseUpdate(int id, string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string profileImage_string, int age, string gender);
+        List<JobSeeker> getApplicants(int EmployerID);
+        //Delete Jobs
+        [OperationContract]
+        void DeleteJob(int JobID);
+
+        [OperationContract]
+        void DeleteJobApplication(int JobApplicationID);
+
+        [OperationContract]
+        string test();
     }
  
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

@@ -11,7 +11,8 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["id"] = null;
+            Session["UserID"] = null;
+            Session["UserType"] = null;
             Response.Redirect("home.aspx");
         }
     }

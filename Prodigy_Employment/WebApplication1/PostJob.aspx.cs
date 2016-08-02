@@ -9,23 +9,26 @@ namespace WebApplication1
 {
     public partial class PostJob : System.Web.UI.Page
     {
-        public localhost.Service1 localhost;
+        public localhost1.Service1 localhost;
         protected void Page_Load(object sender, EventArgs e)
         {
-            localhost = new localhost.Service1();
-
+            localhost = new localhost1.Service1();
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            string name = txtName.Text;
+            string name = drpSkillName.SelectedValue;
             string description = txtDescription.Text;
-            int duration_Hours = Convert.ToInt32(txtDuration.Text);
             string location = txtLocation.Text;
-            double reward = Convert.ToDouble(txtReward.Text);
-            int EmployerID = (int)Session["id"];
-            localhost.PostJob(name, description, duration_Hours, true, location, reward, true, EmployerID, true);
-            //display some message to let employer know that posting was successdful
+            int numberOfDays = Convert.ToInt32(txtNumDays.Text);
+            int startTime = Convert.ToInt32(txtStartTime.Text);
+            double payPerDay = Convert.ToDouble(txtReward.Text);
+            double pay = payPerDay * numberOfDays; // pay per day
+            int endTime = Convert.ToInt32(txtEndTime.Text);
+            int EmployerID = (int)Session["UserID"];
+            localhost.PostJob(name, description, numberOfDays, true, startTime, true, endTime, true, location, pay, true, EmployerID, true);
+            //display some message to let employer know that posting was successful.
+            Session.Add("ScreenNotification", "Show");
             Response.Redirect("Homepage.aspx");
         }
     }

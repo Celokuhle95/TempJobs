@@ -9,29 +9,33 @@ namespace WebApplication1
 {
     public partial class home : System.Web.UI.Page
     {
-        WebApplication1.localhost.Service1 lc = new WebApplication1.localhost.Service1();
+        localhost1.Service1 lc = new localhost1.Service1();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["id"] != null)
+            if (Session["UserID"] != null)
             {
-                int userID = (int)Session["id"];
+                int userID = (int)Session["UserID"];
                 string usertype = (string)Session["UserType"];
                 if (usertype.Equals("Employer"))
                 {
                     lblPostJob.Visible = true;
                     lblViewJobseekers.Visible = true;
+                    lblLogin.Visible = false;
+                    lblRes.Visible = false;
+                    lblLogout.Visible = true;
                 }
                 else if (usertype.Equals("JobSeeker"))
                 {
                     lblViewJobs.Visible = true;
                     lblProfile.Visible = true;
+                    lblLogin.Visible = false;
+                    lblRes.Visible = false;
+                    lblLogout.Visible = true;
                 }
 
-                lblLogin.Visible = false;
-                lblRes.Visible = false;
-                lblLogout.Visible = true;
+                
 
             }
         }

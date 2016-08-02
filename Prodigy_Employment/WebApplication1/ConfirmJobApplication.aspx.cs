@@ -17,8 +17,8 @@ namespace WebApplication1
 
         protected void btnYes_Click(object sender, EventArgs e)
         {
-            localhost.Service1 localhost = new localhost.Service1();
-            localhost.ApplyForJob(jobID, true, (int)Session["id"], true);
+            localhost1.Service1 localhost = new localhost1.Service1();
+            localhost.ApplyForJob(jobID, true, (int)Session["UserID"], true);
             Response.Redirect("ViewJobs.aspx");
         }
 

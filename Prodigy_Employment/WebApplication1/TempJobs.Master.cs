@@ -9,31 +9,61 @@ namespace Prodigy_Employment
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        WebApplication1.localhost.Service1 lc = new WebApplication1.localhost.Service1();
+        WebApplication1.localhost1.Service1 lc = new WebApplication1.localhost1.Service1();
        
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            if (Session["id"] != null)
+            if (Session["UserID"] != null)
             {
-                int userID = (int)Session["id"];
+                TurnNotificationSectionOFF();
+                int userID = (int)Session["UserID"];
                 string usertype = (string)Session["UserType"];
-                if(usertype.Equals("Employer"))
+                
+                if (usertype.Equals("Employer"))
                 {
                     lblPostJob.Visible = true;
                     lblViewJobseekers.Visible = true;
+                    lblLogin.Visible = false;
+                    lblRes.Visible = false;
+                    lblLogout.Visible = true;
+                    TurnNotificatiOn("<p>Thank you for posting the job, your post was successful. Check applications later</p>");                    
                 }
-                else if(usertype.Equals("JobSeeker"))
+                else if (usertype.Equals("JobSeeker"))
                 {
                     lblViewJobs.Visible = true;
                     lblProfile.Visible = true;
-                }
-
-                lblLogin.Visible = false;
-                lblRes.Visible = false;
-                lblLogout.Visible = true;
-                   
+                    lblLogin.Visible = false;
+                    lblRes.Visible = false;
+                    lblLogout.Visible = true;
+                    TurnNotificatiOn("<p>Your application was successful, thank you for applying. We will be intouch.</p>");
+                }          
             }
+        }
+        public void TurnNotificationSectionOFF()
+        {  
+            if (((string)Session["ScreenNotification"]) != null)
+            {
+                if (((string)Session["ScreenNotification"]).Equals("TurnOFF")) //switch the notification tab off, when you move to the next page
+                {
+                    NotificationSection.Visible = false;
+                    Session["ScreenNotification"] = null;
+                }
+            }         
+        }
+
+        public void TurnNotificatiOn(string displayMessage)
+        {
+            string notify = (string)Session["ScreenNotification"];
+            if(notify != null)
+            {
+                if (notify.Equals("Allow"))
+                {
+                    NotificationSection.InnerHtml = displayMessage;
+                    NotificationSection.Visible = true;
+                    Session["ScreenNotification"] = "TurnOFF";
+                }//run a timer to ensure that you set session variable off
+            }         
         }
     }
 }

@@ -7,38 +7,53 @@ namespace TempJobsWcf
 {
     public class UserManager
     {
-        public void Register(string userName, string firstName, string lastName, string address, string Email, string cantactNumbers, string altanativeNumber, string password, int authenticationLevel, string profileImage_string)
+        public void RegisterEmployer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
-            userDataClassesDataContext db = new userDataClassesDataContext();
-            Userdata user = new Userdata();
-            user.Username = userName;
-            user.firstName = firstName;
-            user.lastName = lastName;
-            user.address = address;
-            user.address = address;
-            user.Email = Email;
-            user.contactNumber = cantactNumbers;
-            user.alternativeNumber = altanativeNumber;
-            user.password = password;
-            user.authinticationLevel = authenticationLevel;
-            user.ProfileImage_String = profileImage_string;
-            db.Userdatas.InsertOnSubmit(user);
-            db.SubmitChanges();
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            Employer employer = new Employer();
 
+            employer.FirstName = FirstName;
+            employer.LastName = LastName;
+            employer.EmailAddress = EmailAddress;
+            employer.Password = Password;
+            employer.ContactNumber = ContactNumber;
+            employer.AlternativeContactNumber = AlternativeContactNumber;
+            employer.ResidentialAddress = ResidentialAddress;
+            employer.ProfileImage_String = ProfileImage;
+            database.Employers.InsertOnSubmit(employer);
+            database.SubmitChanges();
         }
 
-        public bool Login(string username, string password, out int userID)
+        public void RegisterJobSeeker(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
-            userID = -1;
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            JobSeeker jobseeker = new JobSeeker();
+
+            jobseeker.FirstName = FirstName;
+            jobseeker.LastName = LastName;
+            jobseeker.EmailAddress = EmailAddress;
+            jobseeker.Password = Password;
+            jobseeker.ContactNumber = ContactNumber;
+            jobseeker.AlternativeContactNumber = AlternativeContactNumber;
+            jobseeker.ResidentialAddress = ResidentialAddress;
+            jobseeker.ProfileImage_String = ProfileImage;
+            jobseeker.IsAvailable = 0; //0 implies available, 1 implies non availability 
+            database.JobSeekers.InsertOnSubmit(jobseeker);
+            database.SubmitChanges();
+        }
+
+        public bool LoginEmployer(string EmailAddress, string Password, out int EmployerID)
+        {
+            EmployerID = -1;
             try
             {
-                userDataClassesDataContext db = new userDataClassesDataContext();
-                Userdata user = (from u in db.Userdatas where u.Username.Equals(username) select u).Single();
-                if (user != null)
+                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+                Employer employer = (from empl in database.Employers where empl.EmailAddress.Equals(EmailAddress) select empl).Single();
+                if (employer != null)
                 {
-                    if (user.password.Equals(password))
+                    if (employer.Password.Equals(Password))
                     {
-                        userID = user.Id;
+                        EmployerID = employer.EmployerID;
                         return true;
                     }
                     else
@@ -54,76 +69,185 @@ namespace TempJobsWcf
             return false;
         }
 
-        public List<Userdata> ReadEmployees()
+        public bool LoginJobSeeker(string EmailAddress, string Password, out int JobSeekerID)
         {
-            List<Userdata> Users = new List<Userdata>();
+            JobSeekerID = -1;
             try
             {
-                userDataClassesDataContext database = new userDataClassesDataContext();
-                foreach (var u in database.Userdatas)
+                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+                JobSeeker jobSeeker = (from js in database.JobSeekers where js.EmailAddress.Equals(EmailAddress) select js).Single();
+                if (jobSeeker != null)
                 {
-                    Userdata currentUser = new Userdata(); //store information of a single user
+                    if (jobSeeker.Password.Equals(Password))
+                    {
+                        JobSeekerID = jobSeeker.JobSeekerID;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                return false;
+            }
+            return false;
+        }
 
-                    currentUser.Id = u.Id;
-                    currentUser.Username = u.Username;
-                    currentUser.password = u.password;
-                    currentUser.Email = u.Email;
-                    currentUser.contactNumber = u.contactNumber;
-                    currentUser.alternativeNumber = u.alternativeNumber;
-                    currentUser.address = u.address;
-                    currentUser.authinticationLevel = u.authinticationLevel;
-                    currentUser.firstName = u.firstName;
-                    currentUser.lastName = u.lastName;
-                    currentUser.ProfileImage_String = u.ProfileImage_String;
+        public bool LoginAdmin(string EmailAddress, string Password, out int AdminID)
+        {
+            AdminID = -1;
+            try
+            {
+                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+                Admin admin = (from ad in database.Admins where ad.EmailAddress.Equals(EmailAddress) select ad).Single();
+                if (admin != null)
+                {
+                    if (admin.Password.Equals(Password))
+                    {
+                        AdminID = admin.AdminID;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                return false;
+            }
+            return false;
+        }
 
-                    Users.Add(currentUser);
+        public List<JobSeeker> AllJobseekers()
+        {
+            List<JobSeeker> JobSeekers = new List<JobSeeker>();
+            try
+            {
+
+                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+                foreach (var js in database.JobSeekers)
+                {
+                    JobSeeker jseeker = new JobSeeker();
+
+                    jseeker.JobSeekerID = js.JobSeekerID;
+                    jseeker.FirstName = js.FirstName;
+                    jseeker.LastName = js.LastName;
+                    jseeker.EmailAddress = js.EmailAddress;
+                    jseeker.Password = js.Password;
+                    jseeker.ContactNumber = js.ContactNumber;
+                    jseeker.AlternativeContactNumber = js.AlternativeContactNumber;
+                    jseeker.ResidentialAddress = js.ResidentialAddress;
+                    jseeker.ProfileImage_String = js.ProfileImage_String;
+                    jseeker.IsAvailable = js.IsAvailable;
+
+                    JobSeekers.Add(jseeker);
                 }
             }
             catch (Exception e)
             {
                 e.ToString();
             }
-            return Users;
+            return JobSeekers;
         }
 
-        public Userdata SingleUserDetails(int ID)
+        public List<Employer> AllEmployers() //not added in wcf service
         {
-            userDataClassesDataContext database = new userDataClassesDataContext();
-            Userdata user = new Userdata();
-            foreach (var u in database.Userdatas)
+            List<Employer> employers = new List<Employer>();
+            try
             {
-                if (u.Id.Equals(ID))
+
+                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+                foreach (var em in database.Employers)
                 {
-                    user.Id = u.Id;
-                    user.Username = u.Username;
-                    user.password = u.password;
-                    user.Email = u.Email;
-                    user.contactNumber = u.contactNumber;
-                    user.alternativeNumber = u.alternativeNumber;
-                    user.address = u.address;
-                    user.authinticationLevel = u.authinticationLevel;
-                    user.firstName = u.firstName;
-                    user.lastName = u.lastName;
-                    user.ProfileImage_String = u.ProfileImage_String;
+                    Employer employer = new Employer(); //store information of a single user
+
+                    employer.EmployerID = em.EmployerID;
+                    employer.FirstName = em.FirstName;
+                    employer.LastName = em.LastName;
+                    employer.EmailAddress = em.EmailAddress;
+                    employer.Password = em.Password;
+                    employer.ContactNumber = em.ContactNumber;
+                    employer.AlternativeContactNumber = em.AlternativeContactNumber;
+                    employer.ResidentialAddress = em.ResidentialAddress;
+                    employer.ProfileImage_String = em.ProfileImage_String;
+                   
+                    employers.Add(employer);
                 }
             }
-            return user;
+            catch (Exception e)
+            {
+                e.ToString();
+            }
+            return employers;
         }
 
-        public void ChangePassword(string username, string password, out bool success)
+        public JobSeeker SingleJobseeker(int JobSeekerID)
         {
-            userDataClassesDataContext database = new userDataClassesDataContext();
-            Userdata user = new Userdata();
-            foreach (var u in database.Userdatas)
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            JobSeeker jobSeeker = (from js in database.JobSeekers where js.JobSeekerID.Equals(JobSeekerID) select js).Single();
+            return jobSeeker;
+        }
+
+        public Employer SingleEmployer(int EmployerID)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            Employer employer = (from empl in database.Employers where empl.EmployerID.Equals(EmployerID) select empl).Single();
+            return employer;
+        }
+
+        public void ChangeJobSeekerPassword(string EmailAddress, string Password, out bool success)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            JobSeeker jobSeeker = new JobSeeker();
+            foreach (var js in database.JobSeekers)
             {
-                if(u.Username.Equals(username))
+                if(js.EmailAddress.Equals(EmailAddress))
                 {
+                    js.Password = Password;
                     success = true;
-                    u.password = password;
                     return;
                 }  
             }
             success = false;
+        }
+
+        public void ChangeEmployerPassword(string EmailAddress, string Password, out bool success)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            Employer employer = new Employer();
+            foreach (var em in database.Employers)
+            {
+                if (em.EmailAddress.Equals(EmailAddress))
+                {
+                    em.Password = Password;
+                    success = true;
+                    return;
+                }
+            }
+            success = false;
+        }
+
+        public void DeleteEmployer(int EmployerID)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            Employer employer = (from emp in database.Employers
+                                     where emp.EmployerID.Equals(EmployerID)
+                                     select emp).Single();
+            database.Employers.DeleteOnSubmit(employer);
+        }
+
+        public void DeleteJobSeeker(int JobSeekerID)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            JobSeeker jobSeeker = (from js in database.JobSeekers
+                                 where js.JobSeekerID.Equals(JobSeekerID)
+                                 select js).Single();
+            database.JobSeekers.DeleteOnSubmit(jobSeeker);
         }
     }
 }
