@@ -68,7 +68,49 @@ namespace WebApplication1
                     display += "Skill Level(How much the JobSeeker mastered the skill): " + skill.SkillLevel + "<br/>"; //can later change this to rating starts
                     count++;
                 }
-                display += "click <a href='Skills.aspx'>here </a> to edit your skills.<br/><br/>";
+                if (Session["UserType"].Equals("JobSeeker"))
+                {
+                    display += "click <a href='Skills.aspx'>here </a> to edit your skills.<br/><br/>";
+                }
+                             
+                //Tools and equipment
+                string htmlText = "<h2 style='text-align'>Tools and equipments.</h2>";
+                if (Session["UserType"].Equals("Employer"))
+                {
+                    htmlText += "<p>Tools/Equipment are any resources that jobseeker have and use when doing a job that they have skills in. ";
+                    htmlText += "You can, as an employer, provide your own tools or equipment if you prefer. Note that";
+                    htmlText += "some jobs may not neccessary require job seeker owned tools or equipment.</p>";
+                }
+                else if (Session["UserType"].Equals("JobSeeker"))
+                {
+                    htmlText += "<br/><p>Here you can upload the picture of the tools or equipment that you use when doing the jobs you skilled in. ";
+                    htmlText += "This may be a romoval bakkie if you do refuse removal, a grass cutting machine if you do grass cutting, a tree cutting machine if you do tree felling, or any tools that are essential to your job.";
+                    htmlText += "You can upload upto 5 tools or any equipment that you use and want Employers to see to better your employment chances.</ p ><br/>";
+                    htmlText += "<p>Yo can howover upload less than five images if you don't use that much tools or equipments. It is noted that some informal jobs do not require tools or equipment of your own to complete.";
+                    htmlText += "So in this case you can choose not to upload any photos. Also note that some Employers may have their own tools and equipment which you can use aswell.</ p ><br/> ";
+                    htmlText += " <div class='row'>";
+                }
+
+                foreach (var toolOrEquipment in lc.GetToolsAndEquipments(JobSeekerID, true))
+                {
+                    htmlText += " <div class='col-md-3' style='border: groove'>";
+                    htmlText += "<img alt='No image to display style='height: 200px; width:100%' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/>";
+                    htmlText += "<br/>Name/Short description: " + toolOrEquipment.Name;
+                    htmlText += "<br/>";
+                    htmlText += "</div>";
+                }
+                htmlText += "<br/>";
+               
+                
+                if (Session["UserType"].Equals("JobSeeker"))
+                {
+                    htmlText += "</div><div class='row'>";
+                    htmlText += "click <a href='ToolsAndEquipments.aspx'>here </a> to edit your Tools/Equipments.<br/><br/>";
+                    htmlText += "</div><br/>";
+                }
+                display += htmlText;
+
+                //Employment history
                 display += "<h3>Prevous employment history</h3>";
                 if (Session["UserType"].Equals("Employer"))
                 {

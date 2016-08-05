@@ -91,22 +91,32 @@ namespace WebApplication1
 
         protected void btnStoreDetails_Click(object sender, EventArgs e)
         {
-            string skill1Name = drpSkill1.SelectedValue;
-            lc.StoreSkills(skill1Name, 0, true, selectedID, true);
-            
+            if (drpSkill1.SelectedValue != null)
+            {
+                string skill1Name = drpSkill1.SelectedValue;
+                lc.StoreSkills(skill1Name, 0, true, selectedID, true);
+            }
 
-            string skill2Name = drpSkill2.SelectedValue;
-            lc.StoreSkills(skill2Name, 0, true, selectedID, true);
-            
-            string skill3Name = drpSkill3.SelectedValue;
-            lc.StoreSkills(skill3Name, 0, true, selectedID, true);
-            
-
-            string skill4Name = drpSkill4.SelectedValue;
-            lc.StoreSkills(skill4Name, 0, true, selectedID, true);
-
-            string skill5Name = drpSkill5.SelectedValue; 
-            lc.StoreSkills(skill5Name, 0, true, selectedID, true);           
+            if (drpSkill2.SelectedValue != null)
+            {
+                string skill2Name = drpSkill2.SelectedValue;
+                lc.StoreSkills(skill2Name, 0, true, selectedID, true);
+            }
+            if (drpSkill3.SelectedValue != null)
+            {
+                string skill3Name = drpSkill3.SelectedValue;
+                lc.StoreSkills(skill3Name, 0, true, selectedID, true);
+            }
+            if (drpSkill4.SelectedValue != null)
+            {
+                string skill4Name = drpSkill4.SelectedValue;
+                lc.StoreSkills(skill4Name, 0, true, selectedID, true);
+            }
+            if (drpSkill5.SelectedValue != null)
+            {
+                string skill5Name = drpSkill5.SelectedValue;
+                lc.StoreSkills(skill5Name, 0, true, selectedID, true);
+            }              
         }
         
         //public bool AlreadySaved(string skillName) //jobseeker cannot register a skill that has already been added

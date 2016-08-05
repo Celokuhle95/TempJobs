@@ -73,6 +73,12 @@ namespace WebApplication1.localhost1 {
         
         private System.Threading.SendOrPostCallback testOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AddNewToolOrEquipmentOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoveToolOrEquipmentOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetToolsAndEquipmentsOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -176,6 +182,15 @@ namespace WebApplication1.localhost1 {
         
         /// <remarks/>
         public event testCompletedEventHandler testCompleted;
+        
+        /// <remarks/>
+        public event AddNewToolOrEquipmentCompletedEventHandler AddNewToolOrEquipmentCompleted;
+        
+        /// <remarks/>
+        public event RemoveToolOrEquipmentCompletedEventHandler RemoveToolOrEquipmentCompleted;
+        
+        /// <remarks/>
+        public event GetToolsAndEquipmentsCompletedEventHandler GetToolsAndEquipmentsCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetDataUsingDataContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -916,6 +931,103 @@ namespace WebApplication1.localhost1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/AddNewToolOrEquipment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void AddNewToolOrEquipment([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Image, int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+            this.Invoke("AddNewToolOrEquipment", new object[] {
+                        Name,
+                        Image,
+                        JobSeekerID,
+                        JobSeekerIDSpecified});
+        }
+        
+        /// <remarks/>
+        public void AddNewToolOrEquipmentAsync(string Name, string Image, int JobSeekerID, bool JobSeekerIDSpecified) {
+            this.AddNewToolOrEquipmentAsync(Name, Image, JobSeekerID, JobSeekerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void AddNewToolOrEquipmentAsync(string Name, string Image, int JobSeekerID, bool JobSeekerIDSpecified, object userState) {
+            if ((this.AddNewToolOrEquipmentOperationCompleted == null)) {
+                this.AddNewToolOrEquipmentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAddNewToolOrEquipmentOperationCompleted);
+            }
+            this.InvokeAsync("AddNewToolOrEquipment", new object[] {
+                        Name,
+                        Image,
+                        JobSeekerID,
+                        JobSeekerIDSpecified}, this.AddNewToolOrEquipmentOperationCompleted, userState);
+        }
+        
+        private void OnAddNewToolOrEquipmentOperationCompleted(object arg) {
+            if ((this.AddNewToolOrEquipmentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AddNewToolOrEquipmentCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/RemoveToolOrEquipment", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RemoveToolOrEquipment(int tool_equipementID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool tool_equipementIDSpecified) {
+            this.Invoke("RemoveToolOrEquipment", new object[] {
+                        tool_equipementID,
+                        tool_equipementIDSpecified});
+        }
+        
+        /// <remarks/>
+        public void RemoveToolOrEquipmentAsync(int tool_equipementID, bool tool_equipementIDSpecified) {
+            this.RemoveToolOrEquipmentAsync(tool_equipementID, tool_equipementIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveToolOrEquipmentAsync(int tool_equipementID, bool tool_equipementIDSpecified, object userState) {
+            if ((this.RemoveToolOrEquipmentOperationCompleted == null)) {
+                this.RemoveToolOrEquipmentOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveToolOrEquipmentOperationCompleted);
+            }
+            this.InvokeAsync("RemoveToolOrEquipment", new object[] {
+                        tool_equipementID,
+                        tool_equipementIDSpecified}, this.RemoveToolOrEquipmentOperationCompleted, userState);
+        }
+        
+        private void OnRemoveToolOrEquipmentOperationCompleted(object arg) {
+            if ((this.RemoveToolOrEquipmentCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveToolOrEquipmentCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetToolsAndEquipments", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public Tool_Equipment[] GetToolsAndEquipments(int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+            object[] results = this.Invoke("GetToolsAndEquipments", new object[] {
+                        JobSeekerID,
+                        JobSeekerIDSpecified});
+            return ((Tool_Equipment[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetToolsAndEquipmentsAsync(int JobSeekerID, bool JobSeekerIDSpecified) {
+            this.GetToolsAndEquipmentsAsync(JobSeekerID, JobSeekerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetToolsAndEquipmentsAsync(int JobSeekerID, bool JobSeekerIDSpecified, object userState) {
+            if ((this.GetToolsAndEquipmentsOperationCompleted == null)) {
+                this.GetToolsAndEquipmentsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetToolsAndEquipmentsOperationCompleted);
+            }
+            this.InvokeAsync("GetToolsAndEquipments", new object[] {
+                        JobSeekerID,
+                        JobSeekerIDSpecified}, this.GetToolsAndEquipmentsOperationCompleted, userState);
+        }
+        
+        private void OnGetToolsAndEquipmentsOperationCompleted(object arg) {
+            if ((this.GetToolsAndEquipmentsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetToolsAndEquipmentsCompleted(this, new GetToolsAndEquipmentsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -977,6 +1089,92 @@ namespace WebApplication1.localhost1 {
             }
             set {
                 this.stringValueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+    public partial class Tool_Equipment {
+        
+        private string imageField;
+        
+        private System.Nullable<int> jobSeekerIDField;
+        
+        private bool jobSeekerIDFieldSpecified;
+        
+        private string nameField;
+        
+        private int tool_EquipmentIDField;
+        
+        private bool tool_EquipmentIDFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Image {
+            get {
+                return this.imageField;
+            }
+            set {
+                this.imageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> JobSeekerID {
+            get {
+                return this.jobSeekerIDField;
+            }
+            set {
+                this.jobSeekerIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobSeekerIDSpecified {
+            get {
+                return this.jobSeekerIDFieldSpecified;
+            }
+            set {
+                this.jobSeekerIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int Tool_EquipmentID {
+            get {
+                return this.tool_EquipmentIDField;
+            }
+            set {
+                this.tool_EquipmentIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool Tool_EquipmentIDSpecified {
+            get {
+                return this.tool_EquipmentIDFieldSpecified;
+            }
+            set {
+                this.tool_EquipmentIDFieldSpecified = value;
             }
         }
     }
@@ -2233,6 +2431,40 @@ namespace WebApplication1.localhost1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void AddNewToolOrEquipmentCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void RemoveToolOrEquipmentCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetToolsAndEquipmentsCompletedEventHandler(object sender, GetToolsAndEquipmentsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetToolsAndEquipmentsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetToolsAndEquipmentsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Tool_Equipment[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Tool_Equipment[])(this.results[0]));
             }
         }
     }

@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-md-7">
                         <asp:FileUpload ID="ProfileImageUpload" runat="server" Width="225px"/>
-                        </div>
+                    </div>
                 </div>
                 <br/> 
                 <div class="row">

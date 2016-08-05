@@ -25,7 +25,12 @@
             </div> 
             <br />
             <div class="row">
-                <a href="ChangePassword.aspx" style="color:black">forgot your password?</a>
+                <div class="col-md-5">
+                    <a href="ChangePassword.aspx" style="color:black">forgot your password?</a>
+                </div>
+                 <div class="col-md-5">
+                    <a href="Registration.aspx" style="color:black">Register as a new user.</a>
+                </div>
             </div>  
             <br />     
         </div>

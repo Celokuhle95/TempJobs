@@ -127,6 +127,14 @@ namespace TempJobsWcf
 				return this.GetTable<Job>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Tool_Equipment> Tool_Equipments
+		{
+			get
+			{
+				return this.GetTable<Tool_Equipment>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employer")]
@@ -1590,6 +1598,87 @@ namespace TempJobsWcf
 		{
 			this.SendPropertyChanging();
 			entity.Job = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tool_Equipment")]
+	public partial class Tool_Equipment
+	{
+		
+		private int _Tool_EquipmentID;
+		
+		private string _Name;
+		
+		private string _Image;
+		
+		private System.Nullable<int> _JobSeekerID;
+		
+		public Tool_Equipment()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tool_EquipmentID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Tool_EquipmentID
+		{
+			get
+			{
+				return this._Tool_EquipmentID;
+			}
+			set
+			{
+				if ((this._Tool_EquipmentID != value))
+				{
+					this._Tool_EquipmentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(MAX)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this._Image = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
+		public System.Nullable<int> JobSeekerID
+		{
+			get
+			{
+				return this._JobSeekerID;
+			}
+			set
+			{
+				if ((this._JobSeekerID != value))
+				{
+					this._JobSeekerID = value;
+				}
+			}
 		}
 	}
 }

@@ -17,7 +17,6 @@ namespace WebApplication1
                 lc = new localhost1.Service1();
                 int JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekrID"]);
                 //employ also send notification to notify JobSeeker about the employment opportunity.
-
             }
             else
             {
