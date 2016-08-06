@@ -6,9 +6,11 @@
 
     </div>
      <div id="Skills" class="container" runat="server">
-         <h2 style="color:honeydew">Your informal skills:</h2>
+         <h2>Your informal skills:</h2>
          <br />
-         <p>Top five infromal skills that you have. Be ware that some of these skills require that you have your own resources to complete the job.</p>
+         <p>Here you can view your informal skills that you have. You can also the edit your skills. You can add up to five skills at most, you can however add less than five informal skills.
+          Be ware that some of these skills require that you have your own resources, tools or equipment, to complete the job. Click <a href="ToolsAndEquipments.aspx"> here </a> to view and edit your tools and equipment.           
+         </p>
          <br />
          <table class="table">
              <tbody>

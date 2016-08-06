@@ -16,6 +16,7 @@ namespace WebApplication1
 
             if (Session["UserID"] != null)
             {
+                TurnNotificationSectionOFF();
                 int userID = (int)Session["UserID"];
                 string usertype = (string)Session["UserType"];
                 if (usertype.Equals("Employer"))
@@ -25,6 +26,13 @@ namespace WebApplication1
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
+
+                    //Show notification message to employer
+                    if (Session["ScreenNotificationMessage"] != null)
+                    {
+                        string notifyMessage = (string)Session["ScreenNotificationMessage"];
+                        TurnNotificatiOn(notifyMessage);
+                    }
                 }
                 else if (usertype.Equals("JobSeeker"))
                 {
@@ -33,10 +41,40 @@ namespace WebApplication1
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
+
+                    //Show notification message to employer
+                    if (Session["ScreenNotificationMessage"] != null)
+                    {
+                        string notifyMessage = (string)Session["ScreenNotificationMessage"];
+                        TurnNotificatiOn(notifyMessage);
+                    }
                 }
+            }
+        }
+        public void TurnNotificationSectionOFF()
+        {
+            if (((string)Session["ScreenNotification"]) != null)
+            {
+                if (((string)Session["ScreenNotification"]).Equals("TurnOFF")) //switch the notification tab off, when you move to the next page
+                {
+                    NotificationSection.Visible = false;
+                    Session["ScreenNotification"] = null;
+                    Session["ScreenNotificationMessage"] = null;
+                }
+            }
+        }
 
-                
-
+        public void TurnNotificatiOn(string displayMessage)
+        {
+            string notify = (string)Session["ScreenNotification"];
+            if (notify != null)
+            {
+                if (notify.Equals("TurnON"))
+                {
+                    NotificationSection.InnerHtml = displayMessage;
+                    NotificationSection.Visible = true;
+                    Session["ScreenNotification"] = "TurnOFF";
+                }//run a timer to ensure that you set session variable off
             }
         }
     }

@@ -83,6 +83,16 @@ namespace TempJobsWcf
 
         [OperationContract]
         string test();
+
+        //Tools and equipment
+        [OperationContract]
+        void AddNewToolOrEquipment(string Name, string Image, int JobSeekerID);
+
+        [OperationContract]
+        void RemoveToolOrEquipment(int tool_equipementID);
+
+        [OperationContract]
+        List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID);
     }
  
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

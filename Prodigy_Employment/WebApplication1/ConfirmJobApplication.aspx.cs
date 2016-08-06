@@ -12,13 +12,32 @@ namespace WebApplication1
         int jobID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int jobID = Convert.ToInt32(Request.QueryString["JobID"]);
+            if (Session["UserID"] != null && Session["UserType"] != null)
+            {
+                if (((string)Session["UserType"]).Equals("JobSeeker"))
+                {
+                    int jobID = Convert.ToInt32(Request.QueryString["JobID"]);
+                }
+                else
+                {
+                    Response.Redirect("LoginPage.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
         }
 
         protected void btnYes_Click(object sender, EventArgs e)
         {
             localhost1.Service1 localhost = new localhost1.Service1();
             localhost.ApplyForJob(jobID, true, (int)Session["UserID"], true);
+           
+            //show success message
+            Session.Add("ScreenNotification", "TurnON");
+            Session.Add("ScreenNotificationMessage", "< p >Your application was successful, thank you for applying.We will be intouch.</ p >");
+
             Response.Redirect("ViewJobs.aspx");
         }
 

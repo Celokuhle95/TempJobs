@@ -29,8 +29,7 @@ namespace WebApplication1
             string cellphoneNumbers = txtCellphone.Text;
             string altanativeContactNumber = txtAltContactNum.Text;      
             string residentialAddress = txtResAddress.Text;
-        
-            
+               
             int userLevel = System.Convert.ToInt32(drpUsertype.SelectedValue);
 
             byte[] fileBytes = ProfileImageUpload.FileBytes;
@@ -103,7 +102,5 @@ namespace WebApplication1
                 return base64String;
             }
         }
-
-
     }
 }

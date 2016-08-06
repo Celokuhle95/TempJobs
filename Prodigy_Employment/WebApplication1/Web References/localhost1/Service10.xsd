@@ -99,4 +99,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfJob" nillable="true" type="tns:ArrayOfJob" />
+  <xs:complexType name="ArrayOfTool_Equipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tool_Equipment" nillable="true" type="tns:Tool_Equipment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTool_Equipment" nillable="true" type="tns:ArrayOfTool_Equipment" />
+  <xs:complexType name="Tool_Equipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobSeekerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tool_EquipmentID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tool_Equipment" nillable="true" type="tns:Tool_Equipment" />
 </xs:schema>

@@ -156,5 +156,23 @@ namespace TempJobsWcf
         {
             return "you were successful";
         }
+        //Tools and equipment
+        public void AddNewToolOrEquipment(string Name, string Image, int JobSeekerID)
+        {
+            ToolAndEquipment te = new ToolAndEquipment();
+            te.AddNewToolOrEquipment( Name, Image, JobSeekerID); 
+        }
+
+        public void RemoveToolOrEquipment(int tool_equipementID)
+        {
+            ToolAndEquipment te = new ToolAndEquipment();
+            te.RemoveToolOrEquipment(tool_equipementID);
+        }
+
+        public List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID)
+        {
+            ToolAndEquipment te = new ToolAndEquipment();
+            return te.GetToolsAndEquipments(JobSeekerID);
+        }
     }
 }

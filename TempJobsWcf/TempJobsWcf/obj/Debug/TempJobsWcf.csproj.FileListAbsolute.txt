@@ -30,3 +30,5 @@ C:\Users\p\Desktop\INFORMATICS_BACKUP\TempJobsWcf\TempJobsWcf\bin\TempJobsWcf.pd
 C:\Users\p\Desktop\INFORMATICS_BACKUP\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.csprojResolveAssemblyReference.cache
 C:\Users\p\Desktop\INFORMATICS_BACKUP\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.dll
 C:\Users\p\Desktop\INFORMATICS_BACKUP\TempJobsWcf\TempJobsWcf\obj\Debug\TempJobsWcf.pdb
+C:\Users\p\Desktop\My Repository\team46\TempJobsWcf\TempJobsWcf\bin\System.ServiceModel.dll
+C:\Users\p\Desktop\My Repository\team46\TempJobsWcf\TempJobsWcf\bin\System.ServiceModel.Web.dll

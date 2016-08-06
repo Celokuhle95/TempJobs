@@ -57,7 +57,7 @@
 							<a class="page-scroll" href="PostJob.aspx">Post job</a>
 						</li>
 						<li  id ="lblProfile" runat="server" visible="false" >
-							<a class="page-scroll" href="Profile.aspx">Profile</a>
+							<a class="page-scroll" href="JobSeekerProfile.aspx">Jobseeker Profile</a>
 						</li>
 						<li id ="lblViewJobs" runat="server" visible="false">
 							<a class="page-scroll" href="ViewJobs.aspx">Informal Jobs</a>
@@ -77,7 +77,12 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-        
+        <br />
+        <br />
+        <div id="NotificationSection" class="container" style="border:groove; background-color: darkseagreen" visible="false" runat="server" >
+
+        </div>
+
         <section class="container-fluid myHeader" runat="server" style="background-image:url(header.jpg);">
 	     <%--<header class="myHeader" runat ="server">--%>
 		       <div class="header-content">
