@@ -49,6 +49,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.FileUpload ToolImage1;
         
         /// <summary>
+        /// btnReload1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReload1;
+        
+        /// <summary>
         /// txtNameOrDescription1 control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload ToolImage2;
+        
+        /// <summary>
+        /// btnReload2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReload2;
         
         /// <summary>
         /// txtNameOrDescription2 control.
@@ -103,6 +121,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.FileUpload ToolImage3;
         
         /// <summary>
+        /// btnReload3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReload3;
+        
+        /// <summary>
         /// txtNameOrDescription3 control.
         /// </summary>
         /// <remarks>
@@ -130,6 +157,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.FileUpload ToolImage4;
         
         /// <summary>
+        /// btnReload4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReload4;
+        
+        /// <summary>
         /// txtNameOrDescription4 control.
         /// </summary>
         /// <remarks>
@@ -155,6 +191,15 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload ToolImage5;
+        
+        /// <summary>
+        /// btnReload5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReload5;
         
         /// <summary>
         /// txtNameOrDescription5 control.

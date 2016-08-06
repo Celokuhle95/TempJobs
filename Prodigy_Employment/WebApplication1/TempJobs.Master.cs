@@ -14,7 +14,7 @@ namespace Prodigy_Employment
         protected void Page_Load(object sender, EventArgs e)
         {
             
-            if (Session["UserID"] != null)
+            if (Session["UserID"] != null && Session["UserType"] != null)
             {
                 TurnNotificationSectionOFF();
                 int userID = (int)Session["UserID"];
@@ -27,7 +27,14 @@ namespace Prodigy_Employment
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
-                    TurnNotificatiOn("<p>Thank you for posting the job, your post was successful. Check applications later</p>");                    
+
+                   //Show notification message to employer
+                    if (Session["ScreenNotificationMessage"] != null)
+                    {
+                        string notifyMessage = (string)Session["ScreenNotificationMessage"];
+                        TurnNotificatiOn(notifyMessage);
+                    }
+                    
                 }
                 else if (usertype.Equals("JobSeeker"))
                 {
@@ -36,7 +43,13 @@ namespace Prodigy_Employment
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
-                    TurnNotificatiOn("<p>Your application was successful, thank you for applying. We will be intouch.</p>");
+   
+                    //Show notification message to employer
+                    if (Session["ScreenNotificationMessage"] != null)
+                    {
+                        string notifyMessage = (string)Session["ScreenNotificationMessage"];
+                        TurnNotificatiOn(notifyMessage);
+                    }
                 }          
             }
         }
@@ -48,6 +61,7 @@ namespace Prodigy_Employment
                 {
                     NotificationSection.Visible = false;
                     Session["ScreenNotification"] = null;
+                    Session["ScreenNotificationMessage"] = null;
                 }
             }         
         }
@@ -57,7 +71,7 @@ namespace Prodigy_Employment
             string notify = (string)Session["ScreenNotification"];
             if(notify != null)
             {
-                if (notify.Equals("Allow"))
+                if (notify.Equals("TurnON"))
                 {
                     NotificationSection.InnerHtml = displayMessage;
                     NotificationSection.Visible = true;

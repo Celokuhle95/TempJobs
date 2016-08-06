@@ -15,22 +15,74 @@ namespace WebApplication1
         private int JobSeekerID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            localhost1.Service1 localhost = new localhost1.Service1();
-            if (false/*Session["UserID"] != null && ((string)Session["UserType"]).Equals("JobSeekerID")*/)
+            if(!Page.IsPostBack)
             {
-                JobSeekerID = (int)Session["UserID"];
-                foreach (var te in localhost.GetToolsAndEquipments(JobSeekerID, true))
+                localhost1.Service1 localhost = new localhost1.Service1();
+                if (Session["UserID"] != null && Session["UserType"] != null)
                 {
-                    if(te != null)
+                    if(((string)Session["UserType"]).Equals("JobSeeker"))
                     {
-                        //update images and Name to the  correct text boxes using the methodology i thought of, which generationg the name(wont work i think), or just use counter
+                        JobSeekerID = (int)Session["UserID"];
+                        int count = 0;
+                        foreach (var te in localhost.GetToolsAndEquipments(JobSeekerID, true))
+                        {
+                            if (te != null)
+                            {
+                                //update images and Name to the  correct text boxes 
+                                if (count.Equals(0))
+                                {
+                                    if (te != null)
+                                    {
+                                        Image1ID.Src = te.Image;
+                                        txtNameOrDescription1.Text = te.Name;
+                                    }
+                                }
+                                else if (count.Equals(1))
+                                {
+                                    if (te != null)
+                                    {
+                                        Image2ID.Src = te.Image;
+                                        txtNameOrDescription2.Text = te.Name;
+                                    }
+                                }
+                                else if (count.Equals(2))
+                                {
+                                    if (te != null)
+                                    {
+                                        Image3ID.Src = te.Image;
+                                        txtNameOrDescription3.Text = te.Name;
+                                    }
+                                }
+                                else if (count.Equals(3))
+                                {
+                                    if (te != null)
+                                    {
+                                        Image4ID.Src = te.Image;
+                                        txtNameOrDescription4.Text = te.Name;
+                                    }
+                                }
+                                else if (count.Equals(4))
+                                {
+                                    if (te != null)
+                                    {
+                                        Image5ID.Src = te.Image;
+                                        txtNameOrDescription5.Text = te.Name;
+                                    }
+                                }
+                            }
+                            count++;
+                        }
                     }
+                    else
+                    {
+                        Response.Redirect("LoginPage.aspx");
+                    }                   
+                }
+                else
+                {
+                    Response.Redirect("LoginPage.aspx");
                 }
             }
-            //else
-            //{
-            //    Response.Redirect("LoginPage.aspx");
-            //}
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -45,6 +97,8 @@ namespace WebApplication1
 
                 string toolAndEquipment1 = txtNameOrDescription1.Text;
                 lc.AddNewToolOrEquipment(toolAndEquipment1, toolImage, JobSeekerID, true);
+                //Show success message
+                DisplaySuccessMessage();
             }
             byte[] image2Bytes = ToolImage2.FileBytes;
             if (image2Bytes != null)
@@ -54,8 +108,8 @@ namespace WebApplication1
 
                 string toolAndEquipment2 = txtNameOrDescription2.Text;
                 lc.AddNewToolOrEquipment(toolAndEquipment2, toolImage, JobSeekerID, true);
-           
- }
+                DisplaySuccessMessage();
+            }
             byte[] image3Bytes = ToolImage3.FileBytes;
             if (image3Bytes != null)
             {
@@ -64,6 +118,7 @@ namespace WebApplication1
 
                 string toolAndEquipment3 = txtNameOrDescription3.Text;
                 lc.AddNewToolOrEquipment(toolAndEquipment3, toolImage, JobSeekerID, true);
+                DisplaySuccessMessage();
             }
             byte[] image4Bytes = ToolImage4.FileBytes;
             if (image4Bytes != null)
@@ -73,6 +128,7 @@ namespace WebApplication1
 
                 string toolAndEquipment4 = txtNameOrDescription4.Text;
                 lc.AddNewToolOrEquipment(toolAndEquipment4, toolImage, JobSeekerID, true);
+                DisplaySuccessMessage();
             }
             byte[] image5Bytes = ToolImage5.FileBytes;
             if (image5Bytes != null)
@@ -82,6 +138,7 @@ namespace WebApplication1
 
                 string toolAndEquipment5 = txtNameOrDescription5.Text;
                 lc.AddNewToolOrEquipment(toolAndEquipment5, toolImage, JobSeekerID, true);
+                DisplaySuccessMessage();
             }
             Response.Redirect("JobSeekerProfile.aspx");
         }
@@ -107,6 +164,68 @@ namespace WebApplication1
                 // Convert byte[] to Base64 String
                 string base64String = Convert.ToBase64String(imageBytes);
                 return base64String;
+            }
+        }
+
+        protected void btnReload1_Click(object sender, EventArgs e)
+        {
+            byte[] imageBytes = ToolImage1.FileBytes;
+            if (imageBytes != null)
+            {
+                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                string toolImage = ImageToBase64String(toolImageObject);
+                Image1ID.Src = toolImage;
+            }
+        }
+
+        protected void btnReload2_Click(object sender, EventArgs e)
+        {
+            byte[] imageBytes = ToolImage2.FileBytes;
+            if (imageBytes != null)
+            {
+                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                string toolImage = ImageToBase64String(toolImageObject);
+                Image2ID.Src = toolImage;
+            }
+        }
+
+        protected void btnReload3_Click(object sender, EventArgs e)
+        {
+            byte[] imageBytes = ToolImage3.FileBytes;
+            if (imageBytes != null)
+            {
+                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                string toolImage = ImageToBase64String(toolImageObject);
+                Image3ID.Src = toolImage;
+            }
+        }
+        protected void btnReload4_Click(object sender, EventArgs e)
+        {
+            byte[] imageBytes = ToolImage4.FileBytes;
+            if (imageBytes != null)
+            {
+                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                string toolImage = ImageToBase64String(toolImageObject);
+                Image4ID.Src = toolImage;
+            }
+        }
+        protected void btnReload5_Click(object sender, EventArgs e)
+        {
+            byte[] imageBytes = ToolImage5.FileBytes;
+            if (imageBytes != null)
+            {
+                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                string toolImage = ImageToBase64String(toolImageObject);
+                Image5ID.Src = toolImage;
+            }
+        }
+
+        public void DisplaySuccessMessage()
+        {
+            if (Session["ScreenNotification"] == null)
+            {
+                Session.Add("ScreenNotification", "TurnON");
+                Session.Add("ScreenNotificationMessage", "< p >Changes to your skills were successfully saved.</ p >");
             }
         }
     }

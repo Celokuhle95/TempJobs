@@ -17,9 +17,10 @@
         <br /> 
         <div class="row">
             <div class="col-md-3" style="border:groove" >
-                <img id="Image1ID" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server"/>              
-                <asp:FileUpload ID="ToolImage1" runat="server" width="200px"/>
-                <br />                                
+                <img id="Image1ID" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server"/>                         
+                <asp:FileUpload ID="ToolImage1" runat="server" width="200px"/>                 
+                <asp:Button ID="btnReload1" runat="server" Text="Reload" class=" btn-primary" OnClick="btnReload1_Click" />        
+                <br />    <br />                              
                 Name/Description:                 
                 <asp:TextBox ID="txtNameOrDescription1" class="form-control" runat="server"></asp:TextBox>                             
                 <br />
@@ -27,7 +28,8 @@
             <div class="col-md-3" style="border:groove"  >
                 <img id="Image2ID"  src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server" /> 
                 <asp:FileUpload ID="ToolImage2" runat="server" width="200px"/>
-                <br /> 
+                <asp:Button ID="btnReload2" runat="server" Text="Reload" class=" btn-primary" OnClick="btnReload2_Click" />        
+                <br /> <br />  
                 Name/Description: 
                 <asp:TextBox ID="txtNameOrDescription2" class="form-control" runat="server"></asp:TextBox>
                 <br /> 
@@ -35,7 +37,8 @@
             <div class="col-md-3" style="border:groove">
                  <img id="Image3ID" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server"/> 
                 <asp:FileUpload ID="ToolImage3" runat="server" width="200px"/>                                                                                                           
-                <br /> 
+               <asp:Button ID="btnReload3" runat="server" Text="Reload" class=" btn-primary" OnClick="btnReload3_Click" />        
+                <br />    <br />  
                 Name/Description: 
                 <asp:TextBox ID="txtNameOrDescription3" class="form-control" runat="server"></asp:TextBox>
                 <br /> 
@@ -43,7 +46,8 @@
             <div class="col-md-3" style="border:groove">
                   <img id="Image4ID" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server"/> 
                 <asp:FileUpload ID="ToolImage4" runat="server" width="200px"/>
-                 <br /> 
+                 <asp:Button ID="btnReload4" runat="server" Text="Reload" class=" btn-primary" OnClick="btnReload4_Click" />        
+                <br />    <br />  
                 Name/Description: 
                 <asp:TextBox ID="txtNameOrDescription4" class="form-control" runat="server"></asp:TextBox>
                 <br /> 
@@ -51,7 +55,8 @@
              <div class="col-md-3" style="border:groove">
                   <img id="Image5ID" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server"/> 
                 <asp:FileUpload ID="ToolImage5" runat="server" width="200px"/>
-                 <br /> 
+                 <asp:Button ID="btnReload5" runat="server" Text="Reload" class=" btn-primary" OnClick="btnReload5_Click" />        
+                <br />    <br />  
                  Name/Description: 
                 <asp:TextBox ID="txtNameOrDescription5" class="form-control" runat="server"></asp:TextBox>
                 <br /> 

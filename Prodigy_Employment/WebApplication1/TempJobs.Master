@@ -62,7 +62,7 @@
 							<a href="PostJob.aspx">Post job</a>
 						</li>
 						<li  id ="lblProfile" runat="server" visible="false" >
-							<a  href="Profile.aspx">Profile</a>
+							<a  href="JobSeekerProfile.aspx">Jobseeker Profile</a>
 						</li>
 						<li id ="lblViewJobs" runat="server" visible="false">
 							<a  href="ViewJobs.aspx">Informal Jobs</a>

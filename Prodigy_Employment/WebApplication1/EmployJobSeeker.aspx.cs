@@ -12,11 +12,18 @@ namespace WebApplication1
         localhost1.Service1 lc;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Session["UserType"].Equals("Employer") || Session["UserID"] != null )
+            if (Session["UserID"] != null && Session["UserType"] != null)
             {
-                lc = new localhost1.Service1();
-                int JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekrID"]);
-                //employ also send notification to notify JobSeeker about the employment opportunity.
+                if (((string)Session["UserType"]).Equals("Employer"))
+                {
+                    lc = new localhost1.Service1();
+                    int JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekrID"]);
+                    //employ also send notification to notify JobSeeker about the employment opportunity.
+                }
+                else
+                {
+                    Response.Redirect("LoginPage.aspx");
+                }
             }
             else
             {
