@@ -82,6 +82,9 @@ namespace WebApplication1
                 {
                     Response.Redirect("LoginPage.aspx");
                 }
+            }else
+            {
+                Page.MaintainScrollPositionOnPostBack = true;
             }
         }
 
@@ -170,13 +173,17 @@ namespace WebApplication1
         protected void btnReload1_Click(object sender, EventArgs e)
         {
             byte[] imageBytes = ToolImage1.FileBytes;
-            if (imageBytes != null)
+            if(ToolImage1.HasFiles)
             {
-                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
-                string toolImage = ImageToBase64String(toolImageObject);
-                Image1ID.Src = toolImage;
+                if (!imageBytes.Equals(null))
+                {
+                    System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                    string toolImage = ImageToBase64String(toolImageObject);
+                    Image1ID.Src = "data:image/jpeg;base64," + toolImage;
+                }
             }
         }
+
 
         protected void btnReload2_Click(object sender, EventArgs e)
         {
@@ -185,7 +192,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image2ID.Src = toolImage;
+                Image2ID.Src = "data:image/jpeg;base64," + toolImage;               
             }
         }
 
@@ -196,7 +203,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image3ID.Src = toolImage;
+                Image3ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
         protected void btnReload4_Click(object sender, EventArgs e)
@@ -206,7 +213,8 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image4ID.Src = toolImage;
+                Image4ID.Src = "data:image/jpeg;base64," + toolImage;
+
             }
         }
         protected void btnReload5_Click(object sender, EventArgs e)
@@ -216,7 +224,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image5ID.Src = toolImage;
+                Image5ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
 
@@ -225,7 +233,7 @@ namespace WebApplication1
             if (Session["ScreenNotification"] == null)
             {
                 Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "< p >Changes to your skills were successfully saved.</ p >");
+                Session.Add("ScreenNotificationMessage", "<p>Changes to your skills were successfully saved.</ p >");
             }
         }
     }
