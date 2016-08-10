@@ -120,19 +120,19 @@ namespace TempJobsWcf
 			}
 		}
 		
-		public System.Data.Linq.Table<Job> Jobs
-		{
-			get
-			{
-				return this.GetTable<Job>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Tool_Equipment> Tool_Equipments
 		{
 			get
 			{
 				return this.GetTable<Tool_Equipment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Job> Jobs
+		{
+			get
+			{
+				return this.GetTable<Job>();
 			}
 		}
 	}
@@ -1278,6 +1278,87 @@ namespace TempJobsWcf
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tool_Equipment")]
+	public partial class Tool_Equipment
+	{
+		
+		private int _Tool_EquipmentID;
+		
+		private string _Name;
+		
+		private string _Image;
+		
+		private System.Nullable<int> _JobSeekerID;
+		
+		public Tool_Equipment()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tool_EquipmentID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int Tool_EquipmentID
+		{
+			get
+			{
+				return this._Tool_EquipmentID;
+			}
+			set
+			{
+				if ((this._Tool_EquipmentID != value))
+				{
+					this._Tool_EquipmentID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this._Name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(MAX)")]
+		public string Image
+		{
+			get
+			{
+				return this._Image;
+			}
+			set
+			{
+				if ((this._Image != value))
+				{
+					this._Image = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
+		public System.Nullable<int> JobSeekerID
+		{
+			get
+			{
+				return this._JobSeekerID;
+			}
+			set
+			{
+				if ((this._JobSeekerID != value))
+				{
+					this._JobSeekerID = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Job")]
 	public partial class Job : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1292,9 +1373,13 @@ namespace TempJobsWcf
 		
 		private System.Nullable<int> _NumberOfDays;
 		
-		private System.Nullable<int> _StartTime;
+		private string _DueDate;
 		
-		private System.Nullable<int> _EndTime;
+		private string _StartDate;
+		
+		private string _StartTime;
+		
+		private string _EndTime;
 		
 		private string _Location;
 		
@@ -1318,9 +1403,13 @@ namespace TempJobsWcf
     partial void OnDescriptionChanged();
     partial void OnNumberOfDaysChanging(System.Nullable<int> value);
     partial void OnNumberOfDaysChanged();
-    partial void OnStartTimeChanging(System.Nullable<int> value);
+    partial void OnDueDateChanging(string value);
+    partial void OnDueDateChanged();
+    partial void OnStartDateChanging(string value);
+    partial void OnStartDateChanged();
+    partial void OnStartTimeChanging(string value);
     partial void OnStartTimeChanged();
-    partial void OnEndTimeChanging(System.Nullable<int> value);
+    partial void OnEndTimeChanging(string value);
     partial void OnEndTimeChanged();
     partial void OnLocationChanging(string value);
     partial void OnLocationChanged();
@@ -1417,8 +1506,48 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="Int")]
-		public System.Nullable<int> StartTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DueDate", DbType="VarChar(50)")]
+		public string DueDate
+		{
+			get
+			{
+				return this._DueDate;
+			}
+			set
+			{
+				if ((this._DueDate != value))
+				{
+					this.OnDueDateChanging(value);
+					this.SendPropertyChanging();
+					this._DueDate = value;
+					this.SendPropertyChanged("DueDate");
+					this.OnDueDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="VarChar(50)")]
+		public string StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartTime", DbType="VarChar(50)")]
+		public string StartTime
 		{
 			get
 			{
@@ -1437,8 +1566,8 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndTime", DbType="Int")]
-		public System.Nullable<int> EndTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndTime", DbType="VarChar(50)")]
+		public string EndTime
 		{
 			get
 			{
@@ -1598,87 +1727,6 @@ namespace TempJobsWcf
 		{
 			this.SendPropertyChanging();
 			entity.Job = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Tool_Equipment")]
-	public partial class Tool_Equipment
-	{
-		
-		private int _Tool_EquipmentID;
-		
-		private string _Name;
-		
-		private string _Image;
-		
-		private System.Nullable<int> _JobSeekerID;
-		
-		public Tool_Equipment()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tool_EquipmentID", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int Tool_EquipmentID
-		{
-			get
-			{
-				return this._Tool_EquipmentID;
-			}
-			set
-			{
-				if ((this._Tool_EquipmentID != value))
-				{
-					this._Tool_EquipmentID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this._Name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="VarChar(MAX)")]
-		public string Image
-		{
-			get
-			{
-				return this._Image;
-			}
-			set
-			{
-				if ((this._Image != value))
-				{
-					this._Image = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
-		public System.Nullable<int> JobSeekerID
-		{
-			get
-			{
-				return this._JobSeekerID;
-			}
-			set
-			{
-				if ((this._JobSeekerID != value))
-				{
-					this._JobSeekerID = value;
-				}
-			}
 		}
 	}
 }

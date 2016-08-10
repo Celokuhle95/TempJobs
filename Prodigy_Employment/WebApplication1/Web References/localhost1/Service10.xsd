@@ -65,15 +65,17 @@
   <xs:complexType name="Job">
     <xs:sequence>
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DueDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Employer" nillable="true" type="tns:Employer" />
       <xs:element minOccurs="0" name="EmployerID" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="JobApplications" nillable="true" type="tns:ArrayOfJobApplication" />
       <xs:element minOccurs="0" name="JobID" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumberOfDays" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ToBePaid" nillable="true" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
