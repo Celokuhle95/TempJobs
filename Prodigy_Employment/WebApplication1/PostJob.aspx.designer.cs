@@ -13,15 +13,6 @@ namespace WebApplication1 {
     public partial class PostJob {
         
         /// <summary>
-        /// Hr1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Hr1;
-        
-        /// <summary>
         /// drpSkillName control.
         /// </summary>
         /// <remarks>
@@ -40,31 +31,49 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// txtNumDays control.
+        /// NumberOfDays control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumDays;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl NumberOfDays;
         
         /// <summary>
-        /// txtStartTime control.
+        /// DueDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStartTime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl DueDate;
         
         /// <summary>
-        /// txtEndTime control.
+        /// StartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEndTime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl StartDate;
+        
+        /// <summary>
+        /// StartTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl StartTime;
+        
+        /// <summary>
+        /// EndTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl EndTime;
         
         /// <summary>
         /// txtLocation control.
@@ -76,13 +85,13 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox txtLocation;
         
         /// <summary>
-        /// txtReward control.
+        /// PayAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReward;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl PayAmount;
         
         /// <summary>
         /// btnUpload control.
