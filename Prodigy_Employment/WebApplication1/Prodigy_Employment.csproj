@@ -107,7 +107,6 @@
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="ViewJobApplications.aspx" />
-    <Content Include="ViewJobInvites.aspx" />
     <Content Include="ViewJobs.aspx" />
     <Content Include="ViewUsers.aspx" />
     <Content Include="Web References\localhost1\CompositeType.datasource">
@@ -244,13 +243,6 @@
     </Compile>
     <Compile Include="ViewJobApplications.aspx.designer.cs">
       <DependentUpon>ViewJobApplications.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewJobInvites.aspx.cs">
-      <DependentUpon>ViewJobInvites.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewJobInvites.aspx.designer.cs">
-      <DependentUpon>ViewJobInvites.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewJobs.aspx.cs">
       <DependentUpon>ViewJobs.aspx</DependentUpon>

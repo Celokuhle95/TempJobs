@@ -256,20 +256,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="EmployerSpecificJobs">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EmployerSpecificJobsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="EmployerSpecificJobsResult" nillable="true" type="q8:ArrayOfJob" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="ApplyForJob">
     <xs:complexType>
       <xs:sequence>
@@ -293,7 +279,7 @@
   <xs:element name="getApplicantsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="getApplicantsResult" nillable="true" type="q9:ArrayOfJobSeeker" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="getApplicantsResult" nillable="true" type="q8:ArrayOfJobSeeker" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -369,7 +355,7 @@
   <xs:element name="GetToolsAndEquipmentsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="GetToolsAndEquipmentsResult" nillable="true" type="q10:ArrayOfTool_Equipment" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="GetToolsAndEquipmentsResult" nillable="true" type="q9:ArrayOfTool_Equipment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

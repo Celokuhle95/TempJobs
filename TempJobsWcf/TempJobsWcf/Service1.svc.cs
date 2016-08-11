@@ -115,12 +115,6 @@ namespace TempJobsWcf
             JobManager job = new JobManager();
             return job.AllJobs();
         }
-
-        public List<Job> EmployerSpecificJobs(int EmployerID)
-        {
-            JobManager job = new JobManager();
-            return job.EmployerSpecificJobs(EmployerID);
-        }
         public void ApplyForJob(int jobID, int jobseekerID)
         {
             JobManager job = new JobManager();

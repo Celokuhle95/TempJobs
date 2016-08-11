@@ -109,12 +109,6 @@
   <wsdl:message name="IService1_AllJobs_OutputMessage">
     <wsdl:part name="parameters" element="tns:AllJobsResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_EmployerSpecificJobs_InputMessage">
-    <wsdl:part name="parameters" element="tns:EmployerSpecificJobs" />
-  </wsdl:message>
-  <wsdl:message name="IService1_EmployerSpecificJobs_OutputMessage">
-    <wsdl:part name="parameters" element="tns:EmployerSpecificJobsResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_ApplyForJob_InputMessage">
     <wsdl:part name="parameters" element="tns:ApplyForJob" />
   </wsdl:message>
@@ -231,10 +225,6 @@
     <wsdl:operation name="AllJobs">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllJobs" message="tns:IService1_AllJobs_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllJobsResponse" message="tns:IService1_AllJobs_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="EmployerSpecificJobs">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EmployerSpecificJobs" message="tns:IService1_EmployerSpecificJobs_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EmployerSpecificJobsResponse" message="tns:IService1_EmployerSpecificJobs_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ApplyForJob">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ApplyForJob" message="tns:IService1_ApplyForJob_InputMessage" />
@@ -417,15 +407,6 @@
     </wsdl:operation>
     <wsdl:operation name="AllJobs">
       <soap:operation soapAction="http://tempuri.org/IService1/AllJobs" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="EmployerSpecificJobs">
-      <soap:operation soapAction="http://tempuri.org/IService1/EmployerSpecificJobs" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
