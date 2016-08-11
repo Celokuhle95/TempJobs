@@ -91,7 +91,18 @@ namespace TempJobsWcf
                        select ja).Single();
             database.JobApplications.DeleteOnSubmit(JobApp);
         }
-      
+       public List<Job> EmployerSpecificJobs(int EmployerID)
+       {
+            List<Job> jobs = new List<Job>();
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            jobs = (from job in database.Jobs where job.EmployerID.Equals(EmployerID) select job).ToList();
+            if (jobs != null)
+            {
+                return jobs;
+            }
+            return null;
+        }
+
         //add more functions relating to job management
     }
 

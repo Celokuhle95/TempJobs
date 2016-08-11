@@ -63,6 +63,8 @@ namespace WebApplication1.localhost1 {
         
         private System.Threading.SendOrPostCallback AllJobsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback EmployerSpecificJobsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ApplyForJobOperationCompleted;
         
         private System.Threading.SendOrPostCallback getApplicantsOperationCompleted;
@@ -167,6 +169,9 @@ namespace WebApplication1.localhost1 {
         
         /// <remarks/>
         public event AllJobsCompletedEventHandler AllJobsCompleted;
+        
+        /// <remarks/>
+        public event EmployerSpecificJobsCompletedEventHandler EmployerSpecificJobsCompleted;
         
         /// <remarks/>
         public event ApplyForJobCompletedEventHandler ApplyForJobCompleted;
@@ -772,6 +777,39 @@ namespace WebApplication1.localhost1 {
             if ((this.AllJobsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AllJobsCompleted(this, new AllJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/EmployerSpecificJobs", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public Job[] EmployerSpecificJobs(int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
+            object[] results = this.Invoke("EmployerSpecificJobs", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified});
+            return ((Job[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void EmployerSpecificJobsAsync(int EmployerID, bool EmployerIDSpecified) {
+            this.EmployerSpecificJobsAsync(EmployerID, EmployerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void EmployerSpecificJobsAsync(int EmployerID, bool EmployerIDSpecified, object userState) {
+            if ((this.EmployerSpecificJobsOperationCompleted == null)) {
+                this.EmployerSpecificJobsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEmployerSpecificJobsOperationCompleted);
+            }
+            this.InvokeAsync("EmployerSpecificJobs", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified}, this.EmployerSpecificJobsOperationCompleted, userState);
+        }
+        
+        private void OnEmployerSpecificJobsOperationCompleted(object arg) {
+            if ((this.EmployerSpecificJobsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.EmployerSpecificJobsCompleted(this, new EmployerSpecificJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2358,6 +2396,32 @@ namespace WebApplication1.localhost1 {
         private object[] results;
         
         internal AllJobsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Job[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Job[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void EmployerSpecificJobsCompletedEventHandler(object sender, EmployerSpecificJobsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class EmployerSpecificJobsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal EmployerSpecificJobsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

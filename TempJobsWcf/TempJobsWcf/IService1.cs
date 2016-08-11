@@ -69,6 +69,10 @@ namespace TempJobsWcf
         [OperationContract]
         List<Job> AllJobs();
 
+
+        [OperationContract]
+        List<Job> EmployerSpecificJobs(int EmployerID);
+
         [OperationContract]
         void ApplyForJob(int JobID, int JobseekerID);
 
