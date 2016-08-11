@@ -15,9 +15,9 @@
         informal jobs do not require tools or equipment of your own to complete. So in this case you can choose not to upload any photos
         Also note that some Employers may have their own tools and equipment which you can use aswell.</p>
         <br /> 
-        <div class="row" id="Tools" runat="server">
+        <div class="row">
             <div class="col-md-3" style="border:groove" >
-                <img id="Image1ID" runat="server" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" />                         
+                <img id="Image1ID" src="image/" alt="CLICK BELOW TO ADD AN IMAGE" style="height:200px; width:100%" runat="server"/>                         
                 <asp:FileUpload ID="ToolImage1" runat="server" width="200px"/>                 
                 <asp:Button ID="btnReload1" runat="server" Text="Reload" class=" btn-primary" OnClick="btnReload1_Click" />        
                 <br />    <br />                              
@@ -68,5 +68,4 @@
              <asp:Button ID="btnSave" runat="server" Text="Save Tools/Equipments" class="btn btn-primary btn-xl" OnClick="btnSave_Click"/>          
         </div>
     </div>
-    <asp:ListView ID="ListView1" runat="server"></asp:ListView>
 </asp:Content>

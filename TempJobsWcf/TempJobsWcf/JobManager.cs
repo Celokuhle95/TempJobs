@@ -7,7 +7,7 @@ namespace TempJobsWcf
 {
     public class JobManager
     {
-        public void post(string Name, string Description, int NumberOfDaysRequired, int StartTime, int EndTime, string Location, double ToBePaid, int EmployerID)
+        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, int EmployerID)
         {
             Job newJob = new Job();
 
@@ -15,6 +15,8 @@ namespace TempJobsWcf
             newJob.Name = Name;
             newJob.Description = Description;
             newJob.NumberOfDays = NumberOfDaysRequired;
+            newJob.DueDate = DueDate;
+            newJob.StartDate = StartDate;
             newJob.StartTime = StartTime;
             newJob.EndTime = EndTime;
             newJob.Location = Location;
@@ -34,6 +36,8 @@ namespace TempJobsWcf
                 job.Name = jb.Name;
                 job.Description = jb.Description;
                 job.NumberOfDays = jb.NumberOfDays;
+                job.DueDate = jb.DueDate;
+                job.StartDate = jb.StartDate;
                 job.StartTime = jb.StartTime;
                 job.EndTime = jb.EndTime;
                 job.Location = jb.Location;

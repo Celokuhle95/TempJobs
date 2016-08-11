@@ -103,11 +103,11 @@ namespace TempJobsWcf
             return skills.ReadSkills(JobSeekerID);
         }
 
-        //Jobs
-        public void PostJob(string Name, string Description, int NumberOfDaysRequired, int StartTime, int EndTime, string Location, double ToBePaid, int EmployerID)
+        //jobs
+        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, int EmployerID)
         {
             JobManager job = new JobManager();
-            job.post(Name, Description, NumberOfDaysRequired, StartTime, EndTime, Location, ToBePaid, EmployerID);
+            job.PostJob(Name, Description, NumberOfDaysRequired, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, EmployerID);
         }
 
         public List<Job> AllJobs()
@@ -179,6 +179,6 @@ namespace TempJobsWcf
         {
             ToolAndEquipment te = new ToolAndEquipment();
             return te.GetToolsAndEquipments(JobSeekerID);
-        }
+        }      
     }
 }

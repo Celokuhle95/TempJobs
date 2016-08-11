@@ -701,16 +701,16 @@ namespace WebApplication1.localhost1 {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/PostJob", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void PostJob([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Description, int NumberOfDaysRequired, [System.Xml.Serialization.XmlIgnoreAttribute()] bool NumberOfDaysRequiredSpecified, int StartTime, [System.Xml.Serialization.XmlIgnoreAttribute()] bool StartTimeSpecified, int EndTime, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EndTimeSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Location, double ToBePaid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ToBePaidSpecified, int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
+        public void PostJob([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Description, int NumberOfDaysRequired, [System.Xml.Serialization.XmlIgnoreAttribute()] bool NumberOfDaysRequiredSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string DueDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string EndTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Location, double ToBePaid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ToBePaidSpecified, int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
             this.Invoke("PostJob", new object[] {
                         Name,
                         Description,
                         NumberOfDaysRequired,
                         NumberOfDaysRequiredSpecified,
+                        DueDate,
+                        StartDate,
                         StartTime,
-                        StartTimeSpecified,
                         EndTime,
-                        EndTimeSpecified,
                         Location,
                         ToBePaid,
                         ToBePaidSpecified,
@@ -719,12 +719,12 @@ namespace WebApplication1.localhost1 {
         }
         
         /// <remarks/>
-        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, int StartTime, bool StartTimeSpecified, int EndTime, bool EndTimeSpecified, string Location, double ToBePaid, bool ToBePaidSpecified, int EmployerID, bool EmployerIDSpecified) {
-            this.PostJobAsync(Name, Description, NumberOfDaysRequired, NumberOfDaysRequiredSpecified, StartTime, StartTimeSpecified, EndTime, EndTimeSpecified, Location, ToBePaid, ToBePaidSpecified, EmployerID, EmployerIDSpecified, null);
+        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, bool ToBePaidSpecified, int EmployerID, bool EmployerIDSpecified) {
+            this.PostJobAsync(Name, Description, NumberOfDaysRequired, NumberOfDaysRequiredSpecified, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, ToBePaidSpecified, EmployerID, EmployerIDSpecified, null);
         }
         
         /// <remarks/>
-        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, int StartTime, bool StartTimeSpecified, int EndTime, bool EndTimeSpecified, string Location, double ToBePaid, bool ToBePaidSpecified, int EmployerID, bool EmployerIDSpecified, object userState) {
+        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, bool ToBePaidSpecified, int EmployerID, bool EmployerIDSpecified, object userState) {
             if ((this.PostJobOperationCompleted == null)) {
                 this.PostJobOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPostJobOperationCompleted);
             }
@@ -733,10 +733,10 @@ namespace WebApplication1.localhost1 {
                         Description,
                         NumberOfDaysRequired,
                         NumberOfDaysRequiredSpecified,
+                        DueDate,
+                        StartDate,
                         StartTime,
-                        StartTimeSpecified,
                         EndTime,
-                        EndTimeSpecified,
                         Location,
                         ToBePaid,
                         ToBePaidSpecified,
@@ -1378,15 +1378,15 @@ namespace WebApplication1.localhost1 {
         
         private string descriptionField;
         
+        private string dueDateField;
+        
         private Employer employerField;
         
         private System.Nullable<int> employerIDField;
         
         private bool employerIDFieldSpecified;
         
-        private System.Nullable<int> endTimeField;
-        
-        private bool endTimeFieldSpecified;
+        private string endTimeField;
         
         private JobApplication[] jobApplicationsField;
         
@@ -1402,9 +1402,9 @@ namespace WebApplication1.localhost1 {
         
         private bool numberOfDaysFieldSpecified;
         
-        private System.Nullable<int> startTimeField;
+        private string startDateField;
         
-        private bool startTimeFieldSpecified;
+        private string startTimeField;
         
         private System.Nullable<double> toBePaidField;
         
@@ -1418,6 +1418,17 @@ namespace WebApplication1.localhost1 {
             }
             set {
                 this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string DueDate {
+            get {
+                return this.dueDateField;
+            }
+            set {
+                this.dueDateField = value;
             }
         }
         
@@ -1456,23 +1467,12 @@ namespace WebApplication1.localhost1 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> EndTime {
+        public string EndTime {
             get {
                 return this.endTimeField;
             }
             set {
                 this.endTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool EndTimeSpecified {
-            get {
-                return this.endTimeFieldSpecified;
-            }
-            set {
-                this.endTimeFieldSpecified = value;
             }
         }
         
@@ -1554,23 +1554,23 @@ namespace WebApplication1.localhost1 {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public System.Nullable<int> StartTime {
+        public string StartDate {
+            get {
+                return this.startDateField;
+            }
+            set {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StartTime {
             get {
                 return this.startTimeField;
             }
             set {
                 this.startTimeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool StartTimeSpecified {
-            get {
-                return this.startTimeFieldSpecified;
-            }
-            set {
-                this.startTimeFieldSpecified = value;
             }
         }
         

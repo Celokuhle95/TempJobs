@@ -64,7 +64,7 @@ namespace TempJobsWcf
 
         //Jobs
         [OperationContract]
-        void PostJob(string Name, string Description, int NumberOfDaysRequired, int StartTime, int EndTime, string Location, double ToBePaid, int EmployerID);
+        void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate,string StartTime, string EndTime, string Location, double ToBePaid, int EmployerID);
 
         [OperationContract]
         List<Job> AllJobs();

@@ -31,6 +31,7 @@ namespace WebApplication1
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             //string name = drpSkillName.SelectedValue;
             //string description = txtDescription.Text;
             //string location = txtLocation.Text;
@@ -45,6 +46,31 @@ namespace WebApplication1
             //Session.Add("ScreenNotification", "TurnON");
             //Session.Add("ScreenNotificationMessage", "<p>Thank you for posting the job, your post was successful. Check applications later</p>");
             //Response.Redirect("Home.aspx");
+=======
+            string name = drpSkillName.SelectedValue;
+            string description = txtDescription.Text;
+            int numDays = Convert.ToInt32(NumberOfDays.Value);
+            string duedate = GetDate(DueDate.Value);
+            string startdate = GetDate(StartDate.Value);
+            string startTime = StartTime.Value;
+            string endTime = EndTime.Value;
+            string location = txtLocation.Text;
+            double amount = Convert.ToDouble(PayAmount.Value);           
+            int EmployerID = (int)Session["UserID"];
+
+            localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, EmployerID, true);
+            //display some message to let employer know that posting was successful.
+            Session.Add("ScreenNotification", "TurnON");
+            Session.Add("ScreenNotificationMessage", "<p>Thank you for posting the job, your post was successful. Check applications later</p>");
+            Response.Redirect("Home.aspx");
+>>>>>>> 6b0683cfd28637ec1d84beb9372a74560df16bfa
+        }
+
+        public string GetDate(string stringDate)
+        {          
+            DateTime loadedDate = Convert.ToDateTime(stringDate);
+            string DateInCorrectFormat = loadedDate.ToString("dd MMMM yyyy");
+            return DateInCorrectFormat;
         }
     }
 }
