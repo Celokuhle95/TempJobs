@@ -64,6 +64,10 @@
 						<li  id ="lblProfile" runat="server" visible="false" >
 							<a  href="JobSeekerProfile.aspx">Jobseeker Profile</a>
 						</li>
+
+                        <li  id ="lblReport" runat="server" visible="false" >
+							<a  href="viewReportedJobs.aspx">Reported Jobs</a>
+						</li>
 						<li id ="lblViewJobs" runat="server" visible="false">
 							<a  href="ViewJobs.aspx">Informal Jobs</a>
 						</li>

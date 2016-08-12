@@ -12,6 +12,7 @@
       <Column Name="ResidentialAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="Employer_Job" Member="Jobs" ThisKey="EmployerID" OtherKey="EmployerID" Type="Job" />
+      <Association Name="Employer_ReportJob" Member="ReportJobs" ThisKey="EmployerID" OtherKey="EmployerID" Type="ReportJob" />
     </Type>
   </Table>
   <Table Name="dbo.JobSeeker" Member="JobSeekers">
@@ -29,6 +30,7 @@
       <Association Name="JobSeeker_InformalSkill" Member="InformalSkills" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="InformalSkill" />
       <Association Name="JobSeeker_JobApplication" Member="JobApplications" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobApplication" />
       <Association Name="JobSeeker_Tool_Equipment" Member="Tool_Equipments" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="Tool_Equipment" />
+      <Association Name="JobSeeker_ReportJob" Member="ReportJobs" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="ReportJob" />
     </Type>
   </Table>
   <Table Name="dbo.Admin" Member="Admins">
@@ -81,7 +83,20 @@
       <Column Name="ToBePaid" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="EmployerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Job_JobApplication" Member="JobApplications" ThisKey="JobID" OtherKey="JobID" Type="JobApplication" />
+      <Association Name="Job_ReportJob" Member="ReportJobs" ThisKey="JobID" OtherKey="JobID" Type="ReportJob" />
       <Association Name="Employer_Job" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReportJob" Member="ReportJobs">
+    <Type Name="ReportJob">
+      <Column Name="ReportJobID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmployerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="JobID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Employer_ReportJob" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
+      <Association Name="Job_ReportJob" Member="Job" ThisKey="JobID" OtherKey="JobID" Type="Job" IsForeignKey="true" />
+      <Association Name="JobSeeker_ReportJob" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

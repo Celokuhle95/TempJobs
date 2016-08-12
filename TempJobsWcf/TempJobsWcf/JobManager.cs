@@ -34,6 +34,7 @@ namespace TempJobsWcf
             {
                 Job job = new Job();
                 job.Name = jb.Name;
+                job.JobID = jb.JobID;
                 job.Description = jb.Description;
                 job.NumberOfDays = jb.NumberOfDays;
                 job.DueDate = jb.DueDate;
@@ -46,6 +47,105 @@ namespace TempJobsWcf
                 jobs.Add(job);
             }
             return jobs;
+        }
+
+        public List<Job> OrderByEmployer()
+        {
+            List<Job> jobs = null;
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            try
+            {
+                jobs = (from j in database.Jobs orderby j.EmployerID select j).ToList();
+                foreach (var jb in database.Jobs)
+                {
+                    Job job = new Job();
+                    job.Name = jb.Name;
+                    job.JobID = jb.JobID;
+                    job.Description = jb.Description;
+                    job.NumberOfDays = jb.NumberOfDays;
+                    job.DueDate = jb.DueDate;
+                    job.StartDate = jb.StartDate;
+                    job.StartTime = jb.StartTime;
+                    job.EndTime = jb.EndTime;
+                    job.Location = jb.Location;
+                    job.ToBePaid = jb.ToBePaid;
+                    job.EmployerID = jb.EmployerID;
+                    jobs.Add(job);
+                }
+                //return jobs;
+            }
+            catch (Exception e)
+            {
+                // return;
+            }
+            return jobs;
+
+        }
+
+        public List<Job> OrderByJob()
+        {
+            List<Job> jobs = null;
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            try
+            {
+                jobs = (from j in database.Jobs orderby j.JobID select j).ToList();
+                foreach (var jb in database.Jobs)
+                {
+                    Job job = new Job();
+                    job.Name = jb.Name;
+                    job.JobID = jb.JobID;
+                    job.Description = jb.Description;
+                    job.NumberOfDays = jb.NumberOfDays;
+                    job.DueDate = jb.DueDate;
+                    job.StartDate = jb.StartDate;
+                    job.StartTime = jb.StartTime;
+                    job.EndTime = jb.EndTime;
+                    job.Location = jb.Location;
+                    job.ToBePaid = jb.ToBePaid;
+                    job.EmployerID = jb.EmployerID;
+                    jobs.Add(job);
+                }
+                //return jobs;
+            }
+            catch (Exception e)
+            {
+                // return;
+            }
+            return jobs;
+
+        }
+
+        public List<Job> OrderByJobType()
+        {
+            List<Job> jobs = null;
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            try
+            {
+                jobs = (from j in database.Jobs orderby j.Name select j).ToList();
+                foreach (var jb in database.Jobs)
+                {
+                    Job job = new Job();
+                    job.Name = jb.Name;
+                    job.JobID = jb.JobID;
+                    job.Description = jb.Description;
+                    job.NumberOfDays = jb.NumberOfDays;
+                    job.DueDate = jb.DueDate;
+                    job.StartDate = jb.StartDate;
+                    job.StartTime = jb.StartTime;
+                    job.EndTime = jb.EndTime;
+                    job.Location = jb.Location;
+                    job.ToBePaid = jb.ToBePaid;
+                    job.EmployerID = jb.EmployerID;
+                    jobs.Add(job);
+                }
+                //return jobs;
+            }
+            catch (Exception e)
+            {
+                // return;
+            }
+            return jobs;
+
         }
 
         public void ApplyForJob(int JobID, int JobseekerID)
@@ -95,6 +195,9 @@ namespace TempJobsWcf
                        select ja).Single();
             database.JobApplications.DeleteOnSubmit(JobApp);
         }
+
+      
+
       
         //add more functions relating to job management
     }

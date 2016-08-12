@@ -157,6 +157,36 @@
   <wsdl:message name="IService1_GetToolsAndEquipments_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetToolsAndEquipmentsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_ReportJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReportJob" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ReportJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReportJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllReportJobs_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllReportJobs" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllReportJobs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllReportJobsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderByEmployer_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderByEmployer" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderByEmployer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderByEmployerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderByJob_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderByJob" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderByJob_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderByJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderByJobType_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderByJobType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_OrderByJobType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderByJobTypeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
@@ -257,6 +287,26 @@
     <wsdl:operation name="GetToolsAndEquipments">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetToolsAndEquipments" message="tns:IService1_GetToolsAndEquipments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetToolsAndEquipmentsResponse" message="tns:IService1_GetToolsAndEquipments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ReportJob" message="tns:IService1_ReportJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ReportJobResponse" message="tns:IService1_ReportJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllReportJobs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllReportJobs" message="tns:IService1_AllReportJobs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllReportJobsResponse" message="tns:IService1_AllReportJobs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderByEmployer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderByEmployer" message="tns:IService1_OrderByEmployer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderByEmployerResponse" message="tns:IService1_OrderByEmployer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderByJob">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderByJob" message="tns:IService1_OrderByJob_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderByJobResponse" message="tns:IService1_OrderByJob_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderByJobType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/OrderByJobType" message="tns:IService1_OrderByJobType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/OrderByJobTypeResponse" message="tns:IService1_OrderByJobType_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -479,6 +529,51 @@
     </wsdl:operation>
     <wsdl:operation name="GetToolsAndEquipments">
       <soap:operation soapAction="http://tempuri.org/IService1/GetToolsAndEquipments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportJob">
+      <soap:operation soapAction="http://tempuri.org/IService1/ReportJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllReportJobs">
+      <soap:operation soapAction="http://tempuri.org/IService1/AllReportJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderByEmployer">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderByEmployer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderByJob">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderByJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderByJobType">
+      <soap:operation soapAction="http://tempuri.org/IService1/OrderByJobType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

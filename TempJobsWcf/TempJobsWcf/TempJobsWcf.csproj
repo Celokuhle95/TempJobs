@@ -75,6 +75,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminManager.cs" />
     <Compile Include="DatabaseClassses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
