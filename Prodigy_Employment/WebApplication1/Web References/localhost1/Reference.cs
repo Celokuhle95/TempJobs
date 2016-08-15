@@ -43,6 +43,8 @@ namespace WebApplication1.localhost1 {
         
         private System.Threading.SendOrPostCallback AllJobseekersOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AllEmployersOperationCompleted;
+        
         private System.Threading.SendOrPostCallback SingleJobseekerOperationCompleted;
         
         private System.Threading.SendOrPostCallback SingleEmployerOperationCompleted;
@@ -63,9 +65,13 @@ namespace WebApplication1.localhost1 {
         
         private System.Threading.SendOrPostCallback AllJobsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback EmployerSpecificJobsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ApplyForJobOperationCompleted;
         
         private System.Threading.SendOrPostCallback getApplicantsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllApplicationsOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteJobOperationCompleted;
         
@@ -78,6 +84,14 @@ namespace WebApplication1.localhost1 {
         private System.Threading.SendOrPostCallback RemoveToolOrEquipmentOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetToolsAndEquipmentsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InviteJobSeekerOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback Invitation_EmployersOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAllInvitesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetJobSeekerJobInvitesOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -139,6 +153,9 @@ namespace WebApplication1.localhost1 {
         public event AllJobseekersCompletedEventHandler AllJobseekersCompleted;
         
         /// <remarks/>
+        public event AllEmployersCompletedEventHandler AllEmployersCompleted;
+        
+        /// <remarks/>
         public event SingleJobseekerCompletedEventHandler SingleJobseekerCompleted;
         
         /// <remarks/>
@@ -169,10 +186,16 @@ namespace WebApplication1.localhost1 {
         public event AllJobsCompletedEventHandler AllJobsCompleted;
         
         /// <remarks/>
+        public event EmployerSpecificJobsCompletedEventHandler EmployerSpecificJobsCompleted;
+        
+        /// <remarks/>
         public event ApplyForJobCompletedEventHandler ApplyForJobCompleted;
         
         /// <remarks/>
         public event getApplicantsCompletedEventHandler getApplicantsCompleted;
+        
+        /// <remarks/>
+        public event GetAllApplicationsCompletedEventHandler GetAllApplicationsCompleted;
         
         /// <remarks/>
         public event DeleteJobCompletedEventHandler DeleteJobCompleted;
@@ -191,6 +214,18 @@ namespace WebApplication1.localhost1 {
         
         /// <remarks/>
         public event GetToolsAndEquipmentsCompletedEventHandler GetToolsAndEquipmentsCompleted;
+        
+        /// <remarks/>
+        public event InviteJobSeekerCompletedEventHandler InviteJobSeekerCompleted;
+        
+        /// <remarks/>
+        public event Invitation_EmployersCompletedEventHandler Invitation_EmployersCompleted;
+        
+        /// <remarks/>
+        public event GetAllInvitesCompletedEventHandler GetAllInvitesCompleted;
+        
+        /// <remarks/>
+        public event GetJobSeekerJobInvitesCompletedEventHandler GetJobSeekerJobInvitesCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetDataUsingDataContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -434,6 +469,35 @@ namespace WebApplication1.localhost1 {
             if ((this.AllJobseekersCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AllJobseekersCompleted(this, new AllJobseekersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/AllEmployers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public Employer[] AllEmployers() {
+            object[] results = this.Invoke("AllEmployers", new object[0]);
+            return ((Employer[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AllEmployersAsync() {
+            this.AllEmployersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void AllEmployersAsync(object userState) {
+            if ((this.AllEmployersOperationCompleted == null)) {
+                this.AllEmployersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAllEmployersOperationCompleted);
+            }
+            this.InvokeAsync("AllEmployers", new object[0], this.AllEmployersOperationCompleted, userState);
+        }
+        
+        private void OnAllEmployersOperationCompleted(object arg) {
+            if ((this.AllEmployersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AllEmployersCompleted(this, new AllEmployersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -776,6 +840,39 @@ namespace WebApplication1.localhost1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/EmployerSpecificJobs", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public Job[] EmployerSpecificJobs(int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
+            object[] results = this.Invoke("EmployerSpecificJobs", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified});
+            return ((Job[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void EmployerSpecificJobsAsync(int EmployerID, bool EmployerIDSpecified) {
+            this.EmployerSpecificJobsAsync(EmployerID, EmployerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void EmployerSpecificJobsAsync(int EmployerID, bool EmployerIDSpecified, object userState) {
+            if ((this.EmployerSpecificJobsOperationCompleted == null)) {
+                this.EmployerSpecificJobsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnEmployerSpecificJobsOperationCompleted);
+            }
+            this.InvokeAsync("EmployerSpecificJobs", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified}, this.EmployerSpecificJobsOperationCompleted, userState);
+        }
+        
+        private void OnEmployerSpecificJobsOperationCompleted(object arg) {
+            if ((this.EmployerSpecificJobsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.EmployerSpecificJobsCompleted(this, new EmployerSpecificJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/ApplyForJob", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void ApplyForJob(int JobID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobIDSpecified, int JobseekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobseekerIDSpecified) {
             this.Invoke("ApplyForJob", new object[] {
@@ -839,6 +936,35 @@ namespace WebApplication1.localhost1 {
             if ((this.getApplicantsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getApplicantsCompleted(this, new getApplicantsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetAllApplications", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public JobApplication[] GetAllApplications() {
+            object[] results = this.Invoke("GetAllApplications", new object[0]);
+            return ((JobApplication[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllApplicationsAsync() {
+            this.GetAllApplicationsAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllApplicationsAsync(object userState) {
+            if ((this.GetAllApplicationsOperationCompleted == null)) {
+                this.GetAllApplicationsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllApplicationsOperationCompleted);
+            }
+            this.InvokeAsync("GetAllApplications", new object[0], this.GetAllApplicationsOperationCompleted, userState);
+        }
+        
+        private void OnGetAllApplicationsOperationCompleted(object arg) {
+            if ((this.GetAllApplicationsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllApplicationsCompleted(this, new GetAllApplicationsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1028,6 +1154,135 @@ namespace WebApplication1.localhost1 {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/InviteJobSeeker", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void InviteJobSeeker(int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified, int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+            this.Invoke("InviteJobSeeker", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified,
+                        JobSeekerID,
+                        JobSeekerIDSpecified});
+        }
+        
+        /// <remarks/>
+        public void InviteJobSeekerAsync(int EmployerID, bool EmployerIDSpecified, int JobSeekerID, bool JobSeekerIDSpecified) {
+            this.InviteJobSeekerAsync(EmployerID, EmployerIDSpecified, JobSeekerID, JobSeekerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void InviteJobSeekerAsync(int EmployerID, bool EmployerIDSpecified, int JobSeekerID, bool JobSeekerIDSpecified, object userState) {
+            if ((this.InviteJobSeekerOperationCompleted == null)) {
+                this.InviteJobSeekerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInviteJobSeekerOperationCompleted);
+            }
+            this.InvokeAsync("InviteJobSeeker", new object[] {
+                        EmployerID,
+                        EmployerIDSpecified,
+                        JobSeekerID,
+                        JobSeekerIDSpecified}, this.InviteJobSeekerOperationCompleted, userState);
+        }
+        
+        private void OnInviteJobSeekerOperationCompleted(object arg) {
+            if ((this.InviteJobSeekerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InviteJobSeekerCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/Invitation_Employers", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays", IsNullable=false)]
+        public int[] Invitation_Employers(int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+            object[] results = this.Invoke("Invitation_Employers", new object[] {
+                        JobSeekerID,
+                        JobSeekerIDSpecified});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Invitation_EmployersAsync(int JobSeekerID, bool JobSeekerIDSpecified) {
+            this.Invitation_EmployersAsync(JobSeekerID, JobSeekerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void Invitation_EmployersAsync(int JobSeekerID, bool JobSeekerIDSpecified, object userState) {
+            if ((this.Invitation_EmployersOperationCompleted == null)) {
+                this.Invitation_EmployersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInvitation_EmployersOperationCompleted);
+            }
+            this.InvokeAsync("Invitation_Employers", new object[] {
+                        JobSeekerID,
+                        JobSeekerIDSpecified}, this.Invitation_EmployersOperationCompleted, userState);
+        }
+        
+        private void OnInvitation_EmployersOperationCompleted(object arg) {
+            if ((this.Invitation_EmployersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Invitation_EmployersCompleted(this, new Invitation_EmployersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetAllInvites", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public JobInvitation[] GetAllInvites() {
+            object[] results = this.Invoke("GetAllInvites", new object[0]);
+            return ((JobInvitation[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAllInvitesAsync() {
+            this.GetAllInvitesAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAllInvitesAsync(object userState) {
+            if ((this.GetAllInvitesOperationCompleted == null)) {
+                this.GetAllInvitesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAllInvitesOperationCompleted);
+            }
+            this.InvokeAsync("GetAllInvites", new object[0], this.GetAllInvitesOperationCompleted, userState);
+        }
+        
+        private void OnGetAllInvitesOperationCompleted(object arg) {
+            if ((this.GetAllInvitesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAllInvitesCompleted(this, new GetAllInvitesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetJobSeekerJobInvites", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public JobInvitation[] GetJobSeekerJobInvites(int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+            object[] results = this.Invoke("GetJobSeekerJobInvites", new object[] {
+                        JobSeekerID,
+                        JobSeekerIDSpecified});
+            return ((JobInvitation[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetJobSeekerJobInvitesAsync(int JobSeekerID, bool JobSeekerIDSpecified) {
+            this.GetJobSeekerJobInvitesAsync(JobSeekerID, JobSeekerIDSpecified, null);
+        }
+        
+        /// <remarks/>
+        public void GetJobSeekerJobInvitesAsync(int JobSeekerID, bool JobSeekerIDSpecified, object userState) {
+            if ((this.GetJobSeekerJobInvitesOperationCompleted == null)) {
+                this.GetJobSeekerJobInvitesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetJobSeekerJobInvitesOperationCompleted);
+            }
+            this.InvokeAsync("GetJobSeekerJobInvites", new object[] {
+                        JobSeekerID,
+                        JobSeekerIDSpecified}, this.GetJobSeekerJobInvitesOperationCompleted, userState);
+        }
+        
+        private void OnGetJobSeekerJobInvitesOperationCompleted(object arg) {
+            if ((this.GetJobSeekerJobInvitesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetJobSeekerJobInvitesCompleted(this, new GetJobSeekerJobInvitesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1185,6 +1440,118 @@ namespace WebApplication1.localhost1 {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+    public partial class JobInvitation {
+        
+        private Employer employerField;
+        
+        private System.Nullable<int> employerIDField;
+        
+        private bool employerIDFieldSpecified;
+        
+        private int jobInvitationIDField;
+        
+        private bool jobInvitationIDFieldSpecified;
+        
+        private JobSeeker jobSeekerField;
+        
+        private System.Nullable<int> jobSeekerIDField;
+        
+        private bool jobSeekerIDFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Employer Employer {
+            get {
+                return this.employerField;
+            }
+            set {
+                this.employerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> EmployerID {
+            get {
+                return this.employerIDField;
+            }
+            set {
+                this.employerIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool EmployerIDSpecified {
+            get {
+                return this.employerIDFieldSpecified;
+            }
+            set {
+                this.employerIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int JobInvitationID {
+            get {
+                return this.jobInvitationIDField;
+            }
+            set {
+                this.jobInvitationIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobInvitationIDSpecified {
+            get {
+                return this.jobInvitationIDFieldSpecified;
+            }
+            set {
+                this.jobInvitationIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public JobSeeker JobSeeker {
+            get {
+                return this.jobSeekerField;
+            }
+            set {
+                this.jobSeekerField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> JobSeekerID {
+            get {
+                return this.jobSeekerIDField;
+            }
+            set {
+                this.jobSeekerIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobSeekerIDSpecified {
+            get {
+                return this.jobSeekerIDFieldSpecified;
+            }
+            set {
+                this.jobSeekerIDFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
     public partial class Employer {
         
         private string alternativeContactNumberField;
@@ -1198,6 +1565,8 @@ namespace WebApplication1.localhost1 {
         private bool employerIDFieldSpecified;
         
         private string firstNameField;
+        
+        private JobInvitation[] jobInvitationsField;
         
         private Job[] jobsField;
         
@@ -1271,6 +1640,17 @@ namespace WebApplication1.localhost1 {
             }
             set {
                 this.firstNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        public JobInvitation[] JobInvitations {
+            get {
+                return this.jobInvitationsField;
+            }
+            set {
+                this.jobInvitationsField = value;
             }
         }
         
@@ -1695,6 +2075,8 @@ namespace WebApplication1.localhost1 {
         
         private JobApplication[] jobApplicationsField;
         
+        private JobInvitation[] jobInvitationsField;
+        
         private int jobSeekerIDField;
         
         private bool jobSeekerIDFieldSpecified;
@@ -1792,6 +2174,17 @@ namespace WebApplication1.localhost1 {
             }
             set {
                 this.jobApplicationsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        public JobInvitation[] JobInvitations {
+            get {
+                return this.jobInvitationsField;
+            }
+            set {
+                this.jobInvitationsField = value;
             }
         }
         
@@ -2185,6 +2578,32 @@ namespace WebApplication1.localhost1 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void AllEmployersCompletedEventHandler(object sender, AllEmployersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AllEmployersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AllEmployersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Employer[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Employer[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void SingleJobseekerCompletedEventHandler(object sender, SingleJobseekerCompletedEventArgs e);
     
     /// <remarks/>
@@ -2373,6 +2792,32 @@ namespace WebApplication1.localhost1 {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void EmployerSpecificJobsCompletedEventHandler(object sender, EmployerSpecificJobsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class EmployerSpecificJobsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal EmployerSpecificJobsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Job[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Job[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
     public delegate void ApplyForJobCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -2397,6 +2842,32 @@ namespace WebApplication1.localhost1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((JobSeeker[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAllApplicationsCompletedEventHandler(object sender, GetAllApplicationsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllApplicationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllApplicationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public JobApplication[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((JobApplication[])(this.results[0]));
             }
         }
     }
@@ -2465,6 +2936,88 @@ namespace WebApplication1.localhost1 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Tool_Equipment[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void InviteJobSeekerCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void Invitation_EmployersCompletedEventHandler(object sender, Invitation_EmployersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Invitation_EmployersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Invitation_EmployersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetAllInvitesCompletedEventHandler(object sender, GetAllInvitesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAllInvitesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAllInvitesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public JobInvitation[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((JobInvitation[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void GetJobSeekerJobInvitesCompletedEventHandler(object sender, GetJobSeekerJobInvitesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetJobSeekerJobInvitesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetJobSeekerJobInvitesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public JobInvitation[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((JobInvitation[])(this.results[0]));
             }
         }
     }

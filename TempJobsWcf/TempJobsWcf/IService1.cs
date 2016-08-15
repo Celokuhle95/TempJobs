@@ -9,6 +9,28 @@ using System.Text;
 
 namespace TempJobsWcf
 {
+    // Use a data contract as illustrated in the sample below to add composite types to service operations.
+    [DataContract]
+    public class CompositeType
+    {
+        bool boolValue = true;
+        string stringValue = "Hello ";
+
+        [DataMember]
+        public bool BoolValue
+        {
+            get { return boolValue; }
+            set { boolValue = value; }
+        }
+
+        [DataMember] //Datamembers stores properties of the variable and they public
+        public string StringValue
+        {
+            get { return stringValue; }
+            set { stringValue = value; }
+        }
+    }
+
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IService1
@@ -35,6 +57,9 @@ namespace TempJobsWcf
 
         [OperationContract]
         List<JobSeeker> AllJobseekers();
+
+        [OperationContract]
+        List<Employer> AllEmployers();
 
         [OperationContract]
         JobSeeker SingleJobseeker(int JobSeekerID);
@@ -70,10 +95,17 @@ namespace TempJobsWcf
         List<Job> AllJobs();
 
         [OperationContract]
+        List<Job> EmployerSpecificJobs(int EmployerID);
+
+        [OperationContract]
         void ApplyForJob(int JobID, int JobseekerID);
 
         [OperationContract]
         List<JobSeeker> getApplicants(int EmployerID);
+
+        [OperationContract]
+        List<JobApplication> GetAllApplications();
+
         //Delete Jobs
         [OperationContract]
         void DeleteJob(int JobID);
@@ -93,27 +125,20 @@ namespace TempJobsWcf
 
         [OperationContract]
         List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID);
-    }
- 
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
 
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
+        //JobInvites
+        [OperationContract]
+        void InviteJobSeeker(int EmployerID, int JobSeekerID);
 
-        [DataMember] //Datamembers stores properties of the variable and they public
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
+        [OperationContract]
+        List<int> Invitation_Employers(int JobSeekerID);
+
+        [OperationContract]
+        List<JobInvitation> GetAllInvites();
+
+        [OperationContract]
+        List<JobInvitation> GetJobSeekerJobInvites(int JobSeekerID);
     }
 }
+
+

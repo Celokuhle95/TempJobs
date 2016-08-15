@@ -21,7 +21,7 @@ namespace WebApplication1
             }
             else
             {
-                if(((string)Session["UserType"]).Equals("JobSeeker"))
+                if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
                     selectedID = (int)Session["UserID"];
                     int count = 0;
@@ -68,7 +68,7 @@ namespace WebApplication1
                 else
                 {
                     Response.Redirect("LoginPage.aspx");
-                }               
+                }
             }
         }
 
@@ -128,7 +128,7 @@ namespace WebApplication1
             if (Session["ScreenNotification"] == null)
             {
                 Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "< p >Changes to your skills were successfully saved.</ p >");
+                Session.Add("ScreenNotificationMessage", "<p>Changes to your skills were successfully saved.</p>");
             }
         }
     }

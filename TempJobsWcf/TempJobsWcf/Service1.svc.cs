@@ -52,6 +52,12 @@ namespace TempJobsWcf
             return JobSeekers.AllJobseekers();
         }
 
+        public List<Employer> AllEmployers()
+        {
+            UserManager employ = new UserManager();
+            return employ.AllEmployers();
+        }
+
         public JobSeeker SingleJobseeker(int JobSeekerID)
         {
             UserManager js = new UserManager();
@@ -115,6 +121,13 @@ namespace TempJobsWcf
             JobManager job = new JobManager();
             return job.AllJobs();
         }
+
+        public List<Job> EmployerSpecificJobs(int EmployerID)
+        {
+            JobManager job = new JobManager();
+            return job.EmployerSpecificJobs(EmployerID);
+        }
+
         public void ApplyForJob(int jobID, int jobseekerID)
         {
             JobManager job = new JobManager();
@@ -126,6 +139,13 @@ namespace TempJobsWcf
             JobManager job = new JobManager();
             return job.getApplicants(EmployerID);
         }
+
+        public List<JobApplication> GetAllApplications()
+        {
+            JobManager job = new JobManager();
+            return job.GetAllApplications();
+        }
+
         //Delete Jobs
         public void DeleteJob(int JobID)
         {
@@ -173,6 +193,31 @@ namespace TempJobsWcf
         {
             ToolAndEquipment te = new ToolAndEquipment();
             return te.GetToolsAndEquipments(JobSeekerID);
-        }      
+        }
+
+        //Job invites
+        public void InviteJobSeeker(int EmployerID, int JobSeekerID)
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            invite.InviteJobSeeker(EmployerID, JobSeekerID);
+        }
+
+        public List<int> Invitation_Employers(int JobSeekerID)
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            return invite.Invitation_Employers(JobSeekerID);
+        }
+
+        public List<JobInvitation> GetAllInvites()
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            return invite.GetAllInvites();
+        }
+
+        public List<JobInvitation> GetJobSeekerJobInvites(int JobSeekerID)
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            return invite.GetJobSeekerJobInvites(JobSeekerID);
+        }       
     }
 }

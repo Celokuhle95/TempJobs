@@ -9,14 +9,15 @@ namespace WebApplication1
 {
     public partial class ConfirmJobApplication : System.Web.UI.Page
     {
-        int jobID = 0;
+        private int jobID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            jobID = Convert.ToInt32(Request.QueryString["JobID"]);
             if (Session["UserID"] != null && Session["UserType"] != null)
             {
                 if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
-                    int jobID = Convert.ToInt32(Request.QueryString["JobID"]);
+                    
                 }
                 else
                 {
@@ -32,11 +33,12 @@ namespace WebApplication1
         protected void btnYes_Click(object sender, EventArgs e)
         {
             localhost1.Service1 localhost = new localhost1.Service1();
-            localhost.ApplyForJob(jobID, true, (int)Session["UserID"], true);
            
+            //ClientScript.RegisterStartupScript(this.GetType(), "myAlert", "alert('" + jobID + "');", true);
+            localhost.ApplyForJob(jobID, true, (int)Session["UserID"], true);
             //show success message
             Session.Add("ScreenNotification", "TurnON");
-            Session.Add("ScreenNotificationMessage", "< p >Your application was successful, thank you for applying.We will be intouch.</ p >");
+            Session.Add("ScreenNotificationMessage", "<p style='text-align:center'>Your application was successful, thank you for applying.We will be intouch.</p>");
 
             Response.Redirect("ViewJobs.aspx");
         }

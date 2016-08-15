@@ -33,8 +33,8 @@ namespace WebApplication1
                         htmlText += "<h3>" + applicant.FirstName + " " + applicant.LastName + "</h3>";
                         string s = string.Format(" < a href = 'JobSeekerProfile.aspx?JobSeekerID={0}' > View full profile</ a ></ br > ", applicant.JobSeekerID);
                         htmlText += s;
-                        string employ = string.Format(" < a href = 'EmployJobSeeker.aspx?JobSeekerID={0}' > here. </a></br> ", applicant.JobSeekerID);
-                        htmlText += "If you would like to employ job seeker click " + employ;
+                        string employ = string.Format("<a href = 'EmployJobSeeker.aspx?JobSeekerID={0}' > here. </a></br> ", applicant.JobSeekerID);
+                        htmlText += "If you would like to employ this Job Seeker click " + employ;
                         htmlText += "</div>";
                     }
                     Applications.InnerHtml = htmlText;

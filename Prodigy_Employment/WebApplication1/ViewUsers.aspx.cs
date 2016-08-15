@@ -19,10 +19,10 @@ namespace WebApplication1
             {
                 lc = new localhost1.Service1();
 
-                String htmlText = "";
+                string htmlText = "";
+                htmlText += "<div class='row' style= padding-top:1%'> ";
                 foreach (var u in lc.AllJobseekers())
-                {
-                    htmlText += "<div class='row' style= padding-top:1%'> ";
+                {                   
                     htmlText += "<div class ='col-md-6' style='border:groove'> ";
 
                     if (u.ProfileImage_String == null)
@@ -39,10 +39,9 @@ namespace WebApplication1
                     string s = string.Format("<a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a></br>", u.JobSeekerID);
                     htmlText += "<br/><br/><p><b>first Name : </b><u>" + s + "</u></p>";
                     htmlText += "<p><b>Last Lastname: </b>" + u.LastName + "</p>";
-                    htmlText += "<b>Rating:</b> none";
-                    htmlText += "</div>";
-                    htmlText += "</div></br>";
+                    htmlText += "</div>";                   
                 }
+                htmlText += "</div></br>";
                 DisplayUsers.InnerHtml = htmlText;
             }
             else

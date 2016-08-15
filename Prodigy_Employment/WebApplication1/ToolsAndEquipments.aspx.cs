@@ -33,7 +33,7 @@ namespace WebApplication1
                                 {
                                     if (te != null)
                                     {
-                                        Image1ID.Src = te.Image;
+                                        Image1ID.Src = "data:image/jpeg;base64,"+ te.Image;
                                         txtNameOrDescription1.Text = te.Name;
                                     }
                                 }
@@ -41,7 +41,7 @@ namespace WebApplication1
                                 {
                                     if (te != null)
                                     {
-                                        Image2ID.Src = te.Image;
+                                        Image2ID.Src = "data:image/jpeg;base64," + te.Image;
                                         txtNameOrDescription2.Text = te.Name;
                                     }
                                 }
@@ -49,7 +49,7 @@ namespace WebApplication1
                                 {
                                     if (te != null)
                                     {
-                                        Image3ID.Src = te.Image;
+                                        Image3ID.Src = "data:image/jpeg;base64," + te.Image;
                                         txtNameOrDescription3.Text = te.Name;
                                     }
                                 }
@@ -57,7 +57,7 @@ namespace WebApplication1
                                 {
                                     if (te != null)
                                     {
-                                        Image4ID.Src = te.Image;
+                                        Image4ID.Src = "data:image/jpeg;base64," + te.Image;
                                         txtNameOrDescription4.Text = te.Name;
                                     }
                                 }
@@ -65,7 +65,7 @@ namespace WebApplication1
                                 {
                                     if (te != null)
                                     {
-                                        Image5ID.Src = te.Image;
+                                        Image5ID.Src = "data:image/jpeg;base64," + te.Image;
                                         txtNameOrDescription5.Text = te.Name;
                                     }
                                 }
@@ -174,7 +174,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image1ID.Src = toolImage;
+                Image1ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
 
@@ -185,7 +185,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image2ID.Src = toolImage;
+                Image2ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
 
@@ -196,7 +196,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image3ID.Src = toolImage;
+                Image3ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
         protected void btnReload4_Click(object sender, EventArgs e)
@@ -206,7 +206,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image4ID.Src = toolImage;
+                Image4ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
         protected void btnReload5_Click(object sender, EventArgs e)
@@ -216,7 +216,7 @@ namespace WebApplication1
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
-                Image5ID.Src = toolImage;
+                Image5ID.Src = "data:image/jpeg;base64," + toolImage;
             }
         }
 

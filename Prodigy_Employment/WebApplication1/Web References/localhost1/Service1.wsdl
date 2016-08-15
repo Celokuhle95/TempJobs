@@ -5,6 +5,7 @@
       <xsd:import schemaLocation="http://localhost:45678/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:45678/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:45678/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf" />
+      <xsd:import schemaLocation="http://localhost:45678/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
@@ -48,6 +49,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_AllJobseekers_OutputMessage">
     <wsdl:part name="parameters" element="tns:AllJobseekersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllEmployers_InputMessage">
+    <wsdl:part name="parameters" element="tns:AllEmployers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AllEmployers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AllEmployersResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_SingleJobseeker_InputMessage">
     <wsdl:part name="parameters" element="tns:SingleJobseeker" />
@@ -109,6 +116,12 @@
   <wsdl:message name="IService1_AllJobs_OutputMessage">
     <wsdl:part name="parameters" element="tns:AllJobsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_EmployerSpecificJobs_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmployerSpecificJobs" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EmployerSpecificJobs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmployerSpecificJobsResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ApplyForJob_InputMessage">
     <wsdl:part name="parameters" element="tns:ApplyForJob" />
   </wsdl:message>
@@ -120,6 +133,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_getApplicants_OutputMessage">
     <wsdl:part name="parameters" element="tns:getApplicantsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllApplications" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllApplicationsResponse" />
   </wsdl:message>
   <wsdl:message name="IService1_DeleteJob_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteJob" />
@@ -157,6 +176,30 @@
   <wsdl:message name="IService1_GetToolsAndEquipments_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetToolsAndEquipmentsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_InviteJobSeeker_InputMessage">
+    <wsdl:part name="parameters" element="tns:InviteJobSeeker" />
+  </wsdl:message>
+  <wsdl:message name="IService1_InviteJobSeeker_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InviteJobSeekerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Invitation_Employers_InputMessage">
+    <wsdl:part name="parameters" element="tns:Invitation_Employers" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Invitation_Employers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Invitation_EmployersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllInvites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllInvites" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllInvites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllInvitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetJobSeekerJobInvites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobSeekerJobInvites" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetJobSeekerJobInvites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetJobSeekerJobInvitesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
@@ -185,6 +228,10 @@
     <wsdl:operation name="AllJobseekers">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllJobseekers" message="tns:IService1_AllJobseekers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllJobseekersResponse" message="tns:IService1_AllJobseekers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEmployers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllEmployers" message="tns:IService1_AllEmployers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllEmployersResponse" message="tns:IService1_AllEmployers_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SingleJobseeker">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/SingleJobseeker" message="tns:IService1_SingleJobseeker_InputMessage" />
@@ -226,6 +273,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AllJobs" message="tns:IService1_AllJobs_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AllJobsResponse" message="tns:IService1_AllJobs_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="EmployerSpecificJobs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EmployerSpecificJobs" message="tns:IService1_EmployerSpecificJobs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EmployerSpecificJobsResponse" message="tns:IService1_EmployerSpecificJobs_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ApplyForJob">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ApplyForJob" message="tns:IService1_ApplyForJob_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ApplyForJobResponse" message="tns:IService1_ApplyForJob_OutputMessage" />
@@ -233,6 +284,10 @@
     <wsdl:operation name="getApplicants">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/getApplicants" message="tns:IService1_getApplicants_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/getApplicantsResponse" message="tns:IService1_getApplicants_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllApplications" message="tns:IService1_GetAllApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllApplicationsResponse" message="tns:IService1_GetAllApplications_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteJob">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteJob" message="tns:IService1_DeleteJob_InputMessage" />
@@ -257,6 +312,22 @@
     <wsdl:operation name="GetToolsAndEquipments">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetToolsAndEquipments" message="tns:IService1_GetToolsAndEquipments_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetToolsAndEquipmentsResponse" message="tns:IService1_GetToolsAndEquipments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InviteJobSeeker">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/InviteJobSeeker" message="tns:IService1_InviteJobSeeker_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/InviteJobSeekerResponse" message="tns:IService1_InviteJobSeeker_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Invitation_Employers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Invitation_Employers" message="tns:IService1_Invitation_Employers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/Invitation_EmployersResponse" message="tns:IService1_Invitation_Employers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllInvites" message="tns:IService1_GetAllInvites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllInvitesResponse" message="tns:IService1_GetAllInvites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetJobSeekerJobInvites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetJobSeekerJobInvites" message="tns:IService1_GetJobSeekerJobInvites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetJobSeekerJobInvitesResponse" message="tns:IService1_GetJobSeekerJobInvites_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -317,6 +388,15 @@
     </wsdl:operation>
     <wsdl:operation name="AllJobseekers">
       <soap:operation soapAction="http://tempuri.org/IService1/AllJobseekers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEmployers">
+      <soap:operation soapAction="http://tempuri.org/IService1/AllEmployers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -414,6 +494,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="EmployerSpecificJobs">
+      <soap:operation soapAction="http://tempuri.org/IService1/EmployerSpecificJobs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ApplyForJob">
       <soap:operation soapAction="http://tempuri.org/IService1/ApplyForJob" style="document" />
       <wsdl:input>
@@ -425,6 +514,15 @@
     </wsdl:operation>
     <wsdl:operation name="getApplicants">
       <soap:operation soapAction="http://tempuri.org/IService1/getApplicants" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllApplications">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllApplications" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -479,6 +577,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetToolsAndEquipments">
       <soap:operation soapAction="http://tempuri.org/IService1/GetToolsAndEquipments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InviteJobSeeker">
+      <soap:operation soapAction="http://tempuri.org/IService1/InviteJobSeeker" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Invitation_Employers">
+      <soap:operation soapAction="http://tempuri.org/IService1/Invitation_Employers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllInvites">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllInvites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetJobSeekerJobInvites">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetJobSeekerJobInvites" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

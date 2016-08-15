@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="padding-left:20%; padding-right: 20%">
          <div class ="row" style="padding-left:10%; padding-right:10%; border:groove">
-             <h3>Apply for job.</h3>
+             <h2>Apply for job.</h2>
               <hr id="Hr1" style="color: #808080, #C2C2C2" runat ="server"  /> 
              <p>If you apply for this job opportunity it means you allow us to share some of your non security information with the potential employer, such as contact numbers, so that they can contact you.</p>
              <p>Are you sure you want to continue?</p>
@@ -19,5 +19,4 @@
             <br />
          </div>
     </div>
-
 </asp:Content>

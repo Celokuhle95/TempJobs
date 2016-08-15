@@ -67,6 +67,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DeleteJob.aspx" />
     <Content Include="EmployJobSeeker.aspx" />
     <Content Include="JobSeekerProfile.aspx" />
     <Content Include="Skills.aspx" />
@@ -103,9 +104,14 @@
     <Content Include="MoreJobSeekerDetails.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="ToolsAndEquipments.aspx" />
+    <Content Include="WebForm3.aspx" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="ViewAllJobApplications.aspx" />
+    <Content Include="ViewAllJobInvites.aspx" />
+    <Content Include="ViewEmpoyers.aspx" />
+    <Content Include="ViewInvites.aspx" />
     <Content Include="ViewJobApplications.aspx" />
     <Content Include="ViewJobs.aspx" />
     <Content Include="ViewUsers.aspx" />
@@ -122,6 +128,12 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\localhost1\JobSeeker.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\localhost1\JobInvitation.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\localhost1\JobApplication.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\localhost1\Reference.map">
@@ -152,6 +164,13 @@
     </Compile>
     <Compile Include="ConfirmJobApplication.aspx.designer.cs">
       <DependentUpon>ConfirmJobApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteJob.aspx.cs">
+      <DependentUpon>DeleteJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteJob.aspx.designer.cs">
+      <DependentUpon>DeleteJob.aspx</DependentUpon>
     </Compile>
     <Compile Include="EmployJobSeeker.aspx.cs">
       <DependentUpon>EmployJobSeeker.aspx</DependentUpon>
@@ -237,6 +256,34 @@
     <Compile Include="TempJobs.Master.designer.cs">
       <DependentUpon>TempJobs.Master</DependentUpon>
     </Compile>
+    <Compile Include="ViewAllJobApplications.aspx.cs">
+      <DependentUpon>ViewAllJobApplications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewAllJobApplications.aspx.designer.cs">
+      <DependentUpon>ViewAllJobApplications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAllJobInvites.aspx.cs">
+      <DependentUpon>ViewAllJobInvites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewAllJobInvites.aspx.designer.cs">
+      <DependentUpon>ViewAllJobInvites.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewEmpoyers.aspx.cs">
+      <DependentUpon>ViewEmpoyers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewEmpoyers.aspx.designer.cs">
+      <DependentUpon>ViewEmpoyers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewInvites.aspx.cs">
+      <DependentUpon>ViewInvites.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewInvites.aspx.designer.cs">
+      <DependentUpon>ViewInvites.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewJobApplications.aspx.cs">
       <DependentUpon>ViewJobApplications.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -284,6 +331,13 @@
     <Compile Include="ToolsAndEquipments.aspx.designer.cs">
       <DependentUpon>ToolsAndEquipments.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TempJobs.Master" />
@@ -309,6 +363,9 @@
     <Content Include="Web References\localhost1\Tool_Equipment.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\localhost1\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

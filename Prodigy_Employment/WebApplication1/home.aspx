@@ -53,6 +53,9 @@
 						<li id ="lblViewJobseekers" runat="server" visible="false">
 							<a class="page-scroll" href="ViewUsers.aspx">JobSeekers</a>
 						</li>
+                         <li id ="lblEmployers" runat="server" visible="false">
+							<a  href="ViewEmpoyers.aspx">Employers</a>
+						</li>
 						<li id ="lblPostJob" runat="server" visible="false">
 							<a class="page-scroll" href="PostJob.aspx">Post job</a>
 						</li>
@@ -61,6 +64,18 @@
 						</li>
 						<li id ="lblViewJobs" runat="server" visible="false">
 							<a class="page-scroll" href="ViewJobs.aspx">Informal Jobs</a>
+						</li>
+                        <li id ="lblViewApplicants" runat="server" visible="false">
+							<a  href="ViewJobApplications.aspx">Job Applications</a>
+						</li>
+                         <li id ="lblAllApplications" runat="server" visible="false">
+							<a  href="ViewAllJobApplications.aspx">Job Applications</a>
+						</li>
+                        <li id ="lblJobInvites" runat="server" visible="false">
+							<a  href="ViewAllJobInvites.aspx">Job Invites</a>
+						</li>
+                        <li id ="lblJobInvite" runat="server" visible="false">
+							<a  href="ViewInvites.aspx">Job Invites</a>
 						</li>
 						<li id ="lblRes" runat="server" visible="true" >
 							<a class="page-scroll" href="Registration.aspx">Register</a>
@@ -77,8 +92,7 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-        <br />
-        <br />
+          
         <div id="NotificationSection" class="container" style="border:groove; background-color: darkseagreen" visible="false" runat="server" >
 
         </div>

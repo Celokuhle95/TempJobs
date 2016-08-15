@@ -128,7 +128,6 @@ namespace TempJobsWcf
             List<JobSeeker> JobSeekers = new List<JobSeeker>();
             try
             {
-
                 DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
                 foreach (var js in database.JobSeekers)
                 {

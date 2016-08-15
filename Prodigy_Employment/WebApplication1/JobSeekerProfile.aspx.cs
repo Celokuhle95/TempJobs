@@ -10,13 +10,15 @@ namespace WebApplication1
     public partial class JobSeekerProfile : System.Web.UI.Page
     {
         localhost1.Service1 lc;
+        int JobSeekerID = 0;
+        int EmployerID = 0;
         protected void Page_Load(object sender, EventArgs e)
-        {
-            int JobSeekerID = 0;
+        {           
             if (Session["UserID"] != null && Session["UserType"] != null)
             {
                 if (((string)Session["UserType"]).Equals("Employer"))//get JobSeekerID correctly
                 {
+                    EmployerID = (int)Session["UserID"];
                     JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
                 }
                 else if (((string)Session["UserType"]).Equals("JobSeeker"))
@@ -55,18 +57,15 @@ namespace WebApplication1
                 display += "</div>";
                
                 display += "<br/>";
-                display += "<br/><h3>Contact Details.</h3>";
-                if (Session["UserType"].Equals("Employer"))
+                           
+                if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<p>You can use these contact details to contact the seeker if you wish to apporve their application and employ them.</p>";
-                }
-                else if (Session["UserType"].Equals("JobSeeker"))
-                {
+                    display += "<br/><h3>Contact Details.</h3>";
                     display += "<p>Employers will use these contact details to cantact you whenever your application is successful.</p>";
+                    display += "<br/><b>Contact Number:</b>         " + jobSeeker.ContactNumber + "<br/><br />";
+                    display += "<b>Alternative Contact Number:</b>  " + jobSeeker.AlternativeContactNumber + "<br /><br />";
+                    display += "<b>Email Address: </b>              " + jobSeeker.EmailAddress + "<br /><br />";
                 }
-                display += "<br/><b>Contact Number:</b>         " + jobSeeker.ContactNumber + "<br/><br />";
-                display += "<b>Alternative Contact Number:</b>  " + jobSeeker.AlternativeContactNumber + "<br /><br />";
-                display += "<b>Email Address: </b>              " + jobSeeker.EmailAddress + "<br /><br />";
 
                 display += "<br/><h2>Job seeker skills. </h2>";
                 if (Session["UserType"].Equals("Employer"))
@@ -138,12 +137,33 @@ namespace WebApplication1
                 }
                 display += "<br/><br/>";
                 //for each loop to read from Employment History from the table and siplay it
+
+                display += "<p><i>No Employment history currently availabel<i></p>";
+
                 DisplayJobSeekerProfile.InnerHtml = display;
+                if (Session["UserType"].Equals("Employer"))
+                {
+                    JobInvite.Visible = true; // if its an imployer they can invite
+                }
             }
             else
             {
                 Response.Redirect("LoginPage.aspx");
             }           
+        }
+
+        protected void btnInvite_Click(object sender, EventArgs e)
+        {
+            lc.InviteJobSeeker(EmployerID, true, JobSeekerID, true);
+            Response.Redirect("ViewUsers.aspx");
+        }
+        public void DisplaySuccessMessage()
+        {
+            if (Session["ScreenNotification"] == null)
+            {
+                Session.Add("ScreenNotification", "TurnON");
+                Session.Add("ScreenNotificationMessage", "<p style='text-align:center'>Job Invite was successfully sent.</p>");
+            }
         }
     }
 }

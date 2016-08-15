@@ -27,8 +27,17 @@ namespace WebApplication1
                     htmlText += "<u>Daily Knockoff Time</u>: " + job.EndTime + " <br/>";
                     htmlText += "<u>Due date(Apply before this day): </u>:" + job.DueDate + "<br/>";
                     htmlText += "<u>Pay(After the whole job is complete)</u>:<b> R" + job.ToBePaid + "</b><br/>";
-                    string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
-                    htmlText += s + "<br/></div> <br/>";
+                    if(((string)Session["UserType"]).Equals("JobSeeker"))
+                    {
+                        string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
+                        htmlText += s ;
+                    }
+                    if (((string)Session["UserType"]).Equals("Admin"))
+                    {
+                        string s = string.Format("<a class='btn btn-danger' href='DeleteJob.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
+                        htmlText += s;
+                    }
+                    htmlText += "<br/></div> <br/>";
                 }
                 JobDetails.InnerHtml = htmlText;
             }
