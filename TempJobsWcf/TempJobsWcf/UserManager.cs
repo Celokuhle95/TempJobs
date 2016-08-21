@@ -37,7 +37,7 @@ namespace TempJobsWcf
             jobseeker.AlternativeContactNumber = AlternativeContactNumber;
             jobseeker.ResidentialAddress = ResidentialAddress;
             jobseeker.ProfileImage_String = ProfileImage;
-            jobseeker.IsAvailable = 0; //0 implies available, 1 implies non availability 
+            jobseeker.isAvailable = 0; //0 implies available, 1 implies non availability 
             database.JobSeekers.InsertOnSubmit(jobseeker);
             database.SubmitChanges();
         }
@@ -142,7 +142,7 @@ namespace TempJobsWcf
                     jseeker.AlternativeContactNumber = js.AlternativeContactNumber;
                     jseeker.ResidentialAddress = js.ResidentialAddress;
                     jseeker.ProfileImage_String = js.ProfileImage_String;
-                    jseeker.IsAvailable = js.IsAvailable;
+                    jseeker.isAvailable = js.isAvailable;
 
                     JobSeekers.Add(jseeker);
                 }
@@ -188,7 +188,21 @@ namespace TempJobsWcf
         public JobSeeker SingleJobseeker(int JobSeekerID)
         {
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            JobSeeker jobSeeker = (from js in database.JobSeekers where js.JobSeekerID.Equals(JobSeekerID) select js).Single();
+            var jobSeeker = (from js in database.JobSeekers
+                            where js.JobSeekerID.Equals(JobSeekerID)
+                            select js).Single();
+            //                       {
+            //                           js.FirstName,
+            //                           js.LastName,
+            //                           js.EmailAddress,
+            //                           js.ContactNumber,
+            //                           js.AlternativeContactNumber,
+            //                           js.ResidentialAddress,
+            //                           js.ProfileImage_String,
+            //                           js.IsAvailable
+            //                       };
+            //JobSeeker job = new JobSeeker();
+            //job = (JobSeeker)jobSeeker;
             return jobSeeker;
         }
 

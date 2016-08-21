@@ -9,7 +9,7 @@ namespace WebApplication1
 {
     public partial class EditProfile : System.Web.UI.Page
     {
-        public localhost1.Service1 lc;
+        localhost1.Service1 lc;
         int selectedID;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,9 +23,10 @@ namespace WebApplication1
             {
                 if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
-                    selectedID = (int)Session["UserID"];
+                    selectedID = 2;// (int)Session["UserID"];
                     int count = 0;
-                    foreach (var skill in lc.ReadSkills(selectedID, true))
+                    bool a = true;
+                    foreach (var skill in lc.ReadSkills(selectedID,  a))
                     {
                         if (count.Equals(0))
                         {
@@ -63,7 +64,8 @@ namespace WebApplication1
                             }
                         }
                         count++;
-                    }
+                    }                
+            
                 }
                 else
                 {

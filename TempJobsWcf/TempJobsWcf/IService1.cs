@@ -124,7 +124,7 @@ namespace TempJobsWcf
         void RemoveToolOrEquipment(int tool_equipementID);
 
         [OperationContract]
-        List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID);
+        List<Tools_Equipment> GetToolsAndEquipments(int JobSeekerID);
 
         //JobInvites
         [OperationContract]

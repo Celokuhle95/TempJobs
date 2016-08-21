@@ -28,11 +28,9 @@ namespace TempJobsWcf
                     employerIDs.Add(Convert.ToInt32(inv.EmployerID));
                 }
             }          
-            if(employerIDs != null)
-            {
+           
                 return employerIDs;
-            }
-            return null;
+                      
         }
 
         public List<JobInvitation> GetAllInvites()
@@ -65,11 +63,10 @@ namespace TempJobsWcf
                     invites.Add(invite);
                 }              
             }
-            if(invites != null)
-            {
+           
                 return invites;
-            }
-            return null;
+            
+           
         }
 
     }

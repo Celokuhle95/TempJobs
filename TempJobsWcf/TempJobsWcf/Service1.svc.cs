@@ -14,7 +14,20 @@ namespace TempJobsWcf
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-       //Register
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
+        }
+
+        //Register
         public void RegisterEmployer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
             UserManager employer = new UserManager();
@@ -105,8 +118,18 @@ namespace TempJobsWcf
 
         public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
-            SkillsManager skills = new SkillsManager();
-            return skills.ReadSkills(JobSeekerID);
+            //SkillsManager skills = new SkillsManager();
+            //return skills.ReadSkills(JobSeekerID);
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            List<InformalSkill> ss = new List<InformalSkill>();
+            foreach (var s in database.InformalSkills)
+            {
+                if (s.JobSeekerID.Equals(JobSeekerID))
+                {
+                    ss.Add(s);
+                }
+            }
+            return ss;
         }
 
         //jobs
@@ -159,19 +182,7 @@ namespace TempJobsWcf
             toDelete.DeleteJobApplication(JobApplicationID);
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
-
+    
         public string test()
         {
             return "you were successful";
@@ -189,7 +200,7 @@ namespace TempJobsWcf
             te.RemoveToolOrEquipment(tool_equipementID);
         }
 
-        public List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID)
+        public List<Tools_Equipment> GetToolsAndEquipments(int JobSeekerID)
         {
             ToolAndEquipment te = new ToolAndEquipment();
             return te.GetToolsAndEquipments(JobSeekerID);

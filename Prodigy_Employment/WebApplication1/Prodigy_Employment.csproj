@@ -104,17 +104,6 @@
     <Content Include="MoreJobSeekerDetails.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="ToolsAndEquipments.aspx" />
-    <Content Include="WebForm3.aspx" />
-    <None Include="scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="scripts\jquery-1.9.1.js" />
-    <Content Include="scripts\jquery-1.9.1.min.js" />
-    <Content Include="ViewAllJobApplications.aspx" />
-    <Content Include="ViewAllJobInvites.aspx" />
-    <Content Include="ViewEmpoyers.aspx" />
-    <Content Include="ViewInvites.aspx" />
-    <Content Include="ViewJobApplications.aspx" />
-    <Content Include="ViewJobs.aspx" />
-    <Content Include="ViewUsers.aspx" />
     <Content Include="Web References\localhost1\CompositeType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -127,13 +116,13 @@
     <Content Include="Web References\localhost1\Job.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\JobSeeker.datasource">
+    <Content Include="Web References\localhost1\JobApplication.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\localhost1\JobInvitation.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\JobApplication.datasource">
+    <Content Include="Web References\localhost1\JobSeeker.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\localhost1\Reference.map">
@@ -141,6 +130,17 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost1\Service1.disco" />
+    <Content Include="WebForm3.aspx" />
+    <None Include="scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="scripts\jquery-1.9.1.js" />
+    <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="ViewAllJobApplications.aspx" />
+    <Content Include="ViewAllJobInvites.aspx" />
+    <Content Include="ViewEmpoyers.aspx" />
+    <Content Include="ViewInvites.aspx" />
+    <Content Include="ViewJobApplications.aspx" />
+    <Content Include="ViewJobs.aspx" />
+    <Content Include="ViewUsers.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +158,7 @@
     <Compile Include="ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class1.cs" />
     <Compile Include="ConfirmJobApplication.aspx.cs">
       <DependentUpon>ConfirmJobApplication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,17 +320,17 @@
     <Compile Include="StartPage.aspx.designer.cs">
       <DependentUpon>StartPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\localhost1\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
     <Compile Include="ToolsAndEquipments.aspx.cs">
       <DependentUpon>ToolsAndEquipments.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ToolsAndEquipments.aspx.designer.cs">
       <DependentUpon>ToolsAndEquipments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\localhost1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="WebForm3.aspx.cs">
       <DependentUpon>WebForm3.aspx</DependentUpon>
@@ -360,12 +361,12 @@
     <None Include="Web References\localhost1\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web References\localhost1\Tool_Equipment.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\localhost1\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Web References\localhost1\Tools_Equipment.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

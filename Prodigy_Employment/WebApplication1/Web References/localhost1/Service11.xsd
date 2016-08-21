@@ -20,7 +20,6 @@
       <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InformalSkills" nillable="true" type="tns:ArrayOfInformalSkill" />
-      <xs:element minOccurs="0" name="IsAvailable" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="JobApplications" nillable="true" type="tns:ArrayOfJobApplication" />
       <xs:element minOccurs="0" name="JobInvitations" nillable="true" type="tns:ArrayOfJobInvitation" />
       <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
@@ -28,6 +27,8 @@
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProfileImage_String" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ResidentialAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tools_Equipments" nillable="true" type="tns:ArrayOfTools_Equipment" />
+      <xs:element minOccurs="0" name="isAvailable" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="JobSeeker" nillable="true" type="tns:JobSeeker" />
@@ -42,8 +43,8 @@
       <xs:element minOccurs="0" name="JobSeeker" nillable="true" type="tns:JobSeeker" />
       <xs:element minOccurs="0" name="JobSeekerID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkillID" type="xs:int" />
       <xs:element minOccurs="0" name="SkillLevel" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Skill_ID" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="InformalSkill" nillable="true" type="tns:InformalSkill" />
@@ -119,25 +120,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfJob" nillable="true" type="tns:ArrayOfJob" />
+  <xs:complexType name="ArrayOfTools_Equipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tools_Equipment" nillable="true" type="tns:Tools_Equipment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTools_Equipment" nillable="true" type="tns:ArrayOfTools_Equipment" />
+  <xs:complexType name="Tools_Equipment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JobSeeker" nillable="true" type="tns:JobSeeker" />
+      <xs:element minOccurs="0" name="JobSeekerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tool_EquipmentID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tools_Equipment" nillable="true" type="tns:Tools_Equipment" />
   <xs:complexType name="ArrayOfEmployer">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Employer" nillable="true" type="tns:Employer" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfEmployer" nillable="true" type="tns:ArrayOfEmployer" />
-  <xs:complexType name="ArrayOfTool_Equipment">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tool_Equipment" nillable="true" type="tns:Tool_Equipment" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfTool_Equipment" nillable="true" type="tns:ArrayOfTool_Equipment" />
-  <xs:complexType name="Tool_Equipment">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="JobSeekerID" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Tool_EquipmentID" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Tool_Equipment" nillable="true" type="tns:Tool_Equipment" />
 </xs:schema>

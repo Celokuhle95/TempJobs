@@ -8,12 +8,21 @@ using System.Web.UI.WebControls;
 namespace WebApplication1
 {
     public partial class JobSeekerProfile : System.Web.UI.Page
-    {
-        localhost1.Service1 lc;
+    {       
         int JobSeekerID = 0;
         int EmployerID = 0;
+         
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            localhost1.Service1 lc = new localhost1.Service1();
+            //lc.Timeout = 1000000000;
+            //System.Net.ServicePointManager servicePoint;
+         
+
+
+
+
+
             if (Session["UserID"] != null && Session["UserType"] != null)
             {
                 if (((string)Session["UserType"]).Equals("Employer"))//get JobSeekerID correctly
@@ -26,8 +35,10 @@ namespace WebApplication1
                     JobSeekerID = (int)Session["UserID"];
                 }
 
-                lc = new localhost1.Service1();
-               
+                
+                ClientScript.RegisterStartupScript(this.GetType(), "myAlert", "alert('" + JobSeekerID + "');", true);
+
+
                 var jobSeeker = lc.SingleJobseeker(JobSeekerID, true);
                 string display = "";
                 display = "<h2 style='text-align:center'>Job seeker Profile.</h2>";
@@ -154,6 +165,7 @@ namespace WebApplication1
 
         protected void btnInvite_Click(object sender, EventArgs e)
         {
+            localhost1.Service1 lc = new localhost1.Service1();
             lc.InviteJobSeeker(EmployerID, true, JobSeekerID, true);
             Response.Redirect("ViewUsers.aspx");
         }
