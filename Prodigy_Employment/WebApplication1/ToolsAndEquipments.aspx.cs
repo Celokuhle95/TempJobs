@@ -13,18 +13,19 @@ namespace WebApplication1
     public partial class WebForm2 : System.Web.UI.Page //RESEARCH HOW TO DISPLAY IMAGE STRATIGHT AWAY FROM A FILE UPLOAD
     {
         private int JobSeekerID;
+        private localhost.Service1 lc;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
             {
-                localhost1.Service1 localhost = new localhost1.Service1();
+                lc = new localhost.Service1();
                 if (Session["UserID"] != null && Session["UserType"] != null)
                 {
                     if(((string)Session["UserType"]).Equals("JobSeeker"))
                     {
                         JobSeekerID = (int)Session["UserID"];
                         int count = 0;
-                        foreach (var te in localhost.GetToolsAndEquipments(JobSeekerID, true))
+                        foreach (var te in lc.GetToolsAndEquipments(JobSeekerID, true))
                         {
                             if (te != null)
                             {
@@ -89,7 +90,7 @@ namespace WebApplication1
         {
             //Research post pack
             byte[] image1Bytes = ToolImage1.FileBytes;
-            localhost1.Service1 lc = new localhost1.Service1(); 
+            lc = new localhost.Service1(); 
             if (image1Bytes != null)
             {
                 System.Drawing.Image toolImageObject = getImageFromByteArray(image1Bytes);

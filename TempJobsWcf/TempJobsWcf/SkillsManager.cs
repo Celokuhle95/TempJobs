@@ -21,27 +21,19 @@ namespace TempJobsWcf
 
         public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
-            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            //var skills = (from skill in database.InformalSkills
-            //             where skill.JobSeekerID.Equals(JobSeekerID)
-            //             select skill).ToList();
-            //            //{
-            //            //    skill.Name,
-            //            //    skill.SkillLevel                
-            //            //};                   
-            //return(List<InformalSkill>)skills;
-            List<InformalSkill> ss = new List<InformalSkill>();
-            foreach (var s in database.InformalSkills)
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();    
+            List<InformalSkill> skill = new List<InformalSkill>();
+            foreach (var s in db.InformalSkills)
             {
                 if(s.JobSeekerID.Equals(JobSeekerID))
                 {
-                    ss.Add(s);
+                    InformalSkill sk = new InformalSkill();
+                    sk.Name = s.Name;
+                    sk.SkillLevel = s.SkillLevel;
+                    skill.Add(sk);
                 }
             }
-            return ss;
-                
+            return skill;                
         }
     }
-
-
 }

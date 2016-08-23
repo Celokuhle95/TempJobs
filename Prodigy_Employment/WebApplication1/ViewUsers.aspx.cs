@@ -12,12 +12,13 @@ namespace WebApplication1
 {
     public partial class ViewUsers : System.Web.UI.Page
     {
-        public localhost1.Service1 lc;
+       
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            localhost.Service1 lc;           
             if(Session["UserID"] != null)
             {
-                lc = new localhost1.Service1();
+                lc = new localhost.Service1();
 
                 string htmlText = "";
                 htmlText += "<div class='row' style= padding-top:1%'> ";

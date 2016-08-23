@@ -10,10 +10,10 @@ namespace WebApplication1
     public partial class DeleteJob : System.Web.UI.Page
     {
         int jobID;
-        localhost1.Service1 lc;
+        localhost.Service1 lc;
         protected void Page_Load(object sender, EventArgs e)
         {
-            localhost1.Service1 lc = new localhost1.Service1();
+            lc = new localhost.Service1();
             jobID = Convert.ToInt32(Request.QueryString["JobID"]);
         }
 

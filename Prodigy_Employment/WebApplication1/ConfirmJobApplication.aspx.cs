@@ -32,10 +32,10 @@ namespace WebApplication1
 
         protected void btnYes_Click(object sender, EventArgs e)
         {
-            localhost1.Service1 localhost = new localhost1.Service1();
+            localhost.Service1 lc = new localhost.Service1();
            
             //ClientScript.RegisterStartupScript(this.GetType(), "myAlert", "alert('" + jobID + "');", true);
-            localhost.ApplyForJob(jobID, true, (int)Session["UserID"], true);
+            lc.ApplyForJob(jobID, true, (int)Session["UserID"], true);
             //show success message
             Session.Add("ScreenNotification", "TurnON");
             Session.Add("ScreenNotificationMessage", "<p style='text-align:center'>Your application was successful, thank you for applying.We will be intouch.</p>");

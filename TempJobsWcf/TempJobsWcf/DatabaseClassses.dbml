@@ -1,39 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="InformalJobFindDatabase" Class="DatabaseClasssesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=p-PC;Initial Catalog=InformalJobFindDatabase;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="InformalJobFindDatabaseConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.JobSeeker" Member="JobSeekers">
-    <Type Name="JobSeeker">
-      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="EmailAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="ContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AlternativeContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ResidentialAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="isAvailable" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="JobSeeker_InformalSkill" Member="InformalSkills" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="InformalSkill" />
-      <Association Name="JobSeeker_JobInvitation" Member="JobInvitations" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobInvitation" />
-      <Association Name="JobSeeker_Tools_Equipment" Member="Tools_Equipments" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="Tools_Equipment" />
-      <Association Name="JobSeeker_JobApplication" Member="JobApplications" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobApplication" />
-    </Type>
-  </Table>
-  <Table Name="dbo.InformalSkill" Member="InformalSkills">
-    <Type Name="InformalSkill">
-      <Column Name="SkillID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SkillLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="JobSeeker_InformalSkill" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.JobInvitation" Member="JobInvitations">
-    <Type Name="JobInvitation">
-      <Column Name="JobInvitationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EmployerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="JobSeeker_JobInvitation" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
-      <Association Name="Employer_JobInvitation" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Tools_Equipment" Member="Tools_Equipments">
@@ -43,6 +16,30 @@
       <Column Name="Image" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="JobSeeker_Tools_Equipment" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Employer" Member="Employers">
+    <Type Name="Employer">
+      <Column Name="EmployerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AlternativeContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ResidentialAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="Employer_Job" Member="Jobs" ThisKey="EmployerID" OtherKey="EmployerID" Type="Job" />
+      <Association Name="Employer_JobInvitation" Member="JobInvitations" ThisKey="EmployerID" OtherKey="EmployerID" Type="JobInvitation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.InformalSkill" Member="InformalSkills">
+    <Type Name="InformalSkill">
+      <Column Name="SkillID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SkillLevel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="JobSeeker_InformalSkill" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Job" Member="Jobs">
@@ -71,28 +68,31 @@
       <Association Name="JobSeeker_JobApplication" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Employer" Member="Employers">
-    <Type Name="Employer">
-      <Column Name="EmployerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.JobInvitation" Member="JobInvitations">
+    <Type Name="JobInvitation">
+      <Column Name="JobInvitationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employer_JobInvitation" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
+      <Association Name="JobSeeker_JobInvitation" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobSeeker" Member="JobSeekers">
+    <Type Name="JobSeeker">
+      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="EmailAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="ContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="AlternativeContactNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ResidentialAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="ProfileImage_String" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Employer_JobInvitation" Member="JobInvitations" ThisKey="EmployerID" OtherKey="EmployerID" Type="JobInvitation" />
-      <Association Name="Employer_Job" Member="Jobs" ThisKey="EmployerID" OtherKey="EmployerID" Type="Job" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Admin" Member="Admins">
-    <Type Name="Admin">
-      <Column Name="AdminID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="LastName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="EmailAddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="isAvailable" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="JobSeeker_Tools_Equipment" Member="Tools_Equipments" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="Tools_Equipment" />
+      <Association Name="JobSeeker_InformalSkill" Member="InformalSkills" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="InformalSkill" />
+      <Association Name="JobSeeker_JobApplication" Member="JobApplications" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobApplication" />
+      <Association Name="JobSeeker_JobInvitation" Member="JobInvitations" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobInvitation" />
     </Type>
   </Table>
 </Database>

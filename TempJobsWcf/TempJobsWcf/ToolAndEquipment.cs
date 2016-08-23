@@ -28,16 +28,26 @@ namespace TempJobsWcf
         public List<Tools_Equipment> GetToolsAndEquipments(int JobSeekerID)
         {                     
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            var toolsAndEquipments = from te in database.Tools_Equipments
-                                     where te.JobSeekerID.Equals(JobSeekerID)
-                                     select te;
-                                     //select new
-                                     //{
-                                     //    te.Name,
-                                     //    te.Image
-                                     //};
+            //var toolsAndEquipments = from te in database.Tools_Equipments
+            //                         where te.JobSeekerID.Equals(JobSeekerID)
+            //                         select te;
+            //                         //select new
+            //                         //{
+            //                         //    te.Name,
+            //                         //    te.Image
+            //                         //};
                                  
-            return (List<Tools_Equipment>)toolsAndEquipments;
+            //return /*(List<Tools_Equipment>)*/toolsAndEquipments;
+
+            List<Tools_Equipment> tools = new List<Tools_Equipment>();
+            foreach (var tool in database.Tools_Equipments)
+            {
+                if (tool.JobSeekerID.Equals(JobSeekerID))
+                {
+                    tools.Add(tool);
+                }
+            }
+            return tools ;
         }
     }
 }

@@ -13,20 +13,7 @@ namespace TempJobsWcf
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
-    {
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
-
+    {        
         //Register
         public void RegisterEmployer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
@@ -120,16 +107,19 @@ namespace TempJobsWcf
         {
             //SkillsManager skills = new SkillsManager();
             //return skills.ReadSkills(JobSeekerID);
-            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            List<InformalSkill> ss = new List<InformalSkill>();
-            foreach (var s in database.InformalSkills)
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
+            List<InformalSkill> skill = new List<InformalSkill>();
+            foreach (var s in db.InformalSkills)
             {
                 if (s.JobSeekerID.Equals(JobSeekerID))
                 {
-                    ss.Add(s);
+                    InformalSkill sk = new InformalSkill();
+                    sk.Name = s.Name;
+                    sk.SkillLevel = s.SkillLevel;
+                    skill.Add(sk);
                 }
             }
-            return ss;
+            return skill;
         }
 
         //jobs
@@ -229,6 +219,18 @@ namespace TempJobsWcf
         {
             InvitationAndEmployment invite = new InvitationAndEmployment();
             return invite.GetJobSeekerJobInvites(JobSeekerID);
-        }       
+        }
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
+        }
     }
 }

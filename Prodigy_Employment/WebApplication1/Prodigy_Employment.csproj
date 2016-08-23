@@ -104,33 +104,32 @@
     <Content Include="MoreJobSeekerDetails.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="ToolsAndEquipments.aspx" />
-    <Content Include="Web References\localhost1\CompositeType.datasource">
+    <Content Include="Web References\localhost\CompositeType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\Employer.datasource">
+    <Content Include="Web References\localhost\Employer.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\InformalSkill.datasource">
+    <Content Include="Web References\localhost\InformalSkill.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\Job.datasource">
+    <Content Include="Web References\localhost\Job.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\JobApplication.datasource">
+    <Content Include="Web References\localhost\JobApplication.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\JobInvitation.datasource">
+    <Content Include="Web References\localhost\JobInvitation.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost1\JobSeeker.datasource">
+    <Content Include="Web References\localhost\JobSeeker.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\localhost1\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\localhost1\Service1.disco" />
-    <Content Include="WebForm3.aspx" />
+    <None Include="Web References\localhost\Service1.disco" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
@@ -158,7 +157,6 @@
     <Compile Include="ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="ConfirmJobApplication.aspx.cs">
       <DependentUpon>ConfirmJobApplication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -327,17 +325,10 @@
     <Compile Include="ToolsAndEquipments.aspx.designer.cs">
       <DependentUpon>ToolsAndEquipments.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Web References\localhost1\Reference.cs">
+    <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm3.aspx.cs">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm3.aspx.designer.cs">
-      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -351,20 +342,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <None Include="Web References\localhost1\Service1.wsdl" />
-    <None Include="Web References\localhost1\Service1.xsd">
+    <None Include="Web References\localhost\Service1.wsdl" />
+    <None Include="Web References\localhost\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\localhost1\Service10.xsd">
+    <None Include="Web References\localhost\Service10.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\localhost1\Service11.xsd">
+    <None Include="Web References\localhost\Service11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web References\localhost1\Service12.xsd">
+    <None Include="Web References\localhost\Service12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Web References\localhost1\Tools_Equipment.datasource">
+    <Content Include="Web References\localhost\Tools_Equipment.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -390,14 +381,14 @@
   <ItemGroup>
     <WebReferenceUrl Include="http://localhost:45678/Service1.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localhost1\</RelPath>
+      <RelPath>Web References\localhost\</RelPath>
       <UpdateFromURL>http://localhost:45678/Service1.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>WebApplication1_localhost1_Service1</CachedSettingsPropName>
+      <CachedSettingsPropName>WebApplication1_localhost_Service1</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>

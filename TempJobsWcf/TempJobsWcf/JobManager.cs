@@ -27,42 +27,25 @@ namespace TempJobsWcf
         }
 
         public List<Job> AllJobs ()
-        {
-            //List<Job> jobs = new List<Job>();
+        {        
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            var jobs = from jb in database.Jobs
-                       select new
-                       {
-                           jb.JobID,
-                           jb.Name,
-                           jb.Description,
-                           jb.NumberOfDays,
-                           jb.DueDate,
-                           jb.StartDate,
-                           jb.StartTime,
-                           jb.EndTime,
-                           jb.Location,
-                           jb.ToBePaid
-                       };
-
-            return (List<Job>)jobs;
-            //foreach (var jb in database.Jobs)
-            //{
-            //    Job job = new Job();
-            //    job.JobID = jb.JobID;
-            //    job.Name = jb.Name;
-            //    job.Description = jb.Description;
-            //    job.NumberOfDays = jb.NumberOfDays;
-            //    job.DueDate = jb.DueDate;
-            //    job.StartDate = jb.StartDate;
-            //    job.StartTime = jb.StartTime;
-            //    job.EndTime = jb.EndTime;
-            //    job.Location = jb.Location;
-            //    job.ToBePaid = jb.ToBePaid;
-            //    job.EmployerID = jb.EmployerID;
-            //    jobs.Add(job);
-            //}
-            //return jobs;
+            var jobs = new List<Job>(); 
+            foreach(var jb in database.Jobs)
+            {
+                Job job = new Job();
+                job.JobID = jb.JobID;
+                job.Name = jb.Name;
+                job.Description = jb.Description;
+                job.NumberOfDays=jb.NumberOfDays;
+                job.DueDate =jb.DueDate;
+                job.StartDate = jb.StartDate;
+                job.StartTime = jb.StartTime;
+                job.EndTime = jb.EndTime;
+                job.Location = jb.Location;
+                job.ToBePaid = jb.ToBePaid;
+                jobs.Add(job);
+            }
+            return jobs; 
         }
 
         public void ApplyForJob(int JobID, int JobseekerID)
@@ -77,10 +60,9 @@ namespace TempJobsWcf
         }
 
         public List<JobSeeker> getApplicants(int EmployerID)
-        {
-            //List<JobSeeker> JobSeekers = new List<JobSeeker>();
+        {          
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            var jobSeekers = from empl in database.Employers
+            var jobSeekersQuery = from empl in database.Employers
                              join job in database.Jobs
                              on empl.EmployerID equals job.EmployerID
                              where job.EmployerID.Equals(EmployerID)
@@ -89,20 +71,23 @@ namespace TempJobsWcf
                              join jobSeeker in database.JobSeekers
                              on jobApp.JobSeekerID equals jobSeeker.JobSeekerID
                              select jobSeeker;
-                             //select new
-                             //{
-                             //    jobSeeker.JobSeekerID,
-                             //    jobSeeker.FirstName,
-                             //    jobSeeker.LastName,
-                             //    jobSeeker.EmailAddress,
-                             //    jobSeeker.ContactNumber,
-                             //    jobSeeker.AlternativeContactNumber,
-                             //    jobSeeker.ResidentialAddress,
-                             //    jobSeeker.ProfileImage_String,
-                             //    jobSeeker.IsAvailable
-                             //};
-            return (List<JobSeeker>)jobSeekers;
 
+            List<JobSeeker> JobSeekers = new List<JobSeeker>();    
+            foreach(var job in jobSeekersQuery)
+            {
+                var js = new JobSeeker();
+                js.JobSeekerID = job.JobSeekerID;
+                js.FirstName = job.FirstName;
+                js.LastName = job.LastName;
+                js.EmailAddress = job.EmailAddress;
+                js.ContactNumber = job.ContactNumber;
+                js.AlternativeContactNumber = job.AlternativeContactNumber;
+                js.ResidentialAddress = job.ResidentialAddress;
+                js.ProfileImage_String = job.ProfileImage_String;
+                js.isAvailable = job.isAvailable;
+                JobSeekers.Add(js);
+            }         
+            return JobSeekers;
 
             //foreach (var job in EmployerSpecificJobs(EmployerID))
             //{
@@ -136,10 +121,11 @@ namespace TempJobsWcf
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
             foreach (var app in database.JobApplications)
             {
-                JobApplication invite = new JobApplication();
-                invite.JobID = app.JobID;
-                invite.JobSeekerID = app.JobSeekerID;
-                invites.Add(invite);
+                JobApplication appl = new JobApplication();
+                appl.ApplicationID = app.ApplicationID;
+                appl.JobID = app.JobID;
+                appl.JobSeekerID = app.JobSeekerID;
+                invites.Add(appl);
             }
             
            return invites;
@@ -187,10 +173,8 @@ namespace TempJobsWcf
                     job.EmployerID = jb.EmployerID;
                     jobs.Add(job);
                 }
-            }
-           
-            return jobs;
-           
+            }          
+            return jobs;           
         }
     }
 }

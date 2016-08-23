@@ -9,8 +9,6 @@ namespace Prodigy_Employment
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        WebApplication1.localhost1.Service1 lc = new WebApplication1.localhost1.Service1();
-       
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -39,13 +37,7 @@ namespace Prodigy_Employment
                 }
                 else if (usertype.Equals("JobSeeker"))
                 {
-                //    var invitation = lc.GetJobSeekerJobInvites(userID, true);
-                //    if (invitation == null)
-                //    {
-                //        string message = "<h3 style='text-align:center'>You have a Job Invite.</h3>";
-                //        message += "<p style='text-align:center'><a href='ViewInvites.aspx'>View </a>invites here.</p><br/>";
-                //        TurnNotificatiOn(message);
-                //    }
+              
                     lblViewJobs.Visible = true;
                     lblProfile.Visible = true;
                     lblLogin.Visible = false;

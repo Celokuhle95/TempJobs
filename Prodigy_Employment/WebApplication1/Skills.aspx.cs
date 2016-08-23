@@ -9,11 +9,11 @@ namespace WebApplication1
 {
     public partial class EditProfile : System.Web.UI.Page
     {
-        localhost1.Service1 lc;
+        localhost.Service1 lc;
         int selectedID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            lc = new localhost1.Service1();
+            lc = new localhost.Service1();
 
             if (Session["UserID"] == null || (string)Session["UserType"] == null)
             {
@@ -23,7 +23,7 @@ namespace WebApplication1
             {
                 if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
-                    selectedID = 2;// (int)Session["UserID"];
+                    selectedID = (int)Session["UserID"];
                     int count = 0;
                     bool a = true;
                     foreach (var skill in lc.ReadSkills(selectedID,  a))
@@ -76,35 +76,35 @@ namespace WebApplication1
 
         protected void btnStoreDetails_Click(object sender, EventArgs e)
         {
-            if (drpSkill1.SelectedValue != null)
+            if (!drpSkill1.SelectedValue.Equals(0))
             {
-                string skill1Name = drpSkill1.SelectedValue;
-                lc.StoreSkills(skill1Name, 0, true, selectedID, true);
+                string skill1Name = drpSkill1.ToString();
+               // lc.StoreSkills(skill1Name, 0, true, selectedID, true);              
                 //show success message
                 DisplaySuccessMessage();            
             }
 
-            if (drpSkill2.SelectedValue != null)
+            if (!drpSkill2.SelectedValue.Equals(0))
             {
-                string skill2Name = drpSkill2.SelectedValue;
+                string skill2Name = drpSkill2.ToString();
                 lc.StoreSkills(skill2Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (drpSkill3.SelectedValue != null)
+            if (!drpSkill3.SelectedValue.Equals(0))
             {
-                string skill3Name = drpSkill3.SelectedValue;
+                string skill3Name = drpSkill3.ToString();
                 lc.StoreSkills(skill3Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (drpSkill4.SelectedValue != null)
+            if (!drpSkill4.SelectedValue.Equals(0))
             {
-                string skill4Name = drpSkill4.SelectedValue;
+                string skill4Name = drpSkill4.ToString();
                 lc.StoreSkills(skill4Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (drpSkill5.SelectedValue != null)
+            if (!drpSkill5.SelectedValue.Equals(0))
             {
-                string skill5Name = drpSkill5.SelectedValue;
+                string skill5Name = drpSkill5.ToString();
                 lc.StoreSkills(skill5Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }

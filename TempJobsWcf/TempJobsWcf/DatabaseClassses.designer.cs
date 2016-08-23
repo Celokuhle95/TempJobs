@@ -30,30 +30,30 @@ namespace TempJobsWcf
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertJobSeeker(JobSeeker instance);
-    partial void UpdateJobSeeker(JobSeeker instance);
-    partial void DeleteJobSeeker(JobSeeker instance);
-    partial void InsertInformalSkill(InformalSkill instance);
-    partial void UpdateInformalSkill(InformalSkill instance);
-    partial void DeleteInformalSkill(InformalSkill instance);
-    partial void InsertJobInvitation(JobInvitation instance);
-    partial void UpdateJobInvitation(JobInvitation instance);
-    partial void DeleteJobInvitation(JobInvitation instance);
+    partial void InsertAdmin(Admin instance);
+    partial void UpdateAdmin(Admin instance);
+    partial void DeleteAdmin(Admin instance);
     partial void InsertTools_Equipment(Tools_Equipment instance);
     partial void UpdateTools_Equipment(Tools_Equipment instance);
     partial void DeleteTools_Equipment(Tools_Equipment instance);
+    partial void InsertEmployer(Employer instance);
+    partial void UpdateEmployer(Employer instance);
+    partial void DeleteEmployer(Employer instance);
+    partial void InsertInformalSkill(InformalSkill instance);
+    partial void UpdateInformalSkill(InformalSkill instance);
+    partial void DeleteInformalSkill(InformalSkill instance);
     partial void InsertJob(Job instance);
     partial void UpdateJob(Job instance);
     partial void DeleteJob(Job instance);
     partial void InsertJobApplication(JobApplication instance);
     partial void UpdateJobApplication(JobApplication instance);
     partial void DeleteJobApplication(JobApplication instance);
-    partial void InsertEmployer(Employer instance);
-    partial void UpdateEmployer(Employer instance);
-    partial void DeleteEmployer(Employer instance);
-    partial void InsertAdmin(Admin instance);
-    partial void UpdateAdmin(Admin instance);
-    partial void DeleteAdmin(Admin instance);
+    partial void InsertJobInvitation(JobInvitation instance);
+    partial void UpdateJobInvitation(JobInvitation instance);
+    partial void DeleteJobInvitation(JobInvitation instance);
+    partial void InsertJobSeeker(JobSeeker instance);
+    partial void UpdateJobSeeker(JobSeeker instance);
+    partial void DeleteJobSeeker(JobSeeker instance);
     #endregion
 		
 		public DatabaseClasssesDataContext() : 
@@ -86,27 +86,11 @@ namespace TempJobsWcf
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<JobSeeker> JobSeekers
+		public System.Data.Linq.Table<Admin> Admins
 		{
 			get
 			{
-				return this.GetTable<JobSeeker>();
-			}
-		}
-		
-		public System.Data.Linq.Table<InformalSkill> InformalSkills
-		{
-			get
-			{
-				return this.GetTable<InformalSkill>();
-			}
-		}
-		
-		public System.Data.Linq.Table<JobInvitation> JobInvitations
-		{
-			get
-			{
-				return this.GetTable<JobInvitation>();
+				return this.GetTable<Admin>();
 			}
 		}
 		
@@ -115,6 +99,22 @@ namespace TempJobsWcf
 			get
 			{
 				return this.GetTable<Tools_Equipment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Employer> Employers
+		{
+			get
+			{
+				return this.GetTable<Employer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<InformalSkill> InformalSkills
+		{
+			get
+			{
+				return this.GetTable<InformalSkill>();
 			}
 		}
 		
@@ -134,30 +134,30 @@ namespace TempJobsWcf
 			}
 		}
 		
-		public System.Data.Linq.Table<Employer> Employers
+		public System.Data.Linq.Table<JobInvitation> JobInvitations
 		{
 			get
 			{
-				return this.GetTable<Employer>();
+				return this.GetTable<JobInvitation>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Admin> Admins
+		public System.Data.Linq.Table<JobSeeker> JobSeekers
 		{
 			get
 			{
-				return this.GetTable<Admin>();
+				return this.GetTable<JobSeeker>();
 			}
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobSeeker")]
-	public partial class JobSeeker : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
+	public partial class Admin : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _JobSeekerID;
+		private int _AdminID;
 		
 		private string _FirstName;
 		
@@ -167,30 +167,12 @@ namespace TempJobsWcf
 		
 		private string _Password;
 		
-		private string _ContactNumber;
-		
-		private string _AlternativeContactNumber;
-		
-		private string _ResidentialAddress;
-		
-		private string _ProfileImage_String;
-		
-		private System.Nullable<int> _isAvailable;
-		
-		private EntitySet<InformalSkill> _InformalSkills;
-		
-		private EntitySet<JobInvitation> _JobInvitations;
-		
-		private EntitySet<Tools_Equipment> _Tools_Equipments;
-		
-		private EntitySet<JobApplication> _JobApplications;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnJobSeekerIDChanging(int value);
-    partial void OnJobSeekerIDChanged();
+    partial void OnAdminIDChanging(int value);
+    partial void OnAdminIDChanged();
     partial void OnFirstNameChanging(string value);
     partial void OnFirstNameChanged();
     partial void OnLastNameChanging(string value);
@@ -199,43 +181,29 @@ namespace TempJobsWcf
     partial void OnEmailAddressChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
-    partial void OnContactNumberChanging(string value);
-    partial void OnContactNumberChanged();
-    partial void OnAlternativeContactNumberChanging(string value);
-    partial void OnAlternativeContactNumberChanged();
-    partial void OnResidentialAddressChanging(string value);
-    partial void OnResidentialAddressChanged();
-    partial void OnProfileImage_StringChanging(string value);
-    partial void OnProfileImage_StringChanged();
-    partial void OnisAvailableChanging(System.Nullable<int> value);
-    partial void OnisAvailableChanged();
     #endregion
 		
-		public JobSeeker()
+		public Admin()
 		{
-			this._InformalSkills = new EntitySet<InformalSkill>(new Action<InformalSkill>(this.attach_InformalSkills), new Action<InformalSkill>(this.detach_InformalSkills));
-			this._JobInvitations = new EntitySet<JobInvitation>(new Action<JobInvitation>(this.attach_JobInvitations), new Action<JobInvitation>(this.detach_JobInvitations));
-			this._Tools_Equipments = new EntitySet<Tools_Equipment>(new Action<Tools_Equipment>(this.attach_Tools_Equipments), new Action<Tools_Equipment>(this.detach_Tools_Equipments));
-			this._JobApplications = new EntitySet<JobApplication>(new Action<JobApplication>(this.attach_JobApplications), new Action<JobApplication>(this.detach_JobApplications));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int JobSeekerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int AdminID
 		{
 			get
 			{
-				return this._JobSeekerID;
+				return this._AdminID;
 			}
 			set
 			{
-				if ((this._JobSeekerID != value))
+				if ((this._AdminID != value))
 				{
-					this.OnJobSeekerIDChanging(value);
+					this.OnAdminIDChanging(value);
 					this.SendPropertyChanging();
-					this._JobSeekerID = value;
-					this.SendPropertyChanged("JobSeekerID");
-					this.OnJobSeekerIDChanged();
+					this._AdminID = value;
+					this.SendPropertyChanged("AdminID");
+					this.OnAdminIDChanged();
 				}
 			}
 		}
@@ -316,573 +284,6 @@ namespace TempJobsWcf
 					this._Password = value;
 					this.SendPropertyChanged("Password");
 					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactNumber", DbType="VarChar(50)")]
-		public string ContactNumber
-		{
-			get
-			{
-				return this._ContactNumber;
-			}
-			set
-			{
-				if ((this._ContactNumber != value))
-				{
-					this.OnContactNumberChanging(value);
-					this.SendPropertyChanging();
-					this._ContactNumber = value;
-					this.SendPropertyChanged("ContactNumber");
-					this.OnContactNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AlternativeContactNumber", DbType="VarChar(50)")]
-		public string AlternativeContactNumber
-		{
-			get
-			{
-				return this._AlternativeContactNumber;
-			}
-			set
-			{
-				if ((this._AlternativeContactNumber != value))
-				{
-					this.OnAlternativeContactNumberChanging(value);
-					this.SendPropertyChanging();
-					this._AlternativeContactNumber = value;
-					this.SendPropertyChanged("AlternativeContactNumber");
-					this.OnAlternativeContactNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResidentialAddress", DbType="VarChar(50)")]
-		public string ResidentialAddress
-		{
-			get
-			{
-				return this._ResidentialAddress;
-			}
-			set
-			{
-				if ((this._ResidentialAddress != value))
-				{
-					this.OnResidentialAddressChanging(value);
-					this.SendPropertyChanging();
-					this._ResidentialAddress = value;
-					this.SendPropertyChanged("ResidentialAddress");
-					this.OnResidentialAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfileImage_String", DbType="VarChar(MAX)")]
-		public string ProfileImage_String
-		{
-			get
-			{
-				return this._ProfileImage_String;
-			}
-			set
-			{
-				if ((this._ProfileImage_String != value))
-				{
-					this.OnProfileImage_StringChanging(value);
-					this.SendPropertyChanging();
-					this._ProfileImage_String = value;
-					this.SendPropertyChanged("ProfileImage_String");
-					this.OnProfileImage_StringChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isAvailable", DbType="Int")]
-		public System.Nullable<int> isAvailable
-		{
-			get
-			{
-				return this._isAvailable;
-			}
-			set
-			{
-				if ((this._isAvailable != value))
-				{
-					this.OnisAvailableChanging(value);
-					this.SendPropertyChanging();
-					this._isAvailable = value;
-					this.SendPropertyChanged("isAvailable");
-					this.OnisAvailableChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_InformalSkill", Storage="_InformalSkills", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
-		public EntitySet<InformalSkill> InformalSkills
-		{
-			get
-			{
-				return this._InformalSkills;
-			}
-			set
-			{
-				this._InformalSkills.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_JobInvitation", Storage="_JobInvitations", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
-		public EntitySet<JobInvitation> JobInvitations
-		{
-			get
-			{
-				return this._JobInvitations;
-			}
-			set
-			{
-				this._JobInvitations.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_Tools_Equipment", Storage="_Tools_Equipments", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
-		public EntitySet<Tools_Equipment> Tools_Equipments
-		{
-			get
-			{
-				return this._Tools_Equipments;
-			}
-			set
-			{
-				this._Tools_Equipments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_JobApplication", Storage="_JobApplications", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
-		public EntitySet<JobApplication> JobApplications
-		{
-			get
-			{
-				return this._JobApplications;
-			}
-			set
-			{
-				this._JobApplications.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_InformalSkills(InformalSkill entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = this;
-		}
-		
-		private void detach_InformalSkills(InformalSkill entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = null;
-		}
-		
-		private void attach_JobInvitations(JobInvitation entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = this;
-		}
-		
-		private void detach_JobInvitations(JobInvitation entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = null;
-		}
-		
-		private void attach_Tools_Equipments(Tools_Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = this;
-		}
-		
-		private void detach_Tools_Equipments(Tools_Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = null;
-		}
-		
-		private void attach_JobApplications(JobApplication entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = this;
-		}
-		
-		private void detach_JobApplications(JobApplication entity)
-		{
-			this.SendPropertyChanging();
-			entity.JobSeeker = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformalSkill")]
-	public partial class InformalSkill : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _SkillID;
-		
-		private string _Name;
-		
-		private System.Nullable<int> _SkillLevel;
-		
-		private System.Nullable<int> _JobSeekerID;
-		
-		private EntityRef<JobSeeker> _JobSeeker;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnSkillIDChanging(int value);
-    partial void OnSkillIDChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnSkillLevelChanging(System.Nullable<int> value);
-    partial void OnSkillLevelChanged();
-    partial void OnJobSeekerIDChanging(System.Nullable<int> value);
-    partial void OnJobSeekerIDChanged();
-    #endregion
-		
-		public InformalSkill()
-		{
-			this._JobSeeker = default(EntityRef<JobSeeker>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SkillID
-		{
-			get
-			{
-				return this._SkillID;
-			}
-			set
-			{
-				if ((this._SkillID != value))
-				{
-					this.OnSkillIDChanging(value);
-					this.SendPropertyChanging();
-					this._SkillID = value;
-					this.SendPropertyChanged("SkillID");
-					this.OnSkillIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
-		public string Name
-		{
-			get
-			{
-				return this._Name;
-			}
-			set
-			{
-				if ((this._Name != value))
-				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillLevel", DbType="Int")]
-		public System.Nullable<int> SkillLevel
-		{
-			get
-			{
-				return this._SkillLevel;
-			}
-			set
-			{
-				if ((this._SkillLevel != value))
-				{
-					this.OnSkillLevelChanging(value);
-					this.SendPropertyChanging();
-					this._SkillLevel = value;
-					this.SendPropertyChanged("SkillLevel");
-					this.OnSkillLevelChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
-		public System.Nullable<int> JobSeekerID
-		{
-			get
-			{
-				return this._JobSeekerID;
-			}
-			set
-			{
-				if ((this._JobSeekerID != value))
-				{
-					if (this._JobSeeker.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnJobSeekerIDChanging(value);
-					this.SendPropertyChanging();
-					this._JobSeekerID = value;
-					this.SendPropertyChanged("JobSeekerID");
-					this.OnJobSeekerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_InformalSkill", Storage="_JobSeeker", ThisKey="JobSeekerID", OtherKey="JobSeekerID", IsForeignKey=true)]
-		public JobSeeker JobSeeker
-		{
-			get
-			{
-				return this._JobSeeker.Entity;
-			}
-			set
-			{
-				JobSeeker previousValue = this._JobSeeker.Entity;
-				if (((previousValue != value) 
-							|| (this._JobSeeker.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._JobSeeker.Entity = null;
-						previousValue.InformalSkills.Remove(this);
-					}
-					this._JobSeeker.Entity = value;
-					if ((value != null))
-					{
-						value.InformalSkills.Add(this);
-						this._JobSeekerID = value.JobSeekerID;
-					}
-					else
-					{
-						this._JobSeekerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("JobSeeker");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobInvitation")]
-	public partial class JobInvitation : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _JobInvitationID;
-		
-		private System.Nullable<int> _EmployerID;
-		
-		private System.Nullable<int> _JobSeekerID;
-		
-		private EntityRef<JobSeeker> _JobSeeker;
-		
-		private EntityRef<Employer> _Employer;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnJobInvitationIDChanging(int value);
-    partial void OnJobInvitationIDChanged();
-    partial void OnEmployerIDChanging(System.Nullable<int> value);
-    partial void OnEmployerIDChanged();
-    partial void OnJobSeekerIDChanging(System.Nullable<int> value);
-    partial void OnJobSeekerIDChanged();
-    #endregion
-		
-		public JobInvitation()
-		{
-			this._JobSeeker = default(EntityRef<JobSeeker>);
-			this._Employer = default(EntityRef<Employer>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobInvitationID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int JobInvitationID
-		{
-			get
-			{
-				return this._JobInvitationID;
-			}
-			set
-			{
-				if ((this._JobInvitationID != value))
-				{
-					this.OnJobInvitationIDChanging(value);
-					this.SendPropertyChanging();
-					this._JobInvitationID = value;
-					this.SendPropertyChanged("JobInvitationID");
-					this.OnJobInvitationIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployerID", DbType="Int")]
-		public System.Nullable<int> EmployerID
-		{
-			get
-			{
-				return this._EmployerID;
-			}
-			set
-			{
-				if ((this._EmployerID != value))
-				{
-					if (this._Employer.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployerIDChanging(value);
-					this.SendPropertyChanging();
-					this._EmployerID = value;
-					this.SendPropertyChanged("EmployerID");
-					this.OnEmployerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
-		public System.Nullable<int> JobSeekerID
-		{
-			get
-			{
-				return this._JobSeekerID;
-			}
-			set
-			{
-				if ((this._JobSeekerID != value))
-				{
-					if (this._JobSeeker.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnJobSeekerIDChanging(value);
-					this.SendPropertyChanging();
-					this._JobSeekerID = value;
-					this.SendPropertyChanged("JobSeekerID");
-					this.OnJobSeekerIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_JobInvitation", Storage="_JobSeeker", ThisKey="JobSeekerID", OtherKey="JobSeekerID", IsForeignKey=true)]
-		public JobSeeker JobSeeker
-		{
-			get
-			{
-				return this._JobSeeker.Entity;
-			}
-			set
-			{
-				JobSeeker previousValue = this._JobSeeker.Entity;
-				if (((previousValue != value) 
-							|| (this._JobSeeker.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._JobSeeker.Entity = null;
-						previousValue.JobInvitations.Remove(this);
-					}
-					this._JobSeeker.Entity = value;
-					if ((value != null))
-					{
-						value.JobInvitations.Add(this);
-						this._JobSeekerID = value.JobSeekerID;
-					}
-					else
-					{
-						this._JobSeekerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("JobSeeker");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employer_JobInvitation", Storage="_Employer", ThisKey="EmployerID", OtherKey="EmployerID", IsForeignKey=true)]
-		public Employer Employer
-		{
-			get
-			{
-				return this._Employer.Entity;
-			}
-			set
-			{
-				Employer previousValue = this._Employer.Entity;
-				if (((previousValue != value) 
-							|| (this._Employer.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employer.Entity = null;
-						previousValue.JobInvitations.Remove(this);
-					}
-					this._Employer.Entity = value;
-					if ((value != null))
-					{
-						value.JobInvitations.Add(this);
-						this._EmployerID = value.EmployerID;
-					}
-					else
-					{
-						this._EmployerID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Employer");
 				}
 			}
 		}
@@ -1051,6 +452,491 @@ namespace TempJobsWcf
 					if ((value != null))
 					{
 						value.Tools_Equipments.Add(this);
+						this._JobSeekerID = value.JobSeekerID;
+					}
+					else
+					{
+						this._JobSeekerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("JobSeeker");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employer")]
+	public partial class Employer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _EmployerID;
+		
+		private string _FirstName;
+		
+		private string _LastName;
+		
+		private string _EmailAddress;
+		
+		private string _Password;
+		
+		private string _ContactNumber;
+		
+		private string _AlternativeContactNumber;
+		
+		private string _ResidentialAddress;
+		
+		private string _ProfileImage_String;
+		
+		private EntitySet<Job> _Jobs;
+		
+		private EntitySet<JobInvitation> _JobInvitations;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEmployerIDChanging(int value);
+    partial void OnEmployerIDChanged();
+    partial void OnFirstNameChanging(string value);
+    partial void OnFirstNameChanged();
+    partial void OnLastNameChanging(string value);
+    partial void OnLastNameChanged();
+    partial void OnEmailAddressChanging(string value);
+    partial void OnEmailAddressChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnContactNumberChanging(string value);
+    partial void OnContactNumberChanged();
+    partial void OnAlternativeContactNumberChanging(string value);
+    partial void OnAlternativeContactNumberChanged();
+    partial void OnResidentialAddressChanging(string value);
+    partial void OnResidentialAddressChanged();
+    partial void OnProfileImage_StringChanging(string value);
+    partial void OnProfileImage_StringChanged();
+    #endregion
+		
+		public Employer()
+		{
+			this._Jobs = new EntitySet<Job>(new Action<Job>(this.attach_Jobs), new Action<Job>(this.detach_Jobs));
+			this._JobInvitations = new EntitySet<JobInvitation>(new Action<JobInvitation>(this.attach_JobInvitations), new Action<JobInvitation>(this.detach_JobInvitations));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int EmployerID
+		{
+			get
+			{
+				return this._EmployerID;
+			}
+			set
+			{
+				if ((this._EmployerID != value))
+				{
+					this.OnEmployerIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployerID = value;
+					this.SendPropertyChanged("EmployerID");
+					this.OnEmployerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(50)")]
+		public string FirstName
+		{
+			get
+			{
+				return this._FirstName;
+			}
+			set
+			{
+				if ((this._FirstName != value))
+				{
+					this.OnFirstNameChanging(value);
+					this.SendPropertyChanging();
+					this._FirstName = value;
+					this.SendPropertyChanged("FirstName");
+					this.OnFirstNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(50)")]
+		public string LastName
+		{
+			get
+			{
+				return this._LastName;
+			}
+			set
+			{
+				if ((this._LastName != value))
+				{
+					this.OnLastNameChanging(value);
+					this.SendPropertyChanging();
+					this._LastName = value;
+					this.SendPropertyChanged("LastName");
+					this.OnLastNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="NVarChar(50)")]
+		public string EmailAddress
+		{
+			get
+			{
+				return this._EmailAddress;
+			}
+			set
+			{
+				if ((this._EmailAddress != value))
+				{
+					this.OnEmailAddressChanging(value);
+					this.SendPropertyChanging();
+					this._EmailAddress = value;
+					this.SendPropertyChanged("EmailAddress");
+					this.OnEmailAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX)")]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactNumber", DbType="VarChar(50)")]
+		public string ContactNumber
+		{
+			get
+			{
+				return this._ContactNumber;
+			}
+			set
+			{
+				if ((this._ContactNumber != value))
+				{
+					this.OnContactNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ContactNumber = value;
+					this.SendPropertyChanged("ContactNumber");
+					this.OnContactNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AlternativeContactNumber", DbType="VarChar(50)")]
+		public string AlternativeContactNumber
+		{
+			get
+			{
+				return this._AlternativeContactNumber;
+			}
+			set
+			{
+				if ((this._AlternativeContactNumber != value))
+				{
+					this.OnAlternativeContactNumberChanging(value);
+					this.SendPropertyChanging();
+					this._AlternativeContactNumber = value;
+					this.SendPropertyChanged("AlternativeContactNumber");
+					this.OnAlternativeContactNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResidentialAddress", DbType="VarChar(50)")]
+		public string ResidentialAddress
+		{
+			get
+			{
+				return this._ResidentialAddress;
+			}
+			set
+			{
+				if ((this._ResidentialAddress != value))
+				{
+					this.OnResidentialAddressChanging(value);
+					this.SendPropertyChanging();
+					this._ResidentialAddress = value;
+					this.SendPropertyChanged("ResidentialAddress");
+					this.OnResidentialAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProfileImage_String", DbType="VarChar(MAX)")]
+		public string ProfileImage_String
+		{
+			get
+			{
+				return this._ProfileImage_String;
+			}
+			set
+			{
+				if ((this._ProfileImage_String != value))
+				{
+					this.OnProfileImage_StringChanging(value);
+					this.SendPropertyChanging();
+					this._ProfileImage_String = value;
+					this.SendPropertyChanged("ProfileImage_String");
+					this.OnProfileImage_StringChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employer_Job", Storage="_Jobs", ThisKey="EmployerID", OtherKey="EmployerID")]
+		public EntitySet<Job> Jobs
+		{
+			get
+			{
+				return this._Jobs;
+			}
+			set
+			{
+				this._Jobs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employer_JobInvitation", Storage="_JobInvitations", ThisKey="EmployerID", OtherKey="EmployerID")]
+		public EntitySet<JobInvitation> JobInvitations
+		{
+			get
+			{
+				return this._JobInvitations;
+			}
+			set
+			{
+				this._JobInvitations.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Jobs(Job entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employer = this;
+		}
+		
+		private void detach_Jobs(Job entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employer = null;
+		}
+		
+		private void attach_JobInvitations(JobInvitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employer = this;
+		}
+		
+		private void detach_JobInvitations(JobInvitation entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employer = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.InformalSkill")]
+	public partial class InformalSkill : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SkillID;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _SkillLevel;
+		
+		private System.Nullable<int> _JobSeekerID;
+		
+		private EntityRef<JobSeeker> _JobSeeker;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSkillIDChanging(int value);
+    partial void OnSkillIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnSkillLevelChanging(System.Nullable<int> value);
+    partial void OnSkillLevelChanged();
+    partial void OnJobSeekerIDChanging(System.Nullable<int> value);
+    partial void OnJobSeekerIDChanged();
+    #endregion
+		
+		public InformalSkill()
+		{
+			this._JobSeeker = default(EntityRef<JobSeeker>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SkillID
+		{
+			get
+			{
+				return this._SkillID;
+			}
+			set
+			{
+				if ((this._SkillID != value))
+				{
+					this.OnSkillIDChanging(value);
+					this.SendPropertyChanging();
+					this._SkillID = value;
+					this.SendPropertyChanged("SkillID");
+					this.OnSkillIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="VarChar(50)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SkillLevel", DbType="Int")]
+		public System.Nullable<int> SkillLevel
+		{
+			get
+			{
+				return this._SkillLevel;
+			}
+			set
+			{
+				if ((this._SkillLevel != value))
+				{
+					this.OnSkillLevelChanging(value);
+					this.SendPropertyChanging();
+					this._SkillLevel = value;
+					this.SendPropertyChanged("SkillLevel");
+					this.OnSkillLevelChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
+		public System.Nullable<int> JobSeekerID
+		{
+			get
+			{
+				return this._JobSeekerID;
+			}
+			set
+			{
+				if ((this._JobSeekerID != value))
+				{
+					if (this._JobSeeker.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobSeekerIDChanging(value);
+					this.SendPropertyChanging();
+					this._JobSeekerID = value;
+					this.SendPropertyChanged("JobSeekerID");
+					this.OnJobSeekerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_InformalSkill", Storage="_JobSeeker", ThisKey="JobSeekerID", OtherKey="JobSeekerID", IsForeignKey=true)]
+		public JobSeeker JobSeeker
+		{
+			get
+			{
+				return this._JobSeeker.Entity;
+			}
+			set
+			{
+				JobSeeker previousValue = this._JobSeeker.Entity;
+				if (((previousValue != value) 
+							|| (this._JobSeeker.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._JobSeeker.Entity = null;
+						previousValue.InformalSkills.Remove(this);
+					}
+					this._JobSeeker.Entity = value;
+					if ((value != null))
+					{
+						value.InformalSkills.Add(this);
 						this._JobSeekerID = value.JobSeekerID;
 					}
 					else
@@ -1646,13 +1532,205 @@ namespace TempJobsWcf
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employer")]
-	public partial class Employer : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobInvitation")]
+	public partial class JobInvitation : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _EmployerID;
+		private int _JobInvitationID;
+		
+		private System.Nullable<int> _EmployerID;
+		
+		private System.Nullable<int> _JobSeekerID;
+		
+		private EntityRef<Employer> _Employer;
+		
+		private EntityRef<JobSeeker> _JobSeeker;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnJobInvitationIDChanging(int value);
+    partial void OnJobInvitationIDChanged();
+    partial void OnEmployerIDChanging(System.Nullable<int> value);
+    partial void OnEmployerIDChanged();
+    partial void OnJobSeekerIDChanging(System.Nullable<int> value);
+    partial void OnJobSeekerIDChanged();
+    #endregion
+		
+		public JobInvitation()
+		{
+			this._Employer = default(EntityRef<Employer>);
+			this._JobSeeker = default(EntityRef<JobSeeker>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobInvitationID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int JobInvitationID
+		{
+			get
+			{
+				return this._JobInvitationID;
+			}
+			set
+			{
+				if ((this._JobInvitationID != value))
+				{
+					this.OnJobInvitationIDChanging(value);
+					this.SendPropertyChanging();
+					this._JobInvitationID = value;
+					this.SendPropertyChanged("JobInvitationID");
+					this.OnJobInvitationIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployerID", DbType="Int")]
+		public System.Nullable<int> EmployerID
+		{
+			get
+			{
+				return this._EmployerID;
+			}
+			set
+			{
+				if ((this._EmployerID != value))
+				{
+					if (this._Employer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployerIDChanging(value);
+					this.SendPropertyChanging();
+					this._EmployerID = value;
+					this.SendPropertyChanged("EmployerID");
+					this.OnEmployerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", DbType="Int")]
+		public System.Nullable<int> JobSeekerID
+		{
+			get
+			{
+				return this._JobSeekerID;
+			}
+			set
+			{
+				if ((this._JobSeekerID != value))
+				{
+					if (this._JobSeeker.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnJobSeekerIDChanging(value);
+					this.SendPropertyChanging();
+					this._JobSeekerID = value;
+					this.SendPropertyChanged("JobSeekerID");
+					this.OnJobSeekerIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employer_JobInvitation", Storage="_Employer", ThisKey="EmployerID", OtherKey="EmployerID", IsForeignKey=true)]
+		public Employer Employer
+		{
+			get
+			{
+				return this._Employer.Entity;
+			}
+			set
+			{
+				Employer previousValue = this._Employer.Entity;
+				if (((previousValue != value) 
+							|| (this._Employer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employer.Entity = null;
+						previousValue.JobInvitations.Remove(this);
+					}
+					this._Employer.Entity = value;
+					if ((value != null))
+					{
+						value.JobInvitations.Add(this);
+						this._EmployerID = value.EmployerID;
+					}
+					else
+					{
+						this._EmployerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Employer");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_JobInvitation", Storage="_JobSeeker", ThisKey="JobSeekerID", OtherKey="JobSeekerID", IsForeignKey=true)]
+		public JobSeeker JobSeeker
+		{
+			get
+			{
+				return this._JobSeeker.Entity;
+			}
+			set
+			{
+				JobSeeker previousValue = this._JobSeeker.Entity;
+				if (((previousValue != value) 
+							|| (this._JobSeeker.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._JobSeeker.Entity = null;
+						previousValue.JobInvitations.Remove(this);
+					}
+					this._JobSeeker.Entity = value;
+					if ((value != null))
+					{
+						value.JobInvitations.Add(this);
+						this._JobSeekerID = value.JobSeekerID;
+					}
+					else
+					{
+						this._JobSeekerID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("JobSeeker");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.JobSeeker")]
+	public partial class JobSeeker : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _JobSeekerID;
 		
 		private string _FirstName;
 		
@@ -1670,16 +1748,22 @@ namespace TempJobsWcf
 		
 		private string _ProfileImage_String;
 		
-		private EntitySet<JobInvitation> _JobInvitations;
+		private System.Nullable<int> _isAvailable;
 		
-		private EntitySet<Job> _Jobs;
+		private EntitySet<Tools_Equipment> _Tools_Equipments;
+		
+		private EntitySet<InformalSkill> _InformalSkills;
+		
+		private EntitySet<JobApplication> _JobApplications;
+		
+		private EntitySet<JobInvitation> _JobInvitations;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnEmployerIDChanging(int value);
-    partial void OnEmployerIDChanged();
+    partial void OnJobSeekerIDChanging(int value);
+    partial void OnJobSeekerIDChanged();
     partial void OnFirstNameChanging(string value);
     partial void OnFirstNameChanged();
     partial void OnLastNameChanging(string value);
@@ -1696,31 +1780,35 @@ namespace TempJobsWcf
     partial void OnResidentialAddressChanged();
     partial void OnProfileImage_StringChanging(string value);
     partial void OnProfileImage_StringChanged();
+    partial void OnisAvailableChanging(System.Nullable<int> value);
+    partial void OnisAvailableChanged();
     #endregion
 		
-		public Employer()
+		public JobSeeker()
 		{
+			this._Tools_Equipments = new EntitySet<Tools_Equipment>(new Action<Tools_Equipment>(this.attach_Tools_Equipments), new Action<Tools_Equipment>(this.detach_Tools_Equipments));
+			this._InformalSkills = new EntitySet<InformalSkill>(new Action<InformalSkill>(this.attach_InformalSkills), new Action<InformalSkill>(this.detach_InformalSkills));
+			this._JobApplications = new EntitySet<JobApplication>(new Action<JobApplication>(this.attach_JobApplications), new Action<JobApplication>(this.detach_JobApplications));
 			this._JobInvitations = new EntitySet<JobInvitation>(new Action<JobInvitation>(this.attach_JobInvitations), new Action<JobInvitation>(this.detach_JobInvitations));
-			this._Jobs = new EntitySet<Job>(new Action<Job>(this.attach_Jobs), new Action<Job>(this.detach_Jobs));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int EmployerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_JobSeekerID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int JobSeekerID
 		{
 			get
 			{
-				return this._EmployerID;
+				return this._JobSeekerID;
 			}
 			set
 			{
-				if ((this._EmployerID != value))
+				if ((this._JobSeekerID != value))
 				{
-					this.OnEmployerIDChanging(value);
+					this.OnJobSeekerIDChanging(value);
 					this.SendPropertyChanging();
-					this._EmployerID = value;
-					this.SendPropertyChanged("EmployerID");
-					this.OnEmployerIDChanged();
+					this._JobSeekerID = value;
+					this.SendPropertyChanged("JobSeekerID");
+					this.OnJobSeekerIDChanged();
 				}
 			}
 		}
@@ -1765,7 +1853,7 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="VarChar(50)")]
 		public string EmailAddress
 		{
 			get
@@ -1885,7 +1973,66 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employer_JobInvitation", Storage="_JobInvitations", ThisKey="EmployerID", OtherKey="EmployerID")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isAvailable", DbType="Int")]
+		public System.Nullable<int> isAvailable
+		{
+			get
+			{
+				return this._isAvailable;
+			}
+			set
+			{
+				if ((this._isAvailable != value))
+				{
+					this.OnisAvailableChanging(value);
+					this.SendPropertyChanging();
+					this._isAvailable = value;
+					this.SendPropertyChanged("isAvailable");
+					this.OnisAvailableChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_Tools_Equipment", Storage="_Tools_Equipments", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
+		public EntitySet<Tools_Equipment> Tools_Equipments
+		{
+			get
+			{
+				return this._Tools_Equipments;
+			}
+			set
+			{
+				this._Tools_Equipments.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_InformalSkill", Storage="_InformalSkills", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
+		public EntitySet<InformalSkill> InformalSkills
+		{
+			get
+			{
+				return this._InformalSkills;
+			}
+			set
+			{
+				this._InformalSkills.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_JobApplication", Storage="_JobApplications", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
+		public EntitySet<JobApplication> JobApplications
+		{
+			get
+			{
+				return this._JobApplications;
+			}
+			set
+			{
+				this._JobApplications.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="JobSeeker_JobInvitation", Storage="_JobInvitations", ThisKey="JobSeekerID", OtherKey="JobSeekerID")]
 		public EntitySet<JobInvitation> JobInvitations
 		{
 			get
@@ -1898,19 +2045,6 @@ namespace TempJobsWcf
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employer_Job", Storage="_Jobs", ThisKey="EmployerID", OtherKey="EmployerID")]
-		public EntitySet<Job> Jobs
-		{
-			get
-			{
-				return this._Jobs;
-			}
-			set
-			{
-				this._Jobs.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1929,188 +2063,54 @@ namespace TempJobsWcf
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Tools_Equipments(Tools_Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobSeeker = this;
+		}
+		
+		private void detach_Tools_Equipments(Tools_Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobSeeker = null;
+		}
+		
+		private void attach_InformalSkills(InformalSkill entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobSeeker = this;
+		}
+		
+		private void detach_InformalSkills(InformalSkill entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobSeeker = null;
+		}
+		
+		private void attach_JobApplications(JobApplication entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobSeeker = this;
+		}
+		
+		private void detach_JobApplications(JobApplication entity)
+		{
+			this.SendPropertyChanging();
+			entity.JobSeeker = null;
 		}
 		
 		private void attach_JobInvitations(JobInvitation entity)
 		{
 			this.SendPropertyChanging();
-			entity.Employer = this;
+			entity.JobSeeker = this;
 		}
 		
 		private void detach_JobInvitations(JobInvitation entity)
 		{
 			this.SendPropertyChanging();
-			entity.Employer = null;
-		}
-		
-		private void attach_Jobs(Job entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employer = this;
-		}
-		
-		private void detach_Jobs(Job entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employer = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
-	public partial class Admin : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _AdminID;
-		
-		private string _FirstName;
-		
-		private string _LastName;
-		
-		private string _EmailAddress;
-		
-		private string _Password;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAdminIDChanging(int value);
-    partial void OnAdminIDChanged();
-    partial void OnFirstNameChanging(string value);
-    partial void OnFirstNameChanged();
-    partial void OnLastNameChanging(string value);
-    partial void OnLastNameChanged();
-    partial void OnEmailAddressChanging(string value);
-    partial void OnEmailAddressChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    #endregion
-		
-		public Admin()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int AdminID
-		{
-			get
-			{
-				return this._AdminID;
-			}
-			set
-			{
-				if ((this._AdminID != value))
-				{
-					this.OnAdminIDChanging(value);
-					this.SendPropertyChanging();
-					this._AdminID = value;
-					this.SendPropertyChanged("AdminID");
-					this.OnAdminIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="VarChar(50)")]
-		public string FirstName
-		{
-			get
-			{
-				return this._FirstName;
-			}
-			set
-			{
-				if ((this._FirstName != value))
-				{
-					this.OnFirstNameChanging(value);
-					this.SendPropertyChanging();
-					this._FirstName = value;
-					this.SendPropertyChanged("FirstName");
-					this.OnFirstNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="VarChar(50)")]
-		public string LastName
-		{
-			get
-			{
-				return this._LastName;
-			}
-			set
-			{
-				if ((this._LastName != value))
-				{
-					this.OnLastNameChanging(value);
-					this.SendPropertyChanging();
-					this._LastName = value;
-					this.SendPropertyChanged("LastName");
-					this.OnLastNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmailAddress", DbType="VarChar(50)")]
-		public string EmailAddress
-		{
-			get
-			{
-				return this._EmailAddress;
-			}
-			set
-			{
-				if ((this._EmailAddress != value))
-				{
-					this.OnEmailAddressChanging(value);
-					this.SendPropertyChanging();
-					this._EmailAddress = value;
-					this.SendPropertyChanged("EmailAddress");
-					this.OnEmailAddressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(MAX)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+			entity.JobSeeker = null;
 		}
 	}
 }

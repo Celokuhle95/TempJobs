@@ -187,23 +187,24 @@ namespace TempJobsWcf
 
         public JobSeeker SingleJobseeker(int JobSeekerID)
         {
-            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            var jobSeeker = (from js in database.JobSeekers
-                            where js.JobSeekerID.Equals(JobSeekerID)
-                            select js).Single();
-            //                       {
-            //                           js.FirstName,
-            //                           js.LastName,
-            //                           js.EmailAddress,
-            //                           js.ContactNumber,
-            //                           js.AlternativeContactNumber,
-            //                           js.ResidentialAddress,
-            //                           js.ProfileImage_String,
-            //                           js.IsAvailable
-            //                       };
-            //JobSeeker job = new JobSeeker();
-            //job = (JobSeeker)jobSeeker;
-            return jobSeeker;
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
+            JobSeeker js = new JobSeeker();
+            foreach (var s in db.JobSeekers)
+            {
+                if (s.JobSeekerID.Equals(JobSeekerID))
+                {
+                    js.FirstName = s.FirstName;
+                    js.LastName = s.LastName;
+                    js.EmailAddress = s.EmailAddress;
+                    js.ContactNumber = s.ContactNumber;
+                    js.AlternativeContactNumber = s.AlternativeContactNumber;
+                    js.ResidentialAddress = s.ResidentialAddress;
+                    js.ProfileImage_String = s.ProfileImage_String;
+                    js.isAvailable = s.isAvailable;
+                }
+            }
+
+            return js;
         }
 
         public Employer SingleEmployer(int EmployerID)

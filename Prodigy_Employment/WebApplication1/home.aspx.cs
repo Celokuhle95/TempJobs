@@ -9,11 +9,11 @@ namespace WebApplication1
 {
     public partial class home : System.Web.UI.Page
     {
-        localhost1.Service1 lc = new localhost1.Service1();
+        localhost.Service1 lc;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lc = new localhost.Service1();
             if (Session["UserID"] != null)
             {
                 TurnNotificationSectionOFF();
