@@ -31,7 +31,7 @@ namespace WebApplication1
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            //string name = drpSkillName.SelectedValue;
+            //string name = drpSkillName.Text;
             //string description = txtDescription.Text;
             //int numDays = Convert.ToInt32(NumberOfDays.Value);
             //string duedate = GetDate(DueDate.Value);

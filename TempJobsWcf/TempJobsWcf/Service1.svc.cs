@@ -105,8 +105,6 @@ namespace TempJobsWcf
 
         public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
-            //SkillsManager skills = new SkillsManager();
-            //return skills.ReadSkills(JobSeekerID);
             DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
             List<InformalSkill> skill = new List<InformalSkill>();
             foreach (var s in db.InformalSkills)

@@ -152,9 +152,9 @@ namespace TempJobsWcf
 
         //add more functions relating to job management
         public List<Job> EmployerSpecificJobs(int EmployerID)
-        {
-            List<Job> jobs = new List<Job>();
+        {            
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            List<Job> jobs = new List<Job>();
             foreach (var jb in database.Jobs)
             {
                 if(jb.EmployerID.Equals(EmployerID))

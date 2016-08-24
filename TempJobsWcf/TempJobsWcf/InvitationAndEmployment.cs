@@ -27,10 +27,8 @@ namespace TempJobsWcf
                 {
                     employerIDs.Add(Convert.ToInt32(inv.EmployerID));
                 }
-            }          
-           
-                return employerIDs;
-                      
+            }                    
+            return employerIDs;                     
         }
 
         public List<JobInvitation> GetAllInvites()
@@ -62,12 +60,8 @@ namespace TempJobsWcf
                     invite.JobSeekerID = inv.JobSeekerID;
                     invites.Add(invite);
                 }              
-            }
-           
-                return invites;
-            
-           
+            }          
+            return invites;           
         }
-
     }
 }

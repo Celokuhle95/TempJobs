@@ -14,10 +14,17 @@ namespace WebApplication1
     {
         private int JobSeekerID;
         private localhost.Service1 lc;
+        private string image1 = "none";
+        private string image2 = "none";
+        private string image3 = "none";
+        private string image4 = "none";
+        private string image5 = "none";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!Page.IsPostBack)
-            {
+            {        
+               JobSeekerID = (int)Session["UserID"];
                 lc = new localhost.Service1();
                 if (Session["UserID"] != null && Session["UserType"] != null)
                 {
@@ -84,63 +91,84 @@ namespace WebApplication1
                     Response.Redirect("LoginPage.aspx");
                 }
             }
+            else
+            {
+                JobSeekerID = (int)Session["UserID"];
+                image1 = (string)Session["Image1"];
+                if(image1 == null)
+                {
+                    image1 = "none";
+                }
+
+                image2 = (string)Session["Image2"];
+                if (image2 == null)
+                {
+                    image2 = "none";
+                }
+
+                image3 = (string)Session["Image3"];
+                if (image3 == null)
+                {
+                    image3 = "none";
+                }
+
+                image4 = (string)Session["Image4"];
+                if(image4 == null)
+                {
+                    image4 = "none";
+                }
+
+                image5 = (string)Session["Image5"];
+                if (image5 == null)
+                {
+                    image5 = "none";
+                }
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
-        {
-            //Research post pack
-            byte[] image1Bytes = ToolImage1.FileBytes;
+        {     
             lc = new localhost.Service1(); 
-            if (image1Bytes != null)
-            {
-                System.Drawing.Image toolImageObject = getImageFromByteArray(image1Bytes);
-                string toolImage = ImageToBase64String(toolImageObject);
-
+            if (!image1.Equals("none"))
+            {              
                 string toolAndEquipment1 = txtNameOrDescription1.Text;
-                lc.AddNewToolOrEquipment(toolAndEquipment1, toolImage, JobSeekerID, true);
+                lc.AddNewToolOrEquipment(toolAndEquipment1, image1, JobSeekerID, true);
                 //Show success message
                 DisplaySuccessMessage();
             }
-            byte[] image2Bytes = ToolImage2.FileBytes;
-            if (image2Bytes != null)
+            
+            if (!image2.Equals("none"))
             {
-                System.Drawing.Image toolImageObject = getImageFromByteArray(image1Bytes);
-                string toolImage = ImageToBase64String(toolImageObject);
-
                 string toolAndEquipment2 = txtNameOrDescription2.Text;
-                lc.AddNewToolOrEquipment(toolAndEquipment2, toolImage, JobSeekerID, true);
+                lc.AddNewToolOrEquipment(toolAndEquipment2, image2, JobSeekerID, true);
                 DisplaySuccessMessage();
             }
-            byte[] image3Bytes = ToolImage3.FileBytes;
-            if (image3Bytes != null)
-            {
-                System.Drawing.Image toolImageObject = getImageFromByteArray(image1Bytes);
-                string toolImage = ImageToBase64String(toolImageObject);
-
+            
+            if (!image3.Equals("none"))
+            {            
                 string toolAndEquipment3 = txtNameOrDescription3.Text;
-                lc.AddNewToolOrEquipment(toolAndEquipment3, toolImage, JobSeekerID, true);
+                lc.AddNewToolOrEquipment(toolAndEquipment3, image3, JobSeekerID, true);
                 DisplaySuccessMessage();
             }
-            byte[] image4Bytes = ToolImage4.FileBytes;
-            if (image4Bytes != null)
+           
+            if (!image4.Equals("none"))
             {
-                System.Drawing.Image toolImageObject = getImageFromByteArray(image1Bytes);
-                string toolImage = ImageToBase64String(toolImageObject);
-
                 string toolAndEquipment4 = txtNameOrDescription4.Text;
-                lc.AddNewToolOrEquipment(toolAndEquipment4, toolImage, JobSeekerID, true);
+                lc.AddNewToolOrEquipment(toolAndEquipment4, image4, JobSeekerID, true);
                 DisplaySuccessMessage();
             }
-            byte[] image5Bytes = ToolImage5.FileBytes;
-            if (image5Bytes != null)
-            {
-                System.Drawing.Image toolImageObject = getImageFromByteArray(image1Bytes);
-                string toolImage = ImageToBase64String(toolImageObject);
-
+          
+            if (!image5.Equals("none"))
+            {          
                 string toolAndEquipment5 = txtNameOrDescription5.Text;
-                lc.AddNewToolOrEquipment(toolAndEquipment5, toolImage, JobSeekerID, true);
+                lc.AddNewToolOrEquipment(toolAndEquipment5, image5, JobSeekerID, true);
                 DisplaySuccessMessage();
             }
+            Session["Image1"] = null; // set session to null
+            Session["Image2"] = null;
+            Session["Image3"] = null;
+            Session["Image4"] = null;
+            Session["Image5"] = null;
             Response.Redirect("JobSeekerProfile.aspx");
         }
 
@@ -176,6 +204,7 @@ namespace WebApplication1
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
                 Image1ID.Src = "data:image/jpeg;base64," + toolImage;
+                Session.Add("Image1", toolImage); //store information into memory for later access in case of a post back
             }
         }
 
@@ -187,6 +216,7 @@ namespace WebApplication1
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
                 Image2ID.Src = "data:image/jpeg;base64," + toolImage;
+                Session.Add("Image2", toolImage);
             }
         }
 
@@ -198,6 +228,7 @@ namespace WebApplication1
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
                 Image3ID.Src = "data:image/jpeg;base64," + toolImage;
+                Session.Add("Image3", toolImage);
             }
         }
         protected void btnReload4_Click(object sender, EventArgs e)
@@ -208,6 +239,7 @@ namespace WebApplication1
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
                 Image4ID.Src = "data:image/jpeg;base64," + toolImage;
+                Session.Add("Image4", toolImage);
             }
         }
         protected void btnReload5_Click(object sender, EventArgs e)
@@ -218,6 +250,7 @@ namespace WebApplication1
                 System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
                 string toolImage = ImageToBase64String(toolImageObject);
                 Image5ID.Src = "data:image/jpeg;base64," + toolImage;
+                Session.Add("Image5", toolImage);
             }
         }
 
