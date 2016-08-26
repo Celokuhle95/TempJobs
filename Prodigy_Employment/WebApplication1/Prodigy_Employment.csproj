@@ -69,6 +69,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="EmployJobSeeker.aspx" />
     <Content Include="JobSeekerProfile.aspx" />
+    <Content Include="RemoveJob.aspx" />
+    <Content Include="ReportJob.aspx" />
     <Content Include="Skills.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="header.jpg" />
@@ -108,6 +110,7 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="ViewJobApplications.aspx" />
     <Content Include="ViewJobs.aspx" />
+    <Content Include="viewReportedJobs.aspx" />
     <Content Include="ViewUsers.aspx" />
     <Content Include="Web References\localhost1\CompositeType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -128,6 +131,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Web References\localhost1\ReportJob.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\localhost1\Service1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -166,6 +172,20 @@
     </Compile>
     <Compile Include="JobSeekerProfile.aspx.designer.cs">
       <DependentUpon>JobSeekerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveJob.aspx.cs">
+      <DependentUpon>RemoveJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoveJob.aspx.designer.cs">
+      <DependentUpon>RemoveJob.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportJob.aspx.cs">
+      <DependentUpon>ReportJob.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportJob.aspx.designer.cs">
+      <DependentUpon>ReportJob.aspx</DependentUpon>
     </Compile>
     <Compile Include="Skills.aspx.cs">
       <DependentUpon>Skills.aspx</DependentUpon>
@@ -250,6 +270,13 @@
     </Compile>
     <Compile Include="ViewJobs.aspx.designer.cs">
       <DependentUpon>ViewJobs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="viewReportedJobs.aspx.cs">
+      <DependentUpon>viewReportedJobs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewReportedJobs.aspx.designer.cs">
+      <DependentUpon>viewReportedJobs.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewUsers.aspx.cs">
       <DependentUpon>ViewUsers.aspx</DependentUpon>

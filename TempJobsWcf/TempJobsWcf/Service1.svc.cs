@@ -138,6 +138,37 @@ namespace TempJobsWcf
             JobManager toDelete = new JobManager();
             toDelete.DeleteJobApplication(JobApplicationID);
         }
+        //Report Jobs
+        public void ReportJob(int EmployerID, int JobSeekerID, int JobID, string Comment)
+        {
+            AdminManager toAddReportJob = new AdminManager();
+            toAddReportJob.ReportJob(EmployerID, JobSeekerID, JobID, Comment);
+        }
+        //read reported Jobs
+        public List<ReportJob> AllReportJobs()
+        {
+            AdminManager toReadReportedJobs = new AdminManager();
+            return toReadReportedJobs.AllReportJobs();
+        }
+
+        //Read jobs
+        public List<Job> OrderByEmployer()
+        {
+            JobManager toRead = new JobManager();
+            return toRead.OrderByEmployer();
+        }
+
+        public List<Job> OrderByJob()
+        {
+            JobManager toRead = new JobManager();
+            return toRead.OrderByJob();
+        }
+
+        public List<Job> OrderByJobType()
+        {
+            JobManager toRead = new JobManager();
+            return toRead.OrderByJobType();
+        }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {

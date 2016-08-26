@@ -50,7 +50,14 @@ namespace Prodigy_Employment
                         string notifyMessage = (string)Session["ScreenNotificationMessage"];
                         TurnNotificatiOn(notifyMessage);
                     }
-                }          
+                } 
+                else if(usertype.Equals("Admin"))
+                {
+                    lblReport.Visible = true;
+                    lblLogin.Visible = false;
+                    lblRes.Visible = false;
+                    lblLogout.Visible = true;
+                }
             }
         }
         public void TurnNotificationSectionOFF()

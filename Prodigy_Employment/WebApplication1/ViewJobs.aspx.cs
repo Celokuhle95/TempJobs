@@ -28,6 +28,12 @@ namespace WebApplication1
                     htmlText += "<u>Due date(Apply before this day): </u>:" + job.DueDate + "<br/>";
                     htmlText += "<u>Pay(After the whole job is complete)</u>:<b> R" + job.ToBePaid + "</b><br/>";
                     string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
+                    string userType = (string)Session["UserType"];
+                    if (userType.Equals("JobSeeker"))
+                    {
+                        string j = string.Format("<a style='Colour:Red' href='ReportJob.aspx?JobID{0}'>Report</a></br>", job.JobID);
+                        htmlText += j;
+                    }
                     htmlText += s + "<br/></div> <br/>";
                 }
                 JobDetails.InnerHtml = htmlText;

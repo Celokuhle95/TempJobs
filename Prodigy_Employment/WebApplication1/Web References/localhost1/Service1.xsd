@@ -359,4 +359,67 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ReportJob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+        <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+        <xs:element minOccurs="0" name="JobID" type="xs:int" />
+        <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReportJobResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllReportJobs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AllReportJobsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="AllReportJobsResult" nillable="true" type="q10:ArrayOfReportJob" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderByEmployer">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderByEmployerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="OrderByEmployerResult" nillable="true" type="q11:ArrayOfJob" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderByJob">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderByJobResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="OrderByJobResult" nillable="true" type="q12:ArrayOfJob" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderByJobType">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OrderByJobTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="OrderByJobTypeResult" nillable="true" type="q13:ArrayOfJob" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

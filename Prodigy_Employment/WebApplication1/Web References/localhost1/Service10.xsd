@@ -26,6 +26,7 @@
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProfileImage_String" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportJobs" nillable="true" type="tns:ArrayOfReportJob" />
       <xs:element minOccurs="0" name="ResidentialAddress" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -74,6 +75,7 @@
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumberOfDays" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportJobs" nillable="true" type="tns:ArrayOfReportJob" />
       <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ToBePaid" nillable="true" type="xs:double" />
@@ -91,6 +93,7 @@
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProfileImage_String" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportJobs" nillable="true" type="tns:ArrayOfReportJob" />
       <xs:element minOccurs="0" name="ResidentialAddress" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -101,6 +104,25 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfJob" nillable="true" type="tns:ArrayOfJob" />
+  <xs:complexType name="ArrayOfReportJob">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportJob" nillable="true" type="tns:ReportJob" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportJob" nillable="true" type="tns:ArrayOfReportJob" />
+  <xs:complexType name="ReportJob">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Employer" nillable="true" type="tns:Employer" />
+      <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      <xs:element minOccurs="0" name="Job" nillable="true" type="tns:Job" />
+      <xs:element minOccurs="0" name="JobID" type="xs:int" />
+      <xs:element minOccurs="0" name="JobSeeker" nillable="true" type="tns:JobSeeker" />
+      <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+      <xs:element minOccurs="0" name="ReportJobID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportJob" nillable="true" type="tns:ReportJob" />
   <xs:complexType name="ArrayOfTool_Equipment">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Tool_Equipment" nillable="true" type="tns:Tool_Equipment" />

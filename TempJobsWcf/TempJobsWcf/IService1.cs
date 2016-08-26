@@ -93,6 +93,23 @@ namespace TempJobsWcf
 
         [OperationContract]
         List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID);
+        //Add reported users
+        [OperationContract]
+        void ReportJob(int EmployerID, int JobSeekerID, int JobID, string Comment);
+
+        //Read reported users
+        [OperationContract]
+        List<ReportJob> AllReportJobs();
+
+        //Read Jobs by order
+        [OperationContract]
+        List<Job> OrderByEmployer();
+
+        [OperationContract]
+        List<Job> OrderByJob();
+
+        [OperationContract]
+        List<Job> OrderByJobType();
     }
  
     // Use a data contract as illustrated in the sample below to add composite types to service operations.

@@ -42,7 +42,7 @@ namespace WebApplication1
                 }
                 else
                 {
-                    bl.LoginAdmin(userName, Secrecy.HashPassword(password), out userID, out a, out canLogin, out b);
+                    bl.LoginAdmin(userName, password, out userID, out a, out canLogin, out b);
                     if(canLogin)
                     {
                         Session.Add("UserID", userID);
