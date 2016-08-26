@@ -29,12 +29,12 @@ namespace WebApplication1
                     if (u.ProfileImage_String == null)
                     {
                         string image = "images/image1.jpg";
-                        htmlText += "<br/><img src='" + image + "' alt='no prof image' width=60%' height='60%' max-height='300px'/>";
+                        htmlText += "<br/><img src='" + image + "' alt='no prof image' width='500px' height='350px' max-height='350px'/>";
                     }
                     else
                     {
                         string base64ImageRepresentation = u.ProfileImage_String;
-                        htmlText += "<br/><img width='60%' height='60%'alt='image not available' max-height='300px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+                        htmlText += "<br/><img width='500px' height='350px'alt='image not available' max-height='350px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
                     }
 
                     string s = string.Format("<a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a></br>", u.JobSeekerID);

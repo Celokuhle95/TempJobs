@@ -80,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseClassses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Invitation.cs" />
     <Compile Include="InvitationAndEmployment.cs" />
     <Compile Include="JobManager.cs" />
     <Compile Include="Service1.svc.cs">

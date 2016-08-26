@@ -128,7 +128,7 @@ namespace TempJobsWcf
 
         //JobInvites
         [OperationContract]
-        void InviteJobSeeker(int EmployerID, int JobSeekerID);
+        void InviteJobSeeker(int EmployerID, int JobSeekerID, int JobID);
 
         [OperationContract]
         List<int> Invitation_Employers(int JobSeekerID);
@@ -137,7 +137,7 @@ namespace TempJobsWcf
         List<JobInvitation> GetAllInvites();
 
         [OperationContract]
-        List<JobInvitation> GetJobSeekerJobInvites(int JobSeekerID);
+        List<Invitation> GetJobSeekerJobInvites(int JobSeekerID);
     }
 }
 

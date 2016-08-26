@@ -11,12 +11,22 @@ namespace TempJobsWcf
         {
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
             InformalSkill skill = new InformalSkill();
-            
+            bool aleadyExists = false;
+            foreach(var sk in database.InformalSkills)
+            {
+                if(skill.JobSeekerID.Equals(JobSeekerID) && skill.Name.Equals(SkillLevel))
+                {
+                    aleadyExists = true;
+                }
+            }
+            if(aleadyExists.Equals(false))
+            {
                 skill.Name = Name;
                 skill.SkillLevel = SkillLevel;
                 skill.JobSeekerID = JobSeekerID;
                 database.InformalSkills.InsertOnSubmit(skill);
                 database.SubmitChanges();
+            }              
         }
 
         public List<InformalSkill> ReadSkills(int JobSeekerID)

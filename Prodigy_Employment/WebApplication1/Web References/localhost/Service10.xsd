@@ -403,6 +403,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
         <xs:element minOccurs="0" name="JobSeekerID" type="xs:int" />
+        <xs:element minOccurs="0" name="JobID" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -447,7 +448,7 @@
   <xs:element name="GetJobSeekerJobInvitesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="GetJobSeekerJobInvitesResult" nillable="true" type="q15:ArrayOfJobInvitation" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/TempJobsWcf" minOccurs="0" name="GetJobSeekerJobInvitesResult" nillable="true" type="q15:ArrayOfInvitation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

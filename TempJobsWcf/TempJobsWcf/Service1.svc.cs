@@ -195,10 +195,10 @@ namespace TempJobsWcf
         }
 
         //Job invites
-        public void InviteJobSeeker(int EmployerID, int JobSeekerID)
+        public void InviteJobSeeker(int EmployerID, int JobSeekerID, int JobID)
         {
             InvitationAndEmployment invite = new InvitationAndEmployment();
-            invite.InviteJobSeeker(EmployerID, JobSeekerID);
+            invite.InviteJobSeeker(EmployerID, JobSeekerID, JobID);
         }
 
         public List<int> Invitation_Employers(int JobSeekerID)
@@ -213,7 +213,7 @@ namespace TempJobsWcf
             return invite.GetAllInvites();
         }
 
-        public List<JobInvitation> GetJobSeekerJobInvites(int JobSeekerID)
+        public List<Invitation> GetJobSeekerJobInvites(int JobSeekerID)
         {
             InvitationAndEmployment invite = new InvitationAndEmployment();
             return invite.GetJobSeekerJobInvites(JobSeekerID);

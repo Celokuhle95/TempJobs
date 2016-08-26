@@ -15,8 +15,6 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
             lc = new localhost.Service1();
-            //lc.Timeout = 1000000000;
-            //System.Net.ServicePointManager servicePoint;
          
             if (Session["UserID"] != null && Session["UserType"] != null)
             {
@@ -119,9 +117,8 @@ namespace WebApplication1
                 foreach (var toolOrEquipment in lc.GetToolsAndEquipments(JobSeekerID, true))
                 {
                     htmlText += " <div class='col-md-3' style='border: groove'>";
-                    htmlText += "<img alt='No image to display style='height: 200px; width:100%' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/>";
+                    htmlText += "<img alt='No image to display style='height:200px; width:300px' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/>";
                     htmlText += "<br/><p>Name/Short description: </p>" + toolOrEquipment.Name;
-                    htmlText += "<br/>";
                     htmlText += "</div>";
                 }
                 display += htmlText;
@@ -152,22 +149,14 @@ namespace WebApplication1
             }
             else
             {
-                    Response.Redirect("LoginPage.aspx");
+                Response.Redirect("LoginPage.aspx");
             }
         }
 
         protected void btnInvite_Click(object sender, EventArgs e)
         {
-            lc.InviteJobSeeker(EmployerID, true, JobSeekerID, true);
-            Response.Redirect("ViewUsers.aspx");
-        }
-        public void DisplaySuccessMessage()
-        {
-            if (Session["ScreenNotification"] == null)
-            {
-                Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "<p style='text-align:center'>Job Invite was successfully sent.</p>");
-            }
-        }
+            Session.Add("JobSeekerID", JobSeekerID);
+            Response.Redirect("JobToInviteFor.aspx");            
+        }    
     }
 }

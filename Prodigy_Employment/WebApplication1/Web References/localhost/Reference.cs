@@ -1155,21 +1155,23 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/InviteJobSeeker", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void InviteJobSeeker(int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified, int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+        public void InviteJobSeeker(int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified, int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified, int JobID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobIDSpecified) {
             this.Invoke("InviteJobSeeker", new object[] {
                         EmployerID,
                         EmployerIDSpecified,
                         JobSeekerID,
-                        JobSeekerIDSpecified});
+                        JobSeekerIDSpecified,
+                        JobID,
+                        JobIDSpecified});
         }
         
         /// <remarks/>
-        public void InviteJobSeekerAsync(int EmployerID, bool EmployerIDSpecified, int JobSeekerID, bool JobSeekerIDSpecified) {
-            this.InviteJobSeekerAsync(EmployerID, EmployerIDSpecified, JobSeekerID, JobSeekerIDSpecified, null);
+        public void InviteJobSeekerAsync(int EmployerID, bool EmployerIDSpecified, int JobSeekerID, bool JobSeekerIDSpecified, int JobID, bool JobIDSpecified) {
+            this.InviteJobSeekerAsync(EmployerID, EmployerIDSpecified, JobSeekerID, JobSeekerIDSpecified, JobID, JobIDSpecified, null);
         }
         
         /// <remarks/>
-        public void InviteJobSeekerAsync(int EmployerID, bool EmployerIDSpecified, int JobSeekerID, bool JobSeekerIDSpecified, object userState) {
+        public void InviteJobSeekerAsync(int EmployerID, bool EmployerIDSpecified, int JobSeekerID, bool JobSeekerIDSpecified, int JobID, bool JobIDSpecified, object userState) {
             if ((this.InviteJobSeekerOperationCompleted == null)) {
                 this.InviteJobSeekerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInviteJobSeekerOperationCompleted);
             }
@@ -1177,7 +1179,9 @@ namespace WebApplication1.localhost {
                         EmployerID,
                         EmployerIDSpecified,
                         JobSeekerID,
-                        JobSeekerIDSpecified}, this.InviteJobSeekerOperationCompleted, userState);
+                        JobSeekerIDSpecified,
+                        JobID,
+                        JobIDSpecified}, this.InviteJobSeekerOperationCompleted, userState);
         }
         
         private void OnInviteJobSeekerOperationCompleted(object arg) {
@@ -1253,11 +1257,11 @@ namespace WebApplication1.localhost {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetJobSeekerJobInvites", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
         [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
-        public JobInvitation[] GetJobSeekerJobInvites(int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
+        public Invitation[] GetJobSeekerJobInvites(int JobSeekerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool JobSeekerIDSpecified) {
             object[] results = this.Invoke("GetJobSeekerJobInvites", new object[] {
                         JobSeekerID,
                         JobSeekerIDSpecified});
-            return ((JobInvitation[])(results[0]));
+            return ((Invitation[])(results[0]));
         }
         
         /// <remarks/>
@@ -1344,6 +1348,232 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.stringValueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.6.1064.2")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+    public partial class Invitation {
+        
+        private string descriptionField;
+        
+        private string dueDateField;
+        
+        private string employerFirstNameField;
+        
+        private int employerIDField;
+        
+        private bool employerIDFieldSpecified;
+        
+        private string employerLastNameField;
+        
+        private string endTimeField;
+        
+        private int jobIDField;
+        
+        private bool jobIDFieldSpecified;
+        
+        private string locationField;
+        
+        private string nameField;
+        
+        private int numberOfDaysField;
+        
+        private bool numberOfDaysFieldSpecified;
+        
+        private string startDateField;
+        
+        private string startTimeField;
+        
+        private double toBePaidField;
+        
+        private bool toBePaidFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string DueDate {
+            get {
+                return this.dueDateField;
+            }
+            set {
+                this.dueDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string EmployerFirstName {
+            get {
+                return this.employerFirstNameField;
+            }
+            set {
+                this.employerFirstNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int EmployerID {
+            get {
+                return this.employerIDField;
+            }
+            set {
+                this.employerIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool EmployerIDSpecified {
+            get {
+                return this.employerIDFieldSpecified;
+            }
+            set {
+                this.employerIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string EmployerLastName {
+            get {
+                return this.employerLastNameField;
+            }
+            set {
+                this.employerLastNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string EndTime {
+            get {
+                return this.endTimeField;
+            }
+            set {
+                this.endTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int JobID {
+            get {
+                return this.jobIDField;
+            }
+            set {
+                this.jobIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobIDSpecified {
+            get {
+                return this.jobIDFieldSpecified;
+            }
+            set {
+                this.jobIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int NumberOfDays {
+            get {
+                return this.numberOfDaysField;
+            }
+            set {
+                this.numberOfDaysField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool NumberOfDaysSpecified {
+            get {
+                return this.numberOfDaysFieldSpecified;
+            }
+            set {
+                this.numberOfDaysFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StartDate {
+            get {
+                return this.startDateField;
+            }
+            set {
+                this.startDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string StartTime {
+            get {
+                return this.startTimeField;
+            }
+            set {
+                this.startTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ToBePaid {
+            get {
+                return this.toBePaidField;
+            }
+            set {
+                this.toBePaidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ToBePaidSpecified {
+            get {
+                return this.toBePaidFieldSpecified;
+            }
+            set {
+                this.toBePaidFieldSpecified = value;
             }
         }
     }
@@ -1913,6 +2143,8 @@ namespace WebApplication1.localhost {
         
         private bool jobIDFieldSpecified;
         
+        private JobInvitation[] jobInvitationsField;
+        
         private string locationField;
         
         private string nameField;
@@ -2024,6 +2256,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.jobIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        public JobInvitation[] JobInvitations {
+            get {
+                return this.jobInvitationsField;
+            }
+            set {
+                this.jobInvitationsField = value;
             }
         }
         
@@ -2294,6 +2537,12 @@ namespace WebApplication1.localhost {
         
         private bool employerIDFieldSpecified;
         
+        private Job jobField;
+        
+        private System.Nullable<int> jobIDField;
+        
+        private bool jobIDFieldSpecified;
+        
         private int jobInvitationIDField;
         
         private bool jobInvitationIDFieldSpecified;
@@ -2334,6 +2583,39 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.employerIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public Job Job {
+            get {
+                return this.jobField;
+            }
+            set {
+                this.jobField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public System.Nullable<int> JobID {
+            get {
+                return this.jobIDField;
+            }
+            set {
+                this.jobIDField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JobIDSpecified {
+            get {
+                return this.jobIDFieldSpecified;
+            }
+            set {
+                this.jobIDFieldSpecified = value;
             }
         }
         
@@ -3040,10 +3322,10 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
-        public JobInvitation[] Result {
+        public Invitation[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((JobInvitation[])(this.results[0]));
+                return ((Invitation[])(this.results[0]));
             }
         }
     }

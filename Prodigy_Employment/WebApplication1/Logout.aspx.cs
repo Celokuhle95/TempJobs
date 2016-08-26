@@ -13,6 +13,7 @@ namespace WebApplication1
         {
             Session["UserID"] = null;
             Session["UserType"] = null;
+            Session["JobSeekerID"] = null;
             Response.Redirect("home.aspx");
         }
     }

@@ -26,7 +26,7 @@
                     Contact Number:
                 </div>
                 <div class="col-md-4">
-                    <asp:Label ID="lblContatNumber" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblContatNumber" runat="server" Text=""></asp:Label>
                 </div>
             </div>
             <div class="row">
@@ -34,7 +34,7 @@
                     Alternative Contact Number:
                 </div>
                 <div class="col-md-4">
-                    <asp:Label ID="lblAltContact" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblAltContact" runat="server" Text=""></asp:Label>
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
                     Contact Number:
                 </div>
                 <div class="col-md-4">
-                    <asp:Label ID="lblEmail" runat="server" Text="Label"></asp:Label>
+                    <asp:Label ID="lblEmail" runat="server" Text=""></asp:Label>
                 </div>
             </div>
          </div>

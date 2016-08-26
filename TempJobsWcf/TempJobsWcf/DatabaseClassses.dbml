@@ -56,6 +56,7 @@
       <Column Name="ToBePaid" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="EmployerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Job_JobApplication" Member="JobApplications" ThisKey="JobID" OtherKey="JobID" Type="JobApplication" />
+      <Association Name="Job_JobInvitation" Member="JobInvitations" ThisKey="JobID" OtherKey="JobID" Type="JobInvitation" />
       <Association Name="Employer_Job" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
     </Type>
   </Table>
@@ -66,15 +67,6 @@
       <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Job_JobApplication" Member="Job" ThisKey="JobID" OtherKey="JobID" Type="Job" IsForeignKey="true" />
       <Association Name="JobSeeker_JobApplication" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.JobInvitation" Member="JobInvitations">
-    <Type Name="JobInvitation">
-      <Column Name="JobInvitationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EmployerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Employer_JobInvitation" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
-      <Association Name="JobSeeker_JobInvitation" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.JobSeeker" Member="JobSeekers">
@@ -93,6 +85,17 @@
       <Association Name="JobSeeker_InformalSkill" Member="InformalSkills" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="InformalSkill" />
       <Association Name="JobSeeker_JobApplication" Member="JobApplications" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobApplication" />
       <Association Name="JobSeeker_JobInvitation" Member="JobInvitations" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobInvitation" />
+    </Type>
+  </Table>
+  <Table Name="dbo.JobInvitation" Member="JobInvitations">
+    <Type Name="JobInvitation">
+      <Column Name="JobInvitationID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EmployerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobSeekerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JobID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Employer_JobInvitation" Member="Employer" ThisKey="EmployerID" OtherKey="EmployerID" Type="Employer" IsForeignKey="true" />
+      <Association Name="Job_JobInvitation" Member="Job" ThisKey="JobID" OtherKey="JobID" Type="Job" IsForeignKey="true" />
+      <Association Name="JobSeeker_JobInvitation" Member="JobSeeker" ThisKey="JobSeekerID" OtherKey="JobSeekerID" Type="JobSeeker" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
