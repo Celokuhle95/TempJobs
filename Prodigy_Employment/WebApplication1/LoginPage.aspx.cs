@@ -9,11 +9,11 @@ namespace WebApplication1
 {
     public partial class LoginPage : System.Web.UI.Page
     {
-        public localhost1.Service1 bl;
+        public localhost.Service1 bl;
       
         protected void Page_Load(object sender, EventArgs e)
         {
-            bl = new localhost1.Service1();
+            bl = new localhost.Service1();
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace WebApplication1
                 }
                 else
                 {
-                    bl.LoginAdmin(userName, password, out userID, out a, out canLogin, out b);
+                    bl.LoginAdmin(userName,password, out userID, out a, out canLogin, out b);
                     if(canLogin)
                     {
                         Session.Add("UserID", userID);

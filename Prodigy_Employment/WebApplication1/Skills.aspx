@@ -16,7 +16,7 @@
              <tbody>
                  <tr><td>Informal Skill 1:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill1" class="form-control" runat="server">
+                     <asp:DropDownList ID="drpSkill1" class="form-control" runat="server" style="width:auto">
                         <asp:ListItem Value="0">select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -32,7 +32,7 @@
                  </td></tr>
                  <tr><td>Informal Skill 2:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill2" class="form-control" runat="server">
+                     <asp:DropDownList ID="drpSkill2" class="form-control" runat="server" style="width:auto">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -49,7 +49,7 @@
 
                  <tr><td>Informal Skill 3:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill3" class="form-control" runat="server">
+                     <asp:DropDownList ID="drpSkill3" class="form-control" runat="server" style="width:auto">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -65,7 +65,7 @@
                  </td></tr>
                  <tr><td>Informal Skill 4:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill4" class="form-control" runat="server">
+                     <asp:DropDownList ID="drpSkill4" class="form-control" runat="server" style="width:auto">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -81,7 +81,7 @@
                  </td></tr>
                  <tr><td>Informal Skill 5:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill5" class="form-control" runat="server">
+                     <asp:DropDownList ID="drpSkill5" class="form-control" runat="server" style="width:auto">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -96,6 +96,7 @@
                     </asp:DropDownList>
                  </td></tr>
                  <tr><td>
+                     <br />
                          <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary btn-xl" OnClick="btnStoreDetails_Click"/>
                      </td>
                 </tr>

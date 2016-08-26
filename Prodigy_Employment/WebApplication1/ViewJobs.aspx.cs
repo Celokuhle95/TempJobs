@@ -11,10 +11,10 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           if(Session["UserID"] != null)
-           {
+            if (Session["UserID"] != null)
+            {
                 string htmlText = "<h3 style='text-align'>Available jobs.</h3>";
-                localhost1.Service1 localhost = new localhost1.Service1();
+                localhost.Service1 localhost = new localhost.Service1();
                 foreach (var job in localhost.AllJobs())
                 {
                     htmlText += "<div class='row' style='border:groove'>";
@@ -27,21 +27,24 @@ namespace WebApplication1
                     htmlText += "<u>Daily Knockoff Time</u>: " + job.EndTime + " <br/>";
                     htmlText += "<u>Due date(Apply before this day): </u>:" + job.DueDate + "<br/>";
                     htmlText += "<u>Pay(After the whole job is complete)</u>:<b> R" + job.ToBePaid + "</b><br/>";
-                    string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
-                    string userType = (string)Session["UserType"];
-                    if (userType.Equals("JobSeeker"))
+                    if (((string)Session["UserType"]).Equals("JobSeeker"))
                     {
-                        string j = string.Format("<a style='Colour:Red' href='ReportJob.aspx?JobID{0}'>Report</a></br>", job.JobID);
-                        htmlText += j;
+                        string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
+                        htmlText += s;
                     }
-                    htmlText += s + "<br/></div> <br/>";
+                    if (((string)Session["UserType"]).Equals("Admin"))
+                    {
+                        string s = string.Format("<a class='btn btn-danger' href='DeleteJob.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
+                        htmlText += s;
+                    }
+                    htmlText += "<br/></div><br/>";
                 }
                 JobDetails.InnerHtml = htmlText;
             }
             else
-           {
+            {
                 Response.Redirect("LoginPage.aspx");
-           }
+            }
         }
     }
 }

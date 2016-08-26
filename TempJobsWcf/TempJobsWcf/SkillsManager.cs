@@ -11,39 +11,39 @@ namespace TempJobsWcf
         {
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
             InformalSkill skill = new InformalSkill();
-            var skills = ReadSkills(JobSeekerID);
-            if(skills == null)//user is storing skills for the first time
+            bool aleadyExists = false;
+            foreach(var sk in database.InformalSkills)
+            {
+                if(skill.JobSeekerID.Equals(JobSeekerID) && skill.Name.Equals(SkillLevel))
+                {
+                    aleadyExists = true;
+                }
+            }
+            if(aleadyExists.Equals(false))
             {
                 skill.Name = Name;
                 skill.SkillLevel = SkillLevel;
                 skill.JobSeekerID = JobSeekerID;
                 database.InformalSkills.InsertOnSubmit(skill);
                 database.SubmitChanges();
-            }else//user is editing skills
-            {
-                //Research how to update an existing table in LINQ
-                skill.Name = Name;
-                skill.SkillLevel = SkillLevel;
-                skill.JobSeekerID = JobSeekerID;
-                database.SubmitChanges();
-            }
+            }              
         }
 
         public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
-            List<InformalSkill> skills = new List<InformalSkill>();
-            try
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();    
+            List<InformalSkill> skill = new List<InformalSkill>();
+            foreach (var s in db.InformalSkills)
             {
-                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-                skills = (from skill in database.InformalSkills where skill.JobSeekerID.Equals(JobSeekerID) select skill).ToList();              
+                if(s.JobSeekerID.Equals(JobSeekerID))
+                {
+                    InformalSkill sk = new InformalSkill();
+                    sk.Name = s.Name;
+                    sk.SkillLevel = s.SkillLevel;
+                    skill.Add(sk);
+                }
             }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
-            return skills;
+            return skill;                
         }
     }
-
-
 }

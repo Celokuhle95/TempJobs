@@ -9,14 +9,14 @@ namespace WebApplication1
 {
     public partial class PostJob : System.Web.UI.Page
     {
-        public localhost1.Service1 localhost;
+        public localhost.Service1 localhost;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] != null && Session["UserType"] != null)
             {
                 if (((string)Session["UserType"]).Equals("Employer"))//get JobSeekerID correctly
                 {
-                    localhost = new localhost1.Service1();
+                    localhost = new localhost.Service1();
                 }
                 else
                 {
@@ -31,7 +31,7 @@ namespace WebApplication1
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            string name = drpSkillName.SelectedValue;
+            string name = drpSkillName.SelectedItem.Text;
             string description = txtDescription.Text;
             int numDays = Convert.ToInt32(NumberOfDays.Value);
             string duedate = GetDate(DueDate.Value);
@@ -39,14 +39,14 @@ namespace WebApplication1
             string startTime = StartTime.Value;
             string endTime = EndTime.Value;
             string location = txtLocation.Text;
-            double amount = Convert.ToDouble(PayAmount.Value);           
+            double amount = Convert.ToDouble(PayAmount.Value);
             int EmployerID = (int)Session["UserID"];
 
             localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, EmployerID, true);
             //display some message to let employer know that posting was successful.
             Session.Add("ScreenNotification", "TurnON");
             Session.Add("ScreenNotificationMessage", "<p>Thank you for posting the job, your post was successful. Check applications later</p>");
-            Response.Redirect("Home.aspx");
+            Response.Redirect("ViewUsers.aspx");
         }
 
         public string GetDate(string stringDate)

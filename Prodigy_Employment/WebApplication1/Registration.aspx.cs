@@ -12,37 +12,37 @@ namespace WebApplication1
 {
     public partial class Registration : System.Web.UI.Page
     {
-        public localhost1.Service1 cl; //references the local host
-        
+        public localhost.Service1 cl; //references the local host
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            cl = new localhost1.Service1();
+            cl = new localhost.Service1();
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-           //getting the values from the textboxes
+            //getting the values from the textboxes
             string firstName = txtFirstName.Text;
             string lastName = txtLastName.Text;
             string emailAddress = txtEmail.Text;
             string password = txtPassword.Text;
             string cellphoneNumbers = txtCellphone.Text;
-            string altanativeContactNumber = txtAltContactNum.Text;      
+            string altanativeContactNumber = txtAltContactNum.Text;
             string residentialAddress = txtResAddress.Text;
-               
+
             int userLevel = System.Convert.ToInt32(drpUsertype.SelectedValue);
 
             byte[] fileBytes = ProfileImageUpload.FileBytes;
             System.Drawing.Image profileImage = getImageFromByteArray(fileBytes);
             string profImage_string = ImageToBase64String(profileImage);
-           
+
             if (password.Length < 6) //ensure the password strength is atleast 6 characters
-           {
+            {
                 lblError.Text = "Make sure your password is 6 characters or more";
                 lblError.Visible = true;
                 return;
-           }
-           
+            }
+
             if (password == txtConfirmPassword.Text)
             {
                 if (emailAddress == " ")
@@ -73,11 +73,11 @@ namespace WebApplication1
             }
             else
             {
-                lblError.Text="Make sure your password and confirm password match";
+                lblError.Text = "Make sure your password and confirm password match";
                 lblError.Visible = true;
                 return;
             }
-           
+
         }
         public System.Drawing.Image getImageFromByteArray(byte[] fileBytes)
         {

@@ -8,24 +8,27 @@ using System.Web.UI.WebControls;
 namespace WebApplication1
 {
     public partial class JobSeekerProfile : System.Web.UI.Page
-    {
-        localhost1.Service1 lc;
+    {       
+        int JobSeekerID = 0;
+        int EmployerID = 0;
+        localhost.Service1 lc;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int JobSeekerID = 0;
+            lc = new localhost.Service1();
+         
             if (Session["UserID"] != null && Session["UserType"] != null)
             {
                 if (((string)Session["UserType"]).Equals("Employer"))//get JobSeekerID correctly
                 {
+                    EmployerID = (int)Session["UserID"];
                     JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
                 }
                 else if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
                     JobSeekerID = (int)Session["UserID"];
                 }
+                //ClientScript.RegisterStartupScript(this.GetType(), "myAlert", "alert('" + JobSeekerID + "');", true);
 
-                lc = new localhost1.Service1();
-               
                 var jobSeeker = lc.SingleJobseeker(JobSeekerID, true);
                 string display = "";
                 display = "<h2 style='text-align:center'>Job seeker Profile.</h2>";
@@ -53,20 +56,17 @@ namespace WebApplication1
                 display += "<b>Residential Address:</b>  " + jobSeeker.ResidentialAddress + "<br/><br/>";
                 display += "</div>";
                 display += "</div>";
-               
+
                 display += "<br/>";
-                display += "<br/><h3>Contact Details.</h3>";
-                if (Session["UserType"].Equals("Employer"))
+
+                if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<p>You can use these contact details to contact the seeker if you wish to apporve their application and employ them.</p>";
-                }
-                else if (Session["UserType"].Equals("JobSeeker"))
-                {
+                    display += "<br/><h3>Contact Details.</h3>";
                     display += "<p>Employers will use these contact details to cantact you whenever your application is successful.</p>";
+                    display += "<br/><b>Contact Number:</b>         " + jobSeeker.ContactNumber + "<br/><br />";
+                    display += "<b>Alternative Contact Number:</b>  " + jobSeeker.AlternativeContactNumber + "<br /><br />";
+                    display += "<b>Email Address: </b>              " + jobSeeker.EmailAddress + "<br /><br />";
                 }
-                display += "<br/><b>Contact Number:</b>         " + jobSeeker.ContactNumber + "<br/><br />";
-                display += "<b>Alternative Contact Number:</b>  " + jobSeeker.AlternativeContactNumber + "<br /><br />";
-                display += "<b>Email Address: </b>              " + jobSeeker.EmailAddress + "<br /><br />";
 
                 display += "<br/><h2>Job seeker skills. </h2>";
                 if (Session["UserType"].Equals("Employer"))
@@ -82,17 +82,18 @@ namespace WebApplication1
                 }
                 display += "<br/><br/>";
                 int count = 1;
-                if((lc.ReadSkills(JobSeekerID, true) == null))
-                {
-                    display += "<p>NO SKILLS TO DISPLAY AT THE MOMENT.</p>";
-                }
+                ////if ((lc.ReadSkills(JobSeekerID, true) == null))
+                ////{
+                //    display += "<p>NO SKILLS TO DISPLAY AT THE MOMENT.</p>";
+                //}               
                 foreach (var skill in lc.ReadSkills(JobSeekerID, true))
                 {
                     display += "<b>Informal skill</b> " + count + " <b>: </b><br/>";
                     display += "<b>Skill name</b>:  " + skill.Name + "<br/>";
                     display += "<b>Skill Level </b>(How much the JobSeeker mastered the skill)<b>: </b>" + skill.SkillLevel; //can later change this to rating starts
-                    count++;                   
+                    count++;
                 }
+
                 display += "<br/><br/>";
                 //Tools and equipment
                 string htmlText = "<h2 style='text-align'>Tools and equipments.</h2>";
@@ -116,11 +117,10 @@ namespace WebApplication1
                 foreach (var toolOrEquipment in lc.GetToolsAndEquipments(JobSeekerID, true))
                 {
                     htmlText += " <div class='col-md-3' style='border: groove'>";
-                    htmlText += "<img alt='No image to display style='height: 200px; width:100%' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/>";
+                    htmlText += "<img alt='No image to display style='height:200px; width:300px' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/>";
                     htmlText += "<br/><p>Name/Short description: </p>" + toolOrEquipment.Name;
-                    htmlText += "<br/>";
                     htmlText += "</div>";
-                }               
+                }
                 display += htmlText;
 
                 //Employment history
@@ -138,12 +138,25 @@ namespace WebApplication1
                 }
                 display += "<br/><br/>";
                 //for each loop to read from Employment History from the table and siplay it
+
+                display += "<p><i>No Employment history currently availabel<i></p>";
+
                 DisplayJobSeekerProfile.InnerHtml = display;
+                if (Session["UserType"].Equals("Employer"))
+                {
+                    JobInvite.Visible = true; // if its an imployer they can invite
+                }
             }
             else
             {
                 Response.Redirect("LoginPage.aspx");
-            }           
+            }
         }
+
+        protected void btnInvite_Click(object sender, EventArgs e)
+        {
+            Session.Add("JobSeekerID", JobSeekerID);
+            Response.Redirect("JobToInviteFor.aspx");            
+        }    
     }
 }

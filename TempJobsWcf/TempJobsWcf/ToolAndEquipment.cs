@@ -10,34 +10,49 @@ namespace TempJobsWcf
         public void AddNewToolOrEquipment(string Name, string Image, int JobSeekerID)
         {
             DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
-            Tool_Equipment te = new Tool_Equipment();
-            te.Name = Name;
-            te.Image = Image;
-            te.JobSeekerID = JobSeekerID;
-            db.Tool_Equipments.InsertOnSubmit(te);
-            db.SubmitChanges();
+            Tools_Equipment te = new Tools_Equipment();
+            bool alreadyExist = false;
+            foreach (var tool in db.Tools_Equipments)//loop to ensure it does not ealready exists in the database
+            {
+                if(tool.JobSeekerID.Equals(JobSeekerID) && tool.Name.Equals(Name))
+                {
+                    alreadyExist = true;
+                }
+            }
+            if(alreadyExist.Equals(false))//if it does not exist
+            {
+                te.Name = Name;
+                te.Image = Image;
+                te.JobSeekerID = JobSeekerID;
+                db.Tools_Equipments.InsertOnSubmit(te);
+                db.SubmitChanges();
+            }           
         }
+
         public void RemoveToolOrEquipment(int tool_equipementID)
         {
             DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            Tool_Equipment te = (from tool in database.Tool_Equipments
+            Tools_Equipment te = (from tool in database.Tools_Equipments
                                  where tool.Tool_EquipmentID == tool_equipementID
                                      select tool).Single();
-            database.Tool_Equipments.DeleteOnSubmit(te);
+            database.Tools_Equipments.DeleteOnSubmit(te);
         }
-        public List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID)
-        {
-            List<Tool_Equipment> toolsAndEquipments = new List<Tool_Equipment>();
-            try
+        public List<Tools_Equipment> GetToolsAndEquipments(int JobSeekerID)
+        {                     
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();            
+            List<Tools_Equipment> tools = new List<Tools_Equipment>();
+            foreach (var tool in database.Tools_Equipments)
             {
-                DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-                toolsAndEquipments = (from te in database.Tool_Equipments where te.JobSeekerID.Equals(JobSeekerID) select te).ToList();
+                if (tool.JobSeekerID.Equals(JobSeekerID))
+                {
+                    var te = new Tools_Equipment();
+                    te.Tool_EquipmentID = tool.Tool_EquipmentID;
+                    te.Name = tool.Name;
+                    te.Image = tool.Image;
+                    tools.Add(te);
+                }
             }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
-            return toolsAndEquipments;
+            return tools ;
         }
     }
 }

@@ -7,7 +7,7 @@
             <h3>Login.</h3>
             <hr id="Hr1" style="color: #808080, #C2C2C2" runat ="server"  />     
             <div class="">
-                <img class="img-circle" src="images/loginImage.jpeg" height="100" width="150"/>
+                <img class="img-circle" src="images/loginImage.jpeg" height="150" width="150"/>
             </div>    
             <div class="row" style="text-align:left" >               
                 Username: 
@@ -19,19 +19,13 @@
                 <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server"></asp:TextBox>
             </div>
             <br />
-            <div class="row" >
-                <asp:Button ID="btnLogin" class="btn btn-primary btn-xl" runat="server" Text="Login" OnClick="btnLogin_Click" />
-                <asp:Label ID="lblErr" runat="server" ForeColor="Red"></asp:Label>               
+            <div class="row" >  
+               <a href="ChangePassword.aspx" style="color:black">Forgot password?</a> <br /> <br />         
+               <asp:Button ID="btnLogin" class="btn btn-primary btn-xl" runat="server" Text="Login" OnClick="btnLogin_Click" />            
+               <asp:Label ID="lblErr" runat="server" ForeColor="Red"></asp:Label>  <br /><br />
+               <p>Don't have an account? <a href="Registration.aspx" style="color:black">Sign up.</a></p>            
             </div> 
-            <br />
-            <div class="row">
-                <div class="col-md-5">
-                    <a href="ChangePassword.aspx" style="color:black">forgot your password?</a>
-                </div>
-                 <div class="col-md-5">
-                    <a href="Registration.aspx" style="color:black">Register as a new user.</a>
-                </div>
-            </div>  
+            <br />        
             <br />     
         </div>
      </div>

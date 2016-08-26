@@ -12,37 +12,37 @@ namespace WebApplication1
 {
     public partial class ViewUsers : System.Web.UI.Page
     {
-        public localhost1.Service1 lc;
+       
         protected void Page_Load(object sender, EventArgs e)
-        {           
+        {
+            localhost.Service1 lc;           
             if(Session["UserID"] != null)
             {
-                lc = new localhost1.Service1();
+                lc = new localhost.Service1();
 
-                String htmlText = "";
+                string htmlText = "";
+                htmlText += "<div class='row' style= padding-top:1%'> ";
                 foreach (var u in lc.AllJobseekers())
-                {
-                    htmlText += "<div class='row' style= padding-top:1%'> ";
+                {                   
                     htmlText += "<div class ='col-md-6' style='border:groove'> ";
 
                     if (u.ProfileImage_String == null)
                     {
                         string image = "images/image1.jpg";
-                        htmlText += "<br/><img src='" + image + "' alt='no prof image' width=60%' height='60%' max-height='300px'/>";
+                        htmlText += "<br/><img src='" + image + "' alt='no prof image' width='500px' height='350px' max-height='350px'/>";
                     }
                     else
                     {
                         string base64ImageRepresentation = u.ProfileImage_String;
-                        htmlText += "<br/><img width='60%' height='60%'alt='image not available' max-height='300px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+                        htmlText += "<br/><img width='500px' height='350px'alt='image not available' max-height='350px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
                     }
 
                     string s = string.Format("<a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a></br>", u.JobSeekerID);
                     htmlText += "<br/><br/><p><b>first Name : </b><u>" + s + "</u></p>";
                     htmlText += "<p><b>Last Lastname: </b>" + u.LastName + "</p>";
-                    htmlText += "<b>Rating:</b> none";
-                    htmlText += "</div>";
-                    htmlText += "</div></br>";
+                    htmlText += "</div>";                   
                 }
+                htmlText += "</div></br>";
                 DisplayUsers.InnerHtml = htmlText;
             }
             else

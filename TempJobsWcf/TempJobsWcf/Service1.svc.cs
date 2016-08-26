@@ -13,8 +13,8 @@ namespace TempJobsWcf
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
-    {
-       //Register
+    {        
+        //Register
         public void RegisterEmployer(string FirstName, string LastName, string EmailAddress, string Password, string ContactNumber, string AlternativeContactNumber, string ResidentialAddress, string ProfileImage)
         {
             UserManager employer = new UserManager();
@@ -50,6 +50,12 @@ namespace TempJobsWcf
         {
             UserManager JobSeekers = new UserManager();
             return JobSeekers.AllJobseekers();
+        }
+
+        public List<Employer> AllEmployers()
+        {
+            UserManager employ = new UserManager();
+            return employ.AllEmployers();
         }
 
         public JobSeeker SingleJobseeker(int JobSeekerID)
@@ -99,8 +105,19 @@ namespace TempJobsWcf
 
         public List<InformalSkill> ReadSkills(int JobSeekerID)
         {
-            SkillsManager skills = new SkillsManager();
-            return skills.ReadSkills(JobSeekerID);
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
+            List<InformalSkill> skill = new List<InformalSkill>();
+            foreach (var s in db.InformalSkills)
+            {
+                if (s.JobSeekerID.Equals(JobSeekerID))
+                {
+                    InformalSkill sk = new InformalSkill();
+                    sk.Name = s.Name;
+                    sk.SkillLevel = s.SkillLevel;
+                    skill.Add(sk);
+                }
+            }
+            return skill;
         }
 
         //jobs
@@ -115,6 +132,13 @@ namespace TempJobsWcf
             JobManager job = new JobManager();
             return job.AllJobs();
         }
+
+        public List<Job> EmployerSpecificJobs(int EmployerID)
+        {
+            JobManager job = new JobManager();
+            return job.EmployerSpecificJobs(EmployerID);
+        }
+
         public void ApplyForJob(int jobID, int jobseekerID)
         {
             JobManager job = new JobManager();
@@ -126,6 +150,13 @@ namespace TempJobsWcf
             JobManager job = new JobManager();
             return job.getApplicants(EmployerID);
         }
+
+        public List<JobApplication> GetAllApplications()
+        {
+            JobManager job = new JobManager();
+            return job.GetAllApplications();
+        }
+
         //Delete Jobs
         public void DeleteJob(int JobID)
         {
@@ -138,51 +169,8 @@ namespace TempJobsWcf
             JobManager toDelete = new JobManager();
             toDelete.DeleteJobApplication(JobApplicationID);
         }
-        //Report Jobs
-        public void ReportJob(int EmployerID, int JobSeekerID, int JobID, string Comment)
-        {
-            AdminManager toAddReportJob = new AdminManager();
-            toAddReportJob.ReportJob(EmployerID, JobSeekerID, JobID, Comment);
-        }
-        //read reported Jobs
-        public List<ReportJob> AllReportJobs()
-        {
-            AdminManager toReadReportedJobs = new AdminManager();
-            return toReadReportedJobs.AllReportJobs();
-        }
 
-        //Read jobs
-        public List<Job> OrderByEmployer()
-        {
-            JobManager toRead = new JobManager();
-            return toRead.OrderByEmployer();
-        }
-
-        public List<Job> OrderByJob()
-        {
-            JobManager toRead = new JobManager();
-            return toRead.OrderByJob();
-        }
-
-        public List<Job> OrderByJobType()
-        {
-            JobManager toRead = new JobManager();
-            return toRead.OrderByJobType();
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
-            }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
-        }
-
+    
         public string test()
         {
             return "you were successful";
@@ -200,10 +188,47 @@ namespace TempJobsWcf
             te.RemoveToolOrEquipment(tool_equipementID);
         }
 
-        public List<Tool_Equipment> GetToolsAndEquipments(int JobSeekerID)
+        public List<Tools_Equipment> GetToolsAndEquipments(int JobSeekerID)
         {
             ToolAndEquipment te = new ToolAndEquipment();
             return te.GetToolsAndEquipments(JobSeekerID);
-        }      
+        }
+
+        //Job invites
+        public void InviteJobSeeker(int EmployerID, int JobSeekerID, int JobID)
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            invite.InviteJobSeeker(EmployerID, JobSeekerID, JobID);
+        }
+
+        public List<int> Invitation_Employers(int JobSeekerID)
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            return invite.Invitation_Employers(JobSeekerID);
+        }
+
+        public List<JobInvitation> GetAllInvites()
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            return invite.GetAllInvites();
+        }
+
+        public List<Invitation> GetJobSeekerJobInvites(int JobSeekerID)
+        {
+            InvitationAndEmployment invite = new InvitationAndEmployment();
+            return invite.GetJobSeekerJobInvites(JobSeekerID);
+        }
+        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        {
+            if (composite == null)
+            {
+                throw new ArgumentNullException("composite");
+            }
+            if (composite.BoolValue)
+            {
+                composite.StringValue += "Suffix";
+            }
+            return composite;
+        }
     }
 }

@@ -9,8 +9,6 @@ namespace Prodigy_Employment
 {
     public partial class Site1 : System.Web.UI.MasterPage
     {
-        WebApplication1.localhost1.Service1 lc = new WebApplication1.localhost1.Service1();
-       
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -27,8 +25,9 @@ namespace Prodigy_Employment
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
+                    lblViewApplicants.Visible = true;
 
-                   //Show notification message to employer
+                    //Show notification message to employer
                     if (Session["ScreenNotificationMessage"] != null)
                     {
                         string notifyMessage = (string)Session["ScreenNotificationMessage"];
@@ -38,22 +37,27 @@ namespace Prodigy_Employment
                 }
                 else if (usertype.Equals("JobSeeker"))
                 {
+              
                     lblViewJobs.Visible = true;
                     lblProfile.Visible = true;
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
+                    lblJobInvite.Visible = true;
    
-                    //Show notification message to employer
+                    //Show notification message
                     if (Session["ScreenNotificationMessage"] != null)
                     {
                         string notifyMessage = (string)Session["ScreenNotificationMessage"];
                         TurnNotificatiOn(notifyMessage);
                     }
-                } 
-                else if(usertype.Equals("Admin"))
+                }
+                else if (usertype.Equals("Admin"))
                 {
-                    lblReport.Visible = true;
+                    lblViewJobs.Visible = true;
+                    lblAllApplications.Visible = true;
+                    lblJobInvites.Visible = true;
+                    lblEmployers.Visible = true;
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;

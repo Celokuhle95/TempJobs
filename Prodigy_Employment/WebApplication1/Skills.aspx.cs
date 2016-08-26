@@ -9,11 +9,11 @@ namespace WebApplication1
 {
     public partial class EditProfile : System.Web.UI.Page
     {
-        public localhost1.Service1 lc;
+        localhost.Service1 lc;
         int selectedID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            lc = new localhost1.Service1();
+            lc = new localhost.Service1();
 
             if (Session["UserID"] == null || (string)Session["UserType"] == null)
             {
@@ -21,11 +21,12 @@ namespace WebApplication1
             }
             else
             {
-                if(((string)Session["UserType"]).Equals("JobSeeker"))
+                if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
                     selectedID = (int)Session["UserID"];
                     int count = 0;
-                    foreach (var skill in lc.ReadSkills(selectedID, true))
+                    bool a = true;
+                    foreach (var skill in lc.ReadSkills(selectedID,  a))
                     {
                         if (count.Equals(0))
                         {
@@ -63,46 +64,47 @@ namespace WebApplication1
                             }
                         }
                         count++;
-                    }
+                    }                
+            
                 }
                 else
                 {
                     Response.Redirect("LoginPage.aspx");
-                }               
+                }
             }
         }
 
         protected void btnStoreDetails_Click(object sender, EventArgs e)
         {
-            if (drpSkill1.SelectedValue != null)
+            if (!drpSkill1.SelectedValue.Equals(0))
             {
-                string skill1Name = drpSkill1.SelectedValue;
-                lc.StoreSkills(skill1Name, 0, true, selectedID, true);
+                string skill1Name = drpSkill1.Text;
+                lc.StoreSkills(skill1Name, 0, true, selectedID, true);              
                 //show success message
                 DisplaySuccessMessage();            
             }
 
-            if (drpSkill2.SelectedValue != null)
+            if (!drpSkill2.SelectedValue.Equals(0))
             {
-                string skill2Name = drpSkill2.SelectedValue;
+                string skill2Name = drpSkill2.Text;
                 lc.StoreSkills(skill2Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (drpSkill3.SelectedValue != null)
+            if (!drpSkill3.SelectedValue.Equals(0))
             {
-                string skill3Name = drpSkill3.SelectedValue;
+                string skill3Name = drpSkill3.Text;
                 lc.StoreSkills(skill3Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (drpSkill4.SelectedValue != null)
+            if (!drpSkill4.SelectedValue.Equals(0))
             {
-                string skill4Name = drpSkill4.SelectedValue;
+                string skill4Name = drpSkill4.Text;
                 lc.StoreSkills(skill4Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (drpSkill5.SelectedValue != null)
+            if (!drpSkill5.SelectedValue.Equals(0))
             {
-                string skill5Name = drpSkill5.SelectedValue;
+                string skill5Name = drpSkill5.Text;
                 lc.StoreSkills(skill5Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
@@ -128,7 +130,7 @@ namespace WebApplication1
             if (Session["ScreenNotification"] == null)
             {
                 Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "< p >Changes to your skills were successfully saved.</ p >");
+                Session.Add("ScreenNotificationMessage", "<p>Changes to your skills were successfully saved.</p>");
             }
         }
     }

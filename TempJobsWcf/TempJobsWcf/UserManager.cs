@@ -37,7 +37,7 @@ namespace TempJobsWcf
             jobseeker.AlternativeContactNumber = AlternativeContactNumber;
             jobseeker.ResidentialAddress = ResidentialAddress;
             jobseeker.ProfileImage_String = ProfileImage;
-            jobseeker.IsAvailable = 0; //0 implies available, 1 implies non availability 
+            jobseeker.isAvailable = 0; //0 implies available, 1 implies non availability 
             database.JobSeekers.InsertOnSubmit(jobseeker);
             database.SubmitChanges();
         }
@@ -128,7 +128,6 @@ namespace TempJobsWcf
             List<JobSeeker> JobSeekers = new List<JobSeeker>();
             try
             {
-
                 DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
                 foreach (var js in database.JobSeekers)
                 {
@@ -143,7 +142,7 @@ namespace TempJobsWcf
                     jseeker.AlternativeContactNumber = js.AlternativeContactNumber;
                     jseeker.ResidentialAddress = js.ResidentialAddress;
                     jseeker.ProfileImage_String = js.ProfileImage_String;
-                    jseeker.IsAvailable = js.IsAvailable;
+                    jseeker.isAvailable = js.isAvailable;
 
                     JobSeekers.Add(jseeker);
                 }
@@ -160,12 +159,10 @@ namespace TempJobsWcf
             List<Employer> employers = new List<Employer>();
             try
             {
-
                 DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
                 foreach (var em in database.Employers)
                 {
                     Employer employer = new Employer(); //store information of a single user
-
                     employer.EmployerID = em.EmployerID;
                     employer.FirstName = em.FirstName;
                     employer.LastName = em.LastName;
@@ -174,8 +171,7 @@ namespace TempJobsWcf
                     employer.ContactNumber = em.ContactNumber;
                     employer.AlternativeContactNumber = em.AlternativeContactNumber;
                     employer.ResidentialAddress = em.ResidentialAddress;
-                    employer.ProfileImage_String = em.ProfileImage_String;
-                   
+                    employer.ProfileImage_String = em.ProfileImage_String;                   
                     employers.Add(employer);
                 }
             }
@@ -188,15 +184,42 @@ namespace TempJobsWcf
 
         public JobSeeker SingleJobseeker(int JobSeekerID)
         {
-            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            JobSeeker jobSeeker = (from js in database.JobSeekers where js.JobSeekerID.Equals(JobSeekerID) select js).Single();
-            return jobSeeker;
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
+            JobSeeker js = new JobSeeker();
+            foreach (var s in db.JobSeekers)
+            {
+                if (s.JobSeekerID.Equals(JobSeekerID))
+                {
+                    js.FirstName = s.FirstName;
+                    js.LastName = s.LastName;
+                    js.EmailAddress = s.EmailAddress;
+                    js.ContactNumber = s.ContactNumber;
+                    js.AlternativeContactNumber = s.AlternativeContactNumber;
+                    js.ResidentialAddress = s.ResidentialAddress;
+                    js.ProfileImage_String = s.ProfileImage_String;
+                    js.isAvailable = s.isAvailable;
+                }
+            }
+            return js;
         }
 
         public Employer SingleEmployer(int EmployerID)
         {
-            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
-            Employer employer = (from empl in database.Employers where empl.EmployerID.Equals(EmployerID) select empl).Single();
+            DatabaseClasssesDataContext db = new DatabaseClasssesDataContext();
+            var employer = new Employer();
+            foreach (var emp in db.Employers)
+            {
+                if (emp.EmployerID.Equals(EmployerID))
+                {
+                    employer.FirstName = emp.FirstName;
+                    employer.LastName = emp.LastName;
+                    employer.EmailAddress = emp.EmailAddress;
+                    employer.ContactNumber = emp.ContactNumber;
+                    employer.AlternativeContactNumber = emp.AlternativeContactNumber;
+                    employer.ResidentialAddress = emp.ResidentialAddress;
+                    employer.ProfileImage_String = emp.ProfileImage_String;                
+                }
+            }
             return employer;
         }
 

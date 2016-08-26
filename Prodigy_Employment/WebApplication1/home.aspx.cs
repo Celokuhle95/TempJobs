@@ -9,11 +9,11 @@ namespace WebApplication1
 {
     public partial class home : System.Web.UI.Page
     {
-        localhost1.Service1 lc = new localhost1.Service1();
+        localhost.Service1 lc;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lc = new localhost.Service1();
             if (Session["UserID"] != null)
             {
                 TurnNotificationSectionOFF();
@@ -26,6 +26,7 @@ namespace WebApplication1
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
+                    lblViewApplicants.Visible = true;
 
                     //Show notification message to employer
                     if (Session["ScreenNotificationMessage"] != null)
@@ -36,18 +37,37 @@ namespace WebApplication1
                 }
                 else if (usertype.Equals("JobSeeker"))
                 {
+                    var invitation = lc.GetJobSeekerJobInvites(userID, true);
+                    //if (invitation != null)
+                    //{
+                    //    string message = "<h3 style='text-align:center'>You have a Job Invite.</h3>";
+                    //    message += "<p style='text-align:center'><a href='ViewInvites.aspx'>View </a>invites here.</p><br/>";
+                    //    TurnNotificatiOn(message);
+                    //}
+
                     lblViewJobs.Visible = true;
                     lblProfile.Visible = true;
                     lblLogin.Visible = false;
                     lblRes.Visible = false;
                     lblLogout.Visible = true;
+                    lblJobInvite.Visible = true;
 
-                    //Show notification message to employer
+                    //Show notification message
                     if (Session["ScreenNotificationMessage"] != null)
                     {
                         string notifyMessage = (string)Session["ScreenNotificationMessage"];
                         TurnNotificatiOn(notifyMessage);
                     }
+                }
+
+                else if (usertype.Equals("Admin"))
+                {
+                    lblAllApplications.Visible = true;
+                    lblJobInvites.Visible = true;
+                    lblEmployers.Visible = true;
+                    lblLogin.Visible = false;
+                    lblRes.Visible = false;
+                    lblLogout.Visible = true;
                 }
             }
         }

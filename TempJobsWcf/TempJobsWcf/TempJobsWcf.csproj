@@ -75,12 +75,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminManager.cs" />
     <Compile Include="DatabaseClassses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseClassses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Invitation.cs" />
+    <Compile Include="InvitationAndEmployment.cs" />
     <Compile Include="JobManager.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

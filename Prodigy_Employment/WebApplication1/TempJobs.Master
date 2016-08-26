@@ -58,18 +58,29 @@
 						<li id ="lblViewJobseekers" runat="server" visible="false">
 							<a href="ViewUsers.aspx">JobSeekers</a>
 						</li>
+                          <li id ="lblEmployers" runat="server" visible="false">
+							<a  href="ViewEmpoyers.aspx">Employers</a>
+						</li>
 						<li id ="lblPostJob" runat="server" visible="false">
 							<a href="PostJob.aspx">Post job</a>
 						</li>
 						<li  id ="lblProfile" runat="server" visible="false" >
 							<a  href="JobSeekerProfile.aspx">Jobseeker Profile</a>
 						</li>
-
-                        <li  id ="lblReport" runat="server" visible="false" >
-							<a  href="viewReportedJobs.aspx">Reported Jobs</a>
-						</li>
 						<li id ="lblViewJobs" runat="server" visible="false">
 							<a  href="ViewJobs.aspx">Informal Jobs</a>
+						</li>
+                        <li id ="lblViewApplicants" runat="server" visible="false">
+							<a  href="ViewJobApplications.aspx">Job Applications</a>
+						</li>
+                        <li id ="lblAllApplications" runat="server" visible="false">
+							<a  href="ViewAllJobApplications.aspx">Job Applications</a>
+						</li>
+                        <li id ="lblJobInvites" runat="server" visible="false">
+							<a  href="ViewAllJobInvites.aspx">Job Invites</a>
+						</li>
+                        <li id ="lblJobInvite" runat="server" visible="false">
+							<a  href="ViewInvites.aspx">Job Invites</a>
 						</li>
 						<li id ="lblRes" runat="server" visible="true" >
 							<a href="Registration.aspx">Register</a>
