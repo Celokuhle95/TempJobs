@@ -89,7 +89,7 @@ namespace TempJobsWcf
 
         //Jobs
         [OperationContract]
-        void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate,string StartTime, string EndTime, string Location, double ToBePaid, int EmployerID);
+        void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill, int EmployerID);
 
         [OperationContract]
         List<Job> AllJobs();
@@ -138,6 +138,10 @@ namespace TempJobsWcf
 
         [OperationContract]
         List<Invitation> GetJobSeekerJobInvites(int JobSeekerID);
+
+        //Specifically skilled job seekers
+        [OperationContract]
+        List<JobSeeker> SkilledJobSeeker(string search_skill);
     }
 }
 

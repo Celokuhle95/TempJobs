@@ -93,6 +93,8 @@ namespace WebApplication1.localhost {
         
         private System.Threading.SendOrPostCallback GetJobSeekerJobInvitesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback SkilledJobSeekerOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -226,6 +228,9 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         public event GetJobSeekerJobInvitesCompletedEventHandler GetJobSeekerJobInvitesCompleted;
+        
+        /// <remarks/>
+        public event SkilledJobSeekerCompletedEventHandler SkilledJobSeekerCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/GetDataUsingDataContract", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -760,7 +765,7 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/PostJob", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void PostJob([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Description, int NumberOfDaysRequired, [System.Xml.Serialization.XmlIgnoreAttribute()] bool NumberOfDaysRequiredSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string DueDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string EndTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Location, double ToBePaid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ToBePaidSpecified, int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
+        public void PostJob([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Description, int NumberOfDaysRequired, [System.Xml.Serialization.XmlIgnoreAttribute()] bool NumberOfDaysRequiredSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string DueDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string EndTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Location, double ToBePaid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ToBePaidSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string RequiredSkill, int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
             this.Invoke("PostJob", new object[] {
                         Name,
                         Description,
@@ -773,17 +778,18 @@ namespace WebApplication1.localhost {
                         Location,
                         ToBePaid,
                         ToBePaidSpecified,
+                        RequiredSkill,
                         EmployerID,
                         EmployerIDSpecified});
         }
         
         /// <remarks/>
-        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, bool ToBePaidSpecified, int EmployerID, bool EmployerIDSpecified) {
-            this.PostJobAsync(Name, Description, NumberOfDaysRequired, NumberOfDaysRequiredSpecified, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, ToBePaidSpecified, EmployerID, EmployerIDSpecified, null);
+        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, bool ToBePaidSpecified, string RequiredSkill, int EmployerID, bool EmployerIDSpecified) {
+            this.PostJobAsync(Name, Description, NumberOfDaysRequired, NumberOfDaysRequiredSpecified, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, ToBePaidSpecified, RequiredSkill, EmployerID, EmployerIDSpecified, null);
         }
         
         /// <remarks/>
-        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, bool ToBePaidSpecified, int EmployerID, bool EmployerIDSpecified, object userState) {
+        public void PostJobAsync(string Name, string Description, int NumberOfDaysRequired, bool NumberOfDaysRequiredSpecified, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, bool ToBePaidSpecified, string RequiredSkill, int EmployerID, bool EmployerIDSpecified, object userState) {
             if ((this.PostJobOperationCompleted == null)) {
                 this.PostJobOperationCompleted = new System.Threading.SendOrPostCallback(this.OnPostJobOperationCompleted);
             }
@@ -799,6 +805,7 @@ namespace WebApplication1.localhost {
                         Location,
                         ToBePaid,
                         ToBePaidSpecified,
+                        RequiredSkill,
                         EmployerID,
                         EmployerIDSpecified}, this.PostJobOperationCompleted, userState);
         }
@@ -1283,6 +1290,37 @@ namespace WebApplication1.localhost {
             if ((this.GetJobSeekerJobInvitesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetJobSeekerJobInvitesCompleted(this, new GetJobSeekerJobInvitesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/SkilledJobSeeker", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute(IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
+        public JobSeeker[] SkilledJobSeeker([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string search_skill) {
+            object[] results = this.Invoke("SkilledJobSeeker", new object[] {
+                        search_skill});
+            return ((JobSeeker[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SkilledJobSeekerAsync(string search_skill) {
+            this.SkilledJobSeekerAsync(search_skill, null);
+        }
+        
+        /// <remarks/>
+        public void SkilledJobSeekerAsync(string search_skill, object userState) {
+            if ((this.SkilledJobSeekerOperationCompleted == null)) {
+                this.SkilledJobSeekerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnSkilledJobSeekerOperationCompleted);
+            }
+            this.InvokeAsync("SkilledJobSeeker", new object[] {
+                        search_skill}, this.SkilledJobSeekerOperationCompleted, userState);
+        }
+        
+        private void OnSkilledJobSeekerOperationCompleted(object arg) {
+            if ((this.SkilledJobSeekerCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SkilledJobSeekerCompleted(this, new SkilledJobSeekerCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2125,6 +2163,8 @@ namespace WebApplication1.localhost {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
     public partial class Job {
         
+        private string datePostedField;
+        
         private string descriptionField;
         
         private string dueDateField;
@@ -2153,6 +2193,8 @@ namespace WebApplication1.localhost {
         
         private bool numberOfDaysFieldSpecified;
         
+        private string requiredSkillField;
+        
         private string startDateField;
         
         private string startTimeField;
@@ -2160,6 +2202,17 @@ namespace WebApplication1.localhost {
         private System.Nullable<double> toBePaidField;
         
         private bool toBePaidFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string DatePosted {
+            get {
+                return this.datePostedField;
+            }
+            set {
+                this.datePostedField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -2311,6 +2364,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.numberOfDaysFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string RequiredSkill {
+            get {
+                return this.requiredSkillField;
+            }
+            set {
+                this.requiredSkillField = value;
             }
         }
         
@@ -3326,6 +3390,32 @@ namespace WebApplication1.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Invitation[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    public delegate void SkilledJobSeekerCompletedEventHandler(object sender, SkilledJobSeekerCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SkilledJobSeekerCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SkilledJobSeekerCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public JobSeeker[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((JobSeeker[])(this.results[0]));
             }
         }
     }

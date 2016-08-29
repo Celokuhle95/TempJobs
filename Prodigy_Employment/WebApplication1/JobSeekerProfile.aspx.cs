@@ -48,7 +48,7 @@ namespace WebApplication1
                 display += "<div class='row'>";
                 display += "<div class='col-md-4' >";
                 string base64ImageRepresentation = jobSeeker.ProfileImage_String;
-                display += "<img width='100%' style='max-height: 300px' class='img-thumbnail' alt='image not available' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+                display += "<img width='500' style='max-height: 300px' class='img-thumbnail' alt='image not available' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
                 display += "</div>";
                 display += "<div class='col-md-4' >";
                 display += "<b>First Name:</b>           " + jobSeeker.FirstName + "<br/><br/>";
@@ -88,9 +88,9 @@ namespace WebApplication1
                 //}               
                 foreach (var skill in lc.ReadSkills(JobSeekerID, true))
                 {
-                    display += "<b>Informal skill</b> " + count + " <b>: </b><br/>";
+                    display += "<h3><u>Informal skill " + count + " </u></h3>: <br/>";
                     display += "<b>Skill name</b>:  " + skill.Name + "<br/>";
-                    display += "<b>Skill Level </b>(How much the JobSeeker mastered the skill)<b>: </b>" + skill.SkillLevel; //can later change this to rating starts
+                    display += "<b>Skill Level </b>(How much the JobSeeker mastered the skill):" + skill.SkillLevel + "<br/>"; //can later change this to rating starts
                     count++;
                 }
 
@@ -116,15 +116,16 @@ namespace WebApplication1
                 htmlText += " <div class='row'>";
                 foreach (var toolOrEquipment in lc.GetToolsAndEquipments(JobSeekerID, true))
                 {
-                    htmlText += " <div class='col-md-3' style='border: groove'>";
-                    htmlText += "<img alt='No image to display style='height:200px; width:300px' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/>";
-                    htmlText += "<br/><p>Name/Short description: </p>" + toolOrEquipment.Name;
-                    htmlText += "</div>";
+                    htmlText += " <div class='col-md-4' style='border: groove'>";
+                    htmlText += "<img alt='No image to display' style='max-height:200px;max-width:300px' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/><br/>";
+                    htmlText += "<br/><b>Name/Short description: </b>" + toolOrEquipment.Name + "<br/>";
+                    htmlText += "</div><br/>";
                 }
+                htmlText += "</div><br/><br/>";
                 display += htmlText;
 
                 //Employment history
-                display += "<br/><br/><h3>Prevous employment history.</h3>";
+                display += "<h3>Prevous employment history.</h3>";
                 if (Session["UserType"].Equals("Employer"))
                 {
                     display += "<p>View prevous jobs completed by the job seeker including how the the job seeker did on that job based on the ratings provided by prevous Employers.</p>";

@@ -71,6 +71,7 @@
     <Content Include="DeleteJob.aspx" />
     <Content Include="EmployJobSeeker.aspx" />
     <Content Include="JobSeekerProfile.aspx" />
+    <Content Include="JobSeekersWithRequiredSkill.aspx" />
     <Content Include="JobToInviteFor.aspx" />
     <Content Include="Skills.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -106,6 +107,16 @@
     <Content Include="MoreJobSeekerDetails.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="ToolsAndEquipments.aspx" />
+    <None Include="scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="scripts\jquery-1.9.1.js" />
+    <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="ViewAllJobApplications.aspx" />
+    <Content Include="ViewAllJobInvites.aspx" />
+    <Content Include="ViewEmpoyers.aspx" />
+    <Content Include="ViewInvites.aspx" />
+    <Content Include="ViewJobApplications.aspx" />
+    <Content Include="ViewJobs.aspx" />
+    <Content Include="ViewUsers.aspx" />
     <Content Include="Web References\localhost\CompositeType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -113,6 +124,9 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\localhost\InformalSkill.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\localhost\Invitation.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\localhost\Job.datasource">
@@ -127,24 +141,11 @@
     <Content Include="Web References\localhost\JobSeeker.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Web References\localhost\Invitation.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\Service1.disco" />
-    <None Include="scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="scripts\jquery-1.9.1.js" />
-    <Content Include="scripts\jquery-1.9.1.min.js" />
-    <Content Include="ViewAllJobApplications.aspx" />
-    <Content Include="ViewAllJobInvites.aspx" />
-    <Content Include="ViewEmpoyers.aspx" />
-    <Content Include="ViewInvites.aspx" />
-    <Content Include="ViewJobApplications.aspx" />
-    <Content Include="ViewJobs.aspx" />
-    <Content Include="ViewUsers.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +197,13 @@
     </Compile>
     <Compile Include="JobSeekerProfile.aspx.designer.cs">
       <DependentUpon>JobSeekerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="JobSeekersWithRequiredSkill.aspx.cs">
+      <DependentUpon>JobSeekersWithRequiredSkill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobSeekersWithRequiredSkill.aspx.designer.cs">
+      <DependentUpon>JobSeekersWithRequiredSkill.aspx</DependentUpon>
     </Compile>
     <Compile Include="JobToInviteFor.aspx.cs">
       <DependentUpon>JobToInviteFor.aspx</DependentUpon>
@@ -398,10 +406,10 @@
     <Folder Include="less\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://localhost:45678/Service1.svc">
+    <WebReferenceUrl Include="http://localhost:8000/Service1.svc">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>http://localhost:45678/Service1.svc</UpdateFromURL>
+      <UpdateFromURL>http://localhost:8000/Service1.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

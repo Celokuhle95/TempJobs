@@ -13,13 +13,13 @@ namespace WebApplication1 {
     public partial class PostJob {
         
         /// <summary>
-        /// drpSkillName control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpSkillName;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
         /// txtDescription control.
@@ -29,6 +29,15 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
+        
+        /// <summary>
+        /// drpSkill control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList drpSkill;
         
         /// <summary>
         /// NumberOfDays control.

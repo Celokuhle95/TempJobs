@@ -7,7 +7,7 @@ namespace TempJobsWcf
 {
     public class JobManager
     {
-        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, int EmployerID)
+        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill ,int EmployerID)
         {
             Job newJob = new Job();
 
@@ -21,6 +21,12 @@ namespace TempJobsWcf
             newJob.EndTime = EndTime;
             newJob.Location = Location;
             newJob.ToBePaid = ToBePaid;
+
+            DateTime today = DateTime.Today;
+            string string_date = today.ToString("dd/MMMM/yyyy");
+
+            newJob.DatePosted = string_date;
+            newJob.RequiredSkill = RequiredSkill;
             newJob.EmployerID = EmployerID;
             database.Jobs.InsertOnSubmit(newJob);
             database.SubmitChanges();
@@ -43,6 +49,8 @@ namespace TempJobsWcf
                 job.EndTime = jb.EndTime;
                 job.Location = jb.Location;
                 job.ToBePaid = jb.ToBePaid;
+                job.DatePosted = jb.DatePosted;
+                job.RequiredSkill = jb.RequiredSkill;
                 jobs.Add(job);
             }
             return jobs; 
@@ -88,32 +96,6 @@ namespace TempJobsWcf
                 JobSeekers.Add(js);
             }         
             return JobSeekers;
-
-            //foreach (var job in EmployerSpecificJobs(EmployerID))
-            //{
-            //    foreach(var app in GetAllApplications())
-            //    {
-            //        if(app.JobID.Equals(job.JobID))
-            //        {
-            //            UserManager user = new UserManager();
-            //            JobSeeker js = user.SingleJobseeker(Convert.ToInt32(app.JobSeekerID));
-            //            JobSeekers.Add(js);
-            //        }
-            //    }
-            //}
-            //return JobSeekers;
-            //if (jobPosted != null)
-            //{
-            //    foreach (JobApplication jobApp in database.JobApplications)
-            //    {
-            //        if (jobPosted.JobID == jobApp.JobID)
-            //        {
-            //            JobSeeker jobSeeker = (from js in database.JobSeekers where js.JobSeekerID.Equals(jobApp.JobSeeker) select js).Single();
-            //            JobSeekers.Add(jobSeeker);
-            //        }
-            //    }                  
-            //}
-            //return JobSeekers;
         }
         public List<JobApplication> GetAllApplications()
         {
@@ -128,9 +110,7 @@ namespace TempJobsWcf
                 invites.Add(appl);
             }
             
-           return invites;
-            
-            
+           return invites;           
         }
         public void DeleteJob(int JobID)
         {
@@ -170,11 +150,41 @@ namespace TempJobsWcf
                     job.EndTime = jb.EndTime;
                     job.Location = jb.Location;
                     job.ToBePaid = jb.ToBePaid;
+                    job.DatePosted = jb.DatePosted;
+                    job.RequiredSkill = jb.RequiredSkill;
                     job.EmployerID = jb.EmployerID;
                     jobs.Add(job);
                 }
             }          
             return jobs;           
         }
+
+        public List<JobSeeker> SkilledJobSeeker(string search_skill)
+        {
+            DatabaseClasssesDataContext database = new DatabaseClasssesDataContext();
+            var jobSeekers = from skill in database.InformalSkills
+                             join js in database.JobSeekers
+                             on skill.JobSeekerID equals js.JobSeekerID
+                             where skill.Name.Equals(search_skill)
+                             select js;
+
+            List<JobSeeker> jobseekers = new List<JobSeeker>();
+            foreach (var a in jobSeekers)
+            {
+                JobSeeker jobSk = new JobSeeker();
+                jobSk.FirstName = a.FirstName;
+                jobSk.LastName = a.LastName;
+                jobSk.EmailAddress = a.EmailAddress;
+                jobSk.ContactNumber = a.ContactNumber;
+                jobSk.AlternativeContactNumber = a.AlternativeContactNumber;
+                jobSk.ResidentialAddress = a.ResidentialAddress;
+                jobSk.ProfileImage_String = a.ProfileImage_String;
+                jobSk.isAvailable = a.isAvailable;
+                jobseekers.Add(jobSk);
+            }
+            return jobseekers;
+        }
+
+
     }
 }

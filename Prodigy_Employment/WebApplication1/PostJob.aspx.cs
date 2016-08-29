@@ -31,7 +31,7 @@ namespace WebApplication1
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
-            string name = drpSkillName.SelectedItem.Text;
+            string name = txtName.Text;
             string description = txtDescription.Text;
             int numDays = Convert.ToInt32(NumberOfDays.Value);
             string duedate = GetDate(DueDate.Value);
@@ -41,12 +41,13 @@ namespace WebApplication1
             string location = txtLocation.Text;
             double amount = Convert.ToDouble(PayAmount.Value);
             int EmployerID = (int)Session["UserID"];
-
-            localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, EmployerID, true);
+            string skill = drpSkill.SelectedItem.Text;           
+            localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, skill, EmployerID, true);
             //display some message to let employer know that posting was successful.
             Session.Add("ScreenNotification", "TurnON");
             Session.Add("ScreenNotificationMessage", "<p>Thank you for posting the job, your post was successful. Check applications later</p>");
-            Response.Redirect("ViewUsers.aspx");
+            Session.Add("RequiredSkill", skill);
+            Response.Redirect("JobSeekersWithRequiredSkill.aspx");
         }
 
         public string GetDate(string stringDate)

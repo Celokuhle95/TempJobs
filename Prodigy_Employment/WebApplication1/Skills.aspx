@@ -17,7 +17,7 @@
                  <tr><td>Informal Skill 1:</td>
                  <td>
                      <asp:DropDownList ID="drpSkill1" class="form-control" runat="server" style="width:auto">
-                        <asp:ListItem Value="0">select skill</asp:ListItem>
+                        <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
                         <asp:ListItem Value="3">Working in the garden</asp:ListItem>
