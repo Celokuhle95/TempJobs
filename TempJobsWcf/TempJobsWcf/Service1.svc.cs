@@ -121,10 +121,10 @@ namespace TempJobsWcf
         }
 
         //jobs
-        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, int EmployerID)
+        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill, int EmployerID)
         {
             JobManager job = new JobManager();
-            job.PostJob(Name, Description, NumberOfDaysRequired, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, EmployerID);
+            job.PostJob(Name, Description, NumberOfDaysRequired, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, RequiredSkill, EmployerID);
         }
 
         public List<Job> AllJobs()
@@ -230,5 +230,11 @@ namespace TempJobsWcf
             }
             return composite;
         }
-    }
+
+        public List<JobSeeker> SkilledJobSeeker(string search_skill)
+        {
+            JobManager job = new JobManager();
+            return job.SkilledJobSeeker(search_skill);
+        }
+    }   
 }

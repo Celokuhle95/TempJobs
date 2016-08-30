@@ -26,7 +26,7 @@ namespace WebApplication1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:45678/Service1.svc")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8000/Service1.svc")]
         public string WebApplication1_localhost_Service1 {
             get {
                 return ((string)(this["WebApplication1_localhost_Service1"]));

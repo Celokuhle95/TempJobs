@@ -76,35 +76,35 @@ namespace WebApplication1
 
         protected void btnStoreDetails_Click(object sender, EventArgs e)
         {
-            if (!drpSkill1.SelectedValue.Equals(0))
+            if (!drpSkill1.SelectedItem.Text.Equals("Select skill"))
             {
-                string skill1Name = drpSkill1.Text;
+                string skill1Name = drpSkill1.SelectedItem.Text;
                 lc.StoreSkills(skill1Name, 0, true, selectedID, true);              
                 //show success message
                 DisplaySuccessMessage();            
             }
 
-            if (!drpSkill2.SelectedValue.Equals(0))
+            if (!drpSkill2.SelectedItem.Text.Equals("Select skill"))
             {
-                string skill2Name = drpSkill2.Text;
+                string skill2Name = drpSkill2.SelectedItem.Text;
                 lc.StoreSkills(skill2Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (!drpSkill3.SelectedValue.Equals(0))
+            if (!drpSkill3.SelectedItem.Text.Equals("Select skill"))
             {
-                string skill3Name = drpSkill3.Text;
+                string skill3Name = drpSkill3.SelectedItem.Text;
                 lc.StoreSkills(skill3Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (!drpSkill4.SelectedValue.Equals(0))
+            if (!drpSkill4.SelectedItem.Text.Equals("Select skill"))
             {
-                string skill4Name = drpSkill4.Text;
+                string skill4Name = drpSkill4.SelectedItem.Text;
                 lc.StoreSkills(skill4Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }
-            if (!drpSkill5.SelectedValue.Equals(0))
+            if (!drpSkill5.SelectedItem.Text.Equals("Select skill"))
             {
-                string skill5Name = drpSkill5.Text;
+                string skill5Name = drpSkill5.SelectedItem.Text;
                 lc.StoreSkills(skill5Name, 0, true, selectedID, true);
                 DisplaySuccessMessage();
             }

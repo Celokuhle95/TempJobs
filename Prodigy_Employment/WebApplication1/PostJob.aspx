@@ -14,19 +14,7 @@
                     <b>Job Name:</b>
                 </div>
                  <div class="col-md-7">
-                       <asp:DropDownList ID="drpSkillName" class="form-control" runat="server" style="width:auto">
-                            <asp:ListItem Value="0">Select job name</asp:ListItem>
-                            <asp:ListItem Value="1">Tree felling</asp:ListItem>
-                            <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
-                            <asp:ListItem Value="3">Working in the garden</asp:ListItem>
-                            <asp:ListItem Value="4">Grass cutting</asp:ListItem>
-                            <asp:ListItem Value="5">Plumbing</asp:ListItem>
-                            <asp:ListItem Value="6">Site clearance/Waste removal</asp:ListItem>
-                            <asp:ListItem Value="7">Painting</asp:ListItem> 
-                            <asp:ListItem Value="8">Varnishing</asp:ListItem>
-                            <asp:ListItem Value="9">Washing and Ironing</asp:ListItem>
-                            <asp:ListItem Value="10">House Cleaning</asp:ListItem>
-                       </asp:DropDownList>
+                   <asp:TextBox ID="txtName" runat="server" class="form-control" style="width:auto"></asp:TextBox>
                 </div>
             </div>
            <br /><br />
@@ -40,7 +28,29 @@
                 </div>
             </div>
             <br /><br />
-
+            <div class="row">
+                <div class="col-md-7">
+                    <b>Skill Required :</b>
+                </div>
+                <div class="col-md-7">
+                        <asp:DropDownList ID="drpSkill" class="form-control" runat="server" style="width:auto">
+                            <asp:ListItem Value="0">select skill</asp:ListItem>
+                            <asp:ListItem Value="1">Tree felling</asp:ListItem>
+                            <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
+                            <asp:ListItem Value="3">Working in the garden</asp:ListItem>
+                            <asp:ListItem Value="4">Grass cutting</asp:ListItem>
+                            <asp:ListItem Value="5">Plumbing</asp:ListItem>
+                            <asp:ListItem Value="6">Site clearance/waste removal</asp:ListItem>
+                            <asp:ListItem Value="7">Painter</asp:ListItem> 
+                            <asp:ListItem Value="8">Varnishing</asp:ListItem>
+                            <asp:ListItem Value="9">Washing and Ironing</asp:ListItem>
+                            <asp:ListItem Value="10">House Cleaning</asp:ListItem>
+                      </asp:DropDownList>
+                    <br />
+                    <i>Select the skill that is required in order to complete this job.  </i>
+                </div>
+            </div>
+            <br /><br />
             <div class ="row">
                 <div class="col-md-4">
                     <b>Number Of Days :</b>
