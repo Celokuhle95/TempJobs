@@ -21,27 +21,25 @@ namespace WebApplication1
                 lc = new localhost.Service1();
 
                 string htmlText = "";
-                htmlText += "<div class='row' style= padding-top:1%'> ";
+                htmlText += "<div class='page-header'>";
+                    htmlText += "<h1>Jobseekers</h1>";
+                htmlText += "</div>";
+                htmlText += "<div class='card-deck-wrapper'>";
+                htmlText += "<div class='card-deck'>";
+
                 foreach (var u in lc.AllJobseekers())
-                {                   
-                    htmlText += "<div class ='col-md-6' style='border:groove'> ";
-
-                    if (u.ProfileImage_String == null)
-                    {
-                        string image = "images/image1.jpg";
-                        htmlText += "<br/><img src='" + image + "' alt='no prof image' width='500px' height='350px' max-height='350px'/>";
-                    }
-                    else
-                    {
-                        string base64ImageRepresentation = u.ProfileImage_String;
-                        htmlText += "<br/><img width='500px' height='350px'alt='image not available' max-height='350px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
-                    }
-
-                    string s = string.Format("<a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a></br>", u.JobSeekerID);
-                    htmlText += "<br/><br/><p><b>first Name : </b><u>" + s + "</u></p>";
-                    htmlText += "<p><b>Last Lastname: </b>" + u.LastName + "</p>";
-                    htmlText += "</div>";                   
+                {
+                    htmlText += "<div class='card'>";
+                    string base64ImageRepresentation = u.ProfileImage_String;
+                    htmlText += "<img class='card-img-top img-circle img-responsive'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";
+                    htmlText += "<div class='card-blog'>";               
+                    string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a>", u.JobSeekerID);            
+                    htmlText +=  s + " " + u.LastName + "</h4>";
+                    htmlText += "<p class='card-text'><small class='text-muted'>Click to view full profile</small></p>";
+                    htmlText += "</div>";
+                    htmlText += "</div>";
                 }
+                htmlText += "</div>";
                 htmlText += "</div></br>";
                 DisplayUsers.InnerHtml = htmlText;
             }
