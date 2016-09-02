@@ -18,14 +18,14 @@ namespace WebApplication1
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {          
-            string userName = txtUsername.Text;
-            string password = txtPassword.Text;
+            string userName = txtUsername.Value;
+            string password = txtPassword.Value;
             int userID;
             bool a, b;
             bool canLogin;
 
             bl.LoginEmployer(userName, Secrecy.HashPassword(password), out userID, out a, out canLogin, out b);
-            if(canLogin)
+            if (canLogin)
             {
                 Session.Add("UserID", userID);
                 Session.Add("UserType", "Employer");
@@ -34,7 +34,7 @@ namespace WebApplication1
             else
             {
                 bl.LoginJobSeeker(userName, Secrecy.HashPassword(password), out userID, out a, out canLogin, out b);
-                if(canLogin)
+                if (canLogin)
                 {
                     Session.Add("UserID", userID);
                     Session.Add("UserType", "JobSeeker");
@@ -42,8 +42,8 @@ namespace WebApplication1
                 }
                 else
                 {
-                    bl.LoginAdmin(userName,password, out userID, out a, out canLogin, out b);
-                    if(canLogin)
+                    bl.LoginAdmin(userName, password, out userID, out a, out canLogin, out b);
+                    if (canLogin)
                     {
                         Session.Add("UserID", userID);
                         Session.Add("UserType", "Admin");
@@ -57,6 +57,7 @@ namespace WebApplication1
                     }
                 }
             }
+
         } 
     }
 }

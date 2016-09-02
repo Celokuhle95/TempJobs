@@ -15,16 +15,16 @@
 
                     <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
 
-                    <form id="loginform" class="form-horizontal" role="form">
+                    <div id="loginform" class="form-horizontal" role="form">
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="txtUsername" type="text" class="form-control" name="username" value="" placeholder="email"/>
+                            <input id="txtUsername" runat="server" type="text" class="form-control" name="username" value="" placeholder="email"/>
                         </div>
 
                         <div style="margin-bottom: 25px" class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input id="txtPassword" type="password" class="form-control" name="password" placeholder="password"/>
+                            <input runat="server" id="txtPassword" type="password" class="form-control" name="password" placeholder="password"/>
                         </div>
                         <div class="input-group">
                             <div class="checkbox">
@@ -41,7 +41,7 @@
                                 <asp:Label ID="lblErr" runat="server" ForeColor="Red"></asp:Label>  <br /><br />                            
                             </div>
                         </div>
-                         <br /> <br />
+                         
                         <div class="form-group">
                             <div class="col-md-12 control">
                                 <div style="border-top: 1px solid#888; padding-top: 15px; font-size: 85%">
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

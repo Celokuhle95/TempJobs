@@ -30,8 +30,8 @@ namespace WebApplication1
                 foreach (var u in lc.AllJobseekers())
                 {
                     htmlText += "<div class='card'>";
-                    string base64ImageRepresentation = u.ProfileImage_String;
-                    htmlText += "<img class='card-img-top img-circle img-responsive'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";
+                    string base64ImageRepresentation = u.ProfileImage_String;                  
+                    htmlText += "<img class='card-img-top img-circle img-responsive' style='height:318px; width:270px'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";                  
                     htmlText += "<div class='card-blog'>";               
                     string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a>", u.JobSeekerID);            
                     htmlText +=  s + " " + u.LastName + "</h4>";
