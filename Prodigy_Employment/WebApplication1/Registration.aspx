@@ -86,7 +86,7 @@
                     Register as:
                 </div>
                 <div class="col-md-7">
-                    <asp:DropDownList ID="drpUsertype" class="form-control" runat="server" style="width:inherit; height:inherit">
+                    <asp:DropDownList ID="drpUsertype" class="form-control" runat="server" style="width:inherit; height:inherit" OnSelectedIndexChanged="drpUsertype_SelectedIndexChanged">
                         <asp:ListItem Value="0">select Option</asp:ListItem>
                         <asp:ListItem Value="1">Employer</asp:ListItem>
                         <asp:ListItem Value="2">Job seeker</asp:ListItem>

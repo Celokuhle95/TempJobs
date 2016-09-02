@@ -12,11 +12,19 @@ namespace WebApplication1
 {
     public partial class Registration : System.Web.UI.Page
     {
-        public localhost.Service1 cl; //references the local host
+        public localhost.Service1 cl =new localhost.Service1(); //references the local host
+        private string image = "none";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            cl = new localhost.Service1();
+            if (Page.IsPostBack)
+            {         
+                image = (string)Session["Image"];
+                if (image == null)
+                {
+                    image = "none";
+                }
+            }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -32,9 +40,10 @@ namespace WebApplication1
 
             int userLevel = System.Convert.ToInt32(drpUsertype.SelectedValue);
 
-            byte[] fileBytes = ProfileImageUpload.FileBytes;
-            System.Drawing.Image profileImage = getImageFromByteArray(fileBytes);
-            string profImage_string = ImageToBase64String(profileImage);
+            //byte[] fileBytes = ProfileImageUpload.FileBytes;
+            //System.Drawing.Image profileImage = getImageFromByteArray(fileBytes);
+
+            //string profImage_string = ImageToBase64String(profileImage);
 
             if (password.Length < 6) //ensure the password strength is atleast 6 characters
             {
@@ -55,13 +64,27 @@ namespace WebApplication1
                 {
                     if (userLevel.Equals(1))
                     {
-                        cl.RegisterEmployer(firstName, lastName, emailAddress, Secrecy.HashPassword(password), cellphoneNumbers, altanativeContactNumber, residentialAddress, profImage_string);
+                        if(image.Equals("none"))
+                        {
+                            lblError.Text = "Please ensure that you have selected a profile image";
+                            lblError.Visible = true;
+                            return;
+                        }
+                        cl.RegisterEmployer(firstName, lastName, emailAddress, Secrecy.HashPassword(password), cellphoneNumbers, altanativeContactNumber, residentialAddress, image);
+                        Session["Image"] = null; // set session to null
                         Response.Redirect("LoginPage.aspx");
                     }
                     else if (userLevel.Equals(2))
                     {
-                        cl.RegisterJobSeeker(firstName, lastName, emailAddress, Secrecy.HashPassword(password), cellphoneNumbers, altanativeContactNumber, residentialAddress, profImage_string);
-                        Response.Redirect("Skills.aspx");
+                        if (image.Equals("none"))
+                        {
+                            lblError.Text = "Please ensure that you have selected a profile image";
+                            lblError.Visible = true;
+                            return;
+                        }
+                        cl.RegisterJobSeeker(firstName, lastName, emailAddress, Secrecy.HashPassword(password), cellphoneNumbers, altanativeContactNumber, residentialAddress, image);
+                        Session["Image"] = null; // set session to null
+                        Response.Redirect("LoginPage.aspx");
                     }
                     else
                     {
@@ -77,6 +100,7 @@ namespace WebApplication1
                 lblError.Visible = true;
                 return;
             }
+           
 
         }
         public System.Drawing.Image getImageFromByteArray(byte[] fileBytes)
@@ -100,6 +124,19 @@ namespace WebApplication1
                 // Convert byte[] to Base64 String
                 string base64String = Convert.ToBase64String(imageBytes);
                 return base64String;
+            }
+        }
+
+        protected void drpUsertype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            byte[] imageBytes = ProfileImageUpload.FileBytes;
+
+            if (imageBytes != null)
+            {
+                System.Drawing.Image toolImageObject = getImageFromByteArray(imageBytes);
+                string toolImage = ImageToBase64String(toolImageObject);
+               // Image5ID.Src = "data:image/jpeg;base64," + toolImage;
+                Session.Add("Image", toolImage);
             }
         }
     }

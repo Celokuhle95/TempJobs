@@ -25,13 +25,13 @@ namespace WebApplication1
                     htmlText += "<h1>Jobseekers</h1>";
                 htmlText += "</div>";
                 htmlText += "<div class='card-deck-wrapper'>";
-                htmlText += "<div class='card-deck'>";
+                htmlText += "<div class='card-columns'>";
 
                 foreach (var u in lc.AllJobseekers())
                 {
                     htmlText += "<div class='card'>";
                     string base64ImageRepresentation = u.ProfileImage_String;                  
-                    htmlText += "<img class='card-img-top img-circle img-responsive' style='height:318px; width:270px'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";                  
+                    htmlText += "<img class='card-img-top img-fluid img-responsive' style='max-height:350pxpx; max-width:100%'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";                  
                     htmlText += "<div class='card-blog'>";               
                     string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a>", u.JobSeekerID);            
                     htmlText +=  s + " " + u.LastName + "</h4>";

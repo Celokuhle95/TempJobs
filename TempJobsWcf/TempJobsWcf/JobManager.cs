@@ -17,7 +17,7 @@ namespace TempJobsWcf
             newJob.NumberOfDays = NumberOfDaysRequired;
             newJob.DueDate = DueDate;
             newJob.StartDate = StartDate;
-            newJob.StartTime = StartTime;
+            newJob.StartTime = StartTime; 
             newJob.EndTime = EndTime;
             newJob.Location = Location;
             newJob.ToBePaid = ToBePaid;
