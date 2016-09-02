@@ -73,6 +73,12 @@
     <Content Include="JobSeekerProfile.aspx" />
     <Content Include="JobSeekersWithRequiredSkill.aspx" />
     <Content Include="JobToInviteFor.aspx" />
+    <Content Include="packages.config" />
+    <None Include="scripts\jquery-3.0.0.intellisense.js" />
+    <Content Include="scripts\jquery-3.0.0.js" />
+    <Content Include="scripts\jquery-3.0.0.min.js" />
+    <Content Include="scripts\jquery-3.0.0.slim.js" />
+    <Content Include="scripts\jquery-3.0.0.slim.min.js" />
     <Content Include="Skills.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="header.jpg" />
@@ -141,6 +147,8 @@
     <Content Include="Web References\localhost\JobSeeker.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="scripts\jquery-3.0.0.slim.min.map" />
+    <Content Include="scripts\jquery-3.0.0.min.map" />
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
