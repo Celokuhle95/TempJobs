@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container" style="padding-left:10%; padding-right:10%">
-        <div class ="row" style="padding-left:10%; padding-right:5%; border:groove">
+        <div class ="row te" style="padding-left:10%; padding-right:5%; border:solid">
             <br /> <br />
             <h2>Provide job details.</h2>
             <hr  style="color: #808080, #C2C2C2" runat ="server"  /> 

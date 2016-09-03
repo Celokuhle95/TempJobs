@@ -31,116 +31,139 @@ namespace WebApplication1
 
                 var jobSeeker = lc.SingleJobseeker(JobSeekerID, true);
                 string display = "";
-                display = "<h2 style='text-align:center'>Job seeker Profile.</h2>";
-                display += "<hr style='color:#683A0C'/><br/>";
+                display += "<div class='page-header'>";
+                     display += "<h1>Jobseeker profile</h1>";
+                       
                 if (Session["UserType"].Equals("Employer"))
                 {
-                    display += "<p>Here you can  view JobSeeker's full details including their identitification and contact details.";
-                    display += "You can also view the informal skills of the Job seeker, including the list of previous jobs completed by the Job seeker and your tools and equipment that you use.</p><br />";
+                    display += "<p class='text-muted'>Here you can  view JobSeeker's full details including their identitification and contact details.";
+                    display += "You can also view the informal skills of the Job seeker, including the list of previous jobs completed by the Job seeker and your tools and equipment that you use.</p>";
                 }
                 else if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<p>View your personal details and contact details here.";
-                    display += "You can also view your informal skills, including the list of previous jobs that you have completed.</p><br />";
+                    display += "<p class='text-muted'>View your personal details and contact details here.";
+                    display += "You can also view your informal skills, including the list of previous jobs that you have completed.</p>";
                 }
-
-                display += "<br/><h3>Job seeker details.</h3>";
+                display += "</div>";
                 display += "<div class='row'>";
-                display += "<div class='col-md-4' >";
+                display += "<div class='col-md-5'>";
+                display += "<div class='card'>";
+                display += "<h3 class='card-header'>Job seeker details</h3>";
                 string base64ImageRepresentation = jobSeeker.ProfileImage_String;
-                display += "<img width='500' style='max-height: 300px' class='img-thumbnail' alt='image not available' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+                display += "<img class='img-responsive img-fluid' alt='image not available' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";                
+                display += "<ul class='list-group list-group-flush'>";
+                display += "<li class='list-group-item'> <b class='text-muted'>First name</b>     : " + jobSeeker.FirstName + "</li>";
+                display += "<li class='list-group-item'> <b class='text-muted'>Last name</b>     : " + jobSeeker.LastName + "</li>";
+                display += "<li class='list-group-item'> <b class='text-muted'>Residential address</b>     : " + jobSeeker.ResidentialAddress + "</li>";
+                display += "</ul>";
                 display += "</div>";
-                display += "<div class='col-md-4' >";
-                display += "<b>First Name:</b>           " + jobSeeker.FirstName + "<br/><br/>";
-                display += "<b>Last Name: </b>           " + jobSeeker.LastName + "<br/><br/>";
-                display += "<b>Residential Address:</b>  " + jobSeeker.ResidentialAddress + "<br/><br/>";
-                display += "</div>";
-                display += "</div>";
-
-                display += "<br/>";
 
                 if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<br/><h3>Contact Details.</h3>";
-                    display += "<p>Employers will use these contact details to cantact you whenever your application is successful.</p>";
-                    display += "<br/><b>Contact Number:</b>         " + jobSeeker.ContactNumber + "<br/><br />";
-                    display += "<b>Alternative Contact Number:</b>  " + jobSeeker.AlternativeContactNumber + "<br /><br />";
-                    display += "<b>Email Address: </b>              " + jobSeeker.EmailAddress + "<br /><br />";
+                    display += "<div class='card card-primary'>";
+                    display += "<div class='card-block'>";
+                    display += "<h3 class='card-title'>Contact Details</h3>";
+                    display += "<p class='card-subtitle text-muted'>Employers will use these contact details to cantact you whenever your application is successful.</p>";
+                    display += "</div>";
+                    display += "<ul class='list-group list-group-flush'>";
+                    display += "<li class='list-group-item'> <b class='text-muted'>Contact number:</b>     : " + jobSeeker.ContactNumber + "</li>";
+                    display += "<li class='list-group-item'> <b class='text-muted'>Alternative contact number:</b>     : " + jobSeeker.AlternativeContactNumber + "</li>";
+                    display += "<li class='list-group-item'> <b class='text-muted'>Email Address:</b>     : " + jobSeeker.EmailAddress + "</li>";
+                    display += "</ul>";
+                    display += "</div>";
                 }
 
-                display += "<br/><h2>Job seeker skills. </h2>";
+                display += "<div style='border:thin; padding: 2px'>";
+                display += "<h3> Job seeker skills. </h3>";
                 if (Session["UserType"].Equals("Employer"))
                 {
-                    display += "<p>This section contains the job seeker's informal skills that the job seeker has.";
-                    display += "Job seekers may have more than one informal skills, depending on the number of jobs that they have preveous done, and continue to do, in their space </p>";
+                    display += "<p class='text-muted'>This section contains the job seeker's informal skills that the job seeker has.";
+                    display += "Job seekers may have more than one informal skills, depending on the number of jobs that they have preveous done, and continue to do, in their space. </p>";
                 }
                 else if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<p>This section contains  informal skills that you have.";
-                    display += "Job seekers may have more than one informal skills, depending on the number of jobs that they have preveous done, and continue to do, in their space</p> ";
-                    display += "<p>Click <a href='Skills.aspx'>here </a> to edit your skills.</p>";
+                    display += "<p class='text-muted'>This section contains  informal skills that you have.";
+                    display += "Job seekers may have more than one informal skills, depending on the number of jobs that they have preveous done, and continue to do, in their space. ";
+                    display += "Click <a href='Skills.aspx'>here </a> to edit your skills.</p>";
                 }
-                display += "<br/><br/>";
-                int count = 1;
                 ////if ((lc.ReadSkills(JobSeekerID, true) == null))
                 ////{
                 //    display += "<p>NO SKILLS TO DISPLAY AT THE MOMENT.</p>";
-                //}               
+                //}  
+                //display += "<div class='card-deck'>";
+                display += "<div class='card-group'>";
                 foreach (var skill in lc.ReadSkills(JobSeekerID, true))
                 {
-                    display += "<h3><u>Informal skill " + count + " </u></h3>: <br/>";
-                    display += "<b>Skill name</b>:  " + skill.Name + "<br/>";
-                    display += "<b>Skill Level </b>(How much the JobSeeker mastered the skill):" + skill.SkillLevel + "<br/>"; //can later change this to rating starts
-                    count++;
+                    
+                    display += "<div class='card'>";                   
+                    display += "<h5 class='card-header'>" + skill.Name +"</h5>";
+                    display += "<div class='card-block'>";
+                    display += "<p class='card-text'><b class='text-muted'>Level:</b>" + skill.SkillLevel+ "</p>";
+                    display += "</div>";
+                    display += "</div>";                  
                 }
+                //display += "</div>";
+                display += "</div>";
+                display += "</div>";
+                display += "</div>";
 
-                display += "<br/><br/>";
-                //Tools and equipment
-                string htmlText = "<h2 style='text-align'>Tools and equipments.</h2>";
+                display += "<div class='col-md-7'>";
+                //Tools and equipment    
+                display += "<div style='border:thin; padding: 2px'>";
+                display += "<h3 text-center> Tools/equipments. </h3>";               
                 if (Session["UserType"].Equals("Employer"))
                 {
-                    htmlText += "<p>Tools/Equipment are any resources that jobseeker have and use when doing a job that they have skills in. ";
-                    htmlText += "You can, as an employer, provide your own tools or equipment if you prefer. Note that";
-                    htmlText += "some jobs may not neccessary require job seeker owned tools or equipment.</p>";
+                    display += "<p class='text-muted '>Tools/Equipment are any resources that jobseeker have and use when doing a job that they have skills in. ";
+                    display += "You can, as an employer, provide your own tools or equipment if you prefer. Note that";
+                    display += "some jobs may not neccessary require job seeker owned tools or equipment.</p>";
                 }
                 else if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    htmlText += "<p>Here you can upload the picture of the tools or equipment that you use when doing the jobs you skilled in. ";
-                    htmlText += "This may be a romoval bakkie if you do refuse removal, a grass cutting machine if you do grass cutting, a tree cutting machine if you do tree felling, or any tools that are essential to your job.";
-                    htmlText += "You can upload upto 5 tools or any equipment that you use and want Employers to see to better your employment chances.</ p ><br/>";
-                    htmlText += "<p>Yo can howover upload less than five images if you don't use that much tools or equipments. It is noted that some informal jobs do not require tools or equipment of your own to complete.";
-                    htmlText += "So in this case you can choose not to upload any photos. Also note that some Employers may have their own tools and equipment which you can use aswell.</p>";
-                    htmlText += "<p>Click <a href='ToolsAndEquipments.aspx'>here </a> to edit your Tools/Equipments.</p>";
+                    display += "<p class=' text-muted'>Here you can upload the picture of the tools or equipment that you use when doing the jobs you skilled in. ";
+                    display += "This may be a romoval bakkie if you do refuse removal, a grass cutting machine if you do grass cutting, a tree cutting machine if you do tree felling, or any tools that are essential to your job.";
+                    display += "You can upload upto 5 tools or any equipment that you use and want Employers to see to better your employment chances.";
+                    display += "Yo can howover upload less than five images if you don't use that much tools or equipments. It is noted that some informal jobs do not require tools or equipment of your own to complete.";
+                    display += "So in this case you can choose not to upload any photos. Also note that some Employers may have their own tools and equipment which you can use aswell.";
+                    display += "Click <a href='ToolsAndEquipments.aspx'>here </a> to edit your Tools/Equipments.</p>";
                 }
-                htmlText += "<br/><br/>";
-                htmlText += " <div class='row'>";
+                display += "<div class='card-group'>";
+                //display += "<div class='card-deck'>";
                 foreach (var toolOrEquipment in lc.GetToolsAndEquipments(JobSeekerID, true))
                 {
-                    htmlText += " <div class='col-md-4' style='border: groove'>";
-                    htmlText += "<img alt='No image to display' style='max-height:200px;max-width:300px' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/><br/>";
-                    htmlText += "<br/><b>Name/Short description: </b>" + toolOrEquipment.Name + "<br/>";
-                    htmlText += "</div><br/>";
+                    display += "<div class='card text-xs-center'>";
+                    display += "<img alt='No image to display' style='max-height:200px; max-wudth: 210px;' class='img-responsive img-fluid card-img-top' src='data:image/jpeg;base64," + toolOrEquipment.Image + "'/><br/>";
+                    display += "<div class='card-block'>";
+                    display += "<h4 class='card-title'>" + toolOrEquipment.Name+ "</h4>";
+                    display += "</div>";
+                    display += "</div>";
                 }
-                htmlText += "</div><br/><br/>";
-                display += htmlText;
-
+                //display += "</div>";
+                display += "</div>";
+                display += "</div>";
+                display += "<br/>";
                 //Employment history
-                display += "<h3>Prevous employment history.</h3>";
+                display += "<div class='card card-warning'>";
+                display += "<div class='card-block'>";
+                display += "<h3 class='card-title'>Previous employment history.</h3>";
                 if (Session["UserType"].Equals("Employer"))
                 {
-                    display += "<p>View prevous jobs completed by the job seeker including how the the job seeker did on that job based on the ratings provided by prevous Employers.</p>";
+                    display += "<p class='card-text text-muted'>View previous jobs completed by the job seeker including how the the job seeker did on that job based on the ratings provided by prevous Employers.</p>";
                 }
                 else if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<p>View prevous jobs that you completed including how you did on that job based on the ratings provided by prevous Employers.";
+                    display += "<p class='card-text text-muted'>View prevous jobs that you completed including how you did on that job based on the ratings provided by prevous Employers.";
                     display += "Other employers viewing your profile can see your prevous employmeny history, which might be in your favour when Employers are looking for people to hire.";
                     display += "Every time you get employment through InfomalJobFind, that job will be automatically saved in your employment history and your future potential employers can view it.";
                     display += "Simple put, the more Jobs you get the more experienced your profile will look.</p>";
                 }
-                display += "<br/><br/>";
+                display += "</div>";
                 //for each loop to read from Employment History from the table and siplay it
-
-                display += "<p><i>No Employment history currently availabel<i></p>";
+                display += "<div class='card-block'>";
+                display += "<p class='card-text'>No employment history currently available.</p>";
+                display += "</div>";
+                display += "</div>";
+                display += "</div>";
+                display += "</div>";
 
                 DisplayJobSeekerProfile.InnerHtml = display;
                 if (Session["UserType"].Equals("Employer"))
