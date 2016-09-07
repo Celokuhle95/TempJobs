@@ -22,108 +22,108 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
-            {        
-               JobSeekerID = (int)Session["UserID"];
-                lc = new localhost.Service1();
-                if (Session["UserID"] != null && Session["UserType"] != null)
-                {
-                    if(((string)Session["UserType"]).Equals("JobSeeker"))
-                    {
-                        JobSeekerID = (int)Session["UserID"];
-                        int count = 0;
-                        foreach (var te in lc.GetToolsAndEquipments(JobSeekerID, true))
-                        {
-                            if (te != null)
-                            {
-                                //update images and Name to the  correct text boxes 
-                                if (count.Equals(0))
-                                {
-                                    if (te != null)
-                                    {
-                                        Image1ID.Src = "data:image/jpeg;base64,"+ te.Image;
-                                        txtNameOrDescription1.Text = te.Name;
-                                    }
-                                }
-                                else if (count.Equals(1))
-                                {
-                                    if (te != null)
-                                    {
-                                        Image2ID.Src = "data:image/jpeg;base64," + te.Image;
-                                        txtNameOrDescription2.Text = te.Name;
-                                    }
-                                }
-                                else if (count.Equals(2))
-                                {
-                                    if (te != null)
-                                    {
-                                        Image3ID.Src = "data:image/jpeg;base64," + te.Image;
-                                        txtNameOrDescription3.Text = te.Name;
-                                    }
-                                }
-                                else if (count.Equals(3))
-                                {
-                                    if (te != null)
-                                    {
-                                        Image4ID.Src = "data:image/jpeg;base64," + te.Image;
-                                        txtNameOrDescription4.Text = te.Name;
-                                    }
-                                }
-                                else if (count.Equals(4))
-                                {
-                                    if (te != null)
-                                    {
-                                        Image5ID.Src = "data:image/jpeg;base64," + te.Image;
-                                        txtNameOrDescription5.Text = te.Name;
-                                    }
-                                }
-                            }
-                            count++;
-                        }
-                    }
-                    else
-                    {
-                        Response.Redirect("LoginPage.aspx");
-                    }                   
-                }
-                else
-                {
-                    Response.Redirect("LoginPage.aspx");
-                }
-            }
-            else
-            {
-                JobSeekerID = (int)Session["UserID"];
-                image1 = (string)Session["Image1"];
-                if(image1 == null)
-                {
-                    image1 = "none";
-                }
+            //if(!Page.IsPostBack)
+            //{        
+            //   JobSeekerID = (int)Session["UserID"];
+            //    lc = new localhost.Service1();
+            //    if (Session["UserID"] != null && Session["UserType"] != null)
+            //    {
+            //        if(((string)Session["UserType"]).Equals("JobSeeker"))
+            //        {
+            //            JobSeekerID = (int)Session["UserID"];
+            //            int count = 0;
+            //            foreach (var te in lc.GetToolsAndEquipments(JobSeekerID, true))
+            //            {
+            //                if (te != null)
+            //                {
+            //                    //update images and Name to the  correct text boxes 
+            //                    if (count.Equals(0))
+            //                    {
+            //                        if (te != null)
+            //                        {
+            //                            Image1ID.Src = "data:image/jpeg;base64,"+ te.Image;
+            //                            txtNameOrDescription1.Text = te.Name;
+            //                        }
+            //                    }
+            //                    else if (count.Equals(1))
+            //                    {
+            //                        if (te != null)
+            //                        {
+            //                            Image2ID.Src = "data:image/jpeg;base64," + te.Image;
+            //                            txtNameOrDescription2.Text = te.Name;
+            //                        }
+            //                    }
+            //                    else if (count.Equals(2))
+            //                    {
+            //                        if (te != null)
+            //                        {
+            //                            Image3ID.Src = "data:image/jpeg;base64," + te.Image;
+            //                            txtNameOrDescription3.Text = te.Name;
+            //                        }
+            //                    }
+            //                    else if (count.Equals(3))
+            //                    {
+            //                        if (te != null)
+            //                        {
+            //                            Image4ID.Src = "data:image/jpeg;base64," + te.Image;
+            //                            txtNameOrDescription4.Text = te.Name;
+            //                        }
+            //                    }
+            //                    else if (count.Equals(4))
+            //                    {
+            //                        if (te != null)
+            //                        {
+            //                            Image5ID.Src = "data:image/jpeg;base64," + te.Image;
+            //                            txtNameOrDescription5.Text = te.Name;
+            //                        }
+            //                    }
+            //                }
+            //                count++;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Response.Redirect("LoginPage.aspx");
+            //        }                   
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("LoginPage.aspx");
+            //    }
+            //}
+            //else
+            //{
+            //    JobSeekerID = (int)Session["UserID"];
+            //    image1 = (string)Session["Image1"];
+            //    if(image1 == null)
+            //    {
+            //        image1 = "none";
+            //    }
 
-                image2 = (string)Session["Image2"];
-                if (image2 == null)
-                {
-                    image2 = "none";
-                }
+            //    image2 = (string)Session["Image2"];
+            //    if (image2 == null)
+            //    {
+            //        image2 = "none";
+            //    }
 
-                image3 = (string)Session["Image3"];
-                if (image3 == null)
-                {
-                    image3 = "none";
-                }
+            //    image3 = (string)Session["Image3"];
+            //    if (image3 == null)
+            //    {
+            //        image3 = "none";
+            //    }
 
-                image4 = (string)Session["Image4"];
-                if(image4 == null)
-                {
-                    image4 = "none";
-                }
+            //    image4 = (string)Session["Image4"];
+            //    if(image4 == null)
+            //    {
+            //        image4 = "none";
+            //    }
 
-                image5 = (string)Session["Image5"];
-                if (image5 == null)
-                {
-                    image5 = "none";
-                }
-            }
+            //    image5 = (string)Session["Image5"];
+            //    if (image5 == null)
+            //    {
+            //        image5 = "none";
+            //    }
+            //}
         }
 
         protected void btnSave_Click(object sender, EventArgs e)

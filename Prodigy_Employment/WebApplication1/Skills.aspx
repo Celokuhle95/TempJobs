@@ -1,14 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TempJobs.Master" AutoEventWireup="true" CodeBehind="Skills.aspx.cs" Inherits="WebApplication1.EditProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="ProfileInfo" class="container" runat="server">
-
-    </div>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">   
      <div id="Skills" class="container" runat="server">
-         <h2>Your informal skills:</h2>
-         <br />
-         <p>Here you can view your informal skills that you have. You can also the edit your skills. You can add up to five skills at most, you can however add less than five informal skills.
+         <div class="page-header">
+            <h2>Jobseeker informal skills.</h2>
+        </div>
+         <p class="text-muted">Here you can view your informal skills that you have. You can also the edit your skills. You can add up to five skills at most, you can however add less than five informal skills.
           Be ware that some of these skills require that you have your own resources, tools or equipment, to complete the job. Click <a href="ToolsAndEquipments.aspx"> here </a> to view and edit your tools and equipment.           
          </p>
          <br />
@@ -16,7 +14,7 @@
              <tbody>
                  <tr><td>Informal Skill 1:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill1" class="form-control" runat="server" style="width:auto">
+                     <asp:DropDownList ID="drpSkill1" class="form-control" runat="server" style="width:auto; height:initial">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -32,7 +30,7 @@
                  </td></tr>
                  <tr><td>Informal Skill 2:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill2" class="form-control" runat="server" style="width:auto">
+                     <asp:DropDownList ID="drpSkill2" class="form-control" runat="server" style="width:auto; height:initial">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -49,7 +47,7 @@
 
                  <tr><td>Informal Skill 3:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill3" class="form-control" runat="server" style="width:auto">
+                     <asp:DropDownList ID="drpSkill3" class="form-control" runat="server" style="width:auto; height:initial">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -65,7 +63,7 @@
                  </td></tr>
                  <tr><td>Informal Skill 4:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill4" class="form-control" runat="server" style="width:auto">
+                     <asp:DropDownList ID="drpSkill4" class="form-control" runat="server" style="width:auto; height:initial">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -81,7 +79,7 @@
                  </td></tr>
                  <tr><td>Informal Skill 5:</td>
                  <td>
-                     <asp:DropDownList ID="drpSkill5" class="form-control" runat="server" style="width:auto">
+                     <asp:DropDownList ID="drpSkill5" class="form-control" runat="server" style="width:auto; height:initial">
                         <asp:ListItem Value="0">Select skill</asp:ListItem>
                         <asp:ListItem Value="1">Tree felling</asp:ListItem>
                         <asp:ListItem Value="2">Trimming and prunning</asp:ListItem>
@@ -97,7 +95,7 @@
                  </td></tr>
                  <tr><td>
                      <br />
-                         <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary btn-xl" OnClick="btnStoreDetails_Click"/>
+                         <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary btn-md" style="border-radius:initial" OnClick="btnStoreDetails_Click"/>
                      </td>
                 </tr>
              </tbody>
