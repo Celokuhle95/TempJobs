@@ -22,13 +22,13 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if(!Page.IsPostBack)
-            //{        
-            //   JobSeekerID = (int)Session["UserID"];
+            //if (!Page.IsPostBack)
+            //{
+            //    JobSeekerID = (int)Session["UserID"];
             //    lc = new localhost.Service1();
             //    if (Session["UserID"] != null && Session["UserType"] != null)
             //    {
-            //        if(((string)Session["UserType"]).Equals("JobSeeker"))
+            //        if (((string)Session["UserType"]).Equals("JobSeeker"))
             //        {
             //            JobSeekerID = (int)Session["UserID"];
             //            int count = 0;
@@ -41,7 +41,7 @@ namespace WebApplication1
             //                    {
             //                        if (te != null)
             //                        {
-            //                            Image1ID.Src = "data:image/jpeg;base64,"+ te.Image;
+            //                            Image1ID.Src = "data:image/jpeg;base64," + te.Image;
             //                            txtNameOrDescription1.Text = te.Name;
             //                        }
             //                    }
@@ -84,7 +84,7 @@ namespace WebApplication1
             //        else
             //        {
             //            Response.Redirect("LoginPage.aspx");
-            //        }                   
+            //        }
             //    }
             //    else
             //    {
@@ -95,7 +95,7 @@ namespace WebApplication1
             //{
             //    JobSeekerID = (int)Session["UserID"];
             //    image1 = (string)Session["Image1"];
-            //    if(image1 == null)
+            //    if (image1 == null)
             //    {
             //        image1 = "none";
             //    }
@@ -113,7 +113,7 @@ namespace WebApplication1
             //    }
 
             //    image4 = (string)Session["Image4"];
-            //    if(image4 == null)
+            //    if (image4 == null)
             //    {
             //        image4 = "none";
             //    }
@@ -259,7 +259,7 @@ namespace WebApplication1
             if (Session["ScreenNotification"] == null)
             {
                 Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "< p >Changes to your skills were successfully saved.</ p >");
+                Session.Add("ScreenNotificationMessage", "<p>Changes to your skills were successfully saved.</ p >");
             }
         }
     }

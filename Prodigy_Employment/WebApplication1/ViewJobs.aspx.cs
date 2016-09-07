@@ -13,7 +13,7 @@ namespace WebApplication1
         {
             if (Session["UserID"] != null)
             {
-                string htmlText = "<div style='page-header'><h1>Available jobs.</h1></div>";
+                string htmlText = "<div class='page-header'><h1>Available jobs.</h1></div>";
                 localhost.Service1 localhost = new localhost.Service1();
                 htmlText += "<div class='card-columns'>";
                 foreach (var job in localhost.AllJobs())
@@ -21,26 +21,28 @@ namespace WebApplication1
                     htmlText += "<div class='card'>";
                     htmlText += "<h3 card='card-header'>" + job.Name + "</h3>";
                     htmlText += "<p class='card-subtitle text-muted'> Date posted:" + job.DatePosted + "</p>";
-                    htmlText += "<div class='card-block'><b>Short description:</b> " + job.Description + "</div>";
-                    htmlText += "<div class='card-block'><b>Required skill:</b> " + job.RequiredSkill + "</div>";
-                    htmlText += "<div class='card-block'><b>Location:</b> " + job.Location + "</div>";
-                    htmlText += "<div class='card-block'><b>Number of working days:</b> " + job.NumberOfDays + "</div>";
-                    htmlText += "<div class='card-block'><b>Start date:</b> " + job.StartDate + "</div>";
-                    htmlText += "<div class='card-block'><b>Daily starting time:</b> " + job.StartTime + "</div>";
-                    htmlText += "<div class='card-block'><b>Daily knockoff time:</b> " + job.EndTime + "</div>";
-                    htmlText += "<div class='card-block'><b>This job pays:</b> R" + job.ToBePaid + " after competion</div>";
-                    htmlText += "<div class='card-block'><b>Apply before:</b> " + job.DueDate + "</div>";
-                  
+                    htmlText += "<ul class='list-group list-group-flush'>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Short description:</b> " + job.Description + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Required skill:</b> " + job.RequiredSkill + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Location:</b> " + job.Location + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Number of working days:</b> " + job.NumberOfDays + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Start date:</b> " + job.StartDate + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily starting time:</b> " + job.StartTime + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily knockoff time:</b> " + job.EndTime + "</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>This job pays:</b> R" + job.ToBePaid + " after competion</li>";
+                    htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Apply before:</b> " + job.DueDate + "</li>";
+                    
                     if (((string)Session["UserType"]).Equals("JobSeeker"))
                     {
                         string s = string.Format("<a class='btn btn-primary' style='border-radius:initial' href='ConfirmJobApplication.aspx?JobID={0}'>Apply</a></br>", job.JobID);
-                        htmlText += "<div class='card-block'>" + s +"</div>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'>" + s + "</li>";
                     }
                     if (((string)Session["UserType"]).Equals("Admin"))
                     {
                         string s = string.Format("<a class='btn btn-danger' style='border-radius:initial' href='DeleteJob.aspx?JobID={0}'>Delete</a></br>", job.JobID);
-                        htmlText += "<div class='card-block'>" + s + "</div>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'>" + s + "</li>";
                     }
+                    htmlText += " </ul>";
                     htmlText += "</div>";
                 }
                 htmlText += "</div>";

@@ -32,7 +32,7 @@ namespace WebApplication1
                 var jobSeeker = lc.SingleJobseeker(JobSeekerID, true);
                 string display = "";
                 display += "<div class='page-header'>";
-                     display += "<h1>Jobseeker profile</h1>";
+                     display += "<h1>Jobseeker profile.</h1>";
                        
                 if (Session["UserType"].Equals("Employer"))
                 {
@@ -63,7 +63,7 @@ namespace WebApplication1
                     display += "<div class='card card-primary'>";
                     display += "<div class='card-block'>";
                     display += "<h3 class='card-title'>Contact Details</h3>";
-                    display += "<p class='card-subtitle text-muted'>Employers will use these contact details to cantact you whenever your application is successful.</p>";
+                    display += "<p class='card-subtitle text-info'>Employers will use these contact details to cantact you whenever your application is successful.</p>";
                     display += "</div>";
                     display += "<ul class='list-group list-group-flush'>";
                     display += "<li class='list-group-item'> <b class='text-muted'>Contact number:</b>     : " + jobSeeker.ContactNumber + "</li>";
@@ -119,11 +119,12 @@ namespace WebApplication1
                 }
                 else if (Session["UserType"].Equals("JobSeeker"))
                 {
-                    display += "<p class=' text-muted'>Here you can upload the picture of the tools or equipment that you use when doing the jobs you skilled in. ";
-                    display += "This may be a romoval bakkie if you do refuse removal, a grass cutting machine if you do grass cutting, a tree cutting machine if you do tree felling, or any tools that are essential to your job.";
-                    display += "You can upload upto 5 tools or any equipment that you use and want Employers to see to better your employment chances.";
-                    display += "Yo can howover upload less than five images if you don't use that much tools or equipments. It is noted that some informal jobs do not require tools or equipment of your own to complete.";
-                    display += "So in this case you can choose not to upload any photos. Also note that some Employers may have their own tools and equipment which you can use aswell.";
+                    display += "<p class=' text-muted'>Here you can view your tools or equipment that you use when doing the jobs you skilled in. ";
+                    //display += "This may be a romoval bakkie if you do refuse removal, a grass cutting machine if you do grass cutting, a tree cutting machine if you do tree felling, or any tools that are essential to your job.";
+                    //display += "You can upload upto 5 tools or any equipment that you use and want Employers to see to better your employment chances.";
+                    //display += "Yo can howover upload less than five images if you don't use that much tools or equipments. It is noted that some informal jobs do not require tools or equipment of your own to complete.";
+                    //display += "So in this case you can choose not to upload any photos.";
+                    display += "Some Employers may have their own tools and equipments that you can use when hired, so these may not always be neccessary.";
                     display += "Click <a href='ToolsAndEquipments.aspx'>here </a> to edit your Tools/Equipments.</p>";
                 }
                 display += "<div class='card-group'>";
