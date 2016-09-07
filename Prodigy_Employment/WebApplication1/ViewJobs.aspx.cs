@@ -13,32 +13,37 @@ namespace WebApplication1
         {
             if (Session["UserID"] != null)
             {
-                string htmlText = "<h3 style='text-align'>Available jobs.</h3>";
+                string htmlText = "<div style='page-header'><h1>Available jobs.</h1></div>";
                 localhost.Service1 localhost = new localhost.Service1();
+                htmlText += "<div class='card-columns'>";
                 foreach (var job in localhost.AllJobs())
-                {
-                    htmlText += "<div class='row' style='border:groove'>";
-                    htmlText += "<h2>" + job.Name + "</h2>";
-                    htmlText += "<hr style='color:goldenrod'/>";
-                    htmlText += "<u>Short Job Description</u>: " + job.Description + "<br/>";
-                    htmlText += "<u>Location </u>:" + job.Location + "<br/>";
-                    htmlText += "<u>Job Start Day</u>:" + job.StartDate + "<br/>";
-                    htmlText += "<u>Daily Starting Time</u>: " + job.StartTime + " <br/>";
-                    htmlText += "<u>Daily Knockoff Time</u>: " + job.EndTime + " <br/>";
-                    htmlText += "<u>Due date(Apply before this day): </u>:" + job.DueDate + "<br/>";
-                    htmlText += "<u>Pay(After the whole job is complete)</u>:<b> R" + job.ToBePaid + "</b><br/>";
+                {                  
+                    htmlText += "<div class='card'>";
+                    htmlText += "<h3 card='card-header'>" + job.Name + "</h3>";
+                    htmlText += "<p class='card-subtitle text-muted'> Date posted:" + job.DatePosted + "</p>";
+                    htmlText += "<div class='card-block'><b>Short description:</b> " + job.Description + "</div>";
+                    htmlText += "<div class='card-block'><b>Required skill:</b> " + job.RequiredSkill + "</div>";
+                    htmlText += "<div class='card-block'><b>Location:</b> " + job.Location + "</div>";
+                    htmlText += "<div class='card-block'><b>Number of working days:</b> " + job.NumberOfDays + "</div>";
+                    htmlText += "<div class='card-block'><b>Start date:</b> " + job.StartDate + "</div>";
+                    htmlText += "<div class='card-block'><b>Daily starting time:</b> " + job.StartTime + "</div>";
+                    htmlText += "<div class='card-block'><b>Daily knockoff time:</b> " + job.EndTime + "</div>";
+                    htmlText += "<div class='card-block'><b>This job pays:</b> R" + job.ToBePaid + " after competion</div>";
+                    htmlText += "<div class='card-block'><b>Apply before:</b> " + job.DueDate + "</div>";
+                  
                     if (((string)Session["UserType"]).Equals("JobSeeker"))
                     {
-                        string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
-                        htmlText += s;
+                        string s = string.Format("<a class='btn btn-primary' style='border-radius:initial' href='ConfirmJobApplication.aspx?JobID={0}'>Apply</a></br>", job.JobID);
+                        htmlText += "<div class='card-block'>" + s +"</div>";
                     }
                     if (((string)Session["UserType"]).Equals("Admin"))
                     {
-                        string s = string.Format("<a class='btn btn-danger' href='DeleteJob.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
-                        htmlText += s;
+                        string s = string.Format("<a class='btn btn-danger' style='border-radius:initial' href='DeleteJob.aspx?JobID={0}'>Delete</a></br>", job.JobID);
+                        htmlText += "<div class='card-block'>" + s + "</div>";
                     }
-                    htmlText += "<br/></div><br/>";
+                    htmlText += "</div>";
                 }
+                htmlText += "</div>";
                 JobDetails.InnerHtml = htmlText;
             }
             else

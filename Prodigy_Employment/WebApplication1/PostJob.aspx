@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-7">
                     <asp:TextBox ID="txtName" runat="server" class="form-control" Style="width: auto"></asp:TextBox>
-                    <p class="text-muted">Provide a title for </p>
+                    <p class="text-muted">Provide a title or name for this job.</p>
                 </div>
             </div>
             <br />    
@@ -54,8 +54,7 @@
                 <div class="col-md-3">
                     <b>Number Of Days :</b>
                 </div>
-                <div class="col-md-7">
-                    <%--<asp:TextBox ID="txtNumDays" runat="server" class="form-control"></asp:TextBox>--%>
+                <div class="col-md-7">               
                     <input type="number" id="NumberOfDays" name="num_days" min="1" style="width: 70px" runat="server" /><br />
                     <p class="text-muted">The number of days the job will take to complete, this also indicates the number of days the job seeker will be expected to work.</p>
                 </div>
@@ -65,7 +64,6 @@
                     <b>Due date for applications:</b>
                 </div>
                 <div class="col-md-7">
-                    <%--<asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>--%>
                     <input type="date" id="DueDate" name="due_date" runat="server" />
                     <br />
                     <p class="text-muted">JobSeekers must apply for this job before this date.</p>
