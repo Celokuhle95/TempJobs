@@ -102,7 +102,7 @@
         </div>
         <br />
         <div>
-            <asp:Button ID="btnSave" runat="server" Style="border-radius: initial" Text="Save changes" class="btn btn-primary btn-md" OnClick="btnSave_Click" />
+            <asp:Button ID="btnSave" runat="server" Style="border-radius: initial; width:18%" Text="Save changes" class="btn btn-primary btn-md" OnClick="btnSave_Click" />
         </div>
     </div>
 </asp:Content>

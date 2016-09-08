@@ -18,24 +18,29 @@ namespace WebApplication1
                 {
                     int EmployerID = (int)Session["UserID"];
                     string htmlText = "";
-                    htmlText += "<h2>Jobs<h2><br/>";
-                    htmlText += "<p>Select a job that you would like this job seeker to be invited to. After the invitation the job seeker will view details of this job, and if the job seeker is interested  they will apply for this job. Ensure that the due date of the job that you select has not passed. </p>";
-                    htmlText += "<div class='row' style='border:groove'>";
+                    htmlText = "<div class='page-header'><h1>Your jobs.</h1>";
+                    htmlText += "<p class='text-muted'>Select a job that you would like this job seeker to be invited to. After the invitation the job seeker will view details of this job, and if the job seeker is interested  they will apply for this job. Ensure that the due date of the job that you select has not passed. </p>";
+                    htmlText += "</ div >";
+                    htmlText += "<div class='card-columns'>";
                     foreach (var job in lc.EmployerSpecificJobs(EmployerID, true))
                     {
-                        htmlText += "<div class='col-md-4'>";                        
-                        htmlText += "<h2>" + job.Name + "</h2>";
-                        htmlText += "<hr style='color:goldenrod'/>";
-                        htmlText += "<u>Short Job Description</u>: " + job.Description + "<br/>";
-                        htmlText += "<u>Location </u>:" + job.Location + "<br/>";
-                        htmlText += "<u>Job Start Day</u>:" + job.StartDate + "<br/>";
-                        htmlText += "<u>Daily Starting Time</u>: " + job.StartTime + " <br/>";
-                        htmlText += "<u>Daily Knockoff Time</u>: " + job.EndTime + " <br/>";
-                        htmlText += "<u>Due date(Apply before this day): </u>:" + job.DueDate + "<br/>";
-                        htmlText += "<u>Pay(After the whole job is complete)</u>:<b> R" + job.ToBePaid;
-                        string s = string.Format("<a class='btn btn-success' href='ConfirmInvite.aspx?JobID={0}'>Invite to this job</a></br>", job.JobID);
+                        htmlText += "<div class='card'>";
+                        htmlText += "<h3 card='card-header'>" + job.Name + "</h3>";
+                        htmlText += "<p class='card-subtitle text-muted'> Date posted:" + job.DatePosted + "</p>";
+                        htmlText += "<ul class='list-group list-group-flush'>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Short description:</b> " + job.Description + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Required skill:</b> " + job.RequiredSkill + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Location:</b> " + job.Location + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Number of working days:</b> " + job.NumberOfDays + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Start date:</b> " + job.StartDate + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily starting time:</b> " + job.StartTime + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily knockoff time:</b> " + job.EndTime + "</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>This job pays:</b> R" + job.ToBePaid + " after competion</li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Apply before:</b> " + job.DueDate + "</li>";
+                        string s = string.Format("<a class='btn btn-success' class='border-radius:initial' href='ConfirmInvite.aspx?JobID={0}'>Select job</a></br>", job.JobID);
                         htmlText += s;
-                        htmlText += "</b><br/></div>";
+                        htmlText += "</ul>";
+                        htmlText += "</div>";
                     }
                     htmlText += "</div>";
                     JobsDisplay.InnerHtml = htmlText;
