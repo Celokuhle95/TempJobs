@@ -155,16 +155,19 @@
   <xs:element name="ArrayOfInvitation" nillable="true" type="tns:ArrayOfInvitation" />
   <xs:complexType name="Invitation">
     <xs:sequence>
+      <xs:element minOccurs="0" name="DatePosted" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DueDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmployerFirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmployerID" type="xs:int" />
+      <xs:element minOccurs="0" name="EmployerImage" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EmployerLastName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="JobID" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NumberOfDays" type="xs:int" />
+      <xs:element minOccurs="0" name="RequiredSkill" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ToBePaid" type="xs:double" />

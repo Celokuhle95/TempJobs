@@ -20,6 +20,9 @@ namespace TempJobsWcf
         private int employerID;
         private string employerFirstName;
         private string employerLastName;
+        private string employerImage;
+        private string datePosted;
+        private string requiredSkill;
 
         public int JobID
         {
@@ -187,6 +190,45 @@ namespace TempJobsWcf
             set
             {
                 employerLastName = value;
+            }
+        }
+
+        public string EmployerImage
+        {
+            get
+            {
+                return employerImage;
+            }
+
+            set
+            {
+                employerImage = value;
+            }
+        }
+
+        public string DatePosted
+        {
+            get
+            {
+                return datePosted;
+            }
+
+            set
+            {
+                datePosted = value;
+            }
+        }
+
+        public string RequiredSkill
+        {
+            get
+            {
+                return requiredSkill;
+            }
+
+            set
+            {
+                requiredSkill = value;
             }
         }
     }

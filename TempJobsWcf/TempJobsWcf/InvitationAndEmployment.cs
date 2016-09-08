@@ -82,8 +82,11 @@ namespace TempJobsWcf
                                job.EndTime,
                                job.Location,
                                job.ToBePaid,
+                               job.DatePosted,
+                               job.RequiredSkill,
                                empl.FirstName,
-                               empl.LastName                           
+                               empl.LastName,
+                               empl.ProfileImage_String                                                       
                            };
             foreach (var invi in invQuery)
             {
@@ -98,22 +101,14 @@ namespace TempJobsWcf
                 a.EndTime = invi.EndTime;
                 a.Location = invi.Location;
                 a.ToBePaid = Convert.ToDouble(invi.ToBePaid);
+                a.DatePosted = invi.DatePosted;
+                a.RequiredSkill = invi.RequiredSkill;
                 a.EmployerFirstName = invi.FirstName;
                 a.EmployerLastName = invi.LastName;
+                a.EmployerImage = invi.ProfileImage_String;
                 invites.Add(a);
             }
-            return invites;
-            //foreach (var inv in database.JobInvitations)
-            //{
-            //    if(inv.JobSeekerID.Equals(JobSeekerID))
-            //    {
-            //        JobInvitation invite = new JobInvitation();
-            //        invite.JobInvitationID = inv.JobInvitationID;
-            //        invite.EmployerID = inv.EmployerID;
-            //        invite.JobSeekerID = inv.JobSeekerID;
-            //        invites.Add(invite);
-            //    }              
-            //}  
+            return invites;        
         }
     }
 }

@@ -19,28 +19,37 @@ namespace WebApplication1
                     localhost = new localhost.Service1();
                     int JobSeekerID = (int)Session["UserID"];
 
-                    string htmlText = "<h3 style='text-align'>Job invites.</h3><br/>";
-                    htmlText += "<p>Job invites are a way employers try to get you to apply for their job that they have posted. Invites means the employer, after viewing your profile, felt that you have the right skills and equipment to complete this job. So if you choose to apply for this job your chances of getting employment are really high.</p><br/>";
-                 
+                    string htmlText ="";
                     foreach (var job in localhost.GetJobSeekerJobInvites(JobSeekerID, true))
                     {
-                        htmlText += "<div class='row' style='border:groove'>";
-                        htmlText += "<h2> Invitation from: <b>" + job.EmployerFirstName + " " + job.EmployerLastName +  "</b></h2>";
-                        htmlText += "<br/>";
-                        htmlText += "<h2>" + job.Name + "</h2>";
-                        htmlText += "<h2>" + job.Name + "</h2>";
-                        htmlText += "<hr style='color:goldenrod'/>";
-                        htmlText += "<u>Short Job Description</u>: " + job.Description + "<br/>";
-                        htmlText += "<u>Location </u>:" + job.Location + "<br/>";
-                        htmlText += "<u>Job Start Day</u>:" + job.StartDate + "<br/>";
-                        htmlText += "<u>Daily Starting Time</u>: " + job.StartTime + " <br/>";
-                        htmlText += "<u>Daily Knockoff Time</u>: " + job.EndTime + " <br/>";
-                        htmlText += "<u>Due date(Apply before this day): </u>:" + job.DueDate + "<br/>";
-                        htmlText += "<u>Pay(After the whole job is complete)</u>:<b> R" + job.ToBePaid + "</b><br/>";
-                        string s = string.Format("<a class='btn btn-success' href='ConfirmJobApplication.aspx?JobID={0}'>Apply for job</a></br>", job.JobID);
-                        htmlText += s + "<br/></div> <br/><br/>";
+                        htmlText += "<div class='card'>";
+                        htmlText += "<div class='card-block' style='border-bottom:1px solid'>";
+                        htmlText += "<h4 class='card-title text-center'> Job invitation from " + job.EmployerFirstName + " " + job.EmployerLastName + ".</h4>";
+                        htmlText += "</div>";
+
+                        string base64ImageRepresentation = job.EmployerImage;
+                        htmlText += "<div class='avatar panel-heading'>";
+                        htmlText += "<img class='img-circle img-fluid img-responsive' style='height:200px'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";
+                        htmlText += "</div>";
+                       
+                        htmlText += "<ul class='list-group list-group-flush'>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>posted:</b>" + job.DatePosted + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Job name: </b>" + job.Name + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Short description:</b>" + job.Description + "</small> </li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Required skill: </b>" + job.RequiredSkill + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Location:</b> " + job.Location + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Number of working days:</b> " + job.NumberOfDays + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Start date:</b> " + job.StartDate + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Daily starting time:</b>" + job.StartTime + "</small> </li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Daily knockoff time:</b> " + job.EndTime + "</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>This job pays:</b> R" + job.ToBePaid + " after competion</small></li>";
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><small class='text-muted'><b>Apply before:</b>" + job.DueDate + "</small> </li>";
+                        string s = string.Format("<a class='btn btn-primary' style='border-radius:initial' href='ConfirmJobApplication.aspx?JobID={0}'>Apply</a></br>", job.JobID);
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'>" + s + "</li>";
+                        htmlText += " </ul>";
+                        htmlText += "</div><br/>";
                     }
-                    
+                 
                     Invites.InnerHtml = htmlText;
                 }
                 else

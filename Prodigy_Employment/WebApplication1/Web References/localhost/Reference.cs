@@ -1398,6 +1398,8 @@ namespace WebApplication1.localhost {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.datacontract.org/2004/07/TempJobsWcf")]
     public partial class Invitation {
         
+        private string datePostedField;
+        
         private string descriptionField;
         
         private string dueDateField;
@@ -1407,6 +1409,8 @@ namespace WebApplication1.localhost {
         private int employerIDField;
         
         private bool employerIDFieldSpecified;
+        
+        private string employerImageField;
         
         private string employerLastNameField;
         
@@ -1424,6 +1428,8 @@ namespace WebApplication1.localhost {
         
         private bool numberOfDaysFieldSpecified;
         
+        private string requiredSkillField;
+        
         private string startDateField;
         
         private string startTimeField;
@@ -1431,6 +1437,17 @@ namespace WebApplication1.localhost {
         private double toBePaidField;
         
         private bool toBePaidFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string DatePosted {
+            get {
+                return this.datePostedField;
+            }
+            set {
+                this.datePostedField = value;
+            }
+        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
@@ -1483,6 +1500,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.employerIDFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string EmployerImage {
+            get {
+                return this.employerImageField;
+            }
+            set {
+                this.employerImageField = value;
             }
         }
         
@@ -1569,6 +1597,17 @@ namespace WebApplication1.localhost {
             }
             set {
                 this.numberOfDaysFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
+        public string RequiredSkill {
+            get {
+                return this.requiredSkillField;
+            }
+            set {
+                this.requiredSkillField = value;
             }
         }
         
