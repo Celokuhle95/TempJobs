@@ -3,17 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
        <div class="container" style="padding-left:20%; padding-right: 20%">
-         <div class ="row" style="padding-left:10%; padding-right:10%; border:groove">
-             <h2>Delete  job.</h2>
-              
-             <p>Here you can delete the jobs as an admin.</p>
+         <div class ="card" style="padding-left:10%; padding-right:10%;">
+             <div class="page-header">
+                <h2>Delete  job.</h2>
+             </div>                                      
              <p>Are you sure you want to continue?</p>
              <div class="row">
-                 <div class="col-md-3" style ="padding-right: 5%">
-                     <asp:Button ID="btnYes" class="btn btn-success" runat="server" Text="Yes" width="100" OnClick="btnYes_Click" />
+                 <div class="col-md-6" >
+                     <asp:Button ID="btnYes" style="width:100%; border-radius:initial" class="btn btn-danger" runat="server" Text="Yes"  OnClick="btnYes_Click" />
                  </div>
-                 <div class="col-md-3" style="padding-left: 5%; padding-right: 5%">
-                     <asp:Button ID="btnNo" class="btn btn- btn-block" runat="server" Text="No" OnClick="btnNo_Click" />
+                 <div class="col-md-6" >
+                     <asp:Button ID="btnNo" class="btn btn-block" style="width:100%; border-radius:initial" runat="server" Text="No" OnClick="btnNo_Click" />
                  </div>
              </div>
             <br />
