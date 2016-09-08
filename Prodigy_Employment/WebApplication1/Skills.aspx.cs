@@ -13,65 +13,65 @@ namespace WebApplication1
         int selectedID;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //lc = new localhost.Service1();
+            lc = new localhost.Service1();
 
-            //if (Session["UserID"] == null || (string)Session["UserType"] == null)
-            //{
-            //    Response.Redirect("LoginPage.aspx");
-            //}
-            //else
-            //{
-            //    if (((string)Session["UserType"]).Equals("JobSeeker"))
-            //    {
-            //        selectedID = (int)Session["UserID"];
-            //        int count = 0;
-            //        bool a = true;
-            //        foreach (var skill in lc.ReadSkills(selectedID,  a))
-            //        {
-            //            if (count.Equals(0))
-            //            {
-            //                if (skill != null)
-            //                {
-            //                    drpSkill1.Text = skill.Name;
-            //                }
-            //            }
-            //            else if (count.Equals(1))
-            //            {
-            //                if (skill != null)
-            //                {
-            //                    drpSkill2.Text = skill.Name;
-            //                }
-            //            }
-            //            else if (count.Equals(2))
-            //            {
-            //                if (skill != null)
-            //                {
-            //                    drpSkill3.Text = skill.Name;
-            //                }
-            //            }
-            //            else if (count.Equals(3))
-            //            {
-            //                if (skill != null)
-            //                {
-            //                    drpSkill4.Text = skill.Name;
-            //                }
-            //            }
-            //            else if (count.Equals(4))
-            //            {
-            //                if (skill != null)
-            //                {
-            //                    drpSkill5.Text = skill.Name;
-            //                }
-            //            }
-            //            count++;
-            //        }                
-            
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("LoginPage.aspx");
-            //    }
-            //}
+            if (Session["UserID"] == null || (string)Session["UserType"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
+            else
+            {
+                if (((string)Session["UserType"]).Equals("JobSeeker"))
+                {
+                    selectedID = (int)Session["UserID"];
+                    int count = 0;
+                    bool a = true;
+                    foreach (var skill in lc.ReadSkills(selectedID, a))
+                    {
+                        if (count.Equals(0))
+                        {
+                            if (skill != null)
+                            {
+                                drpSkill1.Text = skill.Name;
+                            }
+                        }
+                        else if (count.Equals(1))
+                        {
+                            if (skill != null)
+                            {
+                                drpSkill2.Text = skill.Name;
+                            }
+                        }
+                        else if (count.Equals(2))
+                        {
+                            if (skill != null)
+                            {
+                                drpSkill3.Text = skill.Name;
+                            }
+                        }
+                        else if (count.Equals(3))
+                        {
+                            if (skill != null)
+                            {
+                                drpSkill4.Text = skill.Name;
+                            }
+                        }
+                        else if (count.Equals(4))
+                        {
+                            if (skill != null)
+                            {
+                                drpSkill5.Text = skill.Name;
+                            }
+                        }
+                        count++;
+                    }
+
+                }
+                else
+                {
+                    Response.Redirect("LoginPage.aspx");
+                }
+            }
         }
 
         protected void btnStoreDetails_Click(object sender, EventArgs e)

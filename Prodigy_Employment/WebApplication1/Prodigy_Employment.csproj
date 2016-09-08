@@ -110,7 +110,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="MoreJobSeekerDetails.aspx" />
     <Content Include="StartPage.aspx" />
     <Content Include="ToolsAndEquipments.aspx" />
     <None Include="scripts\jquery-1.9.1.intellisense.js" />
@@ -338,13 +337,6 @@
     </Compile>
     <Compile Include="ViewUsers.aspx.designer.cs">
       <DependentUpon>ViewUsers.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MoreJobSeekerDetails.aspx.cs">
-      <DependentUpon>MoreJobSeekerDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MoreJobSeekerDetails.aspx.designer.cs">
-      <DependentUpon>MoreJobSeekerDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="StartPage.aspx.cs">
       <DependentUpon>StartPage.aspx</DependentUpon>

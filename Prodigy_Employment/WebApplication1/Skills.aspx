@@ -95,7 +95,7 @@
                  </td></tr>
                  <tr><td>
                      <br />
-                         <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary btn-md" style="border-radius:initial" OnClick="btnStoreDetails_Click"/>
+                         <asp:Button ID="btnStoreDetails" runat="server" Text="Save changes" class="btn btn-primary btn-md" style="border-radius:initial; width:45%" OnClick="btnStoreDetails_Click"/>
                      </td>
                 </tr>
              </tbody>
