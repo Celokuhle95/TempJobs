@@ -17,7 +17,7 @@ namespace WebApplication1
             {
                 if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
-                    
+
                 }
                 else
                 {
