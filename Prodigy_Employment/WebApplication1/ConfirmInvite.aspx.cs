@@ -52,7 +52,7 @@ namespace WebApplication1
             if (Session["ScreenNotification"] == null)
             {
                 Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "<p style='text-align:center'>Thank you for sending job invite.The job invite was successfully sent.</p>");
+                Session.Add("ScreenNotificationMessage", "<div class='alert alert-success fade-in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p>Thank you for sending job invite.The job invite was successfully sent.</p></div>");
             }
         }
     }
