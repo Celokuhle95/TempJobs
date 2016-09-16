@@ -259,7 +259,7 @@ namespace WebApplication1
             if (Session["ScreenNotification"] == null)
             {
                 Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "<p>Changes to your skills were successfully saved.</ p >");
+                Session.Add("ScreenNotificationMessage", "<p><br/>Changes to your skills were successfully saved.</ p >");
             }
         }
     }

@@ -25,16 +25,17 @@ namespace WebApplication1
                     foreach (var applicant in localhost.getApplicants(EmployerID, true))
                     {
 
-                        htmlText += "<div class='row'>";
+                        htmlText += "<div class='card'>";
                         string base64ImageRepresentation = applicant.ProfileImage_String;
-                        htmlText += "<img width='500px' height='400px'alt='image not available' max-height='300px' class='img-circle' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
-                        htmlText += "</div>";
-                        htmlText += "<div class='row'>";
-                        htmlText += "<h3>" + applicant.FirstName + " " + applicant.LastName + "</h3>";
+                        htmlText += "<img width='400px'class='card-img-top img-responsive img-circle' height='400px'alt='image not available' max-height='300px' src='data:image/jpeg;base64," + base64ImageRepresentation + "'/>";
+                        
+                        htmlText += "<div class='card-block'>";
+                        htmlText += "<h3 class='card-title'>" + applicant.FirstName + " " + applicant.LastName + "</h3>";
                         string s = string.Format("<a href = 'JobSeekerProfile.aspx?JobSeekerID={0}'> View full profile</a><br/> ", applicant.JobSeekerID);
                         htmlText += s;
-                        string employ = string.Format("<a href = 'EmployJobSeeker.aspx?JobSeekerID={0}'> here. </a></br> ", applicant.JobSeekerID);
-                        htmlText += "If you would like to employ this Job Seeker click " + employ;
+                        string employ = string.Format("<a class='btn btn-primary' style='border-radius:initial' href = 'EmployJobSeeker.aspx?JobSeekerID={0}'> Employ. </a></br> ", applicant.JobSeekerID);
+                        htmlText += "<p class='card-text' >If you would like to employ this Job Seeker click " + employ + "</p>";
+                        htmlText += "</div>";
                         htmlText += "</div>";
                     }
                     Applications.InnerHtml = htmlText;
