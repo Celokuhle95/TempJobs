@@ -37,9 +37,8 @@ namespace WebApplication1
             //ClientScript.RegisterStartupScript(this.GetType(), "myAlert", "alert('" + jobID + "');", true);
             lc.ApplyForJob(jobID, true, (int)Session["UserID"], true);
             //show success message
-            Session.Add("ScreenNotification", "TurnON");
-            Session.Add("ScreenNotificationMessage", "<p style='text-align:center'>Your application was successful, thank you for applying.We will be intouch.</p>");
-
+            Session.Add("ScreenNotification", "TurnON");           
+            Session.Add("ScreenNotificationMessage", "<div class='alert alert-success fade-in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p>Your application was successful, thank you for applying.We will be intouch.</p></div>");
             Response.Redirect("ViewJobs.aspx");
         }
 

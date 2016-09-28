@@ -93,7 +93,7 @@
 			<!-- /.container-fluid -->
 		</nav>
           
-        <div id="NotificationSection" class="container" style="border:groove; background-color: darkseagreen" visible="false" runat="server" >
+        <div id="NotificationSection" class="container" visible="false" runat="server" >
 
         </div>
 

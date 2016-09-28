@@ -129,8 +129,8 @@ namespace WebApplication1
         {
             if (Session["ScreenNotification"] == null)
             {
-                Session.Add("ScreenNotification", "TurnON");
-                Session.Add("ScreenNotificationMessage", "<p>Changes to your skills were successfully saved.</p>");
+                Session.Add("ScreenNotification", "TurnON");               
+                Session.Add("ScreenNotificationMessage", "<div class='alert alert-success fade-in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p>Changes to your skills were successfully saved.</p></div>");
             }
         }
     }

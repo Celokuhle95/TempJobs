@@ -44,8 +44,9 @@ namespace WebApplication1
             string skill = drpSkill.SelectedItem.Text;           
             localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, skill, EmployerID, true);
             //display some message to let employer know that posting was successful.
-            Session.Add("ScreenNotification", "TurnON");
-            Session.Add("ScreenNotificationMessage", "<p>Thank you for posting the job, your post was successful. Check applications later</p>");
+            Session.Add("ScreenNotification", "TurnON");          
+            Session.Add("ScreenNotificationMessage", "<div class='alert alert-success fade-in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p>Thank you for posting the job, your post was successful. Check applications later.</p></div>");
+
             Session.Add("RequiredSkill", skill);
             Response.Redirect("JobSeekersWithRequiredSkill.aspx");
         }
