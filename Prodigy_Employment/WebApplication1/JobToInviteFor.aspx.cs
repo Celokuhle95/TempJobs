@@ -37,7 +37,8 @@ namespace WebApplication1
                         htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily knockoff time:</b> " + job.EndTime + "</li>";
                         htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>This job pays:</b> R" + job.ToBePaid + " after competion</li>";
                         htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Apply before:</b> " + job.DueDate + "</li>";
-                        string s = string.Format("<br/><a class='btn btn-success' style='border-radius:initial;' href='ConfirmInvite.aspx?JobID={0}'>Select job</a></br>", job.JobID);
+                        int JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
+                        string s = string.Format("<br/><a class='btn btn-success' style='border-radius:initial;' href='ConfirmInvite.aspx?JobID={0}&JobSeekerID={1}'>Select job</a></br>", job.JobID, JobSeekerID);
                         htmlText += s;
                         htmlText += "</ul>";
                         htmlText += "</div>";

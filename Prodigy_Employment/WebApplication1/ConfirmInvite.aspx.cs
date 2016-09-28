@@ -11,6 +11,7 @@ namespace WebApplication1
     {
         int EmployerID;
         int JobID;
+        int JobSeekerID;
         localhost.Service1 lc = new localhost.Service1();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -21,6 +22,7 @@ namespace WebApplication1
                 {
                     EmployerID = (int)Session["UserID"];
                     JobID = Convert.ToInt32(Request.QueryString["JobID"]);
+                    JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
                 }
                 else
                 {
@@ -35,16 +37,17 @@ namespace WebApplication1
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            int JobSeekerID = (int)Session["JobSeekerID"];
+            //int JobSeekerID = (int)Session["JobSeekerID"];
             lc.InviteJobSeeker(EmployerID, true, JobSeekerID, true, JobID, true);
             DisplaySuccessMessage();
-            Session["JobSeekerID"] = null;
+            //Session["JobSeekerID"] = null;
             Response.Redirect("ViewUsers.aspx");
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ViewUser.aspx");
+            //Session["JobSeekerID"] = null;
+            Response.Redirect("ViewUsers.aspx");
         }
 
         public void DisplaySuccessMessage()

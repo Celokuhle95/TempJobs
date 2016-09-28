@@ -180,8 +180,9 @@ namespace WebApplication1
 
         protected void btnInvite_Click(object sender, EventArgs e)
         {
-            Session.Add("JobSeekerID", JobSeekerID);
-            Response.Redirect("JobToInviteFor.aspx");            
+            //Session.Add("JobSeekerID", JobSeekerID);
+            //Response.Redirect("JobToInviteFor.aspx");
+            Response.Redirect(String.Format("JobToInviteFor.aspx?JobSeekerID={0}", JobSeekerID));           
         }    
     }
 }
