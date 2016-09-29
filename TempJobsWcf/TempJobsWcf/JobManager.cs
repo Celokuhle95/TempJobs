@@ -7,7 +7,7 @@ namespace TempJobsWcf
 {
     public class JobManager
     {
-        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill ,int EmployerID)
+        public int PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill ,int EmployerID)
         {
             Job newJob = new Job();
 
@@ -20,8 +20,7 @@ namespace TempJobsWcf
             newJob.StartTime = StartTime; 
             newJob.EndTime = EndTime;
             newJob.Location = Location;
-            newJob.ToBePaid = ToBePaid;
-
+            newJob.ToBePaid = ToBePaid;           
             DateTime today = DateTime.Today;
             string string_date = today.ToString("dd/MMMM/yyyy");
 
@@ -30,6 +29,9 @@ namespace TempJobsWcf
             newJob.EmployerID = EmployerID;
             database.Jobs.InsertOnSubmit(newJob);
             database.SubmitChanges();
+           
+            var last = database.Jobs.Last();
+            return (last.JobID + 1); //return the job ID, but be careful that this approach will not be effective when we have many users using the system all at the same time
         }
 
         public List<Job> AllJobs ()

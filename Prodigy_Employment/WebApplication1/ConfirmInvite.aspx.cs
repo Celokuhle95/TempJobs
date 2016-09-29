@@ -37,16 +37,13 @@ namespace WebApplication1
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
-            //int JobSeekerID = (int)Session["JobSeekerID"];
             lc.InviteJobSeeker(EmployerID, true, JobSeekerID, true, JobID, true);
             DisplaySuccessMessage();
-            //Session["JobSeekerID"] = null;
             Response.Redirect("ViewUsers.aspx");
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            //Session["JobSeekerID"] = null;
             Response.Redirect("ViewUsers.aspx");
         }
 

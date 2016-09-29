@@ -41,16 +41,17 @@ namespace WebApplication1
             string location = txtLocation.Text;
             double amount = Convert.ToDouble(PayAmount.Value);
             int EmployerID = (int)Session["UserID"];
-            string skill = drpSkill.SelectedItem.Text;           
-            localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, skill, EmployerID, true);
+            string skill = drpSkill.SelectedItem.Text;
+            int JobID;                                  //get the job ID
+            bool a;                                     //get the job ID
+            localhost.PostJob(name, description, numDays, true, duedate, startdate, startTime, endTime, location, amount, true, skill, EmployerID, true, out JobID, out a);
             //display some message to let employer know that posting was successful.
             Session.Add("ScreenNotification", "TurnON");          
             Session.Add("ScreenNotificationMessage", "<div class='alert alert-success fade-in'><a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><p>Thank you for posting the job, your post was successful. Check applications later.</p></div>");
 
-            Session.Add("RequiredSkill", skill);
-            Response.Redirect("JobSeekersWithRequiredSkill.aspx");
+            Session.Add("RequiredSkill", skill); //add skill for use earlier
+            Response.Redirect(String.Format("JobSeekersWithRequiredSkill.aspx?JobID={0}", JobID));
         }
-
         public string GetDate(string stringDate)
         {          
             DateTime loadedDate = Convert.ToDateTime(stringDate);

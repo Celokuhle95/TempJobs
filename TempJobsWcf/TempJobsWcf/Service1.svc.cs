@@ -121,10 +121,10 @@ namespace TempJobsWcf
         }
 
         //jobs
-        public void PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill, int EmployerID)
+        public int PostJob(string Name, string Description, int NumberOfDaysRequired, string DueDate, string StartDate, string StartTime, string EndTime, string Location, double ToBePaid, string RequiredSkill, int EmployerID)
         {
             JobManager job = new JobManager();
-            job.PostJob(Name, Description, NumberOfDaysRequired, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, RequiredSkill, EmployerID);
+            return job.PostJob(Name, Description, NumberOfDaysRequired, DueDate, StartDate, StartTime, EndTime, Location, ToBePaid, RequiredSkill, EmployerID);
         }
 
         public List<Job> AllJobs()

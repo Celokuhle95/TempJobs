@@ -11,6 +11,8 @@ namespace WebApplication1
     {       
         int JobSeekerID = 0;
         int EmployerID = 0;
+        int JobID = 0;
+
         localhost.Service1 lc;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,6 +24,7 @@ namespace WebApplication1
                 {
                     EmployerID = (int)Session["UserID"];
                     JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
+                    JobID = Convert.ToInt32(Request.QueryString["JobID"]);
                 }
                 else if (((string)Session["UserType"]).Equals("JobSeeker"))
                 {
@@ -180,7 +183,14 @@ namespace WebApplication1
 
         protected void btnInvite_Click(object sender, EventArgs e)
         {
-            Response.Redirect(String.Format("JobToInviteFor.aspx?JobSeekerID={0}", JobSeekerID));           
+            if(JobID == 0) //Job seeker viewed as a jobseeker with a job seeker with a required skill // still need to choose jobs
+            {
+                Response.Redirect(String.Format("JobToInviteFor.aspx?JobSeekerID={0}", JobSeekerID));
+            }   
+            else //this job seeker was NOT viewed as a job seeker with a required skill, job already chosen
+            {
+                Response.Redirect(String.Format("ConfirmInvite.aspx?JobID={0}&JobSeekerID={1}'>Select job</a></br>", JobID, JobSeekerID));
+            }       
         }    
     }
 }

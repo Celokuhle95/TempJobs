@@ -765,8 +765,24 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IService1/PostJob", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void PostJob([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Description, int NumberOfDaysRequired, [System.Xml.Serialization.XmlIgnoreAttribute()] bool NumberOfDaysRequiredSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string DueDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartDate, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string EndTime, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Location, double ToBePaid, [System.Xml.Serialization.XmlIgnoreAttribute()] bool ToBePaidSpecified, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string RequiredSkill, int EmployerID, [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified) {
-            this.Invoke("PostJob", new object[] {
+        public void PostJob(
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Name, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Description, 
+                    int NumberOfDaysRequired, 
+                    [System.Xml.Serialization.XmlIgnoreAttribute()] bool NumberOfDaysRequiredSpecified, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string DueDate, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartDate, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string StartTime, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string EndTime, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string Location, 
+                    double ToBePaid, 
+                    [System.Xml.Serialization.XmlIgnoreAttribute()] bool ToBePaidSpecified, 
+                    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string RequiredSkill, 
+                    int EmployerID, 
+                    [System.Xml.Serialization.XmlIgnoreAttribute()] bool EmployerIDSpecified, 
+                    out int PostJobResult, 
+                    [System.Xml.Serialization.XmlIgnoreAttribute()] out bool PostJobResultSpecified) {
+            object[] results = this.Invoke("PostJob", new object[] {
                         Name,
                         Description,
                         NumberOfDaysRequired,
@@ -781,6 +797,8 @@ namespace WebApplication1.localhost {
                         RequiredSkill,
                         EmployerID,
                         EmployerIDSpecified});
+            PostJobResult = ((int)(results[0]));
+            PostJobResultSpecified = ((bool)(results[1]));
         }
         
         /// <remarks/>
@@ -813,7 +831,7 @@ namespace WebApplication1.localhost {
         private void OnPostJobOperationCompleted(object arg) {
             if ((this.PostJobCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.PostJobCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.PostJobCompleted(this, new PostJobCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3173,7 +3191,37 @@ namespace WebApplication1.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
-    public delegate void PostJobCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void PostJobCompletedEventHandler(object sender, PostJobCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class PostJobCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal PostJobCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int PostJobResult {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public bool PostJobResultSpecified {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[1]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.6.1055.0")]

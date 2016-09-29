@@ -11,10 +11,12 @@ namespace WebApplication1
     {
         string htmlText = "";
         string skill = "";
+        int JobID = 0;
         localhost.Service1 lc = new localhost.Service1();
         protected void Page_Load(object sender, EventArgs e)
         {
             skill = (string)Session["RequiredSkill"];
+            JobID = Convert.ToInt32(Request.QueryString["JobID"]);
             string htmlText = "";
             htmlText += "<div class='page-header'>";
             htmlText += "<h1>Jobseekers</h1>";
@@ -28,7 +30,7 @@ namespace WebApplication1
                 string base64ImageRepresentation = u.ProfileImage_String;
                 htmlText += "<img class='card-img-top img-fluid img-responsive' style='max-height:350px; max-width:100%'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";
                 htmlText += "<div class='card-block'>";
-                string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobSeekerID={0}'>" + u.FirstName + "</a>", u.JobSeekerID);
+                string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobSeekerID={0}&JobID={1}'>" + u.FirstName + "</a>", u.JobSeekerID, JobID);
                 htmlText += s + " " + u.LastName + "</h4>";
                 htmlText += "<p class='card-text'><small class='text-muted'>Click to view full profile</small></p>";
                 htmlText += "</div>";
