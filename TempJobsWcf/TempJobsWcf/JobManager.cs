@@ -172,6 +172,7 @@ namespace TempJobsWcf
             foreach (var a in jobSeekers)
             {
                 JobSeeker jobSk = new JobSeeker();
+                jobSk.JobSeekerID = a.JobSeekerID;
                 jobSk.FirstName = a.FirstName;
                 jobSk.LastName = a.LastName;
                 jobSk.EmailAddress = a.EmailAddress;
@@ -184,7 +185,5 @@ namespace TempJobsWcf
             }
             return jobseekers;
         }
-
-
     }
 }

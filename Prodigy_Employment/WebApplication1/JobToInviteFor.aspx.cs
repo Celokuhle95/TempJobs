@@ -17,6 +17,7 @@ namespace WebApplication1
                 if (((string)Session["UserType"]).Equals("Employer"))//get emplyerID correctly
                 {
                     int EmployerID = (int)Session["UserID"];
+                    int JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
                     string htmlText = "";
                     htmlText = "<div class='page-header'><h1>Your jobs.</h1>";
                     htmlText += "<p class='text-muted'>Select a job that you would like this job seeker to be invited to. After the invitation the job seeker will view details of this job, and if the job seeker is interested  they will apply for this job. Ensure that the due date of the job that you select has not passed. </p>";
@@ -36,8 +37,7 @@ namespace WebApplication1
                         htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily starting time:</b> " + job.StartTime + "</li>";
                         htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Daily knockoff time:</b> " + job.EndTime + "</li>";
                         htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>This job pays:</b> R" + job.ToBePaid + " after competion</li>";
-                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Apply before:</b> " + job.DueDate + "</li>";
-                        int JobSeekerID = Convert.ToInt32(Request.QueryString["JobSeekerID"]);
+                        htmlText += "<li  class='list-group-item' style='border-radius:initial'><b>Apply before:</b> " + job.DueDate + "</li>";                      
                         string s = string.Format("<br/><a class='btn btn-success' style='border-radius:initial;' href='ConfirmInvite.aspx?JobID={0}&JobSeekerID={1}'>Select job</a></br>", job.JobID, JobSeekerID);
                         htmlText += s;
                         htmlText += "</ul>";
