@@ -27,10 +27,15 @@ namespace TempJobsWcf
             newJob.DatePosted = string_date;
             newJob.RequiredSkill = RequiredSkill;
             newJob.EmployerID = EmployerID;
+
+            var desc = from j in database.Jobs
+                       orderby j.JobID descending
+                       select j;
+            var last = desc.First();
+
             database.Jobs.InsertOnSubmit(newJob);
             database.SubmitChanges();
            
-            var last = database.Jobs.Last();
             return (last.JobID + 1); //return the job ID, but be careful that this approach will not be effective when we have many users using the system all at the same time
         }
 

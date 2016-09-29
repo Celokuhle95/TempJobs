@@ -30,7 +30,7 @@ namespace WebApplication1
                 string base64ImageRepresentation = u.ProfileImage_String;
                 htmlText += "<img class='card-img-top img-fluid img-responsive' style='max-height:350px; max-width:100%'  src='data:image/jpeg;base64," + base64ImageRepresentation + "' />";
                 htmlText += "<div class='card-block'>";
-                string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobSeekerID={0}&JobID={1}'>" + u.FirstName + "</a>", u.JobSeekerID, JobID);
+                string s = string.Format("<h4><a href='JobSeekerProfile.aspx?JobID={0}&JobSeekerID={1}'>" + u.FirstName + "</a>", JobID, u.JobSeekerID);
                 htmlText += s + " " + u.LastName + "</h4>";
                 htmlText += "<p class='card-text'><small class='text-muted'>Click to view full profile</small></p>";
                 htmlText += "</div>";

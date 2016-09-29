@@ -189,7 +189,7 @@ namespace WebApplication1
             }   
             else //this job seeker was NOT viewed as a job seeker with a required skill, job already chosen
             {
-                Response.Redirect(String.Format("ConfirmInvite.aspx?JobID={0}&JobSeekerID={1}'>Select job</a></br>", JobID, JobSeekerID));
+                Response.Redirect(String.Format("ConfirmInvite.aspx?JobID={0}&JobSeekerID={1}", JobID, JobSeekerID));               
             }       
         }    
     }
