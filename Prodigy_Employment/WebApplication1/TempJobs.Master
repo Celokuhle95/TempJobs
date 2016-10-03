@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TempJobs.Master.cs" Inherits="Prodigy_Employment.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+   <%-- <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>--%>
+       <link href="Content/bootstrap.css" rel="stylesheet" />
+       <meta charset="utf-8"/>
+       <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+       <meta name="viewport" content="width=device-width, initial-scale=1"/>
+       <meta name="description" content=""/>
+       <meta name="author" content=""/>
+
+       <title></title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"/>
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative2.css" type="text/css"/>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>  
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery-3.0.0.min.js"></script>
+
+    <form id="form1" runat="server">
+         <nav class="navbar navbar-default navbar-fixed-top" style="color: darkorange">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapseNavbar" runat="server">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+                    <img class="navbar-brand img-responsive" src="img/InformalJobFind-logo.png" style="height:80px; width: 100%"/>
+					<%--<a class="navbar-brand" href="home.aspx">InformalJobFind</a>--%>
+				</div> 
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="collapseNavbar" runat="server">
+					<ul class="nav navbar-nav navbar-right" runat="server">
+						<li>
+							<a  href="About.aspx">About</a>
+						</li>
+						<li id ="lblViewJobseekers" runat="server" visible="false">
+							<a href="ViewUsers.aspx">JobSeekers</a>
+						</li>
+                        <li id ="lblEmployers" runat="server" visible="false">
+							<a  href="ViewEmpoyers.aspx">Employers</a>
+						</li>
+						<li id ="lblPostJob" runat="server" visible="false">
+							<a href="PostJob.aspx">Post job</a>
+						</li>
+						<li  id ="lblProfile" runat="server" visible="false" >
+							<a  href="JobSeekerProfile.aspx">Jobseeker Profile</a>
+						</li>
+						<li id ="lblViewJobs" runat="server" visible="false">
+							<a  href="ViewJobs.aspx">Informal Jobs</a>
+						</li>
+                        <li id ="lblViewApplicants" runat="server" visible="false">
+							<a  href="ViewJobApplications.aspx">Job Applications</a>
+						</li>
+                        <li id ="lblAllApplications" runat="server" visible="false">
+							<a  href="ViewAllJobApplications.aspx">Job Applications</a>
+						</li>
+                        <li id ="lblJobInvites" runat="server" visible="false">
+							<a  href="ViewAllJobInvites.aspx">Job Invites</a>
+						</li>
+                        <li id ="lblJobInvite" runat="server" visible="false">
+							<a  href="ViewInvites.aspx">Job Invites</a>
+						</li>
+						<li id ="lblRes" runat="server" visible="true" >
+							<a href="Registration.aspx">Register</a>
+						</li>
+						<li id ="lblLogin" runat="server" visible="true">
+							<a href="LoginPage.aspx">Login</a>
+						</li>
+						<li id ="lblLogout" runat="server" visible="false">
+							<a href="Logout.aspx">Logout</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+        <br />
+        <br />
+        <br />
+        <br />  <br />
+        <br />
+        <div id="NotificationSection" class="container" visible="false" runat="server" >
+
+        </div>
+        <br /><br />
+    <div runat ="server">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+           
+        </asp:ContentPlaceHolder>
+     <br/><br/><br/>
+    </div>
+  <section id="footer" class ="bg-dark">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 col-lg-offset-2 text-center">
+						<h2 class="section-heading">More about us</h2>
+						<hr class="primary"/>
+						<p> InformalJobFind is a site where jobseekers with infomal skills can get employment from people who are looking for short term services.</p>
+					</div>
+					<div class="col-lg-4 col-lg-offset-2 text-center">
+						<i class="fa fa-phone fa-3x wow bounceIn"></i>
+						<p>011-788-4543</p>
+					</div>
+					<div class="col-lg-4 text-center">
+						<i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+						<p><a href="mailto:your-email@feedback@tempjobs.com">feedback@InformalJobFind.com</a></p>
+					</div>
+				</div>
+			</div>
+		</section>
+    </form>
+</body>
+</html>
